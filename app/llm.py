@@ -50,8 +50,7 @@ class LLM:
     @staticmethod
     def format_messages(messages: List[Union[dict, Message]]) -> List[dict]:
         """
-        Format messages for LLM by converting them to OpenAI message format.
-
+        将本地的message格式格式化为OPEN AI CLIENT的格式
         Args:
             messages: List of messages that can be either dict or Message objects
 
@@ -96,4 +95,126 @@ class LLM:
         return formatted_messages
     
     
-    
+    @retry(
+        wait=wait_random_exponential(min=1, max=60),
+        stop=stop_after_attempt(6),
+    )
+    async def ask(
+        self,
+        history: List[Union[dict, Message]],
+        system_msgs: Optional[List[Union[dict, Message]]] = None,
+        stream: bool = True,
+        temperature: Optional[float] = None,
+    ) -> str:
+        if system_msgs  is not None:
+            history = self.format_messages(system_msgs) + self.format_messages(history)
+        else:
+            history = self.format_messages(history)
+            
+        try:
+            if not stream:
+                response = await self.client.chat.completions.create(
+                    model=self.model,
+                    messages=history,
+                    max_tokens=self.max_tokens,
+                    temperature=temperature or self.temperature,
+                    stream=False,
+                )
+                if not response.choices or not response.choices[0].message:
+                    raise ValueError("LLM 没有返回任何信息")
+                return response.choices[0].message.content
+            else:
+                response = await self.client.chat.completions.create(
+                    model=self.model,
+                    messages=history,
+                    max_tokens=self.max_tokens,
+                    temperature=temperature or self.temperature,
+                    stream=True,
+                )
+                all_chunks = []
+                async for chunk in response:
+                    chunk_message = chunk.choices[0].delta.content or ""
+                    all_chunks.append(chunk_message)
+                    print(chunk_message, end="", flush=True)
+                    
+                print('\n\n')
+                
+                full_response = "".join(all_chunks).strip()
+                if not full_response:
+                    raise ValueError("LLM没返回任何信息")
+                return full_response
+            
+        except ValueError as ve:
+            logger.error(f"Validation error in ask_tool: {ve}")
+            raise
+        
+        except OpenAIError as oe:
+            if isinstance(oe, AuthenticationError):
+                logger.error("Authentication failed. Check API key.")
+            elif isinstance(oe, RateLimitError):
+                logger.error("Rate limit exceeded. Consider increasing retry attempts.")
+            elif isinstance(oe, APIError):
+                logger.error(f"API error: {oe}")
+            raise
+        except Exception as e:
+            logger.error(f"Unexpected error in ask_tool: {e}")
+            raise 
+        
+    @retry(
+        wait=wait_random_exponential(min=1, max=60),
+        stop=stop_after_attempt(6),
+    )
+    async def ask_tools(
+        self,
+        history:List[Union[dict, Message]],timeout: int = 60,
+        system_msgs: Optional[List[Union[dict, Message]]] = None,
+        tools: Optional[List[dict]] = None,tool_choice: Literal["none", "auto", "required"] = "auto",
+        temperature: Optional[float] = None,
+        stream: bool = True,**kwargs
+    ) -> str:
+        if tool_choice not in ['none', 'auto', 'required']:
+            raise ValueError(f"Invalid tool_choice: {tool_choice}")
+
+        if system_msgs is not None:
+            history = self.format_messages(system_msgs) + self.format_messages(history)
+        else:
+            history = self.format_messages(history)
+        
+        if tools:
+            for tool in tools:
+                if not isinstance(tool, dict) or "type" not in tool:
+                    raise ValueError("Each tool must be a dict with 'type' field")
+                
+        try:
+            response = await self.client.chat.completions.create(
+                model=self.model,
+                messages=history,
+                temperature=temperature or self.temperature,
+                max_tokens=self.max_tokens,
+                tools=tools,
+                tool_choice=tool_choice,
+                timeout=timeout,
+                **kwargs,
+            )
+
+            if not response or response.choices is None or len(response.choices) == 0:
+                raise ValueError("LLM didn't return any choices")
+            
+            return response.choices[0].message
+        
+        except ValueError as ve:
+            logger.error(f"Validation error in ask_tool: {ve}")
+            raise
+        
+        except OpenAIError as oe:
+            if isinstance(oe, AuthenticationError):
+                logger.error("Authentication failed. Check API key.")
+            elif isinstance(oe, RateLimitError):
+                logger.error("Rate limit exceeded. Consider increasing retry attempts.")
+            elif isinstance(oe, APIError):
+                logger.error(f"API error: {oe}")
+            raise
+        except Exception as e:
+            logger.error(f"Unexpected error in ask_tool: {e}")
+            raise 
+

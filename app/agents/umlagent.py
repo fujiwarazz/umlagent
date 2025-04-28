@@ -1,178 +1,260 @@
-import json
-from typing import Any, List, Literal
+import time
+from typing import Dict, List, Literal, Optional
 
-from pydantic import Field
+from pydantic import Field, model_validator
 
-from app.agents.react import ReActAgent
+from app.agents.tool_call import ToolCallAgent
 from app.utils.logger import logger
-from app.prompts.umlagent import NEXT_STEP_PROMPT, SYSTEM_PROMPT
-from app.utils.entity import AgentState, Message, ToolCall
-from app.tools import CreateChatCompletion, Terminate, ToolCollection, CodeExcute, Bash, FileSaver,FileSeeker,Github,UML,REASK
+from app.prompts.umlagent import NEXT_STEP_PROMPT, PLANNING_SYSTEM_PROMPT
+from app.utils.entity import Message, ToolCall
+from app.tools import PlanningTool, ToolCollection,CreateChatCompletion, Terminate, CodeExcute, Bash, FileSaver,FileSeeker,Github,UML,REASK
 
-class UMLAgent(ReActAgent):
-    """
-    UMLAgent, 需要有的能力，
-    Args:
-        ReActAgent (_type_): _description_
-    """
+
+class UMLAgent(ToolCallAgent):
     
-    name: str = "umlagnet"
-    description: str = "an uml agent that can use tool to generate uml diagram."
+    """
+    UML agent是一个Plan-and-Execute模型,能够通过planning tool创建任务列表并且按照这个列表执行任务,同时还会最终任务的状态知道完成
+    """
 
-    system_prompt: str = SYSTEM_PROMPT
+    name: str = "uml agnet"
+    description: str = "An agent that creates and manages plans to solve tasks"
+
+    system_prompt: str = PLANNING_SYSTEM_PROMPT
     next_step_prompt: str = NEXT_STEP_PROMPT
 
-    available_tools: ToolCollection = ToolCollection(
-        CreateChatCompletion(), Terminate(),  CodeExcute(), Bash(), FileSaver(), FileSeeker(),Github(), UML(), REASK()
+    available_tools: ToolCollection = Field(
+        default_factory=lambda: ToolCollection(PlanningTool(),CreateChatCompletion(), Terminate(),  CodeExcute(), Bash(), FileSaver(), FileSeeker(),Github(), UML(), REASK())
     )
     
-    tool_choice:Literal['none','auto','required'] =  "required"
-    
+    tool_choices: Literal["none", "auto", "required"] = "auto"
     special_tool_names: List[str] = Field(default_factory=lambda: [Terminate().name])
 
     tool_calls: List[ToolCall] = Field(default_factory=list)
+    active_plan_id: Optional[str] = Field(default=None) # 
 
-    max_steps: int = 30
     
+    # Add a dictionary to track the step status for each tool call 
+    step_execution_tracker: Dict[str, Dict] = Field(default_factory=dict) # keys" step_index, tool_name, status
+    current_step_index: Optional[int] = None
+
+    max_steps: int = 20
+    
+    @model_validator(mode="after")
+    def initialize_plan_and_verify_tools(self) -> "UMLAgent":
+        
+        """Initialize the agent with a default plan ID and validate required tools."""
+        self.active_plan_id = f"plan_{int(time.time())}"
+
+        if "planning" not in self.available_tools.tool_map:
+            self.available_tools.add_tool(PlanningTool())
+
+        return self
+
     async def think(self) -> bool:
-        """让llm基于现在的情况进行决定是否采取下一步措施"""
-        if self.next_step_prompt:
-            user_msg = Message.user_message(self.next_step_prompt)
-            self.messages += [user_msg]
-        
-        response = await self.llm.ask_tool(
-            messages=self.messages, # history
-            system_msgs=[Message.system_message(self.system_prompt)] # system msg
-            if self.system_prompt
-            else None,
-            tools=self.available_tools.to_params(),
-            tool_choice=self.tool_choices,
+        """Decide the next action based on plan status."""
+        prompt = (
+            f"CURRENT PLAN STATUS:\n{await self.get_plan()}\n\n{self.next_step_prompt}"
+            if self.active_plan_id
+            else self.next_step_prompt
         )
-        if response.tool_calls is None:
-            return False
-        
-        self.tool_calls = response.tool_calls
-        for call in self.tool_calls:
-            if not isinstance(call,ToolCall):
-                call = ToolCall.from_dict(call)
-                
-        # todo 返回给前端
-        logger.info(f"✨ {self.name} 的想法为: {response.content}")
-        logger.info(
-            f"🛠️ {self.name} 选择了 {len(response.tool_calls) if response.tool_calls else 0} 个工具"
-        )
-        if self.tool_calls:
-            logger.info(
-                f"🧰 选择的工具信息: {[call.function.name for call in  self.tool_calls]}"
-            )
-        
-        
-        try:
-            if self.tool_choice == "none":
-                if response.content:
-                    self.memory.add_message(Message.assistant_message(response.content))
-                    return True
-                return False
-            
-            else:
-                assistant_msg = (
-                    Message.from_tool_calls(
-                        content=response.content, tool_calls=self.tool_calls
-                    )
-                    if self.tool_calls is not None
-                    else Message.assistant_message(response.content)
-                )
-                self.memory.add_message(assistant_msg)
-                if self.tool_choice == 'auto' and not response.tool_calls:
-                    return bool(response.content)
-                
-                if self.tool_choice == 'required' and not response.tool_calls:
-                    return True
-                
-                return True
+        self.messages.append(Message.user_message(prompt))
 
-        except Exception as e:
-            logger.error(f"🚨 出错啦! The {self.name} 在思考时出现了错误，错误信息如下: {e}")
-            self.memory.add_message(
-                Message.assistant_message(
-                    f"Error encountered while processing: {str(e)}"
-                )
-            )
-            return False
-        
-    
+        # Get the current step index before thinking
+        self.current_step_index = await self._get_current_step_index()
+
+        result = await super().think()
+
+        # After thinking, if we decided to execute a tool and it's not a planning tool or special tool,
+        # associate it with the current step for tracking
+        if result and self.tool_calls:
+            latest_tool_call = self.tool_calls[0]  # Get the most recent tool call
+            if (
+                latest_tool_call.function.name != "planning"
+                and latest_tool_call.function.name not in self.special_tool_names
+                and self.current_step_index is not None
+            ):
+                self.step_execution_tracker[latest_tool_call.id] = {
+                    "step_index": self.current_step_index,
+                    "tool_name": latest_tool_call.function.name,
+                    "status": "pending",  # Will be updated after execution
+                }
+
+        return result
+
     async def act(self) -> str:
-        """执行think阶段选择的工具"""
-        if not self.tool_calls:
-            if self.tool_choice == "required":
-                raise ValueError(f'🚨 出错啦! {self.name} 没有工具能用!')
+        """Execute a step and track its completion status."""
+        result = await super().act()
 
-            # 重新返回最后一条assistant message
-            last_message = self.messages[-1] or "No content or commands to execute"
-            new_message = '这一步执行没有选择工具，重新执行上一步，上一步信息为：' + last_message 
-            return new_message 
+        # After executing the tool, update the plan status
+        if self.tool_calls:
+            latest_tool_call = self.tool_calls[0]
 
-        tool_excute_results = []
-        for tool_call in self.tool_calls:
-            result = await self.execute_tool(tool_call)
-            logger.info(
-                f"🎯 工具 '{tool_call.function.name}' 完成了它的任务! 其执行结果为: {result}"
-            )
+            # Update the execution status to completed
+            if latest_tool_call.id in self.step_execution_tracker:
+                self.step_execution_tracker[latest_tool_call.id]["status"] = "completed"
+                self.step_execution_tracker[latest_tool_call.id]["result"] = result
 
-            # important!
-            # Add tool response to memory
-            tool_msg = Message.tool_message(
-                content=result, name=tool_call.function.name
-            )
-            
-            self.memory.add_message(tool_msg)
-            tool_excute_results.append(result)
+                # Update the plan status if this was a non-planning, non-special tool
+                if (
+                    latest_tool_call.function.name != "planning"
+                    and latest_tool_call.function.name not in self.special_tool_names
+                ):
+                    await self.update_plan_status(latest_tool_call.id)
 
-        return "\n\n".join(tool_excute_results)
-        
-    async def execute_tool(self, command: ToolCall) -> str:
-        
-        if not command or not command.function or not command.function.name:
-            return "执行的工具参数错误"
+        return result
 
-        name = command.function.name
-        if name not in self.available_tools.tool_map:
-            return f"{name} 是未知工具，或者无法被{self.name}使用'"
-        
-        try:
-            args = command.function.arguments
-            
-            result = await self.available_tools.execute(name=name, tool_input=args)
+    async def get_plan(self) -> str:
+        """Retrieve the current plan status."""
+        if not self.active_plan_id:
+            return "No active plan. Please create a plan first."
 
-            # Format result for display
-            observation = (
-                f" `工具:{name}`的观测结果输出为 :\n{str(result)}"
-                if result
-                else f"`{name}` 执行结束，但没有输出结果"
-            )
-            await self._handle_special_tool(name=name, result=result)
-            
-            return observation
+        result = await self.available_tools.execute(
+            name="planning",
+            tool_input={"command": "get", "plan_id": self.active_plan_id},
+        )
+        return result.output if hasattr(result, "output") else str(result)
 
-        except Exception as e:
-            error_msg = f"⚠️ 工具 '{name}' 执行出现错误: {str(e)}"
-            logger.error(error_msg)
-            return f"错误: {error_msg}"
-    async def _handle_special_tool(self, name: str, result: Any, **kwargs):
-        if not self._is_special_tool(name):
+    async def run(self, request: Optional[str] = None) -> str:
+        """Run the agent with an optional initial request."""
+        if request:
+            await self.create_initial_plan(request)
+        return await super().run()
+
+    async def update_plan_status(self, tool_call_id: str) -> None:
+        """
+        Update the current plan progress based on completed tool execution.
+        Only marks a step as completed if the associated tool has been successfully executed.
+        """
+        if not self.active_plan_id:
             return
 
-        if self._should_finish_execution(name=name, result=result, **kwargs):
-            logger.info(f"🏁 Special tool '{name}' has completed the task!")
-            self.state = AgentState.FINISHED
+        if tool_call_id not in self.step_execution_tracker:
+            logger.warning(f"No step tracking found for tool call {tool_call_id}")
+            return
 
-    @staticmethod
-    def _should_finish_execution(**kwargs) -> bool:
-        return True
+        tracker = self.step_execution_tracker[tool_call_id]
+        if tracker["status"] != "completed":
+            logger.warning(f"Tool call {tool_call_id} has not completed successfully")
+            return
 
-    def _is_special_tool(self, name: str) -> bool:
-        return name.lower() in [n.lower() for n in self.special_tool_names]
-        
-    
-    
-    
+        step_index = tracker["step_index"]
+
+        try:
+            # Mark the step as completed
+            await self.available_tools.execute(
+                name="planning",
+                tool_input={
+                    "command": "mark_step",
+                    "plan_id": self.active_plan_id,
+                    "step_index": step_index,
+                    "step_status": "completed",
+                },
+            )
+            logger.info(
+                f"Marked step {step_index} as completed in plan {self.active_plan_id}"
+            )
+        except Exception as e:
+            logger.warning(f"Failed to update plan status: {e}")
+
+    async def _get_current_step_index(self) -> Optional[int]:
+        """
+        根据当前状态找到第一个未完成的step index
+        Returns None if no active step is found.
+        """
+        if not self.active_plan_id:
+            return None
+
+        plan = await self.get_plan()
+
+        try:
+            plan_lines = plan.splitlines()
+            steps_index = -1
+
+            # Find the index of the "Steps:" line
+            for i, line in enumerate(plan_lines):
+                if line.strip() == "Steps:":
+                    steps_index = i
+                    break
+
+            if steps_index == -1:
+                return None
+
+            # Find the first non-completed step
+            for i, line in enumerate(plan_lines[steps_index + 1 :], start=0):
+                if "[ ]" in line or "[→]" in line:  # not_started or in_progress
+                    # Mark current step as in_progress
+                    await self.available_tools.execute(
+                        name="planning",
+                        tool_input={
+                            "command": "mark_step",
+                            "plan_id": self.active_plan_id,
+                            "step_index": i,
+                            "step_status": "in_progress",
+                        },
+                    )
+                    return i
+
+            return None  # No active step found
+        except Exception as e:
+            logger.warning(f"Error finding current step index: {e}")
+            return None
+
+    async def create_initial_plan(self, request: str) -> None:
+        """Create an initial plan based on the request."""
+        logger.info(f"Creating initial plan with ID: {self.active_plan_id}")
+
+        messages = [
+            Message.user_message(
+                f"Analyze the request and create a plan with ID {self.active_plan_id}: {request}"
+            )
+        ]
+        self.memory.add_messages(messages)
+        response = await self.llm.ask_tool(
+            messages=messages,
+            system_msgs=[Message.system_message(self.system_prompt)],
+            tools=self.available_tools.to_params(),
+            tool_choice="required",
+        )
+        assistant_msg = Message.from_tool_calls(
+            content=response.content, tool_calls=response.tool_calls
+        )
+
+        self.memory.add_message(assistant_msg)
+
+        plan_created = False
+        for tool_call in response.tool_calls:
+            if tool_call.function.name == "planning":
+                result = await self.execute_tool(tool_call)
+                logger.info(
+                    f"Executed tool {tool_call.function.name} with result: {result}"
+                )
+
+                # Add tool response to memory
+                tool_msg = Message.tool_message(
+                    content=result,
+                    tool_call_id=tool_call.id,
+                    name=tool_call.function.name,
+                )
+                self.memory.add_message(tool_msg)
+                plan_created = True
+                break
+
+        if not plan_created:
+            logger.warning("No plan created from initial request")
+            tool_msg = Message.assistant_message(
+                "Error: Parameter `plan_id` is required for command: create"
+            )
+            self.memory.add_message(tool_msg)
+
+
+async def main():
+    # Configure and run the agent
+    agent = UMLAgent(available_tools=ToolCollection(PlanningTool(), Terminate()))
+    result = await agent.run("Help me plan a trip to the moon")
+    print(result)
+
+
+if __name__ == "__main__":
+    import asyncio
+
+    asyncio.run(main())

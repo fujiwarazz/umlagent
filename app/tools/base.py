@@ -3,6 +3,31 @@ from typing import Any, Dict, Optional
 
 from pydantic import BaseModel, Field
 
+"""
+{
+    "type": "function",
+    "function": {
+        "name": "your_function_name",  # The name of the function to be called
+        "description": "A clear description of what this function does, used by the model to decide when to call it.",
+        "parameters": {
+            "type": "object",  # Must be 'object' for function parameters
+            "properties": {
+                "parameter_name_1": {
+                    "type": "string",  # JSON Schema type (string, integer, number, boolean, array, object)
+                    "description": "Description of parameter_name_1, e.g., 'The city name'",
+                },
+                "parameter_name_2": {
+                    "type": "integer",
+                    "description": "Description of parameter_name_2, e.g., 'The number of days'",
+                },
+                # Add more parameters as needed
+            },
+            "required": ["parameter_name_1"],  # A list of parameter names that are mandatory
+        },
+    },
+}
+
+"""
 
 class BaseTool(ABC, BaseModel):
     name: str
