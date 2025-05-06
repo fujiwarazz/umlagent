@@ -3,12 +3,12 @@ from typing import Any, List, Literal
 
 from pydantic import Field
 
-from app.agents.react import ReActAgent
-from app.utils.logger import logger
-from app.prompts.umlagent import NEXT_STEP_PROMPT, SYSTEM_PROMPT
-from app.utils.entity import AgentState, Message, ToolCall
-from app.tools import CreateChatCompletion, Terminate, ToolCollection, CodeExcute, Bash, FileSaver,FileSeeker,Github,UML,REASK
-
+from agents.react import ReActAgent
+from utils.logger import logger
+from prompts.umlagent import NEXT_STEP_PROMPT, PLANNING_SYSTEM_PROMPT
+from utils.entity import AgentState, Message, ToolCall
+# from tools import CreateChatCompletion, Terminate, ToolCollection, CodeExcute, Bash, FileSaver,FileSeeker,Github,UML,REASK
+from tools import Terminate, ToolCollection
 class ToolCallAgent(ReActAgent):
     """
     Args:
@@ -18,12 +18,11 @@ class ToolCallAgent(ReActAgent):
     name: str = "toolcall"
     description: str = "an agent that can execute tool calls."
 
-    system_prompt: str = SYSTEM_PROMPT
+    system_prompt: str = PLANNING_SYSTEM_PROMPT
     next_step_prompt: str = NEXT_STEP_PROMPT
 
     available_tools: ToolCollection = ToolCollection(
-        CreateChatCompletion(), Terminate(),  CodeExcute(), Bash(), FileSaver(), FileSeeker(),Github(), UML(), REASK()
-    )
+         Terminate() )
     
     tool_choice:Literal['none','auto','required'] =  "required"
     

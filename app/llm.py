@@ -10,10 +10,10 @@ from openai import (
 
 from tenacity import retry, stop_after_attempt, wait_random_exponential
 
-from app.config.llm_config import LLMSettings
-from app.utils.logger import logger  
-from app.utils.entity import Message
-
+from config.llm_config import LLMSettings
+from utils.logger import logger  
+from utils.entity import Message
+from config.llm_config import llm_settings
 class LLM:
     
     # 单例模式创建LLM clinet，为了能够互不影响同时创建多个client
@@ -24,7 +24,7 @@ class LLM:
     ):
         if config_name not in cls._instances:
             instance = super().__new__(cls)
-            instance.__init__(config_name, llm_config)
+            instance.__init__(config_name, llm_settings)
             cls._instances[config_name] = instance
         return cls._instances[config_name]
     
@@ -33,9 +33,7 @@ class LLM:
     ):
         if not hasattr(self, "client"):  # Only initialize if not already initialized
             
-            llm_config = llm_config 
-            llm_config = llm_config.get(config_name, llm_config["default"])
-            
+            #llm_config = llm_config.get(config_name, llm_config["default"])
             self.model = llm_config.model
             self.max_tokens = llm_config.max_tokens
             self.temperature = llm_config.temperature

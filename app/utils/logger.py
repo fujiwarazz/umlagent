@@ -3,7 +3,7 @@ from datetime import datetime
 
 from loguru import logger as _logger
 
-from app.config.app_config import PROJECT_ROOT
+from config.app_config import PROJECT_ROOT
 
 
 _print_level = "INFO"

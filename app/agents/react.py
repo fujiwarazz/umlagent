@@ -3,9 +3,9 @@ from typing import Optional
 
 from pydantic import Field
 
-from app.agents.base import BaseAgent
-from app.llm import LLM
-from app.utils.entity import AgentState, Memory
+from agents.base import BaseAgent
+from llm import LLM
+from utils.entity import AgentState, Memory
 
 class ReActAgent(BaseAgent,ABC):
     class Config:

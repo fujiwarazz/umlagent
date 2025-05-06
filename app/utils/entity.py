@@ -55,7 +55,9 @@ class Message(BaseModel):
     @classmethod
     def user_message(cls,content:str) -> "Message":
         return cls(role="user", content=content)
-    
+    @classmethod
+    def system_message(cls,content:str) -> "Message":
+        return cls(role="system", content=content)
     @classmethod
     def assistant_message(cls,content:str) -> "Message":
         return cls(role="assistant", content=content)

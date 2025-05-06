@@ -1,7 +1,8 @@
 import yaml
 from pydantic import BaseModel, Field
 from typing import Optional # Import Optional
-from app_config import PROJECT_ROOT
+from config.app_config import PROJECT_ROOT
+
 import os
 class LLMSettings(BaseModel):
     model: str = Field(..., description="Model name")
@@ -31,3 +32,6 @@ def load_config_from_yaml(path: str = os.path.join(PROJECT_ROOT, "config.yaml"))
     except Exception as e: # Catch Pydantic validation errors too
         print(f"Error loading or validating configuration: {e}")
         raise
+
+llm_settings = load_config_from_yaml()
+

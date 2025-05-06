@@ -3,11 +3,12 @@ from typing import Dict, List, Literal, Optional
 
 from pydantic import Field, model_validator
 
-from app.agents.tool_call import ToolCallAgent
-from app.utils.logger import logger
-from app.prompts.umlagent import NEXT_STEP_PROMPT, PLANNING_SYSTEM_PROMPT
-from app.utils.entity import Message, ToolCall
-from app.tools import PlanningTool, ToolCollection,CreateChatCompletion, Terminate, CodeExcute, Bash, FileSaver,FileSeeker,Github,UML,REASK
+from agents.tool_call import ToolCallAgent
+from utils.logger import logger
+from prompts.umlagent import NEXT_STEP_PROMPT, PLANNING_SYSTEM_PROMPT
+from utils.entity import Message, ToolCall
+from tools import PlanningTool, ToolCollection, Terminate
+#CreateChatCompletion, Terminate, CodeExcute, Bash, FileSaver,FileSeeker,Github,UML,REASK
 
 
 class UMLAgent(ToolCallAgent):
@@ -23,7 +24,7 @@ class UMLAgent(ToolCallAgent):
     next_step_prompt: str = NEXT_STEP_PROMPT
 
     available_tools: ToolCollection = Field(
-        default_factory=lambda: ToolCollection(PlanningTool(),CreateChatCompletion(), Terminate(),  CodeExcute(), Bash(), FileSaver(), FileSeeker(),Github(), UML(), REASK())
+        default_factory=lambda: ToolCollection(PlanningTool(), Terminate())
     )
     
     tool_choices: Literal["none", "auto", "required"] = "auto"
@@ -189,7 +190,7 @@ class UMLAgent(ToolCallAgent):
                             "command": "mark_step",
                             "plan_id": self.active_plan_id,
                             "step_index": i,
-                            "step_status": "in_progress",
+                            "step_status": "in_progress", # 标记为正在处理
                         },
                     )
                     return i
@@ -209,8 +210,9 @@ class UMLAgent(ToolCallAgent):
             )
         ]
         self.memory.add_messages(messages)
-        response = await self.llm.ask_tool(
-            messages=messages,
+        
+        response = await self.llm.ask_tools(
+            history=messages,
             system_msgs=[Message.system_message(self.system_prompt)],
             tools=self.available_tools.to_params(),
             tool_choice="required",

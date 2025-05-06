@@ -1,4 +1,4 @@
-from app.utils.logger import logger
+from utils.logger import logger
 
 class ToolError(Exception):
     """Raised when a tool encounters an error."""

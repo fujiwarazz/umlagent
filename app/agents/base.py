@@ -3,10 +3,10 @@ from contextlib import asynccontextmanager
 from typing import List, Literal, Optional
 
 from pydantic import BaseModel, Field,model_validator
-from app.llm import LLM
-from app.utils.logger import logger
-from app.utils.entity import AgentState, Memory, Message
-
+from llm import LLM
+from utils.logger import logger
+from utils.entity import AgentState, Memory, Message
+from config.llm_config import llm_settings
 class BaseAgent(ABC,BaseModel):
     class Config:
         arbitrary_types_allowed = True
@@ -35,7 +35,8 @@ class BaseAgent(ABC,BaseModel):
     @model_validator(mode="after")
     def initialize_agent(self) -> "BaseAgent":
         if self.llm is None or not isinstance(self.llm, LLM):
-            self.llm = LLM(config_name=self.name.lower())
+            print(f"llm seetings:{llm_settings}")
+            self.llm = LLM(config_name=self.name.lower(),llm_config = llm_settings)
         if not isinstance(self.memory, Memory):
             self.memory = Memory()
         return self
@@ -77,19 +78,19 @@ class BaseAgent(ABC,BaseModel):
         msg = msg_factory(content, **kwargs) if role == "tool" else msg_factory(content)
         self.memory.add_message(msg)
     
-    def summerize_memories(self, count=0):
-        """总结agent的memory,用于减少模型上下文长度"""
-        messages = self.memory.messages
-        if count >0:
-            prev_messages = messages[:count]
+    # def summerize_memories(self, count=0):
+    #     """总结agent的memory,用于减少模型上下文长度"""
+    #     messages = self.memory.messages
+    #     if count >0:
+    #         prev_messages = messages[:count]
             
-            ##todo: update memory
-            summary = self.llm.summerize_memories(prev_messages)
-            messages = [summary] + messages[count:]
+    #         ##todo: update memory
+    #         summary = self.llm.summerize_memories(prev_messages)
+    #         messages = [summary] + messages[count:]
             
-            self.memory.messages = messages
-        else:
-            raise ValueError("memory summerized count must be greater than 0")
+    #         self.memory.messages = messages
+    #     else:
+    #         raise ValueError("memory summerized count must be greater than 0")
 
 
     # agent的运行函数，所有agent都通用，run -> step call
