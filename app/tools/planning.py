@@ -8,6 +8,7 @@ from tools.base import BaseTool, ToolResult
 _PLANNING_TOOL_DESCRIPTION = """
 A planning tool that allows the agent to create and manage plans for solving complex tasks.
 The tool provides functionality for creating plans, updating plan steps, and tracking progress.
+You SHOULD USE THIS TOOL FIRST!
 """
 
 
@@ -16,10 +17,9 @@ class PlanningTool(BaseTool):
     A planning tool that allows the agent to create and manage plans for solving complex tasks.
     The tool provides functionality for creating plans, updating plan steps, and tracking progress.
     """
-
+ 
     name: str = "planning"
     description: str = _PLANNING_TOOL_DESCRIPTION
-    strict: bool = True
     parameters: dict = {
         "type": "object",
         "properties": {
@@ -38,29 +38,29 @@ class PlanningTool(BaseTool):
             },
             "plan_id": {
                 "description": "Unique identifier for the plan. Required for create, update, set_active, and delete commands. Optional for get and mark_step (uses active plan if not specified).",
-                "type": ["string", "null"],
+                "type": "string",
             },
             "title": {
                 "description": "Title for the plan. Required for create command, optional for update command.",
-                "type": ["string", "null"],
+                "type": "string",
             },
             "steps": {
                 "description": "List of plan steps. Required for create command, optional for update command.",
-                "type": ["array", "null"],
+                "type": "array",
                 "items": {"type": "string"},
             },
             "step_index": {
                 "description": "Index of the step to update (0-based). Required for mark_step command.",
-                "type": ["integer", "null"],
+                "type": "integer",
             },
             "step_status": {
                 "description": "Status to set for a step. Used with mark_step command.",
                 "enum": ["not_started", "in_progress", "completed", "blocked"],
-                "type": ["string", "null"],
+                "type": "string",
             },
             "step_notes": {
                 "description": "Additional notes for a step. Optional for mark_step command.",
-                "type": ["string", "null"],
+                "type": "string",
             },
         },
         "required": ["command"],
@@ -186,10 +186,12 @@ class PlanningTool(BaseTool):
             old_statuses = plan["step_statuses"]
             old_notes = plan["step_notes"]
 
+            # Create new step statuses and notes
             new_statuses = []
             new_notes = []
 
             for i, step in enumerate(steps):
+                # If the step exists at the same position in old steps, preserve status and notes
                 if i < len(old_steps) and step == old_steps[i]:
                     new_statuses.append(old_statuses[i])
                     new_notes.append(old_notes[i])

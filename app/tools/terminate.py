@@ -2,7 +2,8 @@
 from tools.base import BaseTool,ToolResult
 _PLANNING_TOOL_DESCRIPTION = """
         a special tool that can be used to terminate this interaction, use this tool when you think you have finished user's query 
-        OR when you think you can not finish user's query in what you have and what you know
+        OR when you think you can not finish user's query in what you have and what you know.
+        BY THE WAT,YOU CAN SUMMARY THE WHOLE PROCESS AND GIVE THE FINAL ANSWER
         """
         
 class Terminate(BaseTool):
@@ -18,7 +19,7 @@ class Terminate(BaseTool):
                 "type": "string",
             },
         },
-        "required": ["command"],
+        "required": ["status"],
         "additionalProperties": False,
     }
     

@@ -1,0 +1,36 @@
+2025-05-06 21:39:12.817 | INFO     | agents.umlagent:create_initial_plan:202 - Creating initial plan with ID: plan_1746538752
+2025-05-06 21:39:15.327 | INFO     | agents.tool_call:execute_tool:334 - 🔧 Activating tool: 'planning'...
+2025-05-06 21:39:15.327 | INFO     | agents.umlagent:create_initial_plan:226 - Executed tool planning with result: Observed output of cmd `planning` executed:
+Plan created successfully with ID: plan_1746538752
+
+Plan: 介绍Tarjan算法 (ID: plan_1746538752)
+=======================================
+
+Progress: 0/3 steps completed (0.0%)
+Status: 0 completed, 0 in progress, 0 blocked, 3 not started
+
+Steps:
+0. [ ] 研究Tarjan算法的基本概念和应用场景
+1. [ ] 准备关于Tarjan算法的详细解释
+2. [ ] 完成对Tarjan算法的介绍
+
+2025-05-06 21:39:15.327 | INFO     | agents.base:run:119 - Executing step 1/20
+2025-05-06 21:39:15.327 | INFO     | agents.base:run:119 - Executing step 2/20
+2025-05-06 21:39:15.327 | INFO     | agents.base:run:119 - Executing step 3/20
+2025-05-06 21:39:15.327 | INFO     | agents.base:run:119 - Executing step 4/20
+2025-05-06 21:39:15.327 | INFO     | agents.base:run:119 - Executing step 5/20
+2025-05-06 21:39:15.327 | INFO     | agents.base:run:119 - Executing step 6/20
+2025-05-06 21:39:15.327 | INFO     | agents.base:run:119 - Executing step 7/20
+2025-05-06 21:39:15.327 | INFO     | agents.base:run:119 - Executing step 8/20
+2025-05-06 21:39:15.327 | INFO     | agents.base:run:119 - Executing step 9/20
+2025-05-06 21:39:15.327 | INFO     | agents.base:run:119 - Executing step 10/20
+2025-05-06 21:39:15.327 | INFO     | agents.base:run:119 - Executing step 11/20
+2025-05-06 21:39:15.327 | INFO     | agents.base:run:119 - Executing step 12/20
+2025-05-06 21:39:15.327 | INFO     | agents.base:run:119 - Executing step 13/20
+2025-05-06 21:39:15.327 | INFO     | agents.base:run:119 - Executing step 14/20
+2025-05-06 21:39:15.327 | INFO     | agents.base:run:119 - Executing step 15/20
+2025-05-06 21:39:15.333 | INFO     | agents.base:run:119 - Executing step 16/20
+2025-05-06 21:39:15.333 | INFO     | agents.base:run:119 - Executing step 17/20
+2025-05-06 21:39:15.333 | INFO     | agents.base:run:119 - Executing step 18/20
+2025-05-06 21:39:15.333 | INFO     | agents.base:run:119 - Executing step 19/20
+2025-05-06 21:39:15.333 | INFO     | agents.base:run:119 - Executing step 20/20

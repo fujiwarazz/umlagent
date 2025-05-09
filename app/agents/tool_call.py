@@ -50,9 +50,9 @@ class ToolCallAgent(ReActAgent):
             return False
         
         self.tool_calls = response.tool_calls
-        for call in self.tool_calls:
-            if not isinstance(call,ToolCall):
-                call = ToolCall.from_dict(call)
+        # for call in self.tool_calls:
+        #     if not isinstance(call,ToolCall):
+        #         call = ToolCall.from_dict(call)
                 
         # todo 返回给前端
         logger.info(f"✨ {self.name} 的想法为: {response.content}")
@@ -62,6 +62,9 @@ class ToolCallAgent(ReActAgent):
         if self.tool_calls:
             logger.info(
                 f"🧰 选择的工具信息: {[call.function.name for call in  self.tool_calls]}"
+            )
+            logger.info(
+                f"🧰 工具的参数是: {[call.function.arguments for call in  self.tool_calls]}"
             )
         
         try:
@@ -115,7 +118,7 @@ class ToolCallAgent(ReActAgent):
             logger.info(
                 f"🎯 工具 '{tool_call.function.name}' 完成了它的任务! 其执行结果为: {result}"
             )
-
+            
             # Add tool response to memory
             tool_msg = Message.tool_message(
                 content=result, tool_call_id=tool_call.id, name=tool_call.function.name
@@ -123,7 +126,8 @@ class ToolCallAgent(ReActAgent):
             
             self.memory.add_message(tool_msg)
             tool_excute_results.append(result)
-
+        
+        
         return "\n\n".join(tool_excute_results)
         
     async def execute_tool(self, command: ToolCall) -> str:
@@ -137,7 +141,7 @@ class ToolCallAgent(ReActAgent):
         
         try:
             args = command.function.arguments
-            
+            args = json.loads(args) if args else {}
             result = await self.available_tools.execute(name=name, tool_input=args)
 
             # Format result for display
@@ -154,6 +158,8 @@ class ToolCallAgent(ReActAgent):
             error_msg = f"⚠️ 工具 '{name}' 执行出现错误: {str(e)}"
             logger.error(error_msg)
             return f"错误: {error_msg}"
+        
+        
     async def _handle_special_tool(self, name: str, result: Any, **kwargs):
         if not self._is_special_tool(name):
             return
@@ -169,6 +175,4 @@ class ToolCallAgent(ReActAgent):
     def _is_special_tool(self, name: str) -> bool:
         return name.lower() in [n.lower() for n in self.special_tool_names]
         
-    
-    
-    
+ 

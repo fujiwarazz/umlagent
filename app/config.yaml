@@ -1,6 +1,13 @@
 model: "qwen-plus"
 base_url: "https://dashscope.aliyuncs.com/compatible-mode/v1"
-api_key: "sk-0e349a8dc24443988825b69a56d2b868	"  # Note: Storing secrets directly in YAML is often discouraged for production. See .env method.
+api_key: "sk-0e349a8dc24443988825b69a56d2b868"  # Note: Storing secrets directly in YAML is often discouraged for production. See .env method.
 max_tokens: 8192
 temperature: 0.8
-api_type: "Openai" # or AzureOpenai
+api_type: "Openai"
+
+# model: "gpt-4o"
+# base_url: "https://api.gptsapi.net"
+# api_key: "sk-w6j0b392587d3952eeffb66e405b96aefebcc210159FTUZ8	"  # Note: Storing secrets directly in YAML is often discouraged for production. See .env method.
+# max_tokens: 4096
+# temperature: 0.8
+# api_type: "Openai"

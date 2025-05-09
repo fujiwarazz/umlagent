@@ -1,0 +1,16 @@
+2025-05-06 21:00:15.356 | INFO     | agents.umlagent:create_initial_plan:207 - Creating initial plan with ID: plan_1746536415
+2025-05-06 21:00:21.152 | INFO     | agents.umlagent:create_initial_plan:232 - Executed tool planning with result:  `工具:planning`的观测结果输出为 :
+Plan created successfully with ID: plan_1746536415
+
+Plan: 介绍Tarjan算法 (ID: plan_1746536415)
+=======================================
+
+Progress: 0/3 steps completed (0.0%)
+Status: 0 completed, 0 in progress, 0 blocked, 3 not started
+
+Steps:
+0. [ ] 定义Tarjan算法及其用途
+1. [ ] 解释Tarjan算法的原理
+2. [ ] 提供一个Tarjan算法的例子
+
+2025-05-06 21:00:21.152 | INFO     | agents.base:run:119 - Executing step 1/20

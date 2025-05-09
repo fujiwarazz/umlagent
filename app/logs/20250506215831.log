@@ -1,0 +1,5 @@
+2025-05-06 21:58:31.898 | INFO     | agents.umlagent:create_initial_plan:202 - Creating initial plan with ID: plan_1746539911
+2025-05-06 21:58:31.904 | ERROR    | llm:ask_tools:245 - Unexpected error in ask_tool: unsupported operand type(s) for ** or pow(): 'bool' and 'dict'
+2025-05-06 21:58:32.410 | ERROR    | llm:ask_tools:245 - Unexpected error in ask_tool: unsupported operand type(s) for ** or pow(): 'bool' and 'dict'
+2025-05-06 21:58:34.295 | ERROR    | llm:ask_tools:245 - Unexpected error in ask_tool: unsupported operand type(s) for ** or pow(): 'bool' and 'dict'
+2025-05-06 21:58:35.549 | ERROR    | llm:ask_tools:245 - Unexpected error in ask_tool: unsupported operand type(s) for ** or pow(): 'bool' and 'dict'

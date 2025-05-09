@@ -1,0 +1,18 @@
+2025-05-06 21:45:26.406 | INFO     | agents.umlagent:create_initial_plan:202 - Creating initial plan with ID: plan_1746539126
+2025-05-06 21:45:30.926 | INFO     | agents.tool_call:execute_tool:334 - 🔧 Activating tool: 'planning'...
+2025-05-06 21:45:30.926 | INFO     | agents.umlagent:create_initial_plan:226 - Executed tool planning with result: Observed output of cmd `planning` executed:
+Plan created successfully with ID: plan_1746539126
+
+Plan: 介绍Tarjan算法 (ID: plan_1746539126)
+=======================================
+
+Progress: 0/4 steps completed (0.0%)
+Status: 0 completed, 0 in progress, 0 blocked, 4 not started
+
+Steps:
+0. [ ] 定义Tarjan算法及其应用场景
+1. [ ] 讲解Tarjan算法的基本原理
+2. [ ] 提供一个简单的示例来说明算法的执行过程
+3. [ ] 讨论Tarjan算法的时间复杂度和空间复杂度
+
+2025-05-06 21:45:30.936 | INFO     | agents.base:run:276 - Executing step 1/20

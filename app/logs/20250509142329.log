@@ -1,0 +1,65 @@
+2025-05-09 14:23:30.035 | INFO     | agents.umlagent:create_initial_plan:203 - Creating initial plan with ID: plan_1746771810
+2025-05-09 14:23:34.618 | INFO     | agents.umlagent:create_initial_plan:228 -  执行工具 planning 的结果为:  `工具:planning`的观测结果输出为 :
+Plan created successfully with ID: plan_1746771810
+
+Plan: 查找qwen2.5项目并分析代码 (ID: plan_1746771810)
+=============================================
+
+Progress: 0/3 steps completed (0.0%)
+Status: 0 completed, 0 in progress, 0 blocked, 3 not started
+
+Steps:
+0. [ ] 使用百度搜索查找关于qwen2.5的项目
+1. [ ] 选择一个合适的项目并克隆到本地
+2. [ ] 分析项目的代码结构
+
+2025-05-09 14:23:34.621 | INFO     | agents.base:run:119 - Executing step 1/20
+2025-05-09 14:23:38.020 | INFO     | agents.tool_call:think:58 - ✨ uml agnet 的想法为: 计划已创建，现在需要执行第一步：使用百度搜索查找关于qwen2.5的项目。
+2025-05-09 14:23:38.020 | INFO     | agents.tool_call:think:59 - 🛠️ uml agnet 选择了 1 个工具
+2025-05-09 14:23:38.020 | INFO     | agents.tool_call:think:63 - 🧰 选择的工具信息: ['baidu_search']
+2025-05-09 14:23:38.020 | INFO     | agents.tool_call:think:66 - 🧰 工具的参数是: ['{"query": "qwen2.5 项目 github"}']
+2025-05-09 14:23:38.611 | INFO     | agents.tool_call:act:118 - 🎯 工具 'baidu_search' 完成了它的任务! 其执行结果为:  `工具:baidu_search`的观测结果输出为 :
+[{'title': 'Qwen2.5-Coder:性能达到GPT-4o的编程模型', 'abstract': 'Qwen2.5-Coder:性能达到GPT-4o的编程模型\n\n\n\n\ue66a\n\n\n\n\n\n视频2024年11月12日70017001.199-6f214c5cfc646b297bbbbb82b315ba55 Qwen2.5-Coder:性能达到GPT-4o的编程模型 2024-11-12 23:58 发布于北京|478 观看 1 评论 收藏 分享 手机看 AIGCLINK 粉丝82|关注0 +关注 作者最新视频 335|20:52 N8N+mcp:可将任意n8n工作流发布成mcp服务 N8N+mcp:n8n支持mcp协议,可内部调用MCP服务形成复...\n\n\nview.inews.qq.com/a/20', 'url': 'http://www.baidu.com/link?url=bmzNIDhPMIPISVceheIm2ahNZb4LVx-baVV11acMOj_dmrgHgL21aHpUTnzwQXKmHXSR79lKc9aHjXLuttrbMK', 'rank': 1}, {'title': 'LLMs之Qwen2.5:Qwen2.5源码解读(web_demo.py)—基于Qwen2.5...', 'abstract': 'LLMs之Qwen2.5:Qwen2.5源码解读(web_demo.py)—基于Qwen2.5...\n\n2024年10月14日🤗&nbsp | Qwen2.5-72B-Instruct 🤖  | 🤗&nbsp | &nbspGithub""") chatbot = gr.Chatbot(label="Qwen", elem_classes="control-height") query = gr.Textbox(lines=2, label="Input") task_history = gr.State([]) with gr.Row(): empty_btn = gr.Button("🧹 ', 'url': 'http://www.baidu.com/link?url=1oGJ63PRwW0IA2azo9tcE7THGDhgjLS4V5wM34kBs-TkUuhkUHp_lBom8fD6RtR4e2WpJr2zwiYf4lVF8_panTW1CZnubFtZmGrbSBjtfKK', 'rank': 2}, {'title': 'Qwen2.5-VL/docker at main · QwenLM/Qwen2.5-VL · GitHub', 'abstract': 'Qwen2.5-VL/docker at main · QwenLM/Qwen2.5-VL · GitHub\n\n\n查看此网页的中文翻译，请点击\n\n\n翻译此页\n\n\n\nQwen2.5-VL is the multimodal large language model series developed by Qwen team, Alibaba Cloud. - Qwen2.5-VL/docker at main · QwenLM/Qwen2.5-VL\n\n\nGitHub', 'url': 'http://www.baidu.com/link?url=W8H_yPiZb_iMCuegVKyrVXngm1l0bUFspdy3wc_V-xX6Ce2y_Icly9njgquGOvFdzdPBxlRzjenRWPIEKQPPEa', 'rank': 3}, {'title': '大家还在搜github优秀java开源项目Github官网github上有哪些好的开源项目github如何收藏项目github优秀开源项目github热门开源项目github项目github前端开源项目', 'abstract': '大家还在搜github优秀java开源项目Github官网github上有哪些好的开源项目github如何收藏项目github优秀开源项目github热门开源项目github项目github前端开源项目', 'url': '/s?wd=github%E4%BC%98%E7%A7%80java%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE&usm=2&ie=utf-8&rsv_pq=b1948adb006663d5&oq=qwen2.5%20%E9%A1%B9%E7%9B%AE%20github&rsv_t=73b3Z9HuiigBX5k%2BmVE6BdMU3Nq%2Bf3yempHOlQ0mznEk4zMXFcIDbdtsxuY&rsf=101633403&rsv_dl=0_prs_28608_1', 'rank': 4}, {'title': 'GPT生成数据微调qwen-2.5多模态模型实战项目 - 知乎', 'abstract': 'GPT生成数据微调qwen-2.5多模态模型实战项目 - 知乎\n\n\n\n\n\n\n\n\n\n2025年3月17日项目目前使用Lora微调。Lora原理可参见:知乎|深入浅出 Lora。 Github代码仓(star一下呀): gpt_distill_2qwengithub.com/QQsugar2000/gpt_distill_2qwen 环境需求: 显卡:由于qwen-vl有2.5b模型,lora下训练所占显存甚至少于10G,所以有张差不多的卡就可以用了;当然,实测一些任务起码要7b模型才能做到差不多的效果 ...\n\n\n知乎\n\n\n\n\n\n\n\n\n\ue680\n播报\n\n\n\ue67d\n暂停', 'url': 'http://www.baidu.com/link?url=ciKbcVBrKblt2S4f_fcgXxnRfKc34c_WcxqR1Ryzjzta26UfEYZfQR3e5aQJkxjMwVgbcfmTXAKvEcGTYclC3q', 'rank': 5}, {'title': '保姆级教程微调Qwen2.5步骤 Linux系统(教你看官方文档)', 'abstract': '保姆级教程微调Qwen2.5步骤 Linux系统(教你看官方文档)\n\n\n\n\n\n\n\n\n\n2024年12月3日1、 从魔塔上下载qwen2.5-7B-Instruct 看官方文档 看了几个官方文档,主要关注最后两个 GitHub主页面 GitHub中微调介绍 Qwen文档 2、 看官方发布在GitHub上的Qwen2.5介绍,上面写了finetuning部分 这里没详细介绍,所以我又看了Qwen文档,文档里面介绍的FT部分详细一些。 下载微调训练框架 3、 介绍文档里面训练介绍的是...\n\n\nCSDN博客', 'url': 'http://www.baidu.com/link?url=ciKbcVBrKblt2S4f_fcgXxnRfKc34c_WcxqR1RyzjzrgRQXmfJfYN3KtT-e3OofP2FhqoDc50wVfCbav9BNF_y4B4Q6TU8zo5FgUgyzdq4u', 'rank': 6}, {'title': 'qwen2.5 项目 github - 聊一下更多精彩', 'abstract': 'qwen2.5 项目 github - 聊一下更多精彩github助手1.3万人聊过\n\n\n\ngithub助手1.3万人聊过\n\nGITHUB指南8人聊过\n\nGITHUB专家717人聊过\n\nGithub百科11人聊过\n\n\n\n\n\n\n你好，我是GitHub专家助手，拥有丰富的GitHub使用经验和专业技能。很高兴与你交流，请问有什么关于GitHub的问题或需求，我可以帮你解答或协助解决吗？\n\n您好！我是GITHUB指南实战专家助手，可以用AI阅读大模型提取并浏览GITHUB平台信息，同步翻译与国内的GITHUB中文社区进行信息比对，筛选优质的国内开发者行业应用实战落地场景软件开源项目。请问有什么我可以', 'url': 'http://www.baidu.com/link?url=ELoh_CVgt3CfrvGO6JTicafGkWDkg2GIBMph8y2vsAAwFbKAAStrjN-6QUbsEeQ44yOny8cqrN047quf0Owwi1R7y8QNgKONGB-M2RCEZ1KEMgWvhZTSYS6BL-elgk7yxFaSxFynKV6p39Gx0-MAyOQkPsQkHZHpiEGNvFPbk-V8gwNU8ZjOuXRXGMq0mojthQUWELA4ObTtZvThNC9sU7meSrUQzk7puIjBmZ1aWM5mch70vCY1sdCdBo1mg69TwBMZL5gRmI_jRH_gm4NGOtX9BN65FvX_O4XgJT1yqkhifW9gvSWVuvIU_Lc7rn4S6ROGrw4mtOFDqzWLc75ci8Aqhzgmxjrr9UUISmT-Zul_E61xFxOc6pP_HqFblu8svfRXJ_D9uKh94eRF_dQlf38FaV6hE1Sl07UU5MWASHKxcjbwIS9UkumAqCGWMaILx16eyjiM9ivhn5NA3Pl-BXXlehPxfDNB4DysxbckcGPpBw_QuVlgcVbrqFzflJDgITnY9omAGhWzvUYkmXkrZI3jG_lQ253pXrjkxfnGX4ik_6z4yX3V35_Hg0C_cau5', 'rank': 7}, {'title': 'Qwen2.5 PyTorch模型微调入门实战1 引言 Qwen2.5是Qwen大型语言...', 'abstract': 'Qwen2.5 PyTorch模型微调入门实战1 引言 Qwen2.5是Qwen大型语言...\n\n2024年9月27日用户可以使用openMind Library或者LLaMa Factory进行模型推理,以Qwen2.5-7B-Instruct为例,具体如下: 使用openMind Library进行模型推理 新建推理脚本 inference_qwen2.5_7b_chat.py ,推理脚本内容为: import argparse from openmind import AutoModelForCausalLM, AutoTokenizer ...\n\n\n掘金开发者社区\n\n\n\n\n\n\ue680\n播报\n', 'url': 'http://www.baidu.com/link?url=dmCPb6mpyfnSLi6L-oWMCmbxfOSpKlKC-wY-XUD3cYU5oM2QiIHLfhV9n3HDp86LVGiTWNkFP0AkbyKjk2J4l_', 'rank': 8}, {'title': '今天Github哪些项目上榜了?🔥', 'abstract': '今天Github哪些项目上榜了?🔥\n\n\n\n\n\n\n\n\n\n2025年2月24日Qwen2.5 🤖✨ Qwen2.5 是由 Qwen 团队和阿里云开发的大语言模型系列,旨在帮助开发者和企业提升智能应用的整体体验。 Qwen聊天助手 🗨️🤖 阿里云推出的 Qwen 是你的中文好伙伴,专为高效处理中文自然语言的开发者和企业量身定制。 Goose AI 代理 🦢💻 这个开源的AI代理名叫 Goose,不仅能给你代码建议,还...\n\n\n万的Lucca时光差\n\n\n\n\n\n\n\n\n\ue680\n播报\n\n\n\ue67d\n暂停', 'url': 'http://www.baidu.com/link?url=V4uES8cODvCJNAf9xD8AIQ19uV5VtFBJA8HQqIxH5bKUwUe-jZfg2hz9oRyoKg2zNY3E-cJ_volZ1nMvkdtZkDvttuJsu5SuKY9UqVRrxIYRU6Y539pmMb_FbMdnJsmd', 'rank': 9}, {'title': 'Qwen2.5-VL/web_demo_mm.py at main · vineetp6/Qwen2.5-VL...', 'abstract': 'Qwen2.5-VL/web_demo_mm.py at main · vineetp6/Qwen2.5-VL...\n\nUse saved searches to filter your results more quickly Cancel Create saved search  Sign in  Sign up Reseting focus {{ message }} vineetp6 / Qwen2.5-VL Public forked from QwenLM/Qwen2.5-VL  Notifications You must be signed in to change notif', 'url': 'http://www.baidu.com/link?url=ifjRsZuuhl3j6_qISocgl8nHLqhtIICxAjTZEBOMMgTLKiK0FXqpcKIuOYz3Qvf_wdR1cOVuTARD6Ve0Lj_HYPCGIHzL2Bn5hnv8YqeUUae', 'rank': 10}]
+2025-05-09 14:23:38.612 | INFO     | agents.umlagent:update_plan_status:152 - Marked step 0 as completed in plan plan_1746771810
+2025-05-09 14:23:38.612 | INFO     | agents.base:run:119 - Executing step 2/20
+2025-05-09 14:23:44.095 | INFO     | agents.tool_call:think:58 - ✨ uml agnet 的想法为: Using tools根据搜索结果，已经找到了一些关于qwen2.5的项目。接下来选择一个合适的项目并克隆到本地。
+2025-05-09 14:23:44.095 | INFO     | agents.tool_call:think:59 - 🛠️ uml agnet 选择了 1 个工具
+2025-05-09 14:23:44.095 | INFO     | agents.tool_call:think:63 - 🧰 选择的工具信息: ['github_repo_cloner']
+2025-05-09 14:23:44.095 | INFO     | agents.tool_call:think:66 - 🧰 工具的参数是: ['{"repo_name": "QwenLM/Qwen2.5-VL"}']
+2025-05-09 14:23:49.298 | INFO     | agents.tool_call:act:118 - 🎯 工具 'github_repo_cloner' 完成了它的任务! 其执行结果为:  `工具:github_repo_cloner`的观测结果输出为 :
+错误：克隆仓库 'QwenLM/Qwen2.5-VL' 失败。
+命令退出码: 128
+Git 标准错误输出:
+Cloning into 'D:\deep_learning\codes\workspace\Qwen2.5-VL'...
+fatal: unable to access 'https://github.com/QwenLM/Qwen2.5-VL.git/': Recv failure: Connection was reset
+Git 标准输出:
+
+2025-05-09 14:23:49.298 | INFO     | agents.umlagent:update_plan_status:152 - Marked step 1 as completed in plan plan_1746771810
+2025-05-09 14:23:49.298 | INFO     | agents.base:run:119 - Executing step 3/20
+2025-05-09 14:23:55.570 | INFO     | agents.tool_call:think:58 - ✨ uml agnet 的想法为: 克隆仓库时出现了一个连接问题。我将尝试另一个项目或稍后再次尝试此操作。现在，让我们继续并选择另一个项目进行分析。
+
+接下来，我会尝试克隆另一个项目 "vineetp6/Qwen2.5-VL"。
+2025-05-09 14:23:55.571 | INFO     | agents.tool_call:think:59 - 🛠️ uml agnet 选择了 1 个工具
+2025-05-09 14:23:55.571 | INFO     | agents.tool_call:think:63 - 🧰 选择的工具信息: ['github_repo_cloner']
+2025-05-09 14:23:55.571 | INFO     | agents.tool_call:think:66 - 🧰 工具的参数是: ['{"repo_name": "vineetp6/Qwen2.5-VL"}']
+2025-05-09 14:24:00.696 | INFO     | agents.tool_call:act:118 - 🎯 工具 'github_repo_cloner' 完成了它的任务! 其执行结果为:  `工具:github_repo_cloner`的观测结果输出为 :
+错误：克隆仓库 'vineetp6/Qwen2.5-VL' 失败。
+命令退出码: 128
+Git 标准错误输出:
+Cloning into 'D:\deep_learning\codes\workspace\Qwen2.5-VL'...
+fatal: unable to access 'https://github.com/vineetp6/Qwen2.5-VL.git/': Recv failure: Connection was reset
+Git 标准输出:
+
+2025-05-09 14:24:00.697 | INFO     | agents.umlagent:update_plan_status:152 - Marked step 2 as completed in plan plan_1746771810
+2025-05-09 14:24:00.697 | INFO     | agents.base:run:119 - Executing step 4/20
+2025-05-09 14:24:09.096 | INFO     | agents.tool_call:think:58 - ✨ uml agnet 的想法为: 尝试克隆项目 "QwenLM/Qwen2.5-VL" 和 "vineetp6/Qwen2.5-VL" 都因连接问题失败。这可能与网络限制或连接不稳定有关。如果可以，请检查网络设置并确保能够访问 GitHub。
+
+现在，由于无法成功克隆项目，我们暂时不能继续分析代码结构。一旦解决网络问题，您可以再次尝试克隆这些项目并进行代码分析。
+
+任务未能完全完成，因为项目未能成功克隆到本地。
+2025-05-09 14:24:09.096 | INFO     | agents.tool_call:think:59 - 🛠️ uml agnet 选择了 1 个工具
+2025-05-09 14:24:09.096 | INFO     | agents.tool_call:think:63 - 🧰 选择的工具信息: ['terminate']
+2025-05-09 14:24:09.096 | INFO     | agents.tool_call:think:66 - 🧰 工具的参数是: ['{"status": "failure"}']
+2025-05-09 14:24:09.099 | INFO     | agents.tool_call:_handle_special_tool:168 - 🏁 Special tool 'terminate' has completed the task!
+2025-05-09 14:24:09.099 | INFO     | agents.tool_call:act:118 - 🎯 工具 'terminate' 完成了它的任务! 其执行结果为:  `工具:terminate`的观测结果输出为 :
+The interaction has been completed with status: failure

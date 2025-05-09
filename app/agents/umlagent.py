@@ -26,23 +26,20 @@ class UMLAgent(ToolCallAgent):
     available_tools: ToolCollection = Field(
         default_factory=lambda: ToolCollection(PlanningTool(), Terminate())
     )
-    
     tool_choices: Literal["none", "auto", "required"] = "auto"
     special_tool_names: List[str] = Field(default_factory=lambda: [Terminate().name])
 
     tool_calls: List[ToolCall] = Field(default_factory=list)
-    active_plan_id: Optional[str] = Field(default=None) # 
+    active_plan_id: Optional[str] = Field(default=None)
 
-    
-    # Add a dictionary to track the step status for each tool call 
-    step_execution_tracker: Dict[str, Dict] = Field(default_factory=dict) # keys" step_index, tool_name, status
+    # Add a dictionary to track the step status for each tool call
+    step_execution_tracker: Dict[str, Dict] = Field(default_factory=dict)
     current_step_index: Optional[int] = None
 
     max_steps: int = 20
-    
+
     @model_validator(mode="after")
     def initialize_plan_and_verify_tools(self) -> "UMLAgent":
-        
         """Initialize the agent with a default plan ID and validate required tools."""
         self.active_plan_id = f"plan_{int(time.time())}"
 
@@ -151,6 +148,7 @@ class UMLAgent(ToolCallAgent):
                     "step_status": "completed",
                 },
             )
+            
             logger.info(
                 f"Marked step {step_index} as completed in plan {self.active_plan_id}"
             )
@@ -159,7 +157,7 @@ class UMLAgent(ToolCallAgent):
 
     async def _get_current_step_index(self) -> Optional[int]:
         """
-        根据当前状态找到第一个未完成的step index
+        Parse the current plan to identify the first non-completed step's index.
         Returns None if no active step is found.
         """
         if not self.active_plan_id:
@@ -190,7 +188,7 @@ class UMLAgent(ToolCallAgent):
                             "command": "mark_step",
                             "plan_id": self.active_plan_id,
                             "step_index": i,
-                            "step_status": "in_progress", # 标记为正在处理
+                            "step_status": "in_progress",
                         },
                     )
                     return i
@@ -206,13 +204,12 @@ class UMLAgent(ToolCallAgent):
 
         messages = [
             Message.user_message(
-                f"Analyze the request and create a plan with ID {self.active_plan_id}: {request}"
+                f"Analyze the request and create a plan, you must create a plan ,plan ID is:{self.active_plan_id},user's quert is: {request}"
             )
         ]
         self.memory.add_messages(messages)
-        
         response = await self.llm.ask_tools(
-            history=messages,
+            messages=messages,
             system_msgs=[Message.system_message(self.system_prompt)],
             tools=self.available_tools.to_params(),
             tool_choice="required",
@@ -227,8 +224,9 @@ class UMLAgent(ToolCallAgent):
         for tool_call in response.tool_calls:
             if tool_call.function.name == "planning":
                 result = await self.execute_tool(tool_call)
+                
                 logger.info(
-                    f"Executed tool {tool_call.function.name} with result: {result}"
+                    f" 执行工具 {tool_call.function.name} 的结果为: {result}"
                 )
 
                 # Add tool response to memory
@@ -249,14 +247,4 @@ class UMLAgent(ToolCallAgent):
             self.memory.add_message(tool_msg)
 
 
-async def main():
-    # Configure and run the agent
-    agent = UMLAgent(available_tools=ToolCollection(PlanningTool(), Terminate()))
-    result = await agent.run("Help me plan a trip to the moon")
-    print(result)
 
-
-if __name__ == "__main__":
-    import asyncio
-
-    asyncio.run(main())
