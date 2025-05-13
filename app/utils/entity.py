@@ -112,4 +112,6 @@ class Memory(BaseModel):
         """Convert messages to list of dicts"""
         return [msg.to_dict() for msg in self.messages]
 
-
+    def count_tokens(self) -> int:
+        """Count the number of tokens in the agent's memory."""
+        return sum(len(msg.content) for msg in self.messages)

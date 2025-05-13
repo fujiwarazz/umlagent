@@ -48,6 +48,7 @@ class UMLAgent(ToolCallAgent):
 
         return self
 
+    # from base class
     async def think(self) -> bool:
         """Decide the next action based on plan status."""
         prompt = (
@@ -79,6 +80,7 @@ class UMLAgent(ToolCallAgent):
 
         return result
 
+    # from base class
     async def act(self) -> str:
         """Execute a step and track its completion status."""
         result = await super().act()

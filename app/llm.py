@@ -92,7 +92,19 @@ class LLM:
 
         return formatted_messages
     
-    
+    async def summerize_memories(self,messages: List[Message]):
+        SUMMARIZE_PROMPT = """
+        You are an expert at summarizing conversations.
+        You are given a list of messages from a conversation.
+        Your task is to summarize the conversation in a single message.
+        """
+        summary = await self.ask(
+            history=messages,
+            system_msgs=[SUMMARIZE_PROMPT],
+            stream=False
+        )
+        return summary
+        
     @retry(
         wait=wait_random_exponential(min=1, max=60),
         stop=stop_after_attempt(6),

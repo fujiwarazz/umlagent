@@ -697,4 +697,3 @@ class CodeToUMLTool(BaseTool):
             # import traceback
             # print(f"Unexpected error in CodeToUMLTool.execute: {traceback.format_exc()}")
             raise ToolError(f"在UML生成过程中发生意外错误: {str(e)}")
-

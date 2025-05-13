@@ -45,7 +45,7 @@ class BaseTool(ABC, BaseModel):
         """Execute the tool with given parameters."""
 
     def to_param(self) -> Dict:
-        """Convert tool to function call format."""
+        """Convert tool to openai function call format."""
         return {
             "type": "function",
             "function": {

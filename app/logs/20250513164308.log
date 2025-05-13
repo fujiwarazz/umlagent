@@ -1,0 +1,7 @@
+2025-05-13 16:43:21.327 | INFO     | agents.umlagent:create_initial_plan:205 - Creating initial plan with ID: plan_1747125788
+2025-05-13 16:43:21.517 | ERROR    | llm:ask_tools:249 - Authentication failed. Check API key.
+2025-05-13 16:43:22.578 | ERROR    | llm:ask_tools:249 - Authentication failed. Check API key.
+2025-05-13 16:43:24.634 | ERROR    | llm:ask_tools:249 - Authentication failed. Check API key.
+2025-05-13 16:43:27.429 | ERROR    | llm:ask_tools:249 - Authentication failed. Check API key.
+2025-05-13 16:43:30.046 | ERROR    | llm:ask_tools:249 - Authentication failed. Check API key.
+2025-05-13 16:43:41.270 | ERROR    | llm:ask_tools:249 - Authentication failed. Check API key.

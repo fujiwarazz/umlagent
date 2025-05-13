@@ -77,20 +77,23 @@ class BaseAgent(ABC,BaseModel):
         msg_factory = message_map[role]
         msg = msg_factory(content, **kwargs) if role == "tool" else msg_factory(content)
         self.memory.add_message(msg)
+
+
     
-    # def summerize_memories(self, count=0):
-    #     """总结agent的memory,用于减少模型上下文长度"""
-    #     messages = self.memory.messages
-    #     if count >0:
-    #         prev_messages = messages[:count]
+    
+    
+    async def summerize_memories(self, count=10):
+        """总结agent的memory,用于减少模型上下文长度"""
+        messages = self.memory.messages
+        if count >0:
+            prev_messages = messages[:count]
             
-    #         ##todo: update memory
-    #         summary = self.llm.summerize_memories(prev_messages)
-    #         messages = [summary] + messages[count:]
+            summary = self.llm.summerize_memories(prev_messages)
+            messages = [summary] + messages[count:]
             
-    #         self.memory.messages = messages
-    #     else:
-    #         raise ValueError("memory summerized count must be greater than 0")
+            self.memory.messages = messages
+        else:
+            raise ValueError("memory summerized count must be greater than 0")
 
 
     # agent的运行函数，所有agent都通用，run -> step call
@@ -113,6 +116,7 @@ class BaseAgent(ABC,BaseModel):
             self.update_memory("user", query)
 
         results: List[str] = []
+        times = 1
         async with self.state_context(AgentState.RUNNING):
             while self.current_step < self.max_steps and self.state != AgentState.FINISHED:
                 self.current_step += 1
@@ -123,28 +127,13 @@ class BaseAgent(ABC,BaseModel):
                 
                 results.append(f"Step {self.current_step}: {step_result}")
                 
+                if self.current_step == 10 * times:
+                    tokens = self.memory.count_tokens()
+                    if tokens >= 1024 * 32:
+                        self.summerize_memories(count=10)
 
             if self.current_step >= self.max_steps:
                 results.append(f"Terminated: Reached max steps ({self.max_steps})")
-            
-            # if self.state == AgentState.FINISHED:
-            #     messages = [
-            #     Message.user_message(
-            #         "give a summary of this interaction with user's query"
-            #         )
-            #     ]
-            #     self.memory.add_messages(messages)
-            #     response = self.llm.ask(
-            #         history=self.messages,
-            #         system_msgs=[Message.system_message(self.system_prompt)],
-            #         )
-            #     assistant_msg = Message.from_tool_calls(
-            #         content=response.content, tool_calls=response.tool_calls
-            #     )
-
-            #     self.memory.add_message(assistant_msg)
-            #     if response.content:
-            #         logger.info("总结：")
 
         return "\n".join(results) if results else "No steps executed"
 
