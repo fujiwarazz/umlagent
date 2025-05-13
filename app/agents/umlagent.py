@@ -8,7 +8,7 @@ from utils.logger import logger
 from prompts.umlagent import NEXT_STEP_PROMPT, PLANNING_SYSTEM_PROMPT
 from utils.entity import Message, ToolCall
 from tools import PlanningTool, ToolCollection, Terminate
-#CreateChatCompletion, Terminate, CodeExcute, Bash, FileSaver,FileSeeker,Github,UML,REASK
+from fastapi import WebSocket
 
 
 class UMLAgent(ToolCallAgent):
@@ -113,12 +113,13 @@ class UMLAgent(ToolCallAgent):
             tool_input={"command": "get", "plan_id": self.active_plan_id},
         )
         return result.output if hasattr(result, "output") else str(result)
+    
 
-    async def run(self, request: Optional[str] = None) -> str:
+    async def run(self, query: Optional[str] = None,websocket:Optional[WebSocket] = None) -> str:
         """Run the agent with an optional initial request."""
-        if request:
-            await self.create_initial_plan(request)
-        return await super().run()
+        if query:
+            await self.create_initial_plan(query)
+        return await super().run(websocket=websocket)
 
     async def update_plan_status(self, tool_call_id: str) -> None:
         """

@@ -7,6 +7,7 @@ from llm import LLM
 from utils.logger import logger
 from utils.entity import AgentState, Memory, Message
 from config.llm_config import llm_settings
+from fastapi import FastAPI, WebSocket
 class BaseAgent(ABC,BaseModel):
     class Config:
         arbitrary_types_allowed = True
@@ -17,6 +18,7 @@ class BaseAgent(ABC,BaseModel):
     system_prompt: Optional[str] = Field(
         None, description="系统prompt"
     )
+    websocket:WebSocket = Field(default=None)
     
     next_step_prompt: Optional[str] = Field(
         None, description="让llm进行下一步骤的prompt,用于让agent自己进行下一步操作"
@@ -77,9 +79,6 @@ class BaseAgent(ABC,BaseModel):
         msg_factory = message_map[role]
         msg = msg_factory(content, **kwargs) if role == "tool" else msg_factory(content)
         self.memory.add_message(msg)
-
-
-    
     
     
     async def summerize_memories(self, count=10):
@@ -97,7 +96,7 @@ class BaseAgent(ABC,BaseModel):
 
 
     # agent的运行函数，所有agent都通用，run -> step call
-    async def run(self, query: Optional[str] = None) -> str:
+    async def run(self, query: Optional[str] = None,websocket:Optional[WebSocket] = None) -> str:
         """Execute the agent's main loop asynchronously.
 
         Args:
@@ -114,6 +113,10 @@ class BaseAgent(ABC,BaseModel):
 
         if query:
             self.update_memory("user", query)
+        
+        if websocket is not None:
+            self.websocket = websocket
+            logger.info(f"websocket initialized finish, state:{self.websocket.state}")
 
         results: List[str] = []
         times = 1
@@ -127,6 +130,7 @@ class BaseAgent(ABC,BaseModel):
                 
                 results.append(f"Step {self.current_step}: {step_result}")
                 
+                ## 记忆总结，维护短期记忆
                 if self.current_step == 10 * times:
                     tokens = self.memory.count_tokens()
                     if tokens >= 1024 * 32:

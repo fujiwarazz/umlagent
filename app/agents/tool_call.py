@@ -56,9 +56,11 @@ class ToolCallAgent(ReActAgent):
                 
         # todo 返回给前端
         logger.info(f"✨ {self.name} 的想法为: {response.content}")
+        #await self.websocket.send(f"✨ {self.name} 的想法为: {response.content}")
         logger.info(
             f"🛠️ {self.name} 选择了 {len(response.tool_calls) if response.tool_calls else 0} 个工具"
         )
+        #await self.websocket.send(f"🛠️ {self.name} 选择了 {len(response.tool_calls) if response.tool_calls else 0} 个工具")
         if self.tool_calls:
             logger.info(
                 f"🧰 选择的工具信息: {[call.function.name for call in  self.tool_calls]}"
@@ -93,6 +95,7 @@ class ToolCallAgent(ReActAgent):
 
         except Exception as e:
             logger.error(f"🚨 出错啦! The {self.name} 在思考时出现了错误，错误信息如下: {e}")
+            #await self.websocket.send(f"🚨 出错啦! The {self.name} 在思考时出现了错误，错误信息如下: {e}")
             self.memory.add_message(
                 Message.assistant_message(
                     f"Error encountered while processing: {str(e)}"
@@ -116,8 +119,10 @@ class ToolCallAgent(ReActAgent):
         for tool_call in self.tool_calls:
             result = await self.execute_tool(tool_call)
             logger.info(
-                f"🎯 工具 '{tool_call.function.name}' 完成了它的任务! 其执行结果为: {result}"
+                f"🎯 工具 '{tool_call.function.name}' 完成了它的任务! 其执行结果为: {result}"   
             )
+            
+            
             
             # Add tool response to memory
             tool_msg = Message.tool_message(
@@ -127,7 +132,7 @@ class ToolCallAgent(ReActAgent):
             self.memory.add_message(tool_msg)
             tool_excute_results.append(result)
         
-        
+        await self.websocket.send_text("\n\n".join(tool_excute_results))
         return "\n\n".join(tool_excute_results)
         
     async def execute_tool(self, command: ToolCall) -> str:

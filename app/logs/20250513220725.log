@@ -1,0 +1,20 @@
+2025-05-13 22:08:08.591 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:56911
+2025-05-13 22:08:16.934 | INFO     | main:websocket_endpoint:58 - Received message from 127.0.0.1:56911: 介绍厦门
+2025-05-13 22:08:16.934 | INFO     | agents.umlagent:create_initial_plan:206 - Creating initial plan with ID: plan_1747145288
+2025-05-13 22:08:20.416 | INFO     | agents.umlagent:create_initial_plan:231 -  执行工具 planning 的结果为:  `工具:planning`的观测结果输出为 :
+Plan created successfully with ID: plan_1747145288
+
+Plan: 介绍厦门 (ID: plan_1747145288)
+=================================
+
+Progress: 0/3 steps completed (0.0%)
+Status: 0 completed, 0 in progress, 0 blocked, 3 not started
+
+Steps:
+0. [ ] 搜索厦门的相关信息
+1. [ ] 整理和总结厦门的关键特点和吸引力
+2. [ ] 提供关于厦门的详细介绍
+
+2025-05-13 22:08:20.417 | INFO     | agents.base:run:119 - websocket initialized finish, state:<starlette.datastructures.State object at 0x000002983B5B42F0>
+2025-05-13 22:08:20.417 | INFO     | agents.base:run:126 - Executing step 1/20
+2025-05-13 22:08:21.905 | INFO     | main:websocket_endpoint:81 - Cleaned up resources for 127.0.0.1:56911

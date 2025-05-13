@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agent Chat Interface</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background-color: #f2f2f7;
+            /* Apple-like light gray */
+        }
+
+        /* Custom styles for frosted glass */
+        .frosted-glass {
+            background-color: rgba(255, 255, 255, 0.6);
+            /* Semi-transparent white background */
+            backdrop-filter: blur(10px);
+            /* Apply the blur effect */
+            -webkit-backdrop-filter: blur(10px);
+            /* For Safari support */
+        }
+
+        /* Simple animation for typewriter effect cursor */
+        @keyframes blink {
+
+            from,
+            to {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0;
+            }
+        }
+
+        .typing-cursor {
+            animation: blink 0.7s infinite step-start;
+            display: inline-block;
+            /* Ensure cursor is visible */
+            width: 0.5em;
+            /* Cursor width */
+            height: 1em;
+            /* Cursor height */
+            vertical-align: -0.15em;
+            /* Align with text baseline */
+            background-color: currentColor;
+            /* Use current text color */
+            margin-left: 2px;
+        }
+    </style>
+</head>
+
+<body class="flex items-center justify-center min-h-screen p-4">
+    <div class="chat-container w-full max-w-3xl bg-white rounded-lg shadow-xl flex flex-col h-[90vh] overflow-hidden">
+        <div id="chatBox" class="chat-box flex-grow p-4 overflow-y-auto flex flex-col space-y-4">
+        </div>
+        <div class="input-area flex p-4 border-t border-gray-200 frosted-glass">
+            <input type="text" id="userInput" placeholder="Enter your message..."
+                class="flex-grow px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-800 bg-white/80 mr-3">
+            <button id="sendButton"
+                class="px-6 py-2 bg-blue-500 text-white font-semibold rounded-lg shadow hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 disabled:opacity-50 disabled:cursor-not-allowed">Send</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

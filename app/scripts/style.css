@@ -1,0 +1,119 @@
+/* static/style.css */
+
+/* Custom styles for frosted glass */
+.frosted-glass {
+    background-color: rgba(255, 255, 255, 0.6);
+    /* Semi-transparent white background */
+    backdrop-filter: blur(10px);
+    /* Apply the blur effect */
+    -webkit-backdrop-filter: blur(10px);
+    /* For Safari support */
+}
+
+/* Styles for chat messages */
+.message {
+    max-width: 70%;
+    /* Limit message width */
+    word-wrap: break-word;
+    /* Break long words */
+    white-space: pre-wrap;
+    /* Preserve line breaks */
+    padding: 10px 15px;
+    border-radius: 15px;
+    /* More rounded corners */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    /* Subtle shadow */
+}
+
+.user-message {
+    align-self: flex-end;
+    /* Align user messages to the right */
+    background-color: #007aff;
+    /* Apple blue */
+    color: white;
+    border-bottom-right-radius: 5px;
+    /* Taper the bottom right corner for user */
+}
+
+.agent-message {
+    align-self: flex-start;
+    /* Align agent messages to the left */
+    background-color: #e5e5ea;
+    /* Apple light gray */
+    color: #3a3a3c;
+    /* Dark gray text */
+    border-bottom-left-radius: 5px;
+    /* Taper the bottom left corner for agent */
+}
+
+/* Simple animation for typewriter effect cursor */
+@keyframes blink {
+
+    from,
+    to {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+}
+
+.typing-cursor {
+    animation: blink 0.7s infinite step-start;
+    display: inline-block;
+    width: 0.5em;
+    height: 1em;
+    vertical-align: -0.15em;
+    background-color: currentColor;
+    margin-left: 2px;
+}
+
+/* Add this to your static/style.css if not already present */
+.spinner {
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    border-left: 4px solid #3498db;
+    /* Blue spinner */
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    animation: spin 1s linear infinite;
+    display: inline-block;
+    margin-left: 8px;
+    /* Space next to text */
+    vertical-align: middle;
+    /* Align with text */
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Also ensure you have the typing cursor CSS if you want it */
+@keyframes blink {
+
+    from,
+    to {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+}
+
+.typing-cursor {
+    animation: blink 0.7s infinite step-start;
+    display: inline-block;
+    width: 0.5em;
+    height: 1em;
+    vertical-align: -0.15em;
+    background-color: currentColor;
+    margin-left: 2px;
+}

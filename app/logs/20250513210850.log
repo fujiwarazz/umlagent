@@ -1,0 +1,39 @@
+2025-05-13 21:08:54.319 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:58268
+2025-05-13 21:09:00.270 | INFO     | main:websocket_endpoint:58 - Received message from 127.0.0.1:58268: 你好啊
+2025-05-13 21:09:00.271 | INFO     | agents.umlagent:create_initial_plan:206 - Creating initial plan with ID: plan_1747141734
+2025-05-13 21:09:04.763 | INFO     | agents.umlagent:create_initial_plan:231 -  执行工具 planning 的结果为:  `工具:planning`的观测结果输出为 :
+Plan created successfully with ID: plan_1747141734
+
+Plan: 回应用户的问候 (ID: plan_1747141734)
+====================================
+
+Progress: 0/3 steps completed (0.0%)
+Status: 0 completed, 0 in progress, 0 blocked, 3 not started
+
+Steps:
+0. [ ] 分析用户问候的意图
+1. [ ] 根据意图规划合适的回应方式
+2. [ ] 执行回应并结束任务
+
+2025-05-13 21:09:04.766 | INFO     | agents.base:run:119 - websocket initialized finish, state:<starlette.datastructures.State object at 0x00000244628820C0>
+2025-05-13 21:09:04.766 | INFO     | agents.base:run:126 - Executing step 1/20
+2025-05-13 21:09:09.024 | INFO     | agents.tool_call:think:58 - ✨ uml agnet 的想法为: 
+2025-05-13 21:09:09.025 | INFO     | agents.tool_call:think:60 - 🛠️ uml agnet 选择了 1 个工具
+2025-05-13 21:09:09.025 | INFO     | agents.tool_call:think:65 - 🧰 选择的工具信息: ['planning']
+2025-05-13 21:09:09.026 | INFO     | agents.tool_call:think:68 - 🧰 工具的参数是: ['{"command":"mark_step","step_index":0,"step_status":"completed","plan_id":"plan_1747141734"}']
+2025-05-13 21:09:09.026 | INFO     | agents.tool_call:act:121 - 🎯 工具 'planning' 完成了它的任务! 其执行结果为:  `工具:planning`的观测结果输出为 :
+Step 0 updated in plan 'plan_1747141734'.
+
+Plan: 回应用户的问候 (ID: plan_1747141734)
+====================================
+
+Progress: 1/3 steps completed (33.3%)
+Status: 1 completed, 0 in progress, 0 blocked, 2 not started
+
+Steps:
+0. [✓] 分析用户问候的意图
+1. [ ] 根据意图规划合适的回应方式
+2. [ ] 执行回应并结束任务
+
+2025-05-13 21:09:09.027 | ERROR    | main:websocket_endpoint:71 - Error in WebSocket handler for 127.0.0.1:58268: string indices must be integers, not 'str'
+2025-05-13 21:09:09.027 | INFO     | main:websocket_endpoint:81 - Cleaned up resources for 127.0.0.1:58268
