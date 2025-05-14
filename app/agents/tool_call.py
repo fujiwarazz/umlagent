@@ -50,21 +50,31 @@ class ToolCallAgent(ReActAgent):
             return False
         
         self.tool_calls = response.tool_calls
-        # for call in self.tool_calls:
-        #     if not isinstance(call,ToolCall):
-        #         call = ToolCall.from_dict(call)
+
                 
         # todo 返回给前端
         logger.info(f"✨ {self.name} 的想法为: {response.content}")
-        #await self.websocket.send(f"✨ {self.name} 的想法为: {response.content}")
+        await self.websocket.send_text(f"✨ {self.name} 的想法为: {response.content}")
         logger.info(
             f"🛠️ {self.name} 选择了 {len(response.tool_calls) if response.tool_calls else 0} 个工具"
         )
-        #await self.websocket.send(f"🛠️ {self.name} 选择了 {len(response.tool_calls) if response.tool_calls else 0} 个工具")
+        await self.websocket.send_text(f"🛠️ {self.name} 选择了 {len(response.tool_calls) if response.tool_calls else 0} 个工具")
         if self.tool_calls:
             logger.info(
                 f"🧰 选择的工具信息: {[call.function.name for call in  self.tool_calls]}"
             )
+            function_name_map = {
+                "code_to_uml_generator_multilang" : "UML绘图工具",
+                "github_repo_cloner_ssh" : "GITHUB克隆工具",
+                "create_chat_completion" : "回答格式化工具",
+                "planning" : "任务规划工具",
+                "python_execute" : "python执行工具",
+                "re_ask" : "重问工具",
+                "final_response" : "总结工具",
+                "terminate" : "结束回答",
+                "baidu_search" : "百度搜索"
+            }
+            await self.websocket.send_text( f"🧰 选择的工具信息: {[function_name_map[call.function.name] for call in  self.tool_calls]}")
             logger.info(
                 f"🧰 工具的参数是: {[call.function.arguments for call in  self.tool_calls]}"
             )
@@ -79,7 +89,7 @@ class ToolCallAgent(ReActAgent):
             else:
                 assistant_msg = (
                     Message.from_tool_calls(
-                        content="Using tools" + response.content, tool_calls=self.tool_calls
+                        content="Using tools response: " + response.content, tool_calls=self.tool_calls
                     )
                     if self.tool_calls is not None
                     else Message.assistant_message(response.content)
@@ -121,9 +131,6 @@ class ToolCallAgent(ReActAgent):
             logger.info(
                 f"🎯 工具 '{tool_call.function.name}' 完成了它的任务! 其执行结果为: {result}"   
             )
-            
-            
-            
             # Add tool response to memory
             tool_msg = Message.tool_message(
                 content=result, tool_call_id=tool_call.id, name=tool_call.function.name
@@ -131,8 +138,11 @@ class ToolCallAgent(ReActAgent):
             
             self.memory.add_message(tool_msg)
             tool_excute_results.append(result)
-        
-        await self.websocket.send_text("\n\n".join(tool_excute_results))
+            
+            if tool_call.function.name == 'terminate':
+                await self.websocket.send_text("<<<END_OF_RESPONSE>>>")
+                
+        #await self.websocket.send_text("\n\n".join(tool_excute_results))
         return "\n\n".join(tool_excute_results)
         
     async def execute_tool(self, command: ToolCall) -> str:

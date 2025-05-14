@@ -22,7 +22,7 @@ try:
 except ImportError:
     cindex = None
 
-
+from fastapi import WebSocket
 _CODE_TO_UML_TOOL_DESCRIPTION = """
 A tool to analyze a local code repository containing Python, Java, or C++ code
 and generate a unified UML class diagram.
@@ -103,9 +103,13 @@ class CodeToUMLTool(BaseTool):
         "required": ["repo_path", "output_png_path"],
         "additionalProperties": False,
     }
+    
+    websocket: WebSocket = None
 
-    def __init__(self):
-        super().__init__()
+
+    def __init__(self,websocket:WebSocket,**kwargs):
+        super().__init__(websocket = websocket,**kwargs)
+        
         self._parsed_elements: Dict[str, Dict[str, Any]] = {} # Unified storage
         self._ensure_dependencies()
 
@@ -671,29 +675,58 @@ class CodeToUMLTool(BaseTool):
                 self._parsed_elements[el_name]["methods"] = sorted(list(self._parsed_elements[el_name]["methods"]))
         
         try:
-            # 1. 生成 PNG 图表
-            generated_png_path = self._generate_uml_diagram(output_p, include_attributes, include_methods)
-            
-            # 2. 生成文本描述
-            text_description = self._generate_textual_description(include_attributes, include_methods)
+            # 1. 生成 PNG 图表 (这部分逻辑不变)
+            generated_png_path_str = self._generate_uml_diagram(Path(output_png_path), include_attributes, include_methods)
+            # 确保 generated_png_path 是 Path 对象
+            generated_png_path = Path(generated_png_path_str) if generated_png_path_str else Path(output_png_path)
 
-            # 3. 组合结果到 ToolResult 的 output 字符串中
-            summary_message = f"UML 图表和文本描述已成功生成。\n"
-            summary_message += f"已处理: {', '.join(processed_langs) if processed_langs else '未处理特定语言文件'}。\n"
-            summary_message += f"扫描的相关文件总数: {scanned_files_count}。\n"
-            summary_message += f"PNG 图像保存路径: '{generated_png_path}'\n\n"
-            summary_message += "---\n"
-            summary_message += "UML 图表文本描述内容:\n" # 中文提示
-            summary_message += "---\n"
-            summary_message += text_description
+
+            # 2. 生成文本描述 (这部分逻辑不变)
+            text_description = self._generate_textual_description(include_attributes, include_methods)
             
+            # 3. 组合结果到 ToolResult 的 output 字符串中 (这部分逻辑不变)
+            summary_message = f"UML 图表和文本描述已成功生成。\n"
+            # ... (添加更多摘要信息) ...
+            summary_message += f"PNG 图像保存路径: '{generated_png_path.resolve() if generated_png_path.exists() else '未找到或未生成'}'\n\n"
+            summary_message += "---\nUML 图表文本描述内容:\n---\n"
+            summary_message += text_description
+            from utils.logger import logger
+            # --- 新增：通过 WebSocket 发送图片 ---
+            if self.websocket and generated_png_path.exists():
+                logger.info(f"准备通过 WebSocket 发送 UML 图片 '{generated_png_path.name}'。")
+                try:
+                    # **方案 A: 发送原始字节**
+                    # 首先，发送一个文本消息(JSON格式)作为信号，告诉前端接下来是图片数据
+                    await self.websocket.send_json({
+                        "type": "uml_diagram_bytes_start", # 自定义消息类型
+                        "filename": generated_png_path.name,
+                        "content_type": "image/png" 
+                        # 可以添加更多元数据，比如与哪个请求相关联的ID等
+                    })
+
+                    # 然后，发送图片文件的字节流
+                    with open(generated_png_path, "rb") as f_img:
+                        image_bytes = f_img.read()
+                    await self.websocket.send_bytes(image_bytes)
+                    logger.info(f"UML 图片 '{generated_png_path.name}' 已通过 WebSocket 发送 ({len(image_bytes)} 字节)。")
+                    summary_message += f"\n[信息] UML 图表 '{generated_png_path.name}' 也已通过 WebSocket 直接发送。"
+
+                except Exception as ws_send_error:
+                    logger.error(f"通过 WebSocket 发送 UML 图片失败: {ws_send_error}")
+                    summary_message += f"\n[警告] 通过 WebSocket 发送 UML 图片失败: {ws_send_error}"
+            
+            elif not self.websocket:
+                logger.warning("CodeToUMLTool 未配置 WebSocket 对象, 无法直接发送图片。")
+                summary_message += "\n[信息] CodeToUMLTool 未关联 WebSocket, 图片未直接发送。"
+            elif not generated_png_path.exists():
+                logger.error(f"生成的 UML 图片路径 '{generated_png_path}' 不存在, 无法发送图片。")
+                summary_message += f"\n[错误] 生成的 UML 图片 '{generated_png_path}' 未找到, 图片未发送。"
+            # --- 发送图片逻辑结束 ---
+                
             return ToolResult(output=summary_message)
+
         except ToolError as e:
-            # 将工具定义的错误直接抛出，由代理框架处理
-            raise e
+            raise e # 将工具定义的错误直接抛出
         except Exception as e:
-            # 捕获其他意外错误，包装成 ToolError
-            # 建议在此处添加日志记录实际的异常 e 和堆栈跟踪
-            # import traceback
-            # print(f"Unexpected error in CodeToUMLTool.execute: {traceback.format_exc()}")
+            logger.error(f"在CodeToUMLTool.execute中发生意外错误: {e}", exc_info=True)
             raise ToolError(f"在UML生成过程中发生意外错误: {str(e)}")

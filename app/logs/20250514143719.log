@@ -1,0 +1,236 @@
+2025-05-14 14:37:21.481 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:62079
+2025-05-14 14:37:26.949 | INFO     | main:websocket_endpoint:58 - Received message from 127.0.0.1:62079: 我要做啥
+2025-05-14 14:37:26.949 | INFO     | agents.umlagent:create_initial_plan:206 - Creating initial plan with ID: plan_1747204641
+2025-05-14 14:37:31.853 | INFO     | agents.umlagent:create_initial_plan:231 -  执行工具 planning 的结果为:  `工具:planning`的观测结果输出为 :
+Plan created successfully with ID: plan_1747204641
+
+Plan: 确定用户的任务需求并制定计划 (ID: plan_1747204641)
+===========================================
+
+Progress: 0/5 steps completed (0.0%)
+Status: 0 completed, 0 in progress, 0 blocked, 5 not started
+
+Steps:
+0. [ ] 分析用户的需求
+1. [ ] 制定详细的行动计划
+2. [ ] 执行计划并跟踪进度
+3. [ ] 根据需要调整计划
+4. [ ] 完成任务并总结
+
+2025-05-14 14:37:31.853 | INFO     | agents.base:run:119 - websocket initialized finish, state:<starlette.datastructures.State object at 0x000001FC3C497AD0>
+2025-05-14 14:37:31.853 | INFO     | agents.base:run:126 - Executing step 1/20
+2025-05-14 14:37:35.268 | INFO     | agents.tool_call:think:56 - ✨ uml agnet 的想法为: 
+2025-05-14 14:37:35.268 | INFO     | agents.tool_call:think:58 - 🛠️ uml agnet 选择了 1 个工具
+2025-05-14 14:37:35.270 | INFO     | agents.tool_call:think:63 - 🧰 选择的工具信息: ['planning']
+2025-05-14 14:37:35.270 | INFO     | agents.tool_call:think:77 - 🧰 工具的参数是: ['{"command": "mark_step", "plan_id": "plan_1747204641", "step_index": 0, "step_status": "in_progress"}']
+2025-05-14 14:37:35.270 | INFO     | agents.tool_call:act:130 - 🎯 工具 'planning' 完成了它的任务! 其执行结果为:  `工具:planning`的观测结果输出为 :
+Step 0 updated in plan 'plan_1747204641'.
+
+Plan: 确定用户的任务需求并制定计划 (ID: plan_1747204641)
+===========================================
+
+Progress: 0/5 steps completed (0.0%)
+Status: 0 completed, 1 in progress, 0 blocked, 4 not started
+
+Steps:
+0. [→] 分析用户的需求
+1. [ ] 制定详细的行动计划
+2. [ ] 执行计划并跟踪进度
+3. [ ] 根据需要调整计划
+4. [ ] 完成任务并总结
+
+2025-05-14 14:37:35.270 | INFO     | agents.base:run:126 - Executing step 2/20
+2025-05-14 14:37:38.434 | INFO     | agents.tool_call:think:56 - ✨ uml agnet 的想法为: 目前的计划状态显示，第一步“分析用户的需求”正在进行中。为了继续前进，我们需要明确用户的具体需求。
+2025-05-14 14:37:38.435 | INFO     | agents.tool_call:think:58 - 🛠️ uml agnet 选择了 1 个工具
+2025-05-14 14:37:38.435 | INFO     | agents.tool_call:think:63 - 🧰 选择的工具信息: ['re_ask']
+2025-05-14 14:37:38.435 | INFO     | agents.tool_call:think:77 - 🧰 工具的参数是: ['{"question": "您想做什么？请提供更详细的信息或具体任务描述。"}']
+2025-05-14 14:37:38.435 | INFO     | tools.re_ask:execute:43 - 🧐agent to understand your purpose better, re-asking:您想做什么？请提供更详细的信息或具体任务描述。
+2025-05-14 14:37:38.436 | INFO     | tools.re_ask:execute:48 - waiting for user's re-ask response from queue...
+2025-05-14 14:40:06.230 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:58460
+2025-05-14 14:40:18.034 | INFO     | main:websocket_endpoint:81 - WebSocket connection disconnected from 127.0.0.1:58460
+2025-05-14 14:40:18.035 | INFO     | main:websocket_endpoint:96 - Cleaned up resources for 127.0.0.1:58460
+2025-05-14 14:40:19.023 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:58491
+2025-05-14 14:40:20.736 | INFO     | main:websocket_endpoint:81 - WebSocket connection disconnected from 127.0.0.1:58491
+2025-05-14 14:40:20.736 | INFO     | main:websocket_endpoint:96 - Cleaned up resources for 127.0.0.1:58491
+2025-05-14 14:40:21.782 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:58501
+2025-05-14 14:40:23.460 | INFO     | main:websocket_endpoint:81 - WebSocket connection disconnected from 127.0.0.1:58501
+2025-05-14 14:40:23.460 | INFO     | main:websocket_endpoint:96 - Cleaned up resources for 127.0.0.1:58501
+2025-05-14 14:40:24.537 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:58508
+2025-05-14 14:40:34.179 | INFO     | main:websocket_endpoint:81 - WebSocket connection disconnected from 127.0.0.1:58508
+2025-05-14 14:40:34.179 | INFO     | main:websocket_endpoint:96 - Cleaned up resources for 127.0.0.1:58508
+2025-05-14 14:40:35.164 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:58538
+2025-05-14 14:40:35.680 | INFO     | main:websocket_endpoint:81 - WebSocket connection disconnected from 127.0.0.1:58538
+2025-05-14 14:40:35.680 | INFO     | main:websocket_endpoint:96 - Cleaned up resources for 127.0.0.1:58538
+2025-05-14 14:40:36.751 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:58547
+2025-05-14 14:40:40.145 | INFO     | main:websocket_endpoint:81 - WebSocket connection disconnected from 127.0.0.1:58547
+2025-05-14 14:40:40.145 | INFO     | main:websocket_endpoint:96 - Cleaned up resources for 127.0.0.1:58547
+2025-05-14 14:40:41.169 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:58559
+2025-05-14 14:40:49.757 | INFO     | main:websocket_endpoint:81 - WebSocket connection disconnected from 127.0.0.1:58559
+2025-05-14 14:40:49.758 | INFO     | main:websocket_endpoint:96 - Cleaned up resources for 127.0.0.1:58559
+2025-05-14 14:40:50.837 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:58581
+2025-05-14 14:40:55.992 | INFO     | main:websocket_endpoint:58 - Received message from 127.0.0.1:58581: 我要做什么
+2025-05-14 14:40:55.992 | INFO     | agents.umlagent:create_initial_plan:206 - Creating initial plan with ID: plan_1747204850
+2025-05-14 14:41:01.016 | INFO     | agents.umlagent:create_initial_plan:231 -  执行工具 planning 的结果为:  `工具:planning`的观测结果输出为 :
+Plan created successfully with ID: plan_1747204850
+
+Plan: 创建行动计划 (ID: plan_1747204850)
+===================================
+
+Progress: 0/3 steps completed (0.0%)
+Status: 0 completed, 0 in progress, 0 blocked, 3 not started
+
+Steps:
+0. [ ] 分析用户的需求和目标
+1. [ ] 制定一个包含具体行动步骤的计划
+2. [ ] 执行计划并根据需要调整
+
+2025-05-14 14:41:01.016 | INFO     | agents.base:run:119 - websocket initialized finish, state:<starlette.datastructures.State object at 0x000001FC3C56B1D0>
+2025-05-14 14:41:01.016 | INFO     | agents.base:run:126 - Executing step 1/20
+2025-05-14 14:41:05.681 | INFO     | agents.tool_call:think:56 - ✨ uml agnet 的想法为: The current plan is sufficient, and the next step is to analyze the user's needs and goals. I will execute this step immediately.
+2025-05-14 14:41:05.683 | INFO     | agents.tool_call:think:58 - 🛠️ uml agnet 选择了 1 个工具
+2025-05-14 14:41:05.683 | INFO     | agents.tool_call:think:63 - 🧰 选择的工具信息: ['planning']
+2025-05-14 14:41:05.683 | INFO     | agents.tool_call:think:77 - 🧰 工具的参数是: ['{"command": "mark_step", "plan_id": "plan_1747204850", "step_index": 0, "step_status": "in_progress"}']
+2025-05-14 14:41:05.683 | INFO     | agents.tool_call:act:130 - 🎯 工具 'planning' 完成了它的任务! 其执行结果为:  `工具:planning`的观测结果输出为 :
+Step 0 updated in plan 'plan_1747204850'.
+
+Plan: 创建行动计划 (ID: plan_1747204850)
+===================================
+
+Progress: 0/3 steps completed (0.0%)
+Status: 0 completed, 1 in progress, 0 blocked, 2 not started
+
+Steps:
+0. [→] 分析用户的需求和目标
+1. [ ] 制定一个包含具体行动步骤的计划
+2. [ ] 执行计划并根据需要调整
+
+2025-05-14 14:41:05.684 | INFO     | agents.base:run:126 - Executing step 2/20
+2025-05-14 14:41:09.179 | INFO     | agents.tool_call:think:56 - ✨ uml agnet 的想法为: 为了分析用户的需求和目标，我需要更多关于用户具体想要做什么的信息。因此，我将向用户提问以获取更多信息。
+2025-05-14 14:41:09.180 | INFO     | agents.tool_call:think:58 - 🛠️ uml agnet 选择了 1 个工具
+2025-05-14 14:41:09.181 | INFO     | agents.tool_call:think:63 - 🧰 选择的工具信息: ['re_ask']
+2025-05-14 14:41:09.181 | INFO     | agents.tool_call:think:77 - 🧰 工具的参数是: ['{"question": "您想通过这个请求实现什么？您的具体目标是什么？"}']
+2025-05-14 14:41:09.181 | INFO     | tools.re_ask:execute:43 - 🧐agent to understand your purpose better, re-asking:您想通过这个请求实现什么？您的具体目标是什么？
+2025-05-14 14:41:09.181 | INFO     | tools.re_ask:execute:48 - waiting for user's re-ask response from queue...
+2025-05-14 14:45:27.210 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:55208
+2025-05-14 14:45:34.522 | INFO     | main:websocket_endpoint:58 - Received message from 127.0.0.1:55208: 我要做啥
+2025-05-14 14:45:34.523 | INFO     | agents.umlagent:create_initial_plan:206 - Creating initial plan with ID: plan_1747205127
+2025-05-14 14:45:38.836 | INFO     | agents.umlagent:create_initial_plan:231 -  执行工具 planning 的结果为:  `工具:planning`的观测结果输出为 :
+Plan created successfully with ID: plan_1747205127
+
+Plan: 用户未明确任务 (ID: plan_1747205127)
+====================================
+
+Progress: 0/4 steps completed (0.0%)
+Status: 0 completed, 0 in progress, 0 blocked, 4 not started
+
+Steps:
+0. [ ] 与用户沟通以明确具体需求和目标
+1. [ ] 根据用户的需求制定详细计划
+2. [ ] 执行计划并跟踪进度
+3. [ ] 完成任务后总结并向用户提供结果
+
+2025-05-14 14:45:38.836 | INFO     | agents.base:run:119 - websocket initialized finish, state:<starlette.datastructures.State object at 0x000001FC3C4C90D0>
+2025-05-14 14:45:38.836 | INFO     | agents.base:run:126 - Executing step 1/20
+2025-05-14 14:45:42.111 | INFO     | agents.tool_call:think:56 - ✨ uml agnet 的想法为: 计划尚未开始执行，首先需要与用户沟通以明确具体需求和目标。
+2025-05-14 14:45:42.111 | INFO     | agents.tool_call:think:58 - 🛠️ uml agnet 选择了 1 个工具
+2025-05-14 14:45:42.111 | INFO     | agents.tool_call:think:63 - 🧰 选择的工具信息: ['re_ask']
+2025-05-14 14:45:42.111 | INFO     | agents.tool_call:think:77 - 🧰 工具的参数是: ['{"question": "您好！为了更好地帮助您，请详细描述您想要完成的任务或目标。", "reason": "用户在初始请求中未明确具体任务或目标。"}']
+2025-05-14 14:45:42.111 | INFO     | tools.re_ask:execute:43 - 🧐agent Because:用户在初始请求中未明确具体任务或目标。, re-asking:您好！为了更好地帮助您，请详细描述您想要完成的任务或目标。
+2025-05-14 14:45:42.112 | INFO     | tools.re_ask:execute:48 - waiting for user's re-ask response from queue...
+2025-05-14 15:03:13.453 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:56575
+2025-05-14 15:03:22.051 | INFO     | main:websocket_endpoint:81 - WebSocket connection disconnected from 127.0.0.1:56575
+2025-05-14 15:03:22.051 | INFO     | main:websocket_endpoint:96 - Cleaned up resources for 127.0.0.1:56575
+2025-05-14 15:03:23.078 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:56603
+2025-05-14 15:09:29.854 | INFO     | main:websocket_endpoint:81 - WebSocket connection disconnected from 127.0.0.1:56603
+2025-05-14 15:09:29.854 | INFO     | main:websocket_endpoint:96 - Cleaned up resources for 127.0.0.1:56603
+2025-05-14 15:09:31.125 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:62028
+2025-05-14 15:09:32.010 | INFO     | main:websocket_endpoint:81 - WebSocket connection disconnected from 127.0.0.1:62028
+2025-05-14 15:09:32.010 | INFO     | main:websocket_endpoint:96 - Cleaned up resources for 127.0.0.1:62028
+2025-05-14 15:09:33.100 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:62042
+2025-05-14 15:09:33.628 | INFO     | main:websocket_endpoint:81 - WebSocket connection disconnected from 127.0.0.1:62042
+2025-05-14 15:09:33.628 | INFO     | main:websocket_endpoint:96 - Cleaned up resources for 127.0.0.1:62042
+2025-05-14 15:09:34.681 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:62048
+2025-05-14 15:09:36.490 | INFO     | main:websocket_endpoint:81 - WebSocket connection disconnected from 127.0.0.1:62048
+2025-05-14 15:09:36.490 | INFO     | main:websocket_endpoint:96 - Cleaned up resources for 127.0.0.1:62048
+2025-05-14 15:09:37.566 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:62058
+2025-05-14 15:09:41.641 | INFO     | main:websocket_endpoint:81 - WebSocket connection disconnected from 127.0.0.1:62058
+2025-05-14 15:09:41.643 | INFO     | main:websocket_endpoint:96 - Cleaned up resources for 127.0.0.1:62058
+2025-05-14 15:09:42.745 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:62076
+2025-05-14 15:09:47.866 | INFO     | main:websocket_endpoint:81 - WebSocket connection disconnected from 127.0.0.1:62076
+2025-05-14 15:09:47.866 | INFO     | main:websocket_endpoint:96 - Cleaned up resources for 127.0.0.1:62076
+2025-05-14 15:09:48.927 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:62096
+2025-05-14 15:10:04.321 | INFO     | main:websocket_endpoint:81 - WebSocket connection disconnected from 127.0.0.1:62096
+2025-05-14 15:10:04.322 | INFO     | main:websocket_endpoint:96 - Cleaned up resources for 127.0.0.1:62096
+2025-05-14 15:10:05.632 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:62134
+2025-05-14 15:10:08.157 | INFO     | main:websocket_endpoint:81 - WebSocket connection disconnected from 127.0.0.1:62134
+2025-05-14 15:10:08.157 | INFO     | main:websocket_endpoint:96 - Cleaned up resources for 127.0.0.1:62134
+2025-05-14 15:10:09.229 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:62143
+2025-05-14 15:10:10.089 | INFO     | main:websocket_endpoint:81 - WebSocket connection disconnected from 127.0.0.1:62143
+2025-05-14 15:10:10.090 | INFO     | main:websocket_endpoint:96 - Cleaned up resources for 127.0.0.1:62143
+2025-05-14 15:10:11.139 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:62153
+2025-05-14 15:10:18.152 | INFO     | main:websocket_endpoint:81 - WebSocket connection disconnected from 127.0.0.1:62153
+2025-05-14 15:10:18.152 | INFO     | main:websocket_endpoint:96 - Cleaned up resources for 127.0.0.1:62153
+2025-05-14 15:10:19.308 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:62174
+2025-05-14 15:10:23.121 | INFO     | main:websocket_endpoint:81 - WebSocket connection disconnected from 127.0.0.1:62174
+2025-05-14 15:10:23.123 | INFO     | main:websocket_endpoint:96 - Cleaned up resources for 127.0.0.1:62174
+2025-05-14 15:10:24.251 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:62186
+2025-05-14 15:30:49.230 | INFO     | main:websocket_endpoint:81 - WebSocket connection disconnected from 127.0.0.1:62186
+2025-05-14 15:30:49.230 | INFO     | main:websocket_endpoint:96 - Cleaned up resources for 127.0.0.1:62186
+2025-05-14 15:30:50.387 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:63656
+2025-05-14 15:30:53.264 | INFO     | main:websocket_endpoint:81 - WebSocket connection disconnected from 127.0.0.1:63656
+2025-05-14 15:30:53.265 | INFO     | main:websocket_endpoint:96 - Cleaned up resources for 127.0.0.1:63656
+2025-05-14 15:30:54.340 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:63679
+2025-05-14 15:30:55.034 | INFO     | main:websocket_endpoint:81 - WebSocket connection disconnected from 127.0.0.1:63679
+2025-05-14 15:30:55.034 | INFO     | main:websocket_endpoint:96 - Cleaned up resources for 127.0.0.1:63679
+2025-05-14 15:30:56.078 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:63683
+2025-05-14 15:31:05.597 | INFO     | main:websocket_endpoint:81 - WebSocket connection disconnected from 127.0.0.1:63683
+2025-05-14 15:31:05.599 | INFO     | main:websocket_endpoint:96 - Cleaned up resources for 127.0.0.1:63683
+2025-05-14 15:31:06.695 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:63715
+2025-05-14 15:34:02.956 | INFO     | main:websocket_endpoint:81 - WebSocket connection disconnected from 127.0.0.1:63715
+2025-05-14 15:34:02.956 | INFO     | main:websocket_endpoint:96 - Cleaned up resources for 127.0.0.1:63715
+2025-05-14 15:34:04.050 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:64655
+2025-05-14 15:34:13.267 | INFO     | main:websocket_endpoint:81 - WebSocket connection disconnected from 127.0.0.1:64655
+2025-05-14 15:34:13.268 | INFO     | main:websocket_endpoint:96 - Cleaned up resources for 127.0.0.1:64655
+2025-05-14 15:34:14.325 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:64688
+2025-05-14 15:39:39.786 | INFO     | main:websocket_endpoint:81 - WebSocket connection disconnected from 127.0.0.1:64688
+2025-05-14 15:39:39.786 | INFO     | main:websocket_endpoint:96 - Cleaned up resources for 127.0.0.1:64688
+2025-05-14 15:39:40.900 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:58762
+2025-05-14 15:39:41.409 | INFO     | main:websocket_endpoint:81 - WebSocket connection disconnected from 127.0.0.1:58762
+2025-05-14 15:39:41.410 | INFO     | main:websocket_endpoint:96 - Cleaned up resources for 127.0.0.1:58762
+2025-05-14 15:39:42.435 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:58781
+2025-05-14 15:39:49.587 | INFO     | main:websocket_endpoint:81 - WebSocket connection disconnected from 127.0.0.1:58781
+2025-05-14 15:39:49.587 | INFO     | main:websocket_endpoint:96 - Cleaned up resources for 127.0.0.1:58781
+2025-05-14 15:39:50.533 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:58805
+2025-05-14 15:45:15.172 | INFO     | main:websocket_endpoint:81 - WebSocket connection disconnected from 127.0.0.1:58805
+2025-05-14 15:45:15.172 | INFO     | main:websocket_endpoint:96 - Cleaned up resources for 127.0.0.1:58805
+2025-05-14 15:45:16.820 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:61124
+2025-05-14 15:46:07.375 | INFO     | main:websocket_endpoint:81 - WebSocket connection disconnected from 127.0.0.1:61124
+2025-05-14 15:46:07.375 | INFO     | main:websocket_endpoint:96 - Cleaned up resources for 127.0.0.1:61124
+2025-05-14 15:46:07.988 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:61241
+2025-05-14 15:47:15.249 | INFO     | main:websocket_endpoint:58 - Received message from 127.0.0.1:61241: 帮我找一个llama2的项目，并且分析UML图
+2025-05-14 15:47:15.249 | INFO     | agents.umlagent:create_initial_plan:206 - Creating initial plan with ID: plan_1747208767
+2025-05-14 15:47:21.027 | INFO     | agents.umlagent:create_initial_plan:231 -  执行工具 planning 的结果为:  `工具:planning`的观测结果输出为 :
+Plan created successfully with ID: plan_1747208767
+
+Plan: 寻找并分析一个Llama2项目及其UML图 (ID: plan_1747208767)
+==================================================
+
+Progress: 0/4 steps completed (0.0%)
+Status: 0 completed, 0 in progress, 0 blocked, 4 not started
+
+Steps:
+0. [ ] 使用百度搜索找到一个Llama2的GitHub项目
+1. [ ] 克隆找到的GitHub项目到本地
+2. [ ] 生成所选项目的UML类图
+3. [ ] 分析并提供UML图的关键特性
+
+2025-05-14 15:47:21.030 | INFO     | agents.base:run:119 - websocket initialized finish, state:<starlette.datastructures.State object at 0x000001FC3C556E70>
+2025-05-14 15:47:21.031 | INFO     | agents.base:run:126 - Executing step 1/20
+2025-05-14 15:47:25.255 | INFO     | agents.tool_call:think:56 - ✨ uml agnet 的想法为: 计划已经创建并明确，现在需要执行第一步：使用百度搜索找到一个Llama2的GitHub项目。
+2025-05-14 15:47:25.255 | INFO     | agents.tool_call:think:58 - 🛠️ uml agnet 选择了 1 个工具
+2025-05-14 15:47:25.256 | INFO     | agents.tool_call:think:63 - 🧰 选择的工具信息: ['baidu_search']
+2025-05-14 15:47:25.256 | ERROR    | main:websocket_endpoint:86 - Error in WebSocket handler for 127.0.0.1:61241: 'baidu_search'
+2025-05-14 15:47:25.257 | INFO     | main:websocket_endpoint:96 - Cleaned up resources for 127.0.0.1:61241
+2025-05-14 15:49:48.693 | INFO     | main:websocket_endpoint:96 - Cleaned up resources for 127.0.0.1:62079
+2025-05-14 15:49:48.719 | INFO     | main:websocket_endpoint:96 - Cleaned up resources for 127.0.0.1:58581
+2025-05-14 15:49:48.726 | INFO     | main:websocket_endpoint:96 - Cleaned up resources for 127.0.0.1:55208

@@ -1,0 +1,68 @@
+2025-05-14 15:53:41.231 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:64976
+2025-05-14 15:53:41.266 | INFO     | main:websocket_endpoint:57 - [127.0.0.1:64976] --> Waiting for next message...
+2025-05-14 15:53:45.701 | INFO     | main:websocket_endpoint:59 - Received message from 127.0.0.1:64976: 帮我找一个llama2的项目，帮且分析uml类图
+2025-05-14 15:53:45.701 | INFO     | agents.umlagent:create_initial_plan:206 - Creating initial plan with ID: plan_1747209221
+2025-05-14 15:53:52.846 | INFO     | agents.umlagent:create_initial_plan:231 -  执行工具 planning 的结果为:  `工具:planning`的观测结果输出为 :
+Plan created successfully with ID: plan_1747209221
+
+Plan: 寻找并分析Llama2项目及其UML类图 (ID: plan_1747209221)
+=================================================
+
+Progress: 0/4 steps completed (0.0%)
+Status: 0 completed, 0 in progress, 0 blocked, 4 not started
+
+Steps:
+0. [ ] 使用百度搜索工具查找Llama2相关项目
+1. [ ] 从搜索结果中选择一个合适的Llama2项目
+2. [ ] 克隆选中的GitHub项目到本地
+3. [ ] 生成所选项目的UML类图
+
+2025-05-14 15:53:52.848 | INFO     | agents.base:run:119 - websocket initialized finish, state:<starlette.datastructures.State object at 0x000001CC0C70D730>
+2025-05-14 15:53:52.848 | INFO     | agents.base:run:126 - Executing step 1/20
+2025-05-14 15:53:56.473 | INFO     | agents.tool_call:think:56 - ✨ uml agnet 的想法为: 计划已经足够详细，无需进一步细化。接下来，我将执行第一步，使用百度搜索工具查找Llama2相关项目。
+
+我将调用 `baidu_search` 工具来执行此操作。
+2025-05-14 15:53:56.473 | INFO     | agents.tool_call:think:58 - 🛠️ uml agnet 选择了 1 个工具
+2025-05-14 15:53:56.473 | INFO     | agents.tool_call:think:63 - 🧰 选择的工具信息: ['baidu_search']
+2025-05-14 15:53:56.473 | ERROR    | main:websocket_endpoint:87 - Error in WebSocket handler for 127.0.0.1:64976: 'baidu_search'
+2025-05-14 15:53:56.473 | INFO     | main:websocket_endpoint:97 - Cleaned up resources for 127.0.0.1:64976
+2025-05-14 15:55:26.325 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:65138
+2025-05-14 15:55:26.326 | INFO     | main:websocket_endpoint:57 - [127.0.0.1:65138] --> Waiting for next message...
+2025-05-14 15:55:36.251 | INFO     | main:websocket_endpoint:82 - WebSocket connection disconnected from 127.0.0.1:65138
+2025-05-14 15:55:36.252 | INFO     | main:websocket_endpoint:97 - Cleaned up resources for 127.0.0.1:65138
+2025-05-14 15:55:37.054 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:65168
+2025-05-14 15:55:37.055 | INFO     | main:websocket_endpoint:57 - [127.0.0.1:65168] --> Waiting for next message...
+2025-05-14 15:55:48.413 | INFO     | main:websocket_endpoint:82 - WebSocket connection disconnected from 127.0.0.1:65168
+2025-05-14 15:55:48.414 | INFO     | main:websocket_endpoint:97 - Cleaned up resources for 127.0.0.1:65168
+2025-05-14 15:55:49.147 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:65188
+2025-05-14 15:55:49.149 | INFO     | main:websocket_endpoint:57 - [127.0.0.1:65188] --> Waiting for next message...
+2025-05-14 15:55:51.166 | INFO     | main:websocket_endpoint:82 - WebSocket connection disconnected from 127.0.0.1:65188
+2025-05-14 15:55:51.166 | INFO     | main:websocket_endpoint:97 - Cleaned up resources for 127.0.0.1:65188
+2025-05-14 15:55:51.914 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:65196
+2025-05-14 15:55:51.915 | INFO     | main:websocket_endpoint:57 - [127.0.0.1:65196] --> Waiting for next message...
+2025-05-14 15:56:11.540 | INFO     | main:websocket_endpoint:59 - Received message from 127.0.0.1:65196: 帮我找一个LLAMA2项目，分析UML图
+2025-05-14 15:56:11.540 | INFO     | agents.umlagent:create_initial_plan:206 - Creating initial plan with ID: plan_1747209351
+2025-05-14 15:56:16.312 | INFO     | agents.umlagent:create_initial_plan:231 -  执行工具 planning 的结果为:  `工具:planning`的观测结果输出为 :
+Plan created successfully with ID: plan_1747209351
+
+Plan: 寻找LLAMA2项目并分析UML图 (ID: plan_1747209351)
+==============================================
+
+Progress: 0/4 steps completed (0.0%)
+Status: 0 completed, 0 in progress, 0 blocked, 4 not started
+
+Steps:
+0. [ ] 通过GitHub搜索找到一个LLAMA2项目
+1. [ ] 克隆找到的LLAMA2项目到本地
+2. [ ] 生成该项目的UML类图
+3. [ ] 分析并提供UML图的解释
+
+2025-05-14 15:56:16.312 | INFO     | agents.base:run:119 - websocket initialized finish, state:<starlette.datastructures.State object at 0x000001CC0EA10230>
+2025-05-14 15:56:16.314 | INFO     | agents.base:run:126 - Executing step 1/20
+2025-05-14 15:56:21.317 | INFO     | agents.tool_call:think:56 - ✨ uml agnet 的想法为: 计划已经创建并且看起来是足够的，不需要进一步的细化。接下来，按照计划中的第一个步骤，我需要通过GitHub搜索找到一个LLAMA2项目。因此，我可以立即执行此步骤。
+
+我将使用 `baidu_search` 工具（在这里作为GitHub搜索的替代工具）来查找LLAMA2相关的项目。
+2025-05-14 15:56:21.317 | INFO     | agents.tool_call:think:58 - 🛠️ uml agnet 选择了 1 个工具
+2025-05-14 15:56:21.317 | INFO     | agents.tool_call:think:63 - 🧰 选择的工具信息: ['baidu_search']
+2025-05-14 15:56:21.317 | ERROR    | main:websocket_endpoint:87 - Error in WebSocket handler for 127.0.0.1:65196: 'baidu_search'
+2025-05-14 15:56:21.317 | INFO     | main:websocket_endpoint:97 - Cleaned up resources for 127.0.0.1:65196

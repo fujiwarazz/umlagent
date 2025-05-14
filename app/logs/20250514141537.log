@@ -1,0 +1,122 @@
+2025-05-14 14:15:38.600 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:60247
+2025-05-14 14:16:23.551 | INFO     | main:websocket_endpoint:58 - Received message from 127.0.0.1:60247: 我想干啥
+2025-05-14 14:16:23.551 | INFO     | agents.umlagent:create_initial_plan:206 - Creating initial plan with ID: plan_1747203338
+2025-05-14 14:16:28.798 | INFO     | agents.umlagent:create_initial_plan:231 -  执行工具 planning 的结果为:  `工具:planning`的观测结果输出为 :
+Plan created successfully with ID: plan_1747203338
+
+Plan: 用户意图分析计划 (ID: plan_1747203338)
+=====================================
+
+Progress: 0/4 steps completed (0.0%)
+Status: 0 completed, 0 in progress, 0 blocked, 4 not started
+
+Steps:
+0. [ ] 与用户沟通，明确其需求和目标
+1. [ ] 根据用户提供的信息制定详细行动计划
+2. [ ] 执行计划并持续与用户沟通确认方向正确性
+3. [ ] 完成任务后总结并向用户提供最终答复
+
+2025-05-14 14:16:28.798 | INFO     | agents.base:run:119 - websocket initialized finish, state:<starlette.datastructures.State object at 0x0000014AB401D8E0>
+2025-05-14 14:16:28.798 | INFO     | agents.base:run:126 - Executing step 1/20
+2025-05-14 14:16:34.912 | INFO     | agents.tool_call:think:56 - ✨ uml agnet 的想法为: The plan needs refinement because the user's query "我想干啥" is very vague. I need to ask the user for more details about what they want to achieve. After getting more information, I can refine the plan accordingly.
+2025-05-14 14:16:34.912 | INFO     | agents.tool_call:think:58 - 🛠️ uml agnet 选择了 1 个工具
+2025-05-14 14:16:34.912 | INFO     | agents.tool_call:think:63 - 🧰 选择的工具信息: ['re_ask']
+2025-05-14 14:16:34.912 | INFO     | agents.tool_call:think:77 - 🧰 工具的参数是: ['{"question": "您好！可以告诉我您具体想要做什么吗？例如，您是想了解某些信息、解决某个问题，还是需要我帮您完成某项任务？"}']
+2025-05-14 14:16:34.912 | INFO     | tools.re_ask:execute:43 - 🧐agent to understand your purpose better, re-asking:您好！可以告诉我您具体想要做什么吗？例如，您是想了解某些信息、解决某个问题，还是需要我帮您完成某项任务？
+2025-05-14 14:16:34.912 | INFO     | tools.re_ask:execute:48 - waiting for user's re-ask response from queue...
+2025-05-14 14:18:16.675 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:60976
+2025-05-14 14:18:35.892 | INFO     | main:websocket_endpoint:81 - WebSocket connection disconnected from 127.0.0.1:60976
+2025-05-14 14:18:35.894 | INFO     | main:websocket_endpoint:96 - Cleaned up resources for 127.0.0.1:60976
+2025-05-14 14:18:36.935 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:61026
+2025-05-14 14:19:03.929 | INFO     | main:websocket_endpoint:81 - WebSocket connection disconnected from 127.0.0.1:61026
+2025-05-14 14:19:03.929 | INFO     | main:websocket_endpoint:96 - Cleaned up resources for 127.0.0.1:61026
+2025-05-14 14:19:04.980 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:61086
+2025-05-14 14:19:27.537 | INFO     | main:websocket_endpoint:81 - WebSocket connection disconnected from 127.0.0.1:61086
+2025-05-14 14:19:27.537 | INFO     | main:websocket_endpoint:96 - Cleaned up resources for 127.0.0.1:61086
+2025-05-14 14:19:28.622 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:61133
+2025-05-14 14:19:41.574 | INFO     | main:websocket_endpoint:81 - WebSocket connection disconnected from 127.0.0.1:61133
+2025-05-14 14:19:41.574 | INFO     | main:websocket_endpoint:96 - Cleaned up resources for 127.0.0.1:61133
+2025-05-14 14:19:42.522 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:61177
+2025-05-14 14:19:47.863 | INFO     | main:websocket_endpoint:58 - Received message from 127.0.0.1:61177: 我要做什么
+2025-05-14 14:19:47.863 | INFO     | agents.umlagent:create_initial_plan:206 - Creating initial plan with ID: plan_1747203582
+2025-05-14 14:19:51.071 | INFO     | agents.umlagent:create_initial_plan:231 -  执行工具 planning 的结果为:  `工具:planning`的观测结果输出为 :
+Plan created successfully with ID: plan_1747203582
+
+Plan: 确定用户的任务需求 (ID: plan_1747203582)
+======================================
+
+Progress: 0/3 steps completed (0.0%)
+Status: 0 completed, 0 in progress, 0 blocked, 3 not started
+
+Steps:
+0. [ ] 与用户沟通以明确具体任务要求
+1. [ ] 根据用户提供的信息制定详细计划
+2. [ ] 获得用户确认后执行计划
+
+2025-05-14 14:19:51.071 | INFO     | agents.base:run:119 - websocket initialized finish, state:<starlette.datastructures.State object at 0x0000014AB63E1CD0>
+2025-05-14 14:19:51.071 | INFO     | agents.base:run:126 - Executing step 1/20
+2025-05-14 14:19:56.747 | INFO     | agents.tool_call:think:56 - ✨ uml agnet 的想法为: The plan needs to be updated as the first step, which is to communicate with the user to clarify specific task requirements, should be marked as in progress since I am about to ask the user for more details.
+2025-05-14 14:19:56.747 | INFO     | agents.tool_call:think:58 - 🛠️ uml agnet 选择了 1 个工具
+2025-05-14 14:19:56.747 | INFO     | agents.tool_call:think:63 - 🧰 选择的工具信息: ['planning']
+2025-05-14 14:19:56.747 | INFO     | agents.tool_call:think:77 - 🧰 工具的参数是: ['{"command":"mark_step","plan_id":"plan_1747203582","step_index":0,"step_status":"in_progress"}']
+2025-05-14 14:19:56.750 | INFO     | agents.tool_call:act:130 - 🎯 工具 'planning' 完成了它的任务! 其执行结果为:  `工具:planning`的观测结果输出为 :
+Step 0 updated in plan 'plan_1747203582'.
+
+Plan: 确定用户的任务需求 (ID: plan_1747203582)
+======================================
+
+Progress: 0/3 steps completed (0.0%)
+Status: 0 completed, 1 in progress, 0 blocked, 2 not started
+
+Steps:
+0. [→] 与用户沟通以明确具体任务要求
+1. [ ] 根据用户提供的信息制定详细计划
+2. [ ] 获得用户确认后执行计划
+
+2025-05-14 14:19:56.750 | INFO     | agents.base:run:126 - Executing step 2/20
+2025-05-14 14:20:02.106 | INFO     | agents.tool_call:think:56 - ✨ uml agnet 的想法为: To proceed efficiently, I need to clarify the user's specific needs by asking them directly. This will allow me to understand their task requirements better and move forward with the plan.
+2025-05-14 14:20:02.106 | INFO     | agents.tool_call:think:58 - 🛠️ uml agnet 选择了 1 个工具
+2025-05-14 14:20:02.106 | INFO     | agents.tool_call:think:63 - 🧰 选择的工具信息: ['re_ask']
+2025-05-14 14:20:02.108 | INFO     | agents.tool_call:think:77 - 🧰 工具的参数是: ['{"question":"您好，为了更好地帮助您，请详细描述一下您想要做什么？例如，您是否有特定的任务需要完成，或者需要查询某些信息？","reason":"需要明确用户的具体任务要求以继续制定计划。"}']
+2025-05-14 14:20:02.108 | INFO     | tools.re_ask:execute:43 - 🧐agent Because:需要明确用户的具体任务要求以继续制定计划。, re-asking:您好，为了更好地帮助您，请详细描述一下您想要做什么？例如，您是否有特定的任务需要完成，或者需要查询某些信息？
+2025-05-14 14:20:02.108 | INFO     | tools.re_ask:execute:48 - waiting for user's re-ask response from queue...
+2025-05-14 14:21:10.403 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:60731
+2025-05-14 14:21:11.248 | INFO     | main:websocket_endpoint:81 - WebSocket connection disconnected from 127.0.0.1:60731
+2025-05-14 14:21:11.248 | INFO     | main:websocket_endpoint:96 - Cleaned up resources for 127.0.0.1:60731
+2025-05-14 14:21:12.291 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:60742
+2025-05-14 14:21:28.405 | INFO     | main:websocket_endpoint:81 - WebSocket connection disconnected from 127.0.0.1:60742
+2025-05-14 14:21:28.405 | INFO     | main:websocket_endpoint:96 - Cleaned up resources for 127.0.0.1:60742
+2025-05-14 14:21:29.504 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:60780
+2025-05-14 14:21:32.556 | INFO     | main:websocket_endpoint:81 - WebSocket connection disconnected from 127.0.0.1:60780
+2025-05-14 14:21:32.556 | INFO     | main:websocket_endpoint:96 - Cleaned up resources for 127.0.0.1:60780
+2025-05-14 14:21:33.575 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:60791
+2025-05-14 14:21:46.835 | INFO     | main:websocket_endpoint:81 - WebSocket connection disconnected from 127.0.0.1:60791
+2025-05-14 14:21:46.836 | INFO     | main:websocket_endpoint:96 - Cleaned up resources for 127.0.0.1:60791
+2025-05-14 14:21:50.322 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:60830
+2025-05-14 14:22:05.819 | INFO     | main:websocket_endpoint:58 - Received message from 127.0.0.1:60830: 我要做什么
+2025-05-14 14:22:05.819 | INFO     | agents.umlagent:create_initial_plan:206 - Creating initial plan with ID: plan_1747203710
+2025-05-14 14:22:10.433 | INFO     | agents.umlagent:create_initial_plan:231 -  执行工具 planning 的结果为:  `工具:planning`的观测结果输出为 :
+Plan created successfully with ID: plan_1747203710
+
+Plan: 确定用户的任务并制定计划 (ID: plan_1747203710)
+=========================================
+
+Progress: 0/3 steps completed (0.0%)
+Status: 0 completed, 0 in progress, 0 blocked, 3 not started
+
+Steps:
+0. [ ] 与用户沟通以明确他们的需求和目标
+1. [ ] 基于用户的目标制定详细计划
+2. [ ] 执行计划并调整以确保满足用户的需求
+
+2025-05-14 14:22:10.433 | INFO     | agents.base:run:119 - websocket initialized finish, state:<starlette.datastructures.State object at 0x0000014AB63254C0>
+2025-05-14 14:22:10.433 | INFO     | agents.base:run:126 - Executing step 1/20
+2025-05-14 14:22:14.451 | INFO     | agents.tool_call:think:56 - ✨ uml agnet 的想法为: 计划尚未开始执行，首先需要与用户沟通以明确他们的需求和目标。因此，我将执行第一步。
+2025-05-14 14:22:14.452 | INFO     | agents.tool_call:think:58 - 🛠️ uml agnet 选择了 1 个工具
+2025-05-14 14:22:14.452 | INFO     | agents.tool_call:think:63 - 🧰 选择的工具信息: ['re_ask']
+2025-05-14 14:22:14.452 | INFO     | agents.tool_call:think:77 - 🧰 工具的参数是: ['{"question": "请您详细描述您想要完成的任务或目标是什么？", "reason": "为了更好地帮助您，我们需要明确您的具体需求和目标。"}']
+2025-05-14 14:22:14.453 | INFO     | tools.re_ask:execute:43 - 🧐agent Because:为了更好地帮助您，我们需要明确您的具体需求和目标。, re-asking:请您详细描述您想要完成的任务或目标是什么？
+2025-05-14 14:22:14.453 | INFO     | tools.re_ask:execute:48 - waiting for user's re-ask response from queue...
+2025-05-14 14:28:30.550 | INFO     | main:websocket_endpoint:96 - Cleaned up resources for 127.0.0.1:60247
+2025-05-14 14:28:30.609 | INFO     | main:websocket_endpoint:96 - Cleaned up resources for 127.0.0.1:61177
+2025-05-14 14:28:30.612 | INFO     | main:websocket_endpoint:96 - Cleaned up resources for 127.0.0.1:60830

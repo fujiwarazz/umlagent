@@ -1,0 +1,18 @@
+2025-05-14 14:12:05.818 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:53369
+2025-05-14 14:12:05.818 | ERROR    | main:websocket_endpoint:86 - Error in WebSocket handler for 127.0.0.1:53369: unsupported operand type(s) for ** or pow(): 'Queue' and 'dict'
+2025-05-14 14:12:05.819 | INFO     | main:websocket_endpoint:96 - Cleaned up resources for 127.0.0.1:53369
+2025-05-14 14:15:03.081 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:60155
+2025-05-14 14:15:03.081 | ERROR    | main:websocket_endpoint:86 - Error in WebSocket handler for 127.0.0.1:60155: unsupported operand type(s) for ** or pow(): 'Queue' and 'dict'
+2025-05-14 14:15:03.081 | INFO     | main:websocket_endpoint:96 - Cleaned up resources for 127.0.0.1:60155
+2025-05-14 14:15:15.752 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:60187
+2025-05-14 14:15:15.752 | ERROR    | main:websocket_endpoint:86 - Error in WebSocket handler for 127.0.0.1:60187: unsupported operand type(s) for ** or pow(): 'Queue' and 'dict'
+2025-05-14 14:15:15.753 | INFO     | main:websocket_endpoint:96 - Cleaned up resources for 127.0.0.1:60187
+2025-05-14 14:15:24.716 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:60208
+2025-05-14 14:15:24.716 | ERROR    | main:websocket_endpoint:86 - Error in WebSocket handler for 127.0.0.1:60208: unsupported operand type(s) for ** or pow(): 'Queue' and 'dict'
+2025-05-14 14:15:24.718 | INFO     | main:websocket_endpoint:96 - Cleaned up resources for 127.0.0.1:60208
+2025-05-14 14:15:27.255 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:60219
+2025-05-14 14:15:27.255 | ERROR    | main:websocket_endpoint:86 - Error in WebSocket handler for 127.0.0.1:60219: unsupported operand type(s) for ** or pow(): 'Queue' and 'dict'
+2025-05-14 14:15:27.256 | INFO     | main:websocket_endpoint:96 - Cleaned up resources for 127.0.0.1:60219
+2025-05-14 14:15:29.453 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:60224
+2025-05-14 14:15:29.454 | ERROR    | main:websocket_endpoint:86 - Error in WebSocket handler for 127.0.0.1:60224: unsupported operand type(s) for ** or pow(): 'Queue' and 'dict'
+2025-05-14 14:15:29.454 | INFO     | main:websocket_endpoint:96 - Cleaned up resources for 127.0.0.1:60224

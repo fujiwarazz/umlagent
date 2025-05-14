@@ -6,24 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agent Chat Interface</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="style.css">
     <style>
         body {
             background-color: #f2f2f7;
             /* Apple-like light gray */
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+            /* System font stack */
         }
 
-        /* Custom styles for frosted glass */
         .frosted-glass {
             background-color: rgba(255, 255, 255, 0.6);
-            /* Semi-transparent white background */
             backdrop-filter: blur(10px);
-            /* Apply the blur effect */
             -webkit-backdrop-filter: blur(10px);
-            /* For Safari support */
         }
 
-        /* Simple animation for typewriter effect cursor */
         @keyframes blink {
 
             from,
@@ -39,29 +35,102 @@
         .typing-cursor {
             animation: blink 0.7s infinite step-start;
             display: inline-block;
-            /* Ensure cursor is visible */
             width: 0.5em;
-            /* Cursor width */
             height: 1em;
-            /* Cursor height */
             vertical-align: -0.15em;
-            /* Align with text baseline */
             background-color: currentColor;
-            /* Use current text color */
             margin-left: 2px;
+        }
+
+        /* 新增的Header H1 spécifique字体样式，更接近Apple风格 */
+        .header-title {
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+            /* 优先使用苹果系统字体，然后是备选的清晰无衬线字体 */
+        }
+
+        /* --- 从 style.css 移入或在此处定义的其他样式 --- */
+        .message {
+            max-width: 70%;
+            word-wrap: break-word;
+            white-space: pre-wrap;
+            padding: 10px 15px;
+            border-radius: 15px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+        }
+
+        .user-message {
+            align-self: flex-end;
+            background-color: #007aff;
+            /* Apple blue */
+            color: white;
+            border-bottom-right-radius: 5px;
+        }
+
+        .agent-message {
+            align-self: flex-start;
+            background-color: #e5e5ea;
+            /* Apple light gray */
+            color: #3a3a3c;
+            /* Dark gray text */
+            border-bottom-left-radius: 5px;
+        }
+
+        .spinner {
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            border-left-color: #007aff;
+            /* Apple blue spinner */
+            border-radius: 50%;
+            width: 16px;
+            height: 16px;
+            animation: spin 1s linear infinite;
+            display: inline-block;
+            margin-left: 8px;
+            vertical-align: middle;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* 可以添加 .error-message 和 .system-message 的样式 */
+        .error-message {
+            color: #ff3b30;
+            /* Apple red for errors */
+            font-style: italic;
+        }
+
+        .system-message {
+            color: #8e8e93;
+            /* Apple secondary gray text */
+            font-size: 0.9em;
         }
     </style>
 </head>
 
 <body class="flex items-center justify-center min-h-screen p-4">
     <div class="chat-container w-full max-w-3xl bg-white rounded-lg shadow-xl flex flex-col h-[90vh] overflow-hidden">
+
+        <header class="p-5 border-b border-gray-200 text-center">
+            <h1 class="header-title text-3xl font-medium text-gray-800 tracking-tight">
+                UML <span class="font-light text-gray-600">AGENT</span>
+            </h1>
+        </header>
         <div id="chatBox" class="chat-box flex-grow p-4 overflow-y-auto flex flex-col space-y-4">
         </div>
+
         <div class="input-area flex p-4 border-t border-gray-200 frosted-glass">
-            <input type="text" id="userInput" placeholder="Enter your message..."
+            <input type="text" id="userInput" placeholder="输入您的消息..."
                 class="flex-grow px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-800 bg-white/80 mr-3">
             <button id="sendButton"
-                class="px-6 py-2 bg-blue-500 text-white font-semibold rounded-lg shadow hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 disabled:opacity-50 disabled:cursor-not-allowed">Send</button>
+                class="px-6 py-2 bg-blue-500 text-white font-semibold rounded-lg shadow hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 disabled:opacity-50 disabled:cursor-not-allowed">
+                发送
+            </button>
         </div>
     </div>
 

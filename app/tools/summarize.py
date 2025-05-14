@@ -3,7 +3,7 @@ from tools.base import BaseTool, ToolResult, ToolFailure # 假设这些基类已
 from utils.logger import logger # 假设您有一个名为 logger 的日志记录器
 
 class FinalResponse(BaseTool):
-    name: str = "final response" # 工具名称，遵循小写和空格的模式
+    name: str = "final_response" # 工具名称，遵循小写和空格的模式
     description: str = """
     一个特殊的工具，用于向用户提供最终的行动总结、结果或结论性答复。
     仅当您已完成处理用户查询的所有必要步骤并准备结束交互时，才应使用此工具。

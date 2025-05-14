@@ -1,0 +1,80 @@
+2025-05-14 14:06:48.921 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:61208
+2025-05-14 14:06:48.923 | ERROR    | main:websocket_endpoint:86 - Error in WebSocket handler for 127.0.0.1:61208: 1 validation error for ReAsk
+  Value error, "ReAsk" object has no field "response_queue" [type=value_error, input_value={'websocket': <starlette.... at 0x000001759AF349E0>}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.10/v/value_error
+2025-05-14 14:06:48.925 | INFO     | main:websocket_endpoint:96 - Cleaned up resources for 127.0.0.1:61208
+2025-05-14 14:08:34.823 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:61755
+2025-05-14 14:08:34.824 | ERROR    | main:websocket_endpoint:86 - Error in WebSocket handler for 127.0.0.1:61755: 1 validation error for ReAsk
+  Value error, "ReAsk" object has no field "response_queue" [type=value_error, input_value={'websocket': <starlette.... at 0x000001759AF36570>}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.10/v/value_error
+2025-05-14 14:08:34.824 | INFO     | main:websocket_endpoint:96 - Cleaned up resources for 127.0.0.1:61755
+2025-05-14 14:08:38.572 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:61769
+2025-05-14 14:08:38.573 | ERROR    | main:websocket_endpoint:86 - Error in WebSocket handler for 127.0.0.1:61769: 1 validation error for ReAsk
+  Value error, "ReAsk" object has no field "response_queue" [type=value_error, input_value={'websocket': <starlette.... at 0x000001759AF348F0>}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.10/v/value_error
+2025-05-14 14:08:38.574 | INFO     | main:websocket_endpoint:96 - Cleaned up resources for 127.0.0.1:61769
+2025-05-14 14:08:48.574 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:61803
+2025-05-14 14:08:48.574 | ERROR    | main:websocket_endpoint:86 - Error in WebSocket handler for 127.0.0.1:61803: 1 validation error for ReAsk
+  Value error, "ReAsk" object has no field "response_queue" [type=value_error, input_value={'websocket': <starlette.... at 0x000001759AF37440>}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.10/v/value_error
+2025-05-14 14:08:48.576 | INFO     | main:websocket_endpoint:96 - Cleaned up resources for 127.0.0.1:61803
+2025-05-14 14:08:53.338 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:52745
+2025-05-14 14:08:53.338 | ERROR    | main:websocket_endpoint:86 - Error in WebSocket handler for 127.0.0.1:52745: 1 validation error for ReAsk
+  Value error, "ReAsk" object has no field "response_queue" [type=value_error, input_value={'websocket': <starlette.... at 0x000001759AEC38C0>}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.10/v/value_error
+2025-05-14 14:08:53.339 | INFO     | main:websocket_endpoint:96 - Cleaned up resources for 127.0.0.1:52745
+2025-05-14 14:09:00.823 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:52767
+2025-05-14 14:09:00.824 | ERROR    | main:websocket_endpoint:86 - Error in WebSocket handler for 127.0.0.1:52767: 1 validation error for ReAsk
+  Value error, "ReAsk" object has no field "response_queue" [type=value_error, input_value={'websocket': <starlette.... at 0x000001759AF37080>}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.10/v/value_error
+2025-05-14 14:09:00.825 | INFO     | main:websocket_endpoint:96 - Cleaned up resources for 127.0.0.1:52767
+2025-05-14 14:10:00.949 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:53091
+2025-05-14 14:10:00.949 | ERROR    | main:websocket_endpoint:86 - Error in WebSocket handler for 127.0.0.1:53091: 1 validation error for ReAsk
+  Value error, "ReAsk" object has no field "response_queue" [type=value_error, input_value={'websocket': <starlette.... at 0x000001759AF4C1A0>}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.10/v/value_error
+2025-05-14 14:10:00.951 | INFO     | main:websocket_endpoint:96 - Cleaned up resources for 127.0.0.1:53091
+2025-05-14 14:10:02.710 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:53095
+2025-05-14 14:10:02.710 | ERROR    | main:websocket_endpoint:86 - Error in WebSocket handler for 127.0.0.1:53095: 1 validation error for ReAsk
+  Value error, "ReAsk" object has no field "response_queue" [type=value_error, input_value={'websocket': <starlette.... at 0x000001759AF4CE60>}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.10/v/value_error
+2025-05-14 14:10:02.711 | INFO     | main:websocket_endpoint:96 - Cleaned up resources for 127.0.0.1:53095
+2025-05-14 14:10:04.941 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:53100
+2025-05-14 14:10:04.941 | ERROR    | main:websocket_endpoint:86 - Error in WebSocket handler for 127.0.0.1:53100: 1 validation error for ReAsk
+  Value error, "ReAsk" object has no field "response_queue" [type=value_error, input_value={'websocket': <starlette.... at 0x000001759AF4D940>}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.10/v/value_error
+2025-05-14 14:10:04.942 | INFO     | main:websocket_endpoint:96 - Cleaned up resources for 127.0.0.1:53100
+2025-05-14 14:10:06.918 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:53108
+2025-05-14 14:10:06.920 | ERROR    | main:websocket_endpoint:86 - Error in WebSocket handler for 127.0.0.1:53108: 1 validation error for ReAsk
+  Value error, "ReAsk" object has no field "response_queue" [type=value_error, input_value={'websocket': <starlette.... at 0x000001759AF4E3F0>}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.10/v/value_error
+2025-05-14 14:10:06.921 | INFO     | main:websocket_endpoint:96 - Cleaned up resources for 127.0.0.1:53108
+2025-05-14 14:10:08.715 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:53114
+2025-05-14 14:10:08.717 | ERROR    | main:websocket_endpoint:86 - Error in WebSocket handler for 127.0.0.1:53114: 1 validation error for ReAsk
+  Value error, "ReAsk" object has no field "response_queue" [type=value_error, input_value={'websocket': <starlette.... at 0x000001759AF4EE40>}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.10/v/value_error
+2025-05-14 14:10:08.717 | INFO     | main:websocket_endpoint:96 - Cleaned up resources for 127.0.0.1:53114
+2025-05-14 14:10:11.104 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:53124
+2025-05-14 14:10:11.105 | ERROR    | main:websocket_endpoint:86 - Error in WebSocket handler for 127.0.0.1:53124: 1 validation error for ReAsk
+  Value error, "ReAsk" object has no field "response_queue" [type=value_error, input_value={'websocket': <starlette.... at 0x000001759AF4F920>}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.10/v/value_error
+2025-05-14 14:10:11.106 | INFO     | main:websocket_endpoint:96 - Cleaned up resources for 127.0.0.1:53124
+2025-05-14 14:10:29.824 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:53153
+2025-05-14 14:10:29.824 | ERROR    | main:websocket_endpoint:86 - Error in WebSocket handler for 127.0.0.1:53153: 1 validation error for ReAsk
+  Value error, "ReAsk" object has no field "response_queue" [type=value_error, input_value={'websocket': <starlette.... at 0x000001759AF36840>}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.10/v/value_error
+2025-05-14 14:10:29.827 | INFO     | main:websocket_endpoint:96 - Cleaned up resources for 127.0.0.1:53153
+2025-05-14 14:10:32.607 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:53161
+2025-05-14 14:10:32.607 | ERROR    | main:websocket_endpoint:86 - Error in WebSocket handler for 127.0.0.1:53161: 1 validation error for ReAsk
+  Value error, "ReAsk" object has no field "response_queue" [type=value_error, input_value={'websocket': <starlette.... at 0x000001759AF4EF00>}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.10/v/value_error
+2025-05-14 14:10:32.610 | INFO     | main:websocket_endpoint:96 - Cleaned up resources for 127.0.0.1:53161
+2025-05-14 14:10:39.830 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:53173
+2025-05-14 14:10:39.830 | ERROR    | main:websocket_endpoint:86 - Error in WebSocket handler for 127.0.0.1:53173: 1 validation error for ReAsk
+  Value error, "ReAsk" object has no field "response_queue" [type=value_error, input_value={'websocket': <starlette.... at 0x000001759AF4F3B0>}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.10/v/value_error
+2025-05-14 14:10:39.831 | INFO     | main:websocket_endpoint:96 - Cleaned up resources for 127.0.0.1:53173
+2025-05-14 14:10:48.657 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:53192
+2025-05-14 14:10:48.657 | ERROR    | main:websocket_endpoint:86 - Error in WebSocket handler for 127.0.0.1:53192: 1 validation error for ReAsk
+  Value error, "ReAsk" object has no field "response_queue" [type=value_error, input_value={'websocket': <starlette.... at 0x000001759AF4D5B0>}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.10/v/value_error
+2025-05-14 14:10:48.658 | INFO     | main:websocket_endpoint:96 - Cleaned up resources for 127.0.0.1:53192
