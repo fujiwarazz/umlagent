@@ -45,15 +45,12 @@ from utils.logger import logger
 
 
     
-class OrchestratorAgent(ReActAgent): # 或者继承你项目中的某个Agent基类
+class OrchestratorAgent(ReActAgent): 
     name: str = "OrchestratorAgent"
     description: str = "An agent that understands user requests and delegates them to specialized agents. It prioritizes planning for complex tasks."
     
-    sub_agents: Dict[str, Any] = Field(default_factory=dict) # 子Agent实例: {"agent_name": agent_instance}
-    # planning_agent_name: str = "uml_agent" # 明确指定planning agent的名称
+    sub_agents: Dict[str, Any] = Field(default_factory=dict) 
 
-    # 覆盖系统提示，以指导LLM进行Agent选择和规划优先
-    # 注意：这里的"tools"会是 call_uml_agent, call_swe_agent 等
     ORCHESTRATOR_SYSTEM_PROMPT: str = """
 You are an orchestrator agent. Your goal is to understand the user's request and delegate it to the most appropriate specialized agent.
 You have the following specialized agents available as tools:
@@ -68,13 +65,10 @@ Based on the user's request, decide which agent (tool) to call.
 The input to the chosen tool should be the user's original request or a relevant sub-task.
 You MUST choose one of the available agent tools.
 """
-    # LLM 实例 (可以从父类继承或在此处初始化)
-    # llm: LLMInterface = Field(default_factory=LLMInterface) # 假设的LLM接口
 
-    def __init__(self, sub_agents_list: List[Any], **data: Any): # Pydantic v2 style
-        super().__init__(**data) # `name`, `description`, `llm`等会由ToolCallAgent处理
+    def __init__(self, sub_agents_list: List[Any], **data: Any):
+        super().__init__(**data) 
         
-        # 注册子Agent并构建可供Orchestrator的LLM调用的"工具"
         _tools_for_orchestrator = []
         for agent_instance in sub_agents_list:
             if not hasattr(agent_instance, 'name') or not hasattr(agent_instance, 'description') or not hasattr(agent_instance, 'run') or not hasattr(agent_instance, 'as_tool_for_orchestrator'):
@@ -112,9 +106,6 @@ You MUST choose one of the available agent tools.
         )
 
         if llm_response.tool_calls and llm_response.tool_calls[0]:
-            # 假设LLM返回的第一个ToolCall是我们要执行的
-            # 这个ToolCall的name应该是 "call_uml_agent" 或 "call_swe_agent"
-            # arguments应该包含传递给该子Agent的请求
             selected_tool_call = llm_response.tool_calls[0]
             self.messages.append(Message.from_tool_calls(content=llm_response.content, tool_calls=[selected_tool_call]))
             return selected_tool_call
@@ -131,10 +122,7 @@ You MUST choose one of the available agent tools.
         """
         chosen_agent_tool_name = tool_call.function.name # e.g., "call_uml_agent"
         
-        # 从 "call_agent_name" 提取 "agent_name"
-        # agent_name_to_call = chosen_agent_tool_name.replace("call_", "") 
-        
-        # 更稳健的方式：查找哪个注册的agent的tool名与之匹配
+     
         target_agent_name = None
         for name, agent_instance in self.sub_agents.items():
             if agent_instance.as_tool_for_orchestrator().name == chosen_agent_tool_name:
@@ -150,13 +138,11 @@ You MUST choose one of the available agent tools.
         selected_agent = self.sub_agents[target_agent_name]
         
         try:
-            # 解析传递给子Agent的参数，这里简化为假设它总是 'user_request'
             import json
             tool_args = json.loads(tool_call.function.arguments)
-            task_for_sub_agent = tool_args.get("user_request", "") # 或者LLM直接把原始请求放这
-            if not task_for_sub_agent: # 如果LLM没有明确指定user_request参数，则使用原始请求
-                 # 需要找到原始的用户请求，这取决于messages的结构
-                 # 假设最后一个用户消息是原始请求，但更稳妥的做法是让LLM在arguments中明确指定
+            task_for_sub_agent = tool_args.get("user_request", "") 
+            if not task_for_sub_agent: 
+             
                 original_user_request = ""
                 for msg in reversed(self.messages):
                     if msg.role == "user":
@@ -166,7 +152,6 @@ You MUST choose one of the available agent tools.
 
             logger.info(f"Orchestrator delegating task to {selected_agent.name}: '{task_for_sub_agent}'")
             
-            # 调用子Agent的 run 方法
             result = await selected_agent.run(request=task_for_sub_agent)
             
             self.messages.append(Message.tool_message(content=result, tool_call_id=tool_call.id, name=chosen_agent_tool_name))
@@ -179,9 +164,7 @@ You MUST choose one of the available agent tools.
 
 
 
-    如果你的 ToolCallAgent 有 think 和 act 方法，你可能需要这样组织：
     async def think(self) -> bool:
-        # 从 self.messages 中获取最新的用户请求
         latest_user_message = next((m.content for m in reversed(self.messages) if m.role == "user"), None)
         if not latest_user_message:
             logger.warning("Orchestrator think: No user message found to process.")
