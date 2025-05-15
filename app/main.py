@@ -56,18 +56,7 @@ async def websocket_endpoint(websocket: WebSocket):
         while True:
             data = await websocket.receive_text()
             logger.info(f"Received message from {client_id}: {data}")
-            # if data.startswith("<<<REASK>>>"):
-            #     user_response_data = data[len("<<<REASK>>>"):].strip()
-            #     tool = agent.available_tools.get_tool('re_ask')
-            #     if isinstance(tool, ReAsk):
-            #         logger.info(f"Putting re-ask response into ReAsk tool's queue: '{user_response_data}'")
-            #         # 将提取的回复内容放入 ReAsk 工具实例内部的队列中
-            #         # ReAsk.execute 方法正在等待这个队列
-            #         await tool.response_queue.put(user_response_data)
-
-            #         continue 
-            
-            # else: 
+           
             await agent.run(query=data, websocket=websocket)
 
     except WebSocketDisconnect:
@@ -85,7 +74,7 @@ async def websocket_endpoint(websocket: WebSocket):
     finally:
         # Ensure agent is removed even if other exceptions occur
         if client_id in active_agents:
-             del active_agents[client_id]
+            del active_agents[client_id]
         logger.info(f"Cleaned up resources for {client_id}")
 
 

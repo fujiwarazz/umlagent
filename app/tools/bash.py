@@ -46,17 +46,11 @@ class GitHubRepoCloner(BaseTool):
         super().__init__(local_clone_base_dir=local_clone_base_dir, **kwargs)
         
         
-        # 确保基础克隆目录存在
-        # os.makedirs 是同步操作，在初始化时执行通常可以接受
         try:
             os.makedirs(self.local_clone_base_dir, exist_ok=True)
         except OSError as e:
-            # 可以选择在这里处理创建目录失败的情况，例如打印警告或抛出异常
             print(f"警告：创建基础克隆目录 '{self.local_clone_base_dir}' 时发生错误: {e}")
-            # 如果这是关键错误，可以考虑抛出初始化相关的异常
-            # raise ValueError(f"无法创建基础克隆目录: {self.local_clone_base_dir}") from e
         
-        # print(f"GitHubRepoCloner 初始化：基础克隆目录设置为 '{self.local_clone_base_dir}'")
 
 
     async def execute(self, repo_name: str) -> str:

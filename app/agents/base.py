@@ -133,7 +133,7 @@ class BaseAgent(ABC,BaseModel):
                 ## 记忆总结，维护短期记忆
                 if self.current_step == 10 * times:
                     tokens = self.memory.count_tokens()
-                    if tokens >= 1024 * 32:
+                    if tokens >= 8192 // 2:
                         self.summerize_memories(count=10)
 
             if self.current_step >= self.max_steps:

@@ -1,0 +1,12 @@
+aiofiles==24.1.0
+baidusearch==1.0.3
+clang==20.1.0
+fastapi==0.115.12
+graphviz==0.20.3
+javalang==0.13.0
+loguru==0.7.3
+openai==1.78.1
+pydantic==2.11.4
+PyYAML==6.0.2
+tenacity==9.0.0
+tomli==2.2.1

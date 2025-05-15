@@ -1,0 +1,6 @@
+2025-05-14 21:55:11.566 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:60178
+2025-05-14 21:55:11.605 | INFO     | main:websocket_endpoint:74 - WebSocket connection disconnected from 127.0.0.1:60178
+2025-05-14 21:55:11.605 | INFO     | main:websocket_endpoint:89 - Cleaned up resources for 127.0.0.1:60178
+2025-05-14 21:55:11.803 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:60186
+2025-05-14 21:57:41.026 | INFO     | main:websocket_endpoint:74 - WebSocket connection disconnected from 127.0.0.1:60186
+2025-05-14 21:57:41.026 | INFO     | main:websocket_endpoint:89 - Cleaned up resources for 127.0.0.1:60186
