@@ -1,0 +1,88 @@
+2025-05-15 09:46:19.207 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:64410
+2025-05-15 09:46:20.788 | INFO     | main:websocket_endpoint:56 - Received message from 127.0.0.1:64410: hi
+2025-05-15 09:46:20.788 | INFO     | agents.umlagent:create_initial_plan:208 - Creating initial plan with ID: plan_1747273579
+2025-05-15 09:46:25.100 | INFO     | agents.umlagent:create_initial_plan:235 -  结果为:  `工具:planning`的观测结果输出为 :
+Plan created successfully with ID: plan_1747273579
+
+Plan: Respond to User's Greeting (ID: plan_1747273579)
+=======================================================
+
+Progress: 0/3 steps completed (0.0%)
+Status: 0 completed, 0 in progress, 0 blocked, 3 not started
+
+Steps:
+0. [ ] Understand the context of the user's greeting
+1. [ ] Formulate an appropriate response
+2. [ ] Deliver the response to the user
+
+2025-05-15 09:46:25.101 | WARNING  | agents.umlagent:create_initial_plan:251 - No plan created from initial request
+2025-05-15 09:46:25.101 | INFO     | agents.base:run:119 - websocket initialized finish, state:<starlette.datastructures.State object at 0x10509fa70>
+2025-05-15 09:46:25.101 | INFO     | agents.base:run:129 - Executing step 1/20
+2025-05-15 09:46:28.976 | INFO     | agents.tool_call:think:56 - ✨ uml agnet 的想法为: The plan is sufficient and does not need refinement. I can execute the next step immediately, which is to understand the context of the user's greeting.
+2025-05-15 09:46:28.977 | INFO     | agents.tool_call:think:58 - 🛠️ uml agnet 选择了 1 个工具
+2025-05-15 09:46:28.978 | INFO     | agents.tool_call:think:63 - 🧰 选择的工具信息: ['planning']
+2025-05-15 09:46:28.978 | INFO     | agents.tool_call:think:78 - 🧰 工具的参数是: ['{"command": "mark_step", "plan_id": "plan_1747273579", "step_index": 0, "step_status": "completed"}']
+2025-05-15 09:46:28.978 | INFO     | agents.tool_call:act:131 - 🎯 工具 'planning' 完成了它的任务! 其执行结果为:  `工具:planning`的观测结果输出为 :
+Step 0 updated in plan 'plan_1747273579'.
+
+Plan: Respond to User's Greeting (ID: plan_1747273579)
+=======================================================
+
+Progress: 1/3 steps completed (33.3%)
+Status: 1 completed, 0 in progress, 0 blocked, 2 not started
+
+Steps:
+0. [✓] Understand the context of the user's greeting
+1. [ ] Formulate an appropriate response
+2. [ ] Deliver the response to the user
+
+2025-05-15 09:46:28.979 | INFO     | agents.base:run:129 - Executing step 2/20
+2025-05-15 09:46:33.850 | INFO     | agents.tool_call:think:56 - ✨ uml agnet 的想法为: Using tools response: The plan is sufficient and does not need refinement. I can execute the next step immediately, which is to formulate an appropriate response.
+2025-05-15 09:46:33.850 | INFO     | agents.tool_call:think:58 - 🛠️ uml agnet 选择了 1 个工具
+2025-05-15 09:46:33.850 | INFO     | agents.tool_call:think:63 - 🧰 选择的工具信息: ['planning']
+2025-05-15 09:46:33.850 | INFO     | agents.tool_call:think:78 - 🧰 工具的参数是: ['{"command": "mark_step", "plan_id": "plan_1747273579", "step_index": 1, "step_status": "completed"}']
+2025-05-15 09:46:33.851 | INFO     | agents.tool_call:act:131 - 🎯 工具 'planning' 完成了它的任务! 其执行结果为:  `工具:planning`的观测结果输出为 :
+Step 1 updated in plan 'plan_1747273579'.
+
+Plan: Respond to User's Greeting (ID: plan_1747273579)
+=======================================================
+
+Progress: 2/3 steps completed (66.7%)
+Status: 2 completed, 0 in progress, 0 blocked, 1 not started
+
+Steps:
+0. [✓] Understand the context of the user's greeting
+1. [✓] Formulate an appropriate response
+2. [ ] Deliver the response to the user
+
+2025-05-15 09:46:33.851 | INFO     | agents.base:run:129 - Executing step 3/20
+2025-05-15 09:46:39.314 | INFO     | agents.tool_call:think:56 - ✨ uml agnet 的想法为: Using tools response: The plan is sufficient and does not need refinement. I can execute the next step immediately, which is to deliver the response to the user.
+
+Hi! How can I assist you today?
+2025-05-15 09:46:39.315 | INFO     | agents.tool_call:think:58 - 🛠️ uml agnet 选择了 1 个工具
+2025-05-15 09:46:39.315 | INFO     | agents.tool_call:think:63 - 🧰 选择的工具信息: ['planning']
+2025-05-15 09:46:39.316 | INFO     | agents.tool_call:think:78 - 🧰 工具的参数是: ['{"command": "mark_step", "plan_id": "plan_1747273579", "step_index": 2, "step_status": "completed"}']
+2025-05-15 09:46:39.316 | INFO     | agents.tool_call:act:131 - 🎯 工具 'planning' 完成了它的任务! 其执行结果为:  `工具:planning`的观测结果输出为 :
+Step 2 updated in plan 'plan_1747273579'.
+
+Plan: Respond to User's Greeting (ID: plan_1747273579)
+=======================================================
+
+Progress: 3/3 steps completed (100.0%)
+Status: 3 completed, 0 in progress, 0 blocked, 0 not started
+
+Steps:
+0. [✓] Understand the context of the user's greeting
+1. [✓] Formulate an appropriate response
+2. [✓] Deliver the response to the user
+
+2025-05-15 09:46:39.317 | INFO     | agents.base:run:129 - Executing step 4/20
+2025-05-15 09:46:41.775 | INFO     | agents.tool_call:think:56 - ✨ uml agnet 的想法为: Using tools response: The task is complete as all steps in the plan have been successfully executed. I will now terminate the interaction.
+2025-05-15 09:46:41.775 | INFO     | agents.tool_call:think:58 - 🛠️ uml agnet 选择了 1 个工具
+2025-05-15 09:46:41.775 | INFO     | agents.tool_call:think:63 - 🧰 选择的工具信息: ['terminate']
+2025-05-15 09:46:41.775 | INFO     | agents.tool_call:think:78 - 🧰 工具的参数是: ['{"status": "success"}']
+2025-05-15 09:46:41.776 | INFO     | agents.tool_call:_handle_special_tool:183 - 🏁 Special tool 'terminate' has completed the task!
+2025-05-15 09:46:41.776 | INFO     | agents.tool_call:act:131 - 🎯 工具 'terminate' 完成了它的任务! 其执行结果为:  `工具:terminate`的观测结果输出为 :
+The interaction has been completed with status: success
+2025-05-15 09:46:55.179 | INFO     | main:websocket_endpoint:61 - WebSocket connection disconnected from 127.0.0.1:64410
+2025-05-15 09:46:55.179 | INFO     | main:websocket_endpoint:76 - Cleaned up resources for 127.0.0.1:64410

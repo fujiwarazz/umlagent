@@ -1,3 +1,0 @@
-2025-05-06 11:24:59.628 | INFO     | agents.umlagent:create_initial_plan:205 - Creating initial plan with ID: plan_1746501899
-2025-05-06 11:25:02.730 | ERROR    | llm:ask_tools:213 - API error: Connection error.
-2025-05-06 11:25:06.486 | ERROR    | llm:ask_tools:213 - API error: Connection error.

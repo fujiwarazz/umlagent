@@ -117,7 +117,10 @@ class BaseAgent(ABC,BaseModel):
         if websocket is not None:
             self.websocket = websocket
             logger.info(f"websocket initialized finish, state:{self.websocket.state}")
-
+        else:
+            logger.error(f"websocket is None")
+            
+            
         results: List[str] = []
         times = 1
         async with self.state_context(AgentState.RUNNING):

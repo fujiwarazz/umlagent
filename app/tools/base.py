@@ -62,6 +62,7 @@ class ToolResult(BaseModel):
     error: Optional[str] = Field(default=None)
     output: Any = Field(default=None)
     system: Optional[str] = Field(default=None)
+    other: Optional[str] = Field(default=None)
 
     class Config:
         arbitrary_types_allowed = True

@@ -1,0 +1,15 @@
+2025-05-14 23:57:30.314 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:50034
+2025-05-14 23:57:30.517 | INFO     | main:websocket_endpoint:61 - WebSocket connection disconnected from 127.0.0.1:50034
+2025-05-14 23:57:30.518 | INFO     | main:websocket_endpoint:76 - Cleaned up resources for 127.0.0.1:50034
+2025-05-14 23:57:30.944 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:50081
+2025-05-14 23:57:31.135 | INFO     | main:websocket_endpoint:61 - WebSocket connection disconnected from 127.0.0.1:50081
+2025-05-14 23:57:31.136 | INFO     | main:websocket_endpoint:76 - Cleaned up resources for 127.0.0.1:50081
+2025-05-14 23:57:31.568 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:50122
+2025-05-14 23:57:31.762 | INFO     | main:websocket_endpoint:61 - WebSocket connection disconnected from 127.0.0.1:50122
+2025-05-14 23:57:31.762 | INFO     | main:websocket_endpoint:76 - Cleaned up resources for 127.0.0.1:50122
+2025-05-14 23:57:32.182 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:50163
+2025-05-14 23:57:32.374 | INFO     | main:websocket_endpoint:61 - WebSocket connection disconnected from 127.0.0.1:50163
+2025-05-14 23:57:32.374 | INFO     | main:websocket_endpoint:76 - Cleaned up resources for 127.0.0.1:50163
+2025-05-14 23:57:32.854 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:50224
+2025-05-14 23:57:33.016 | INFO     | main:websocket_endpoint:61 - WebSocket connection disconnected from 127.0.0.1:50224
+2025-05-14 23:57:33.017 | INFO     | main:websocket_endpoint:76 - Cleaned up resources for 127.0.0.1:50224

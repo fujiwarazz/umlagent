@@ -158,7 +158,7 @@ class ToolCallAgent(ReActAgent):
             args = command.function.arguments
             args = json.loads(args) if args else {}
             result = await self.available_tools.execute(name=name, tool_input=args)
-
+            
             # Format result for display
             observation = (
                 f" `工具:{name}`的观测结果输出为 :\n{str(result)}"

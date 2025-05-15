@@ -1,3 +1,0 @@
-2025-05-14 11:32:54.879 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:50777
-2025-05-14 11:32:54.935 | INFO     | main:websocket_endpoint:66 - WebSocket connection disconnected from 127.0.0.1:50777
-2025-05-14 11:32:54.937 | INFO     | main:websocket_endpoint:81 - Cleaned up resources for 127.0.0.1:50777

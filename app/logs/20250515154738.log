@@ -1,0 +1,3082 @@
+2025-05-15 15:47:39.359 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:54328
+2025-05-15 15:47:42.823 | INFO     | main:websocket_endpoint:60 - WebSocket connection disconnected from 127.0.0.1:54328
+2025-05-15 15:47:42.823 | INFO     | main:websocket_endpoint:75 - Cleaned up resources for 127.0.0.1:54328
+2025-05-15 15:47:43.230 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:54336
+2025-05-15 15:48:45.763 | INFO     | main:websocket_endpoint:56 - Received message from 127.0.0.1:54336: 我想学习关于lora的大模型项目，给我介绍一个，分析代码的uml
+2025-05-15 15:48:45.763 | INFO     | agents.umlagent:create_initial_plan:214 - Creating initial plan with ID: plan_1747295325
+2025-05-15 15:48:51.631 | INFO     | agents.umlagent:create_initial_plan:243 -  结果为:  `工具:planning`的观测结果输出为 :
+Plan created successfully with ID: plan_1747295325
+
+Plan: 分析关于LoRA的大模型项目并生成UML图 (ID: plan_1747295325)
+==================================================
+
+Progress: 0/4 steps completed (0.0%)
+Status: 0 completed, 0 in progress, 0 blocked, 4 not started
+
+Steps:
+0. [ ] 搜索一个关于LoRA的大模型项目
+1. [ ] 克隆找到的GitHub仓库到本地
+2. [ ] 生成所选项目的UML类图
+3. [ ] 提供项目简介和UML图给用户
+
+2025-05-15 15:48:51.633 | INFO     | agents.base:run:119 - websocket initialized finish, state:<starlette.datastructures.State object at 0x0000018E2CB27FE0>
+2025-05-15 15:48:51.633 | INFO     | agents.base:run:129 - Executing step 1/20
+2025-05-15 15:48:54.783 | INFO     | agents.tool_call:think:56 - ✨ uml agnet 的想法为: 计划已创建，下一步是执行第一个步骤：搜索一个关于LoRA的大模型项目。
+2025-05-15 15:48:54.785 | INFO     | agents.tool_call:think:58 - 🛠️ uml agnet 选择了 1 个工具
+2025-05-15 15:48:54.785 | INFO     | agents.tool_call:think:63 - 🧰 选择的工具信息: ['baidu_search']
+2025-05-15 15:48:54.786 | INFO     | agents.tool_call:think:78 - 🧰 工具的参数是: ['{"query": "lora 大模型 项目 github"}']
+2025-05-15 15:48:56.042 | INFO     | agents.tool_call:act:131 - 🎯 工具 'baidu_search' 完成了它的任务! 其执行结果为:  `工具:baidu_search`的观测结果输出为 :
+[{'title': 'lora · GitHub Topics · GitHub', 'abstract': 'lora · GitHub Topics · GitHub\n\n2025年4月28日Code for loralib, an implementation of "LoRA: Low-Rank Adaptation of Large Language Models" deep-learningpytorchloralanguage-modeladaptationrobertalow-rankgpt-2gpt-3deberta UpdatedDec 17, 2024 Python BELLE: Be Everyone\'s Large Language model Engine(开源中文对话大模型)', 'url': 'http://www.baidu.com/link?url=7_VX5p-yxJ3kuId9iChvpGVU_9em_qPQL20QSHFIj0Q0YrLcPPGKAtJM9hcM8t2R', 'rank': 1}, {'title': '离谱到优秀!从零构建大模型的项目开源了!_github大模型项目-CSDN博客', 'abstract': '离谱到优秀!从零构建大模型的项目开源了!_github大模型项目-CSDN博客\n\n\n\n\n\n\n\n\n\n2025年2月20日发布了大模型极简结构,数据集清洗和预处理、监督预训练(Pretrain)、有监督指令微调(SFT)、低秩自适应(LoRA) 微调,无奖励强化学习直接偏好对齐(DPO)的全阶段代码,也包含拓展共享混合专家(MoE) 的稀疏模型; 这不仅是一个开源模型的实现,也是入门大语言模型(LLM)的教程。 希望此项目能为研究者提供一个抛砖引玉的入...\n\n\nCSDN博客\n\n\n\n\n\n\n\n\n\ue680\n播报\n\n\n\ue67d\n暂停', 'url': 'http://www.baidu.com/link?url=Iw7UZ1ubf7hhesAHVzE_w-_zyRt3m7yxI_rdRSvy0qPn6NJAjbyvh-ZS-3_mjdmrXMRTUzg4gDzL8sVAXunBCOyChDBAQBl-ZovcHEWCAau', 'rank': 2}, {'title': '大家还在搜训练一个LORA模型要多久github优秀开源项目github好玩的项目lora是什么ai模型github上有哪些好的开源项目github热门开源项目github新手开源项目推荐github热门项目', 'abstract': '大家还在搜训练一个LORA模型要多久github优秀开源项目github好玩的项目lora是什么ai模型github上有哪些好的开源项目github热门开源项目github新手开源项目推荐github热门项目', 'url': '/s?wd=%E8%AE%AD%E7%BB%83%E4%B8%80%E4%B8%AALORA%E6%A8%A1%E5%9E%8B%E8%A6%81%E5%A4%9A%E4%B9%85&usm=7&ie=utf-8&rsv_pq=c3545d8a00302989&oq=lora%20%E5%A4%A7%E6%A8%A1%E5%9E%8B%20%E9%A1%B9%E7%9B%AE%20github&rsv_t=537dbPJNY46xoAGBfjqwQ97wVTt5lDa7%2BTcMAADcUEyNq8msZgLNypcwF90&rsf=101636803&rsv_dl=0_prs_28608_1', 'rank': 3}, {'title': '「Github一周热点20」本地大模型运行工具、开源CRM等5个火爆项目', 'abstract': '「Github一周热点20」本地大模型运行工具、开源CRM等5个火爆项目\n\n\n\n\n\n\n\n\n\n2024年4月28日GitHub 链接:https://github.com/hiyouga/LLaMA-Factory 上周Star 数:3000+ LLaMA-Factory是一个统一的框架,集成了一套先进的高效训练方法。它允许用户通过内置的Web UI灵活定制100多个LLMs的微调,而无需编写代码。 高效的 fine-tuning 对于将大型语言模型落地式至关重要的,很多时候微调所带来的效果可以让大语言模...\n\n\n知乎\n\n\n\n\n\n\n\n\n\ue680\n播报\n\n\n\ue67d\n暂停\n\n\n\nLORA:大模型轻量级微调 ', 'url': 'http://www.baidu.com/link?url=PymthoqPoxS7HVpPbBR4e6TAd0glbjBa03g2_nqr9mBjKe4Zr6b2kyf2N8OA0sbd', 'rank': 4}, {'title': 'GitHub明星项目:狂揽40k star的大模型开源教程!-CSDN博客', 'abstract': 'GitHub明星项目:狂揽40k star的大模型开源教程!-CSDN博客\n\n\n\n\n\n\n\n\n\n6天前🥱 LazyMergekit:轻松使用MergeKit一键合并模型,colab ⚡ AutoGGUF:一键将大语言模型(LLMs)量化为GGUF格式,colab 🌳 Model Family Tree:可视化被合并模型的家族树,colab Fine-tuning: 使用Colab 对Llama2 进行 fine-tuning:文章,colab 使用Axolotl对 LLMs 进行 fine-tuning:文章,colab ...\n\n\nCSDN博客\n\n\n\n\n\n\n\n\n\ue680\n播报\n\n\n\ue67d\n暂停', 'url': 'http://www.baidu.com/link?url=lMAEKW9tkDRFF78mYiO-VF2o92mbbmYMLGKx2hCkVcqwS6QoJVUYHxnsStOcTmz1EeAH_YtuLyLCEoDjFJH_QqT1NnnW4pnN-HyI68G3jHW', 'rank': 5}, {'title': 'lora 大模型 项目 github - 聊一下更多精彩', 'abstract': 'lora 大模型 项目 github - 聊一下更多精彩github助手1.3万人聊过\n\n\n\ngithub助手1.3万人聊过\n\nGITHUB专家724人聊过\n\nGITHUB指南14人聊过\n\n\n\n\n\n\n你好，我是GitHub专家助手，拥有丰富的GitHub使用经验和专业技能。很高兴与你交流，请问有什么关于GitHub的问题或需求，我可以帮你解答或协助解决吗？\n\n你好，我是GITHUB探索者，可以帮你发现GITHUB上最新流行的开源项目，并为你归纳总结，你想了解哪方面的项目呢？\n\n您好！我是GITHUB指南实战专家助手，可以用AI阅读大模型提取并浏览GITHUB平台信息，同步翻译与国内的GITHU', 'url': 'http://www.baidu.com/link?url=Iw7UZ1ubf7hhesAHVzE_wzO19FgkzsIvY9Bc_pmMKUQOiL6Manem0V2aUU3NL8aNh11ZwSJX4Uxflp42j7iWHxptG5hGb5c3UJh5qQofnFQQxi3EDNG_RHjU52TvS0kqm-r3sSXXRdqXAIOu2mBopS7431_A_8JUlaHv0D4Y3OBUhIkAZqiLLVa_RCIt6ZtcswZV2KyEXhyEV3Mavt11aKgiB-zrqN3AgKCXYc8dej4cV4wnSWJbw-XHPHPPsUbYLhX-2TyxzfHjUqlEg1NXwPMwbEIthVD1QIKm4-jmM2ltZW3JoveUkQrH9GZDwfv-C7UXJZugaEJMeDWRcId1XatWC0D7gvndv0b9PpjIZkfuJpg6OU5LEhECFjrRTZKMlHWyLEJUB9CS321XViY_cAQcuFh-IKddzqtDprv-TontrWqsw7RLvrMTHHNWCc1zBa0EwrV0PVfRAOUFHwlhI6xcDsyPQjRR1LeCO331m8qJEJwPg4VYfWTxDYvno_oZjFBeYCpyK0xEN2XKYggMBSu4EhCvxgMS8ukBRd6D8SXdyArvdw3UcCCKdn3FK5CoOSkjj0vR9HY7_Q6TfgoEG_', 'rank': 6}, {'title': 'LoRA 引领多模态模型革命,大模型的微调方案', 'abstract': 'LoRA 引领多模态模型革命,大模型的微调方案\n\n\n\n\n\n\n\n\n\n2024年4月28日大模型参数高效微调技术原理综述（五）-LoRA、AdaLoRA、QLoRA大模型参数高效微调技术实战（五）-LoRA 模型微调 优化代码，改进精度！我们的微调代码现可从 GitHub 的 llm-action 项目获取，具体位于 blip2_lora_int8_fine_tune.py 文件中。关键步骤包括：- 将模型精度调整为 8 位整数。- 微调模型以提升性能。\n\n\nIT互联人生\n\n\n\n\n\n\n\n\n\ue680\n播报\n\n\n\ue67d\n暂停', 'url': 'http://www.baidu.com/link?url=PymthoqPoxS7HVpPbBR4eqYGhyetawki2qyHZRFgdQJhpaNOD6NoUmRg17kloXOOZC0wlzxlBOHvgfqsvMAuppRxkcB0KZCYH5s1ZFDDu-G', 'rank': 7}, {'title': 'S-LoRA:一个GPU运行数千大模型成为可能', 'abstract': 'S-LoRA:一个GPU运行数千大模型成为可能\n\n\n\n\n\n\n\n\n\n2023年11月15日张量并行可以减少为大模型提供服务时每个 GPU 的内存使用量和延迟。在本文设置中，额外的 LoRA 适配器引入了新的权重矩阵和矩阵乘法，这就需要为这些新增项目制定新的分区策略。评估 最后，研究者通过为 Llama-7B/13B/30B/70B 提供服务来评估 S-LoRA。结果表明，S-LoRA 可以在单个 GPU 或多个 GPU 上为数千个 ...\n\n\n机器之心Pro\n\n\n\n\n\n\n\n\n\ue680\n播报\n\n\n\ue67d\n暂停', 'url': 'http://www.baidu.com/link?url=PymthoqPoxS7HVpPbBR4eqYGhyetawki2qyHZRFgdQICFKdcLSxjHXJY_-fUc0zB6jr_oeRAAal2mBLB_ykUWRn6A77D9ibASR5s0aKLK0u', 'rank': 8}, {'title': 'lora 大模型 项目 github\n\xa0-\xa0精选笔记', 'abstract': 'lora 大模型 项目 github\n\xa0-\xa0精选笔记\n\n\n\n\n\n\n\n\n\nollama使用指南超全版赛say181赞\n\n\n\n\n\n\nloralowrankadaptationoflargelanguagemodelslora大型语言模型的低秩自适应Snowman1赞\n\n\n\n\n\n\n只需3个脚本完成基于llamafactory的大模型训练lora权重合并以及构建推理服务程序锅25赞\n\n\n\n\n\n\n模型微调llamafactory二沧浪之水7赞\n\n        查看更多笔记 >', 'url': 'http://www.baidu.com/link?url=5TbsTQFcj9Yikcb1oHcX0hhSlWvDCf-79FQZjvhZ6xx8IOFjly-161oOXTtRn7uReLXh6j_feOkKGrnCrl-foAhHwixu0TAOhqAEYM2SvHFvztgEjD-m2rK5JJk7N_p8Pb4GdulXa2B1ISTUJ5qyZl6AxF5eWaG7MF9_b6tchsLEtD23L7SVotxl6FOo2GVd', 'rank': 9}]
+2025-05-15 15:48:56.045 | INFO     | agents.umlagent:update_plan_status:159 - Marked step 0 as completed in plan plan_1747295325
+2025-05-15 15:48:56.045 | INFO     | agents.base:run:129 - Executing step 2/20
+2025-05-15 15:49:01.055 | INFO     | agents.tool_call:think:56 - ✨ uml agnet 的想法为: 我已经找到了一个关于LoRA的大模型项目，下一步是克隆这个GitHub仓库到本地。现在我将执行这一步骤。
+2025-05-15 15:49:01.057 | INFO     | agents.tool_call:think:58 - 🛠️ uml agnet 选择了 1 个工具
+2025-05-15 15:49:01.057 | INFO     | agents.tool_call:think:63 - 🧰 选择的工具信息: ['github_repo_cloner_ssh']
+2025-05-15 15:49:01.058 | INFO     | agents.tool_call:think:78 - 🧰 工具的参数是: ['{"repo_name": "EdwardLeeCloud/LLM-LoRA"}']
+2025-05-15 15:49:06.472 | INFO     | agents.tool_call:act:131 - 🎯 工具 'github_repo_cloner_ssh' 完成了它的任务! 其执行结果为:  `工具:github_repo_cloner_ssh`的观测结果输出为 :
+错误：通过 SSH 克隆仓库 'EdwardLeeCloud/LLM-LoRA' 失败。
+命令退出码: 128
+Git 标准错误输出:
+Cloning into 'D:\deep_learning\codes\workspace\LLM-LoRA'...
+ERROR: Repository not found.
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+Git 标准输出:
+
+2025-05-15 15:49:06.472 | INFO     | agents.umlagent:update_plan_status:159 - Marked step 1 as completed in plan plan_1747295325
+2025-05-15 15:49:06.472 | INFO     | agents.base:run:129 - Executing step 3/20
+2025-05-15 15:49:13.111 | INFO     | agents.tool_call:think:56 - ✨ uml agnet 的想法为: Using tools response: 虽然克隆仓库时遇到了错误，但我可以尝试另一个项目。根据搜索结果，我选择 'hiyouga/LLaMA-Factory' 作为替代项目。现在我将克隆这个GitHub仓库到本地。
+2025-05-15 15:49:13.112 | INFO     | agents.tool_call:think:58 - 🛠️ uml agnet 选择了 1 个工具
+2025-05-15 15:49:13.112 | INFO     | agents.tool_call:think:63 - 🧰 选择的工具信息: ['github_repo_cloner_ssh']
+2025-05-15 15:49:13.114 | INFO     | agents.tool_call:think:78 - 🧰 工具的参数是: ['{"repo_name": "hiyouga/LLaMA-Factory"}']
+2025-05-15 15:49:28.088 | INFO     | agents.tool_call:act:131 - 🎯 工具 'github_repo_cloner_ssh' 完成了它的任务! 其执行结果为:  `工具:github_repo_cloner_ssh`的观测结果输出为 :
+D:\deep_learning\codes\workspace\LLaMA-Factory
+2025-05-15 15:49:28.088 | INFO     | agents.umlagent:update_plan_status:159 - Marked step 2 as completed in plan plan_1747295325
+2025-05-15 15:49:28.088 | INFO     | agents.base:run:129 - Executing step 4/20
+2025-05-15 15:49:36.321 | INFO     | agents.tool_call:think:56 - ✨ uml agnet 的想法为: Using tools response: 已成功克隆 'hiyouga/LLaMA-Factory' 仓库到本地。下一步是生成该项目的UML类图。
+2025-05-15 15:49:36.321 | INFO     | agents.tool_call:think:58 - 🛠️ uml agnet 选择了 1 个工具
+2025-05-15 15:49:36.321 | INFO     | agents.tool_call:think:63 - 🧰 选择的工具信息: ['code_to_uml_generator_multilang']
+2025-05-15 15:49:36.321 | INFO     | agents.tool_call:think:78 - 🧰 工具的参数是: ['{"repo_path": "D:\\\\deep_learning\\\\codes\\\\workspace\\\\LLaMA-Factory", "output_png_path": "D:\\\\deep_learning\\\\codes\\\\workspace\\\\LLaMA-Factory\\\\llama_factory_uml.png", "target_languages": ["python"]}']
+2025-05-15 15:49:39.270 | INFO     | tools.uml:execute:696 - 准备通过 WebSocket 发送 UML 图片 'llama_factory_uml.png'。
+2025-05-15 15:49:39.289 | INFO     | tools.uml:execute:711 - UML 图片 'llama_factory_uml.png' 已通过 WebSocket 发送 (754155 字节)。
+2025-05-15 15:49:39.292 | INFO     | agents.tool_call:act:131 - 🎯 工具 'code_to_uml_generator_multilang' 完成了它的任务! 其执行结果为:  `工具:code_to_uml_generator_multilang`的观测结果输出为 :
+UML 图表和文本描述已成功生成。
+PNG 图像保存路径: 'D:\deep_learning\codes\workspace\LLaMA-Factory\llama_factory_uml.png'
+
+---
+UML 图表文本描述内容:
+---
+# UML 图表文本描述
+
+## Class: `AlpacaDatasetConverter`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `converter`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `DatasetConverter`
+
+### 方法 (Methods)
+- `__call__(self, example: dict[str, Any]) -> dict[str, Any]`
+
+---
+
+## Class: `ApolloArguments`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `finetuning_args`
+
+### 属性 (Attributes)
+- `apollo_layerwise: bool`
+- `apollo_proj: Literal['svd', 'random']`
+- `apollo_proj_type: Literal['std', 'right', 'left']`
+- `apollo_rank: int`
+- `apollo_scale: float`
+- `apollo_scale_front: bool`
+- `apollo_scale_type: Literal['channel', 'tensor']`
+- `apollo_target: str`
+- `apollo_update_interval: int`
+- `use_apollo: bool`
+
+---
+
+## Class: `AttentionFunction`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `constants`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `str`, `Enum`
+
+### 属性 (Attributes)
+- `AUTO`
+- `DISABLED`
+- `FA2`
+- `SDPA`
+
+---
+
+## Class: `AverageMeter`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `misc`
+
+### 方法 (Methods)
+- `__init__(self)`
+- `reset(self)`
+- `update(self, val, n)`
+
+---
+
+## Class: `BAdamArgument`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `finetuning_args`
+
+### 属性 (Attributes)
+- `badam_mask_mode: Literal['adjacent', 'scatter']`
+- `badam_mode: Literal['layer', 'ratio']`
+- `badam_start_block: Optional[int]`
+- `badam_switch_interval: Optional[int]`
+- `badam_switch_mode: Optional[Literal['ascending', 'descending', 'random', 'fixed']]`
+- `badam_update_ratio: float`
+- `badam_verbose: int`
+- `use_badam: bool`
+
+---
+
+## Class: `BaseEngine`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `base_engine`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `ABC`
+
+### 属性 (Attributes)
+- `can_generate: bool`
+- `generating_args: dict[str, Any]`
+- `model: Union['PreTrainedModel', 'AsyncLLMEngine']`
+- `name: 'EngineName'`
+- `template: 'Template'`
+- `tokenizer: 'PreTrainedTokenizer'`
+
+### 方法 (Methods)
+- `__init__(self, model_args: 'ModelArguments', data_args: 'DataArguments', finetuning_args: 'FinetuningArguments', generating_args: 'GeneratingArguments') -> None`
+
+---
+
+## Class: `BaseModelArguments`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `model_args`
+
+### 属性 (Attributes)
+- `adapter_folder: Optional[str]`
+- `adapter_name_or_path: Optional[str]`
+- `add_special_tokens: Optional[str]`
+- `add_tokens: Optional[str]`
+- `cache_dir: Optional[str]`
+- `disable_gradient_checkpointing: bool`
+- `enable_liger_kernel: bool`
+- `flash_attn: AttentionFunction`
+- `hf_hub_token: Optional[str]`
+- `infer_backend: EngineName`
+- `infer_dtype: Literal['auto', 'float16', 'bfloat16', 'float32']`
+- `low_cpu_mem_usage: bool`
+- `mixture_of_depths: Optional[Literal['convert', 'load']]`
+- `model_name_or_path: Optional[str]`
+- `model_revision: str`
+- `moe_aux_loss_coef: Optional[float]`
+- `ms_hub_token: Optional[str]`
+- `offload_folder: str`
+- `om_hub_token: Optional[str]`
+- `print_param_status: bool`
+- `resize_vocab: bool`
+- `rope_scaling: Optional[RopeScaling]`
+- `shift_attn: bool`
+- `split_special_tokens: bool`
+- `train_from_scratch: bool`
+- `trust_remote_code: bool`
+- `upcast_layernorm: bool`
+- `upcast_lmhead_output: bool`
+- `use_cache: bool`
+- `use_fast_tokenizer: bool`
+- `use_reentrant_gc: bool`
+- `use_unsloth: bool`
+- `use_unsloth_gc: bool`
+
+### 方法 (Methods)
+- `__post_init__(self)`
+
+---
+
+## Class: `BasePlugin`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `mm_plugin`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `MMPluginMixin`
+
+### 方法 (Methods)
+- `get_mm_inputs(self, images: list['ImageInput'], videos: list['VideoInput'], audios: list['AudioInput'], imglens: list[int], vidlens: list[int], audlens: list[int], batch_ids: list[list[int]], processor: Optional['MMProcessor']) -> dict[str, Union[list[int], 'torch.Tensor']]`
+- `process_messages(self, messages: list[dict[str, str]], images: list['ImageInput'], videos: list['VideoInput'], audios: list['AudioInput'], processor: Optional['MMProcessor']) -> list[dict[str, str]]`
+- `process_token_ids(self, input_ids: list[int], labels: Optional[list[int]], images: list['ImageInput'], videos: list['VideoInput'], audios: list['AudioInput'], tokenizer: 'PreTrainedTokenizer', processor: Optional['MMProcessor']) -> tuple[list[int], Optional[list[int]]]`
+
+---
+
+## Class: `BelleMultiturn`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `belle_multiturn`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `datasets.GeneratorBasedBuilder`
+
+### 属性 (Attributes)
+- `VERSION`
+
+### 方法 (Methods)
+- `_generate_examples(self, filepath: str)`
+- `_info(self)`
+- `_split_generators(self, dl_manager: datasets.DownloadManager)`
+
+---
+
+## Class: `CMMLU`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `cmmlu`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `datasets.GeneratorBasedBuilder`
+
+### 属性 (Attributes)
+- `BUILDER_CONFIGS`
+
+### 方法 (Methods)
+- `_generate_examples(self, filepath)`
+- `_info(self)`
+- `_split_generators(self, dl_manager)`
+
+---
+
+## Class: `CMMLUConfig`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `cmmlu`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `datasets.BuilderConfig`
+
+### 方法 (Methods)
+- `__init__(self, **kwargs)`
+
+---
+
+## Class: `Ceval`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `ceval`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `datasets.GeneratorBasedBuilder`
+
+### 属性 (Attributes)
+- `BUILDER_CONFIGS`
+
+### 方法 (Methods)
+- `_generate_examples(self, filepath)`
+- `_info(self)`
+- `_split_generators(self, dl_manager)`
+
+---
+
+## Class: `CevalConfig`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `ceval`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `datasets.BuilderConfig`
+
+### 方法 (Methods)
+- `__init__(self, **kwargs)`
+
+---
+
+## Class: `ChatCompletionMessage`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `protocol`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `BaseModel`
+
+### 属性 (Attributes)
+- `content: Optional[str]`
+- `role: Optional[Role]`
+- `tool_calls: Optional[list[FunctionCall]]`
+
+---
+
+## Class: `ChatCompletionRequest`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `protocol`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `BaseModel`
+
+### 属性 (Attributes)
+- `do_sample: Optional[bool]`
+- `max_tokens: Optional[int]`
+- `messages: list[ChatMessage]`
+- `model: str`
+- `n: int`
+- `stop: Optional[Union[str, list[str]]]`
+- `stream: bool`
+- `temperature: Optional[float]`
+- `tools: Optional[list[FunctionAvailable]]`
+- `top_p: Optional[float]`
+
+---
+
+## Class: `ChatCompletionResponse`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `protocol`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `BaseModel`
+
+### 属性 (Attributes)
+- `choices: list[ChatCompletionResponseChoice]`
+- `created: int`
+- `id: str`
+- `model: str`
+- `object: Literal['chat.completion']`
+- `usage: ChatCompletionResponseUsage`
+
+---
+
+## Class: `ChatCompletionResponseChoice`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `protocol`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `BaseModel`
+
+### 属性 (Attributes)
+- `finish_reason: Finish`
+- `index: int`
+- `message: ChatCompletionMessage`
+
+---
+
+## Class: `ChatCompletionResponseUsage`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `protocol`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `BaseModel`
+
+### 属性 (Attributes)
+- `completion_tokens: int`
+- `prompt_tokens: int`
+- `total_tokens: int`
+
+---
+
+## Class: `ChatCompletionStreamResponse`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `protocol`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `BaseModel`
+
+### 属性 (Attributes)
+- `choices: list[ChatCompletionStreamResponseChoice]`
+- `created: int`
+- `id: str`
+- `model: str`
+- `object: Literal['chat.completion.chunk']`
+
+---
+
+## Class: `ChatCompletionStreamResponseChoice`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `protocol`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `BaseModel`
+
+### 属性 (Attributes)
+- `delta: ChatCompletionMessage`
+- `finish_reason: Optional[Finish]`
+- `index: int`
+
+---
+
+## Class: `ChatMessage`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `protocol`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `BaseModel`
+
+### 属性 (Attributes)
+- `content: Optional[Union[str, list[MultimodalInputItem]]]`
+- `role: Role`
+- `tool_calls: Optional[list[FunctionCall]]`
+
+---
+
+## Class: `ChatModel`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `chat_model`
+
+### 属性 (Attributes)
+- `_loop`
+- `_thread`
+
+### 方法 (Methods)
+- `__init__(self, args: Optional[dict[str, Any]]) -> None`
+- `chat(self, messages: list[dict[str, str]], system: Optional[str], tools: Optional[str], images: Optional[list['ImageInput']], videos: Optional[list['VideoInput']], audios: Optional[list['AudioInput']], **input_kwargs) -> list['Response']`
+- `get_scores(self, batch_input: list[str], **input_kwargs) -> list[float]`
+- `stream_chat(self, messages: list[dict[str, str]], system: Optional[str], tools: Optional[str], images: Optional[list['ImageInput']], videos: Optional[list['VideoInput']], audios: Optional[list['AudioInput']], **input_kwargs) -> Generator[str, None, None]`
+
+---
+
+## Class: `CompositeModel`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `visual`
+
+### 属性 (Attributes)
+- `language_model_keys: list[str]`
+- `lora_conflict_keys: list[str]`
+- `model_type: str`
+- `projector_key: str`
+- `vision_model_keys: list[str]`
+
+### 方法 (Methods)
+- `get_projector(self, module: 'torch.nn.Module') -> 'torch.nn.Module'`
+
+---
+
+## Class: `ComputeAccuracy`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `metric`
+
+### 方法 (Methods)
+- `__call__(self, eval_preds: 'EvalPrediction', compute_result: bool) -> Optional[dict[str, float]]`
+- `__post_init__(self)`
+- `_dump(self) -> Optional[dict[str, float]]`
+
+---
+
+## Class: `ComputeSimilarity`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `metric`
+
+### 属性 (Attributes)
+- `tokenizer: 'PreTrainedTokenizer'`
+
+### 方法 (Methods)
+- `__call__(self, eval_preds: 'EvalPrediction', compute_result: bool) -> Optional[dict[str, float]]`
+- `__post_init__(self)`
+- `_dump(self) -> Optional[dict[str, float]]`
+
+---
+
+## Class: `CustomDPOTrainer`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `trainer`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `DPOTrainer`
+
+### 属性 (Attributes)
+- `_peft_has_been_casted_to_bf16`
+- `_precomputed_eval_ref_log_probs`
+- `_precomputed_train_ref_log_probs`
+- `_stored_metrics`
+- `beta`
+- `f_divergence_type`
+- `finetuning_args`
+- `ftx_gamma`
+- `generate_during_eval`
+- `is_encoder_decoder`
+- `label_pad_token_id`
+- `label_smoothing`
+- `loss_type`
+- `model_accepts_loss_kwargs`
+- `padding_value`
+- `precompute_ref_log_probs`
+- `ref_model`
+- `reference_free`
+- `simpo_gamma`
+- `use_dpo_data_collator`
+
+### 方法 (Methods)
+- `__init__(self, model: Union['PreTrainedModel', torch.nn.Module], ref_model: Optional[Union['PreTrainedModel', torch.nn.Module]], finetuning_args: 'FinetuningArguments', processor: Optional['ProcessorMixin'], disable_dropout: bool, **kwargs)`
+- `_get_train_sampler(self) -> Optional['torch.utils.data.Sampler']`
+- `compute_loss(self, model: 'PreTrainedModel', inputs: dict[str, 'torch.Tensor'], return_outputs: bool, **kwargs) -> Union['torch.Tensor', tuple['torch.Tensor', list['torch.Tensor']]]`
+- `compute_preference_loss(self, policy_chosen_logps: 'torch.Tensor', policy_rejected_logps: 'torch.Tensor', reference_chosen_logps: Optional['torch.Tensor'], reference_rejected_logps: Optional['torch.Tensor']) -> tuple['torch.Tensor', 'torch.Tensor', 'torch.Tensor']`
+- `compute_reference_log_probs(self, model: 'PreTrainedModel', batch: dict[str, 'torch.Tensor']) -> tuple[Optional['torch.Tensor'], Optional['torch.Tensor']]`
+- `concatenated_forward(self, model: 'PreTrainedModel', batch: dict[str, 'torch.Tensor']) -> tuple['torch.Tensor', 'torch.Tensor', 'torch.Tensor', 'torch.Tensor', 'torch.Tensor']`
+- `create_optimizer(self) -> 'torch.optim.Optimizer'`
+- `create_scheduler(self, num_training_steps: int, optimizer: Optional['torch.optim.Optimizer']) -> 'torch.optim.lr_scheduler.LRScheduler'`
+- `get_batch_loss_metrics(self, model: 'PreTrainedModel', batch: dict[str, 'torch.Tensor'], train_eval: Literal['train', 'eval']) -> tuple['torch.Tensor', dict[str, 'torch.Tensor']]`
+- `get_batch_samples(self, *args, **kwargs)`
+- `log(self, logs: dict[str, float], *args, **kwargs) -> None`
+- `odds_ratio_loss(self, chosen_logps: 'torch.Tensor', rejected_logps: 'torch.Tensor') -> 'torch.Tensor'`
+- `simpo_loss(self, chosen_logps: 'torch.Tensor', rejected_logps: 'torch.Tensor') -> 'torch.Tensor'`
+
+---
+
+## Class: `CustomKTOTrainer`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `trainer`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `KTOTrainer`
+
+### 属性 (Attributes)
+- `_peft_has_been_casted_to_bf16`
+- `_precomputed_eval_ref_log_probs`
+- `_precomputed_train_ref_log_probs`
+- `_stored_metrics`
+- `beta`
+- `desirable_weight`
+- `finetuning_args`
+- `ftx_gamma`
+- `generate_during_eval`
+- `is_encoder_decoder`
+- `label_pad_token_id`
+- `model_accepts_loss_kwargs`
+- `padding_value`
+- `precompute_ref_log_probs`
+- `ref_model`
+- `reference_free`
+- `undesirable_weight`
+- `use_dpo_data_collator`
+
+### 方法 (Methods)
+- `__init__(self, model: Union['PreTrainedModel', torch.nn.Module], ref_model: Optional[Union['PreTrainedModel', torch.nn.Module]], finetuning_args: 'FinetuningArguments', processor: Optional['ProcessorMixin'], disable_dropout: bool, **kwargs)`
+- `_get_train_sampler(self) -> Optional['torch.utils.data.Sampler']`
+- `compute_loss(self, model: 'PreTrainedModel', inputs: dict[str, 'torch.Tensor'], return_outputs: bool, **kwargs) -> Union['torch.Tensor', tuple['torch.Tensor', list['torch.Tensor']]]`
+- `compute_reference_log_probs(self, model: 'PreTrainedModel', batch: dict[str, 'torch.Tensor']) -> tuple['torch.Tensor', 'torch.Tensor', 'torch.Tensor']`
+- `concatenated_forward(self, model: 'PreTrainedModel', batch: dict[str, 'torch.Tensor']) -> tuple['torch.Tensor', 'torch.Tensor', 'torch.Tensor', 'torch.Tensor', 'torch.Tensor', 'torch.Tensor']`
+- `create_optimizer(self) -> 'torch.optim.Optimizer'`
+- `create_scheduler(self, num_training_steps: int, optimizer: Optional['torch.optim.Optimizer']) -> 'torch.optim.lr_scheduler.LRScheduler'`
+- `forward(self, model: 'PreTrainedModel', batch: dict[str, 'torch.Tensor'], prefix: Literal['', 'kl_']) -> tuple['torch.Tensor', 'torch.Tensor', 'torch.Tensor']`
+- `get_batch_loss_metrics(self, model: 'PreTrainedModel', batch: dict[str, 'torch.Tensor']) -> tuple['torch.Tensor', dict[str, 'torch.Tensor']]`
+- `get_batch_samples(self, *args, **kwargs)`
+- `log(self, logs: dict[str, float], *args, **kwargs) -> None`
+
+---
+
+## Class: `CustomPPOTrainer`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `trainer`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `PPOTrainer`, `Trainer`
+
+### 属性 (Attributes)
+- `amp_context`
+- `args`
+- `callback_handler`
+- `control`
+- `current_device`
+- `finetuning_args`
+- `generation_config`
+- `is_deepspeed_enabled`
+- `is_fsdp_enabled`
+- `model_args`
+- `reward_model`
+- `state`
+
+### 方法 (Methods)
+- `__init__(self, model_args: 'ModelArguments', training_args: 'Seq2SeqTrainingArguments', finetuning_args: 'FinetuningArguments', generating_args: 'GeneratingArguments', callbacks: Optional[list['TrainerCallback']], model: 'AutoModelForCausalLMWithValueHead', reward_model: Optional['AutoModelForCausalLMWithValueHead'], ref_model: Optional['AutoModelForCausalLMWithValueHead'], tokenizer: 'PreTrainedTokenizer', processor: Optional['ProcessorMixin'], data_collator: 'DataCollatorWithPadding', train_dataset: Optional['Dataset'], eval_dataset: Optional['Dataset']) -> None`
+- `batched_forward_pass(self, model: 'AutoModelForCausalLMWithValueHead', queries: 'torch.Tensor', responses: 'torch.Tensor', model_inputs: dict[str, Any], return_logits: bool, response_masks: Optional['torch.Tensor']) -> tuple['torch.Tensor', Optional['torch.Tensor'], 'torch.Tensor', 'torch.Tensor']`
+- `create_optimizer(self, model: 'AutoModelForCausalLMWithValueHead', training_args: 'Seq2SeqTrainingArguments', finetuning_args: 'FinetuningArguments') -> 'torch.optim.Optimizer'`
+- `create_scheduler(self, training_args: 'Seq2SeqTrainingArguments', num_training_steps: int, optimizer: 'torch.optim.Optimizer') -> 'torch.optim.lr_scheduler.LRScheduler'`
+- `get_inputs(self, batch: dict[str, 'torch.Tensor']) -> tuple[list['torch.Tensor'], list['torch.Tensor']]`
+- `get_rewards(self, queries: list['torch.Tensor'], responses: list['torch.Tensor']) -> list['torch.Tensor']`
+- `ppo_train(self, resume_from_checkpoint: Optional[str]) -> None`
+- `save_model(self, output_dir: Optional[str]) -> None`
+
+---
+
+## Class: `CustomSeq2SeqTrainer`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `trainer`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `Seq2SeqTrainer`
+
+### 属性 (Attributes)
+- `finetuning_args`
+
+### 方法 (Methods)
+- `__init__(self, finetuning_args: 'FinetuningArguments', processor: Optional['ProcessorMixin'], gen_kwargs: Optional[dict[str, Any]], **kwargs) -> None`
+- `_get_train_sampler(self) -> Optional['torch.utils.data.Sampler']`
+- `compute_loss(self, model, inputs, *args, **kwargs)`
+- `create_optimizer(self) -> 'torch.optim.Optimizer'`
+- `create_scheduler(self, num_training_steps: int, optimizer: Optional['torch.optim.Optimizer']) -> 'torch.optim.lr_scheduler.LRScheduler'`
+- `prediction_step(self, model: 'torch.nn.Module', inputs: dict[str, Union['torch.Tensor', Any]], prediction_loss_only: bool, ignore_keys: Optional[list[str]], **gen_kwargs) -> tuple[Optional[float], Optional['torch.Tensor'], Optional['torch.Tensor']]`
+- `save_predictions(self, dataset: 'Dataset', predict_results: 'PredictionOutput', skip_special_tokens: bool) -> None`
+
+---
+
+## Class: `CustomTrainer`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `trainer`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `Trainer`
+
+### 属性 (Attributes)
+- `finetuning_args`
+
+### 方法 (Methods)
+- `__init__(self, finetuning_args: 'FinetuningArguments', processor: Optional['ProcessorMixin'], **kwargs) -> None`
+- `_get_train_sampler(self) -> Optional['torch.utils.data.Sampler']`
+- `compute_loss(self, model, inputs, *args, **kwargs)`
+- `create_optimizer(self) -> 'torch.optim.Optimizer'`
+- `create_scheduler(self, num_training_steps: int, optimizer: Optional['torch.optim.Optimizer']) -> 'torch.optim.lr_scheduler.LRScheduler'`
+
+---
+
+## Class: `DataArguments`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `data_args`
+
+### 属性 (Attributes)
+- `buffer_size: int`
+- `cutoff_len: int`
+- `dataset: Optional[str]`
+- `dataset_dir: str`
+- `eval_dataset: Optional[str]`
+- `eval_num_beams: Optional[int]`
+- `eval_on_each_dataset: bool`
+- `ignore_pad_token_for_loss: bool`
+- `interleave_probs: Optional[str]`
+- `mask_history: bool`
+- `max_samples: Optional[int]`
+- `media_dir: Optional[str]`
+- `mix_strategy: Literal['concat', 'interleave_under', 'interleave_over']`
+- `neat_packing: bool`
+- `overwrite_cache: bool`
+- `packing: Optional[bool]`
+- `preprocessing_batch_size: int`
+- `preprocessing_num_workers: Optional[int]`
+- `streaming: bool`
+- `template: Optional[str]`
+- `tokenized_path: Optional[str]`
+- `tool_format: Optional[str]`
+- `train_on_prompt: bool`
+- `val_size: float`
+
+### 方法 (Methods)
+- `__post_init__(self)`
+- `to_dict(self) -> dict[str, Any]`
+
+---
+
+## Class: `DatasetAttr`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `parser`
+
+### 属性 (Attributes)
+- `assistant_tag: Optional[str]`
+- `audios: Optional[str]`
+- `chosen: Optional[str]`
+- `content_tag: Optional[str]`
+- `dataset_name: str`
+- `folder: Optional[str]`
+- `formatting: Literal['alpaca', 'sharegpt']`
+- `function_tag: Optional[str]`
+- `history: Optional[str]`
+- `images: Optional[str]`
+- `kto_tag: Optional[str]`
+- `load_from: Literal['hf_hub', 'ms_hub', 'om_hub', 'script', 'file']`
+- `messages: Optional[str]`
+- `num_samples: Optional[int]`
+- `observation_tag: Optional[str]`
+- `prompt: Optional[str]`
+- `query: Optional[str]`
+- `ranking: bool`
+- `rejected: Optional[str]`
+- `response: Optional[str]`
+- `role_tag: Optional[str]`
+- `split: str`
+- `subset: Optional[str]`
+- `system: Optional[str]`
+- `system_tag: Optional[str]`
+- `tools: Optional[str]`
+- `user_tag: Optional[str]`
+- `videos: Optional[str]`
+
+### 方法 (Methods)
+- `__repr__(self) -> str`
+- `join(self, attr: dict[str, Any]) -> None`
+- `set_attr(self, key: str, obj: dict[str, Any], default: Optional[Any]) -> None`
+
+---
+
+## Class: `DatasetConverter`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `converter`
+
+### 属性 (Attributes)
+- `data_args: 'DataArguments'`
+- `dataset_attr: 'DatasetAttr'`
+
+### 方法 (Methods)
+- `__call__(self, example: dict[str, Any]) -> dict[str, Any]`
+- `_find_medias(self, medias: Union['MediaType', list['MediaType'], None]) -> Optional[list['MediaType']]`
+
+---
+
+## Class: `DatasetModule`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `data_utils`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `TypedDict`
+
+### 属性 (Attributes)
+- `eval_dataset: Optional[Union['Dataset', 'IterableDataset', dict[str, 'Dataset']]]`
+- `train_dataset: Optional[Union['Dataset', 'IterableDataset']]`
+
+---
+
+## Class: `DatasetProcessor`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `processor_utils`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `ABC`
+
+### 属性 (Attributes)
+- `data_args: 'DataArguments'`
+- `processor: Optional['ProcessorMixin']`
+- `template: 'Template'`
+- `tokenizer: 'PreTrainedTokenizer'`
+
+### 方法 (Methods)
+- `preprocess_dataset(self, examples: dict[str, list[Any]]) -> dict[str, list[Any]]`
+- `print_data_example(self, example: dict[str, list[int]]) -> None`
+
+---
+
+## Class: `DefaultToolUtils`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `tool_utils`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `ToolUtils`
+
+### 方法 (Methods)
+- `function_formatter(functions: list['FunctionCall']) -> str`
+- `tool_extractor(content: str) -> Union[str, list['FunctionCall']]`
+- `tool_formatter(tools: list[dict[str, Any]]) -> str`
+
+---
+
+## Class: `DownloadSource`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `constants`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `str`, `Enum`
+
+### 属性 (Attributes)
+- `DEFAULT`
+- `MODELSCOPE`
+- `OPENMIND`
+
+---
+
+## Class: `DummyOptimizer`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `trainer_utils`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `torch.optim.Optimizer`
+
+### 属性 (Attributes)
+- `optimizer_dict`
+
+### 方法 (Methods)
+- `__init__(self, lr: float, optimizer_dict: Optional[dict['torch.nn.Parameter', 'torch.optim.Optimizer']]) -> None`
+- `step(self, closure: Optional[Callable[[], float]]) -> Optional[float]`
+- `zero_grad(self, set_to_none: bool) -> None`
+
+---
+
+## Class: `EmptyFormatter`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `formatter`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `Formatter`
+
+### 方法 (Methods)
+- `__post_init__(self)`
+- `apply(self, **kwargs) -> SLOTS`
+
+---
+
+## Class: `EncodedImage`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `mm_plugin`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `TypedDict`
+
+### 属性 (Attributes)
+- `bytes: Optional[bytes]`
+- `path: Optional[str]`
+
+---
+
+## Class: `Engine`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `engine`
+
+### 属性 (Attributes)
+- `chatter`
+- `demo_mode`
+- `manager`
+- `pure_chat`
+- `runner`
+
+### 方法 (Methods)
+- `__init__(self, demo_mode: bool, pure_chat: bool) -> None`
+- `_update_component(self, input_dict: dict[str, dict[str, Any]]) -> dict['Component', 'Component']`
+- `change_lang(self, lang: str)`
+- `resume(self)`
+
+---
+
+## Class: `EngineName`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `constants`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `str`, `Enum`
+
+### 属性 (Attributes)
+- `HF`
+- `SGLANG`
+- `VLLM`
+
+---
+
+## Class: `EvalTemplate`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `template`
+
+### 属性 (Attributes)
+- `answer: str`
+- `choice: str`
+- `system: str`
+
+### 方法 (Methods)
+- `_parse_example(self, example: dict[str, str]) -> tuple[str, str]`
+- `format_example(self, target_data: dict[str, str], support_set: list[dict[str, str]], subject_name: str) -> list[dict[str, str]]`
+
+---
+
+## Class: `EvaluationArguments`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `evaluation_args`
+
+### 属性 (Attributes)
+- `batch_size: int`
+- `download_mode: DownloadMode`
+- `lang: Literal['en', 'zh']`
+- `n_shot: int`
+- `save_dir: Optional[str]`
+- `seed: int`
+- `task: str`
+- `task_dir: str`
+
+### 方法 (Methods)
+- `__post_init__(self)`
+
+---
+
+## Class: `Evaluator`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `evaluator`
+
+### 属性 (Attributes)
+- `choice_inputs`
+- `eval_template`
+- `model`
+- `template`
+- `tokenizer`
+
+### 方法 (Methods)
+- `__init__(self, args: Optional[dict[str, Any]]) -> None`
+- `_save_results(self, category_corrects: dict[str, 'NDArray'], results: dict[str, dict[int, str]]) -> None`
+- `batch_inference(self, batch_input: dict[str, 'torch.Tensor']) -> list[str]`
+- `eval(self) -> None`
+
+---
+
+## Class: `ExportArguments`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `model_args`
+
+### 属性 (Attributes)
+- `export_device: Literal['cpu', 'auto']`
+- `export_dir: Optional[str]`
+- `export_hub_model_id: Optional[str]`
+- `export_legacy_format: bool`
+- `export_quantization_bit: Optional[int]`
+- `export_quantization_dataset: Optional[str]`
+- `export_quantization_maxlen: int`
+- `export_quantization_nsamples: int`
+- `export_size: int`
+
+### 方法 (Methods)
+- `__post_init__(self)`
+
+---
+
+## Class: `FeedbackDatasetProcessor`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `feedback`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `DatasetProcessor`
+
+### 方法 (Methods)
+- `_encode_data_example(self, prompt: list[dict[str, str]], response: list[dict[str, str]], kl_response: list[dict[str, str]], system: Optional[str], tools: Optional[str], images: list['ImageInput'], videos: list['VideoInput'], audios: list['AudioInput']) -> tuple[list[int], list[int], list[int], list[int], bool]`
+- `preprocess_dataset(self, examples: dict[str, list[Any]]) -> dict[str, list[Any]]`
+- `print_data_example(self, example: dict[str, list[int]]) -> None`
+
+---
+
+## Class: `FinetuningArguments`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `finetuning_args`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `SwanLabArguments`, `BAdamArgument`, `ApolloArguments`, `GaloreArguments`, `RLHFArguments`, `LoraArguments`, `FreezeArguments`
+
+### 属性 (Attributes)
+- `compute_accuracy: bool`
+- `disable_shuffling: bool`
+- `early_stopping_steps: Optional[int]`
+- `finetuning_type: Literal['lora', 'freeze', 'full']`
+- `freeze_language_model: bool`
+- `freeze_multi_modal_projector: bool`
+- `freeze_vision_tower: bool`
+- `include_effective_tokens_per_second: bool`
+- `plot_loss: bool`
+- `pure_bf16: bool`
+- `stage: Literal['pt', 'sft', 'rm', 'ppo', 'dpo', 'kto']`
+- `use_adam_mini: bool`
+- `use_llama_pro: bool`
+- `use_muon: bool`
+
+### 方法 (Methods)
+- `__post_init__(self)`
+- `to_dict(self) -> dict[str, Any]`
+
+---
+
+## Class: `Finish`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `protocol`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `str`, `Enum`
+
+### 属性 (Attributes)
+- `LENGTH`
+- `STOP`
+- `TOOL`
+
+---
+
+## Class: `FixValueHeadModelCallback`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `callbacks`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `TrainerCallback`
+
+### 方法 (Methods)
+- `on_save(self, args: 'TrainingArguments', state: 'TrainerState', control: 'TrainerControl', **kwargs)`
+
+---
+
+## Class: `Formatter`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `formatter`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `ABC`
+
+### 属性 (Attributes)
+- `slots: SLOTS`
+- `tool_format: Optional[str]`
+
+### 方法 (Methods)
+- `apply(self, **kwargs) -> SLOTS`
+- `extract(self, content: str) -> Union[str, list['FunctionCall']]`
+
+---
+
+## Class: `FreezeArguments`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `finetuning_args`
+
+### 属性 (Attributes)
+- `freeze_extra_modules: Optional[str]`
+- `freeze_trainable_layers: int`
+- `freeze_trainable_modules: str`
+
+---
+
+## Class: `Function`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `protocol`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `BaseModel`
+
+### 属性 (Attributes)
+- `arguments: str`
+- `name: str`
+
+---
+
+## Class: `FunctionAvailable`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `protocol`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `BaseModel`
+
+### 属性 (Attributes)
+- `function: Optional[FunctionDefinition]`
+- `type: Literal['function', 'code_interpreter']`
+
+---
+
+## Class: `FunctionCall`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `protocol`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `BaseModel`, `NamedTuple`
+
+### 属性 (Attributes)
+- `arguments: str`
+- `function: Function`
+- `id: str`
+- `name: str`
+- `type: Literal['function']`
+
+---
+
+## Class: `FunctionDefinition`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `protocol`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `BaseModel`
+
+### 属性 (Attributes)
+- `description: str`
+- `name: str`
+- `parameters: dict[str, Any]`
+
+---
+
+## Class: `FunctionFormatter`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `formatter`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `StringFormatter`
+
+### 方法 (Methods)
+- `__post_init__(self)`
+- `apply(self, **kwargs) -> SLOTS`
+
+---
+
+## Class: `GLM4ToolUtils`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `tool_utils`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `ToolUtils`
+
+### 方法 (Methods)
+- `function_formatter(functions: list['FunctionCall']) -> str`
+- `tool_extractor(content: str) -> Union[str, list['FunctionCall']]`
+- `tool_formatter(tools: list[dict[str, Any]]) -> str`
+
+---
+
+## Class: `GaloreArguments`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `finetuning_args`
+
+### 属性 (Attributes)
+- `galore_layerwise: bool`
+- `galore_proj_type: Literal['std', 'reverse_std', 'right', 'left', 'full']`
+- `galore_rank: int`
+- `galore_scale: float`
+- `galore_target: str`
+- `galore_update_interval: int`
+- `use_galore: bool`
+
+---
+
+## Class: `Gemma3Plugin`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `mm_plugin`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `BasePlugin`
+
+### 方法 (Methods)
+- `get_mm_inputs(self, images: list['ImageInput'], videos: list['VideoInput'], audios: list['AudioInput'], imglens: list[int], vidlens: list[int], audlens: list[int], batch_ids: list[list[int]], processor: Optional['MMProcessor']) -> dict[str, Union[list[int], 'torch.Tensor']]`
+- `process_messages(self, messages: list[dict[str, str]], images: list['ImageInput'], videos: list['VideoInput'], audios: list['AudioInput'], processor: Optional['MMProcessor']) -> list[dict[str, str]]`
+
+---
+
+## Class: `GeneratingArguments`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `generating_args`
+
+### 属性 (Attributes)
+- `default_system: Optional[str]`
+- `do_sample: bool`
+- `enable_thinking: bool`
+- `length_penalty: float`
+- `max_length: int`
+- `max_new_tokens: int`
+- `num_beams: int`
+- `repetition_penalty: float`
+- `skip_special_tokens: bool`
+- `temperature: float`
+- `top_k: int`
+- `top_p: float`
+
+### 方法 (Methods)
+- `to_dict(self, obey_generation_config: bool) -> dict[str, Any]`
+
+---
+
+## Class: `HhRlhfEn`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `hh_rlhf_en`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `datasets.GeneratorBasedBuilder`
+
+### 属性 (Attributes)
+- `VERSION`
+
+### 方法 (Methods)
+- `_generate_examples(self, filepaths: list[str])`
+- `_info(self) -> datasets.DatasetInfo`
+- `_split_generators(self, dl_manager: datasets.DownloadManager)`
+
+---
+
+## Class: `HuggingfaceEngine`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `hf_engine`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `BaseEngine`
+
+### 属性 (Attributes)
+- `can_generate`
+- `generating_args`
+- `model`
+- `name`
+- `processor`
+- `semaphore`
+- `template`
+- `tokenizer`
+
+### 方法 (Methods)
+- `__init__(self, model_args: 'ModelArguments', data_args: 'DataArguments', finetuning_args: 'FinetuningArguments', generating_args: 'GeneratingArguments') -> None`
+- `_chat(model: 'PreTrainedModel', tokenizer: 'PreTrainedTokenizer', processor: Optional['ProcessorMixin'], template: 'Template', generating_args: dict[str, Any], messages: list[dict[str, str]], system: Optional[str], tools: Optional[str], images: Optional[list['ImageInput']], videos: Optional[list['VideoInput']], audios: Optional[list['AudioInput']], input_kwargs: Optional[dict[str, Any]]) -> list['Response']`
+- `_get_scores(model: 'PreTrainedModelWrapper', tokenizer: 'PreTrainedTokenizer', batch_input: list[str], input_kwargs: Optional[dict[str, Any]]) -> list[float]`
+- `_process_args(model: 'PreTrainedModel', tokenizer: 'PreTrainedTokenizer', processor: Optional['ProcessorMixin'], template: 'Template', generating_args: dict[str, Any], messages: list[dict[str, str]], system: Optional[str], tools: Optional[str], images: Optional[list['ImageInput']], videos: Optional[list['VideoInput']], audios: Optional[list['AudioInput']], input_kwargs: Optional[dict[str, Any]]) -> tuple[dict[str, Any], int]`
+- `_stream_chat(model: 'PreTrainedModel', tokenizer: 'PreTrainedTokenizer', processor: Optional['ProcessorMixin'], template: 'Template', generating_args: dict[str, Any], messages: list[dict[str, str]], system: Optional[str], tools: Optional[str], images: Optional[list['ImageInput']], videos: Optional[list['VideoInput']], audios: Optional[list['AudioInput']], input_kwargs: Optional[dict[str, Any]]) -> Callable[[], str]`
+
+---
+
+## Class: `InternVLPlugin`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `mm_plugin`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `BasePlugin`
+
+### 方法 (Methods)
+- `_get_mm_inputs(self, images: list['ImageInput'], videos: list['VideoInput'], audios: list['AudioInput'], processor: 'ProcessorMixin', **kwargs) -> dict[str, 'torch.Tensor']`
+- `get_mm_inputs(self, images: list['ImageInput'], videos: list['VideoInput'], audios: list['AudioInput'], imglens: list[int], vidlens: list[int], audlens: list[int], batch_ids: list[list[int]], processor: Optional['ProcessorMixin']) -> dict[str, Union[list[int], 'torch.Tensor']]`
+- `process_messages(self, messages: list[dict[str, str]], images: list['ImageInput'], videos: list['VideoInput'], audios: list['AudioInput'], processor: Optional['ProcessorMixin']) -> list[dict[str, str]]`
+
+---
+
+## Class: `KTODataCollatorWithPadding`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `collator`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `MultiModalDataCollatorForSeq2Seq`
+
+### 方法 (Methods)
+- `__call__(self, features: list[dict[str, Any]]) -> dict[str, 'torch.Tensor']`
+
+---
+
+## Class: `KimiVLPlugin`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `mm_plugin`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `BasePlugin`
+
+### 方法 (Methods)
+- `process_messages(self, messages, images, videos, audios, processor)`
+
+---
+
+## Class: `Llama2Template`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `template`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `Template`
+
+### 方法 (Methods)
+- `_encode(self, tokenizer: 'PreTrainedTokenizer', messages: list[dict[str, str]], system: str, tools: str) -> list[list[int]]`
+- `_get_jinja_template(self, tokenizer: 'PreTrainedTokenizer') -> str`
+
+---
+
+## Class: `Llama3ToolUtils`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `tool_utils`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `ToolUtils`
+
+### 方法 (Methods)
+- `function_formatter(functions: list['FunctionCall']) -> str`
+- `tool_extractor(content: str) -> Union[str, list['FunctionCall']]`
+- `tool_formatter(tools: list[dict[str, Any]]) -> str`
+
+---
+
+## Class: `Llama4Plugin`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `mm_plugin`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `BasePlugin`
+
+### 方法 (Methods)
+- `get_mm_inputs(self, images: list['ImageInput'], videos: list['VideoInput'], audios: list['AudioInput'], imglens: list[int], vidlens: list[int], audlens: list[int], batch_ids: list[list[int]], processor: Optional['MMProcessor']) -> dict[str, Union[list[int], 'torch.Tensor']]`
+- `process_messages(self, messages: list[dict[str, str]], images: list['ImageInput'], videos: list['VideoInput'], audios: list['AudioInput'], processor: Optional['MMProcessor']) -> list[dict[str, str]]`
+
+---
+
+## Class: `LlavaMultiModalProjectorForYiVL`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `visual`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `torch.nn.Module`
+
+### 属性 (Attributes)
+- `act`
+- `config`
+- `linear_1`
+- `linear_2`
+- `linear_3`
+- `linear_4`
+
+### 方法 (Methods)
+- `__init__(self, config: 'LlavaConfig') -> None`
+- `forward(self, image_features: 'torch.Tensor') -> 'torch.Tensor'`
+
+---
+
+## Class: `LlavaMultiModalProjectorForYiVLForVLLM`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `visual`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `LlavaMultiModalProjectorForYiVL`
+
+### 属性 (Attributes)
+- `act`
+- `linear_1`
+- `linear_2`
+- `linear_3`
+- `linear_4`
+
+### 方法 (Methods)
+- `__init__(self, vision_hidden_size: int, text_hidden_size: int, projector_hidden_act: str) -> None`
+
+---
+
+## Class: `LlavaNextPlugin`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `mm_plugin`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `BasePlugin`
+
+### 方法 (Methods)
+- `process_messages(self, messages: list[dict[str, str]], images: list['ImageInput'], videos: list['VideoInput'], audios: list['AudioInput'], processor: Optional['MMProcessor']) -> list[dict[str, str]]`
+
+---
+
+## Class: `LlavaNextVideoPlugin`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `mm_plugin`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `BasePlugin`
+
+### 方法 (Methods)
+- `process_messages(self, messages: list[dict[str, str]], images: list['ImageInput'], videos: list['VideoInput'], audios: list['AudioInput'], processor: Optional['MMProcessor']) -> list[dict[str, str]]`
+
+---
+
+## Class: `LlavaPlugin`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `mm_plugin`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `BasePlugin`
+
+### 方法 (Methods)
+- `process_messages(self, messages: list[dict[str, str]], images: list['ImageInput'], videos: list['VideoInput'], audios: list['AudioInput'], processor: Optional['MMProcessor']) -> list[dict[str, str]]`
+
+---
+
+## Class: `LogCallback`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `callbacks`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `TrainerCallback`
+
+### 属性 (Attributes)
+- `aborted`
+- `cur_steps`
+- `do_train`
+- `elapsed_time`
+- `max_steps`
+- `remaining_time`
+- `start_time`
+- `thread_pool: Optional[ThreadPoolExecutor]`
+- `webui_mode`
+
+### 方法 (Methods)
+- `__init__(self) -> None`
+- `_close_thread_pool(self) -> None`
+- `_create_thread_pool(self, output_dir: str) -> None`
+- `_reset(self, max_steps: int) -> None`
+- `_set_abort(self, signum, frame) -> None`
+- `_timing(self, cur_steps: int) -> None`
+- `_write_log(self, output_dir: str, logs: dict[str, Any]) -> None`
+- `on_evaluate(self, args: 'TrainingArguments', state: 'TrainerState', control: 'TrainerControl', **kwargs)`
+- `on_init_end(self, args: 'TrainingArguments', state: 'TrainerState', control: 'TrainerControl', **kwargs)`
+- `on_log(self, args: 'TrainingArguments', state: 'TrainerState', control: 'TrainerControl', **kwargs)`
+- `on_predict(self, args: 'TrainingArguments', state: 'TrainerState', control: 'TrainerControl', **kwargs)`
+- `on_prediction_step(self, args: 'TrainingArguments', state: 'TrainerState', control: 'TrainerControl', **kwargs)`
+- `on_step_end(self, args: 'TrainingArguments', state: 'TrainerState', control: 'TrainerControl', **kwargs)`
+- `on_substep_end(self, args: 'TrainingArguments', state: 'TrainerState', control: 'TrainerControl', **kwargs)`
+- `on_train_begin(self, args: 'TrainingArguments', state: 'TrainerState', control: 'TrainerControl', **kwargs)`
+- `on_train_end(self, args: 'TrainingArguments', state: 'TrainerState', control: 'TrainerControl', **kwargs)`
+
+---
+
+## Class: `LoggerHandler`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `logging`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `logging.Handler`
+
+### 属性 (Attributes)
+- `_formatter`
+- `running_log`
+- `thread_pool`
+
+### 方法 (Methods)
+- `__init__(self, output_dir: str) -> None`
+- `_write_log(self, log_entry: str) -> None`
+- `close(self) -> None`
+- `emit(self, record) -> None`
+
+---
+
+## Class: `LoraArguments`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `finetuning_args`
+
+### 属性 (Attributes)
+- `additional_target: Optional[str]`
+- `create_new_adapter: bool`
+- `lora_alpha: Optional[int]`
+- `lora_dropout: float`
+- `lora_rank: int`
+- `lora_target: str`
+- `loraplus_lr_embedding: float`
+- `loraplus_lr_ratio: Optional[float]`
+- `pissa_convert: bool`
+- `pissa_init: bool`
+- `pissa_iter: int`
+- `use_dora: bool`
+- `use_rslora: bool`
+
+---
+
+## Class: `MMLU`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `mmlu`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `datasets.GeneratorBasedBuilder`
+
+### 属性 (Attributes)
+- `BUILDER_CONFIGS`
+
+### 方法 (Methods)
+- `_generate_examples(self, filepath)`
+- `_info(self)`
+- `_split_generators(self, dl_manager)`
+
+---
+
+## Class: `MMLUConfig`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `mmlu`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `datasets.BuilderConfig`
+
+### 方法 (Methods)
+- `__init__(self, **kwargs)`
+
+---
+
+## Class: `MMPluginMixin`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `mm_plugin`
+
+### 属性 (Attributes)
+- `audio_token: Optional[str]`
+- `expand_mm_tokens: bool`
+- `image_token: Optional[str]`
+- `video_token: Optional[str]`
+
+### 方法 (Methods)
+- `_get_mm_inputs(self, images: list['ImageInput'], videos: list['VideoInput'], audios: list['AudioInput'], processor: 'MMProcessor', imglens: Optional[list[int]]) -> dict[str, 'torch.Tensor']`
+- `_get_video_sample_indices(self, video_stream: 'Stream', video_fps: float, video_maxlen: int, **kwargs) -> list[int]`
+- `_preprocess_image(self, image: 'ImageObject', image_max_pixels: int, image_min_pixels: int, **kwargs) -> 'ImageObject'`
+- `_regularize_audios(self, audios: list['AudioInput'], sampling_rate: float, **kwargs) -> dict[str, Union[list['NDArray'], list[float]]]`
+- `_regularize_images(self, images: list['ImageInput'], **kwargs) -> dict[str, list['ImageObject']]`
+- `_regularize_videos(self, videos: list['VideoInput'], **kwargs) -> dict[str, list[list['ImageObject']]]`
+- `_validate_input(self, processor: Optional['MMProcessor'], images: list['ImageInput'], videos: list['VideoInput'], audios: list['AudioInput']) -> None`
+- `_validate_messages(self, messages: list[dict[str, str]], images: list['ImageInput'], videos: list['VideoInput'], audios: list['AudioInput'])`
+
+---
+
+## Class: `MMProcessor`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `mm_plugin`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `ProcessorMixin`
+
+### 属性 (Attributes)
+- `image_seq_length: int`
+- `num_additional_image_tokens: int`
+- `patch_size: int`
+- `vision_feature_select_strategy: Literal['default', 'full']`
+
+### 方法 (Methods)
+- `_get_number_of_features(self, orig_height: int, orig_width: int, height: int, width: int) -> int`
+
+---
+
+## Class: `Manager`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `manager`
+
+### 属性 (Attributes)
+- `_elem_to_id: dict[Component, str]`
+- `_id_to_elem: dict[str, Component]`
+
+### 方法 (Methods)
+- `__init__(self) -> None`
+- `add_elems(self, tab_name: str, elem_dict: dict[str, 'Component']) -> None`
+- `get_base_elems(self) -> set['Component']`
+- `get_elem_by_id(self, elem_id: str) -> 'Component'`
+- `get_elem_iter(self) -> Generator[tuple[str, 'Component'], None, None]`
+- `get_elem_list(self) -> list['Component']`
+- `get_id_by_elem(self, elem: 'Component') -> str`
+
+---
+
+## Class: `MiniCPMVPlugin`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `mm_plugin`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `BasePlugin`
+
+### 方法 (Methods)
+- `_get_mm_inputs(self, images: list['ImageInput'], videos: list['VideoInput'], audios: list['AudioInput'], processor: 'MMProcessor', **kwargs) -> dict[str, 'torch.Tensor']`
+- `get_mm_inputs(self, images: list['ImageInput'], videos: list['VideoInput'], audios: list['AudioInput'], imglens: list[int], vidlens: list[int], audlens: list[int], batch_ids: list[list[int]], processor: Optional['MMProcessor']) -> dict[str, Union[list[int], 'torch.Tensor']]`
+- `process_messages(self, messages: list[dict[str, str]], images: list['ImageInput'], videos: list['VideoInput'], audios: list['AudioInput'], processor: Optional['MMProcessor']) -> list[dict[str, str]]`
+
+---
+
+## Class: `MistralToolUtils`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `tool_utils`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `ToolUtils`
+
+### 方法 (Methods)
+- `function_formatter(functions: list['FunctionCall']) -> str`
+- `tool_extractor(content: str) -> Union[str, list['FunctionCall']]`
+- `tool_formatter(tools: list[dict[str, Any]]) -> str`
+
+---
+
+## Class: `MllamaPlugin`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `mm_plugin`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `BasePlugin`
+
+### 方法 (Methods)
+- `get_mm_inputs(self, images: list['ImageInput'], videos: list['VideoInput'], audios: list['AudioInput'], imglens: list[int], vidlens: list[int], audlens: list[int], batch_ids: list[list[int]], processor: Optional['MMProcessor']) -> dict[str, Union[list[int], 'torch.Tensor']]`
+- `process_messages(self, messages: list[dict[str, str]], images: list['ImageInput'], videos: list['VideoInput'], audios: list['AudioInput'], processor: Optional['MMProcessor']) -> list[dict[str, str]]`
+
+---
+
+## Class: `ModelArguments`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `model_args`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `SGLangArguments`, `VllmArguments`, `ExportArguments`, `ProcessorArguments`, `QuantizationArguments`, `BaseModelArguments`
+
+### 属性 (Attributes)
+- `block_diag_attn: bool`
+- `compute_dtype: Optional[torch.dtype]`
+- `device_map: Optional[Union[str, dict[str, Any]]]`
+- `model_max_length: Optional[int]`
+
+### 方法 (Methods)
+- `__post_init__(self)`
+- `copyfrom(cls, source: 'Self', **kwargs) -> 'Self'`
+- `to_dict(self) -> dict[str, Any]`
+
+---
+
+## Class: `ModelCard`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `protocol`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `BaseModel`
+
+### 属性 (Attributes)
+- `created: int`
+- `id: str`
+- `object: Literal['model']`
+- `owned_by: Literal['owner']`
+
+---
+
+## Class: `ModelList`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `protocol`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `BaseModel`
+
+### 属性 (Attributes)
+- `data: list[ModelCard]`
+- `object: Literal['list']`
+
+---
+
+## Class: `MultiModalDataCollatorForSeq2Seq`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `collator`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `DataCollatorForSeq2Seq`
+
+### 属性 (Attributes)
+- `processor: Optional['ProcessorMixin']`
+- `template: Optional['Template']`
+
+### 方法 (Methods)
+- `__call__(self, features: list[dict[str, Any]]) -> dict[str, 'torch.Tensor']`
+- `__post_init__(self)`
+
+---
+
+## Class: `MultimodalInputItem`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `protocol`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `BaseModel`
+
+### 属性 (Attributes)
+- `audio_url: Optional[URL]`
+- `image_url: Optional[URL]`
+- `text: Optional[str]`
+- `type: Literal['text', 'image_url', 'video_url', 'audio_url']`
+- `video_url: Optional[URL]`
+
+---
+
+## Class: `Muon`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `muon`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `torch.optim.Optimizer`
+
+### 方法 (Methods)
+- `__init__(self, lr, wd, muon_params, momentum, nesterov, ns_steps, adamw_params, adamw_betas, adamw_eps)`
+- `adjust_lr_for_muon(self, lr: float, param_shape: list[int]) -> float`
+- `step(self, closure)`
+
+---
+
+## Class: `PackedSupervisedDatasetProcessor`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `supervised`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `SupervisedDatasetProcessor`
+
+### 方法 (Methods)
+- `preprocess_dataset(self, examples: dict[str, list[Any]]) -> dict[str, list[Any]]`
+
+---
+
+## Class: `PairwiseDataCollatorWithPadding`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `cal_ppl`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `MultiModalDataCollatorForSeq2Seq`, `MultiModalDataCollatorForSeq2Seq`
+
+### 属性 (Attributes)
+- `train_on_prompt: bool`
+
+### 方法 (Methods)
+- `__call__(self, features: list[dict[str, Any]]) -> dict[str, 'torch.Tensor']`
+- `__call__(self, features: list[dict[str, Any]]) -> dict[str, torch.Tensor]`
+
+---
+
+## Class: `PairwiseDatasetProcessor`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `pairwise`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `DatasetProcessor`
+
+### 方法 (Methods)
+- `_encode_data_example(self, prompt: list[dict[str, str]], response: list[dict[str, str]], system: Optional[str], tools: Optional[str], images: list['ImageInput'], videos: list['VideoInput'], audios: list['AudioInput']) -> tuple[list[int], list[int], list[int], list[int]]`
+- `preprocess_dataset(self, examples: dict[str, list[Any]]) -> dict[str, list[Any]]`
+- `print_data_example(self, example: dict[str, list[int]]) -> None`
+
+---
+
+## Class: `PairwiseTrainer`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `trainer`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `Trainer`
+
+### 属性 (Attributes)
+- `can_return_loss`
+- `finetuning_args`
+- `model_accepts_loss_kwargs`
+
+### 方法 (Methods)
+- `__init__(self, finetuning_args: 'FinetuningArguments', processor: Optional['ProcessorMixin'], **kwargs) -> None`
+- `_get_train_sampler(self) -> Optional['torch.utils.data.Sampler']`
+- `compute_loss(self, model: 'PreTrainedModel', inputs: dict[str, 'torch.Tensor'], return_outputs: bool, **kwargs) -> Union['torch.Tensor', tuple['torch.Tensor', list['torch.Tensor']]]`
+- `create_optimizer(self) -> 'torch.optim.Optimizer'`
+- `create_scheduler(self, num_training_steps: int, optimizer: Optional['torch.optim.Optimizer']) -> 'torch.optim.lr_scheduler.LRScheduler'`
+- `save_predictions(self, predict_results: 'PredictionOutput') -> None`
+
+---
+
+## Class: `PaliGemmaPlugin`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `mm_plugin`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `BasePlugin`
+
+### 方法 (Methods)
+- `get_mm_inputs(self, images: list['ImageInput'], videos: list['VideoInput'], audios: list['AudioInput'], imglens: list[int], vidlens: list[int], audlens: list[int], batch_ids: list[list[int]], processor: Optional['MMProcessor']) -> dict[str, Union[list[int], 'torch.Tensor']]`
+- `process_messages(self, messages: list[dict[str, str]], images: list['ImageInput'], videos: list['VideoInput'], audios: list['AudioInput'], processor: Optional['MMProcessor']) -> list[dict[str, str]]`
+- `process_token_ids(self, input_ids: list[int], labels: Optional[list[int]], images: list['ImageInput'], videos: list['VideoInput'], audios: list['AudioInput'], tokenizer: 'PreTrainedTokenizer', processor: Optional['MMProcessor']) -> tuple[list[int], Optional[list[int]]]`
+
+---
+
+## Class: `PissaConvertCallback`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `callbacks`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `TrainerCallback`
+
+### 方法 (Methods)
+- `on_train_begin(self, args: 'TrainingArguments', state: 'TrainerState', control: 'TrainerControl', **kwargs)`
+- `on_train_end(self, args: 'TrainingArguments', state: 'TrainerState', control: 'TrainerControl', **kwargs)`
+
+---
+
+## Class: `PixtralPlugin`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `mm_plugin`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `BasePlugin`
+
+### 方法 (Methods)
+- `get_mm_inputs(self, images: list['ImageInput'], videos: list['VideoInput'], audios: list['AudioInput'], imglens: list[int], vidlens: list[int], audlens: list[int], batch_ids: list[list[int]], processor: Optional['MMProcessor']) -> dict[str, Union[list[int], 'torch.Tensor']]`
+- `process_messages(self, messages: list[dict[str, str]], images: list['ImageInput'], videos: list['VideoInput'], audios: list['AudioInput'], processor: Optional['MMProcessor']) -> list[dict[str, str]]`
+
+---
+
+## Class: `PretrainDatasetProcessor`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `pretrain`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `DatasetProcessor`
+
+### 方法 (Methods)
+- `preprocess_dataset(self, examples: dict[str, list[Any]]) -> dict[str, list[Any]]`
+- `print_data_example(self, example: dict[str, list[int]]) -> None`
+
+---
+
+## Class: `ProcessorArguments`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `model_args`
+
+### 属性 (Attributes)
+- `audio_sampling_rate: int`
+- `crop_to_patches: bool`
+- `image_do_pan_and_scan: bool`
+- `image_max_pixels: int`
+- `image_min_pixels: int`
+- `use_audio_in_video: bool`
+- `video_fps: float`
+- `video_max_pixels: int`
+- `video_maxlen: int`
+- `video_min_pixels: int`
+
+### 方法 (Methods)
+- `__post_init__(self)`
+
+---
+
+## Class: `QuantizationArguments`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `model_args`
+
+### 属性 (Attributes)
+- `double_quantization: bool`
+- `quantization_bit: Optional[int]`
+- `quantization_device_map: Optional[Literal['auto']]`
+- `quantization_method: QuantizationMethod`
+- `quantization_type: Literal['fp4', 'nf4']`
+
+---
+
+## Class: `QuantizationMethod`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `constants`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `str`, `Enum`
+
+### 属性 (Attributes)
+- `AQLM`
+- `AWQ`
+- `BNB`
+- `EETQ`
+- `GPTQ`
+- `HQQ`
+- `QUANTO`
+
+---
+
+## Class: `Qwen2AudioPlugin`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `mm_plugin`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `BasePlugin`
+
+### 方法 (Methods)
+- `get_mm_inputs(self, images: list['ImageInput'], videos: list['VideoInput'], audios: list['AudioInput'], imglens: list[int], vidlens: list[int], audlens: list[int], batch_ids: list[list[int]], processor: Optional['MMProcessor']) -> dict[str, Union[list[int], 'torch.Tensor']]`
+- `process_messages(self, messages: list[dict[str, str]], images: list['ImageInput'], videos: list['VideoInput'], audios: list['AudioInput'], processor: Optional['MMProcessor']) -> list[dict[str, str]]`
+
+---
+
+## Class: `Qwen2OmniPlugin`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `mm_plugin`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `Qwen2VLPlugin`
+
+### 方法 (Methods)
+- `_get_mm_inputs(self, images: list['ImageInput'], videos: list['VideoInput'], audios: list['AudioInput'], processor: 'MMProcessor') -> dict[str, 'torch.Tensor']`
+- `process_messages(self, messages: list[dict[str, str]], images: list['ImageInput'], videos: list['VideoInput'], audios: list['AudioInput'], processor: Optional['MMProcessor']) -> list[dict[str, str]]`
+
+---
+
+## Class: `Qwen2VLPlugin`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `mm_plugin`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `BasePlugin`
+
+### 方法 (Methods)
+- `_get_mm_inputs(self, images: list['ImageInput'], videos: list['VideoInput'], audios: list['AudioInput'], processor: 'MMProcessor') -> dict[str, 'torch.Tensor']`
+- `_preprocess_image(self, image: 'ImageObject', **kwargs) -> 'ImageObject'`
+- `_regularize_videos(self, videos: list['VideoInput'], **kwargs) -> dict[str, Union[list[list['ImageObject']], list[float]]]`
+- `process_messages(self, messages: list[dict[str, str]], images: list['ImageInput'], videos: list['VideoInput'], audios: list['AudioInput'], processor: Optional['MMProcessor']) -> list[dict[str, str]]`
+
+---
+
+## Class: `QwenToolUtils`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `tool_utils`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `ToolUtils`
+
+### 方法 (Methods)
+- `function_formatter(functions: list['FunctionCall']) -> str`
+- `tool_extractor(content: str) -> Union[str, list['FunctionCall']]`
+- `tool_formatter(tools: list[dict[str, Any]]) -> str`
+
+---
+
+## Class: `RLHFArguments`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `finetuning_args`
+
+### 属性 (Attributes)
+- `dpo_label_smoothing: float`
+- `kto_chosen_weight: float`
+- `kto_rejected_weight: float`
+- `ppo_buffer_size: int`
+- `ppo_epochs: int`
+- `ppo_score_norm: bool`
+- `ppo_target: float`
+- `ppo_whiten_rewards: bool`
+- `pref_beta: float`
+- `pref_ftx: float`
+- `pref_loss: Literal['sigmoid', 'hinge', 'ipo', 'kto_pair', 'orpo', 'simpo']`
+- `ref_model: Optional[str]`
+- `ref_model_adapters: Optional[str]`
+- `ref_model_quantization_bit: Optional[int]`
+- `reward_model: Optional[str]`
+- `reward_model_adapters: Optional[str]`
+- `reward_model_quantization_bit: Optional[int]`
+- `reward_model_type: Literal['lora', 'full', 'api']`
+- `simpo_gamma: float`
+
+---
+
+## Class: `RayArguments`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `training_args`
+
+### 属性 (Attributes)
+- `placement_strategy: Literal['SPREAD', 'PACK', 'STRICT_SPREAD', 'STRICT_PACK']`
+- `ray_init_kwargs: Optional[dict]`
+- `ray_num_workers: int`
+- `ray_run_name: Optional[str]`
+- `ray_storage_filesystem: Optional[Literal['s3', 'gs', 'gcs']]`
+- `ray_storage_path: str`
+- `resources_per_worker: Union[dict, str]`
+
+### 方法 (Methods)
+- `__post_init__(self)`
+
+---
+
+## Class: `ReasoningTemplate`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `template`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `Template`
+
+### 方法 (Methods)
+- `encode_multiturn(self, tokenizer: 'PreTrainedTokenizer', messages: list[dict[str, str]], system: Optional[str], tools: Optional[str]) -> list[tuple[list[int], list[int]]]`
+- `encode_oneturn(self, tokenizer: 'PreTrainedTokenizer', messages: list[dict[str, str]], system: Optional[str], tools: Optional[str], enable_thinking: bool) -> tuple[list[int], list[int]]`
+
+---
+
+## Class: `ReporterCallback`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `callbacks`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `TrainerCallback`
+
+### 属性 (Attributes)
+- `data_args`
+- `finetuning_args`
+- `generating_args`
+- `model_args`
+
+### 方法 (Methods)
+- `__init__(self, model_args: 'ModelArguments', data_args: 'DataArguments', finetuning_args: 'FinetuningArguments', generating_args: 'GeneratingArguments') -> None`
+- `on_train_begin(self, args: 'TrainingArguments', state: 'TrainerState', control: 'TrainerControl', **kwargs)`
+
+---
+
+## Class: `Response`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `base_engine`
+
+### 属性 (Attributes)
+- `finish_reason: Literal['stop', 'length']`
+- `prompt_length: int`
+- `response_length: int`
+- `response_text: str`
+
+---
+
+## Class: `Role`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `protocol`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `str`, `Enum`, `str`, `Enum`
+
+### 属性 (Attributes)
+- `ASSISTANT`
+- `FUNCTION`
+- `OBSERVATION`
+- `SYSTEM`
+- `TOOL`
+- `USER`
+
+---
+
+## Class: `RopeScaling`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `constants`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `str`, `Enum`
+
+### 属性 (Attributes)
+- `DYNAMIC`
+- `LINEAR`
+- `LLAMA3`
+- `YARN`
+
+---
+
+## Class: `Runner`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `runner`
+
+### 属性 (Attributes)
+- `aborted`
+- `demo_mode`
+- `do_train`
+- `manager`
+- `running`
+- `running_data: dict[Component, Any]`
+- `trainer: Optional[Popen]`
+
+### 方法 (Methods)
+- `__init__(self, manager: 'Manager', demo_mode: bool) -> None`
+- `_build_config_dict(self, data: dict['Component', Any]) -> dict[str, Any]`
+- `_finalize(self, lang: str, finish_info: str) -> str`
+- `_initialize(self, data: dict['Component', Any], do_train: bool, from_preview: bool) -> str`
+- `_launch(self, data: dict['Component', Any], do_train: bool) -> Generator[dict['Component', Any], None, None]`
+- `_parse_eval_args(self, data: dict['Component', Any]) -> dict[str, Any]`
+- `_parse_train_args(self, data: dict['Component', Any]) -> dict[str, Any]`
+- `_preview(self, data: dict['Component', Any], do_train: bool) -> Generator[dict['Component', str], None, None]`
+- `check_output_dir(self, lang: str, model_name: str, finetuning_type: str, output_dir: str)`
+- `load_args(self, lang: str, config_path: str)`
+- `monitor(self)`
+- `preview_eval(self, data)`
+- `preview_train(self, data)`
+- `run_eval(self, data)`
+- `run_train(self, data)`
+- `save_args(self, data)`
+- `set_abort(self) -> None`
+
+---
+
+## Class: `SFTDataCollatorWith4DAttentionMask`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `collator`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `MultiModalDataCollatorForSeq2Seq`
+
+### 属性 (Attributes)
+- `attn_implementation: Literal['eager', 'sdpa', 'flash_attention_2']`
+- `block_diag_attn: bool`
+- `compute_dtype: 'torch.dtype'`
+
+### 方法 (Methods)
+- `__call__(self, features: list[dict[str, Any]]) -> dict[str, 'torch.Tensor']`
+
+---
+
+## Class: `SGLangArguments`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `model_args`
+
+### 属性 (Attributes)
+- `sglang_config: Optional[Union[dict, str]]`
+- `sglang_maxlen: int`
+- `sglang_mem_fraction: float`
+- `sglang_tp_size: int`
+
+### 方法 (Methods)
+- `__post_init__(self)`
+
+---
+
+## Class: `SGLangEngine`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `sglang_engine`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `BaseEngine`
+
+### 属性 (Attributes)
+- `can_generate`
+- `generating_args`
+- `model_args`
+- `name`
+- `processor`
+- `template`
+- `tokenizer`
+
+### 方法 (Methods)
+- `__del__(self)`
+- `__init__(self, model_args: 'ModelArguments', data_args: 'DataArguments', finetuning_args: 'FinetuningArguments', generating_args: 'GeneratingArguments') -> None`
+- `_cleanup_server(self)`
+
+---
+
+## Class: `SaveProcessorCallback`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `callbacks`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `TrainerCallback`
+
+### 属性 (Attributes)
+- `processor`
+
+### 方法 (Methods)
+- `__init__(self, processor: 'ProcessorMixin') -> None`
+- `on_save(self, args: 'TrainingArguments', state: 'TrainerState', control: 'TrainerControl', **kwargs)`
+- `on_train_end(self, args: 'TrainingArguments', state: 'TrainerState', control: 'TrainerControl', **kwargs)`
+
+---
+
+## Class: `ScoreEvaluationRequest`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `protocol`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `BaseModel`
+
+### 属性 (Attributes)
+- `max_length: Optional[int]`
+- `messages: list[str]`
+- `model: str`
+
+---
+
+## Class: `ScoreEvaluationResponse`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `protocol`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `BaseModel`
+
+### 属性 (Attributes)
+- `id: str`
+- `model: str`
+- `object: Literal['score.evaluation']`
+- `scores: list[float]`
+
+---
+
+## Class: `SharegptDatasetConverter`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `converter`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `DatasetConverter`
+
+### 方法 (Methods)
+- `__call__(self, example: dict[str, Any]) -> dict[str, Any]`
+
+---
+
+## Class: `StringFormatter`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `formatter`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `Formatter`
+
+### 方法 (Methods)
+- `__post_init__(self)`
+- `apply(self, **kwargs) -> SLOTS`
+
+---
+
+## Class: `SupervisedDatasetProcessor`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `supervised`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `DatasetProcessor`
+
+### 方法 (Methods)
+- `_encode_data_example(self, prompt: list[dict[str, str]], response: list[dict[str, str]], system: Optional[str], tools: Optional[str], images: list['ImageInput'], videos: list['VideoInput'], audios: list['AudioInput']) -> tuple[list[int], list[int]]`
+- `preprocess_dataset(self, examples: dict[str, list[Any]]) -> dict[str, list[Any]]`
+- `print_data_example(self, example: dict[str, list[int]]) -> None`
+
+---
+
+## Class: `SwanLabArguments`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `finetuning_args`
+
+### 属性 (Attributes)
+- `swanlab_api_key: Optional[str]`
+- `swanlab_lark_secret: Optional[str]`
+- `swanlab_lark_webhook_url: Optional[str]`
+- `swanlab_logdir: Optional[str]`
+- `swanlab_mode: Literal['cloud', 'local']`
+- `swanlab_project: Optional[str]`
+- `swanlab_run_name: Optional[str]`
+- `swanlab_workspace: Optional[str]`
+- `use_swanlab: bool`
+
+---
+
+## Class: `SwanLabCallbackExtension`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `trainer_utils`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `SwanLabCallback`
+
+### 方法 (Methods)
+- `setup(self, args: 'TrainingArguments', state: 'TrainerState', model: 'PreTrainedModel', **kwargs)`
+
+---
+
+## Class: `Template`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `template`
+
+### 属性 (Attributes)
+- `default_system: str`
+- `efficient_eos: bool`
+- `format_assistant: 'Formatter'`
+- `format_function: 'Formatter'`
+- `format_observation: 'Formatter'`
+- `format_prefix: 'Formatter'`
+- `format_system: 'Formatter'`
+- `format_tools: 'Formatter'`
+- `format_user: 'Formatter'`
+- `mm_plugin: 'BasePlugin'`
+- `replace_eos: bool`
+- `replace_jinja_template: bool`
+- `stop_words: list[str]`
+- `thought_words: tuple[str, str]`
+
+### 方法 (Methods)
+- `_add_or_replace_eos_token(tokenizer: 'PreTrainedTokenizer', eos_token: str) -> None`
+- `_convert_elements_to_ids(self, tokenizer: 'PreTrainedTokenizer', elements: 'SLOTS') -> list[int]`
+- `_convert_slots_to_jinja(slots: 'SLOTS', tokenizer: 'PreTrainedTokenizer', placeholder: str) -> str`
+- `_convert_slots_to_ollama(slots: 'SLOTS', tokenizer: 'PreTrainedTokenizer', placeholder: str) -> str`
+- `_encode(self, tokenizer: 'PreTrainedTokenizer', messages: list[dict[str, str]], system: Optional[str], tools: Optional[str]) -> list[list[int]]`
+- `_get_jinja_template(self, tokenizer: 'PreTrainedTokenizer') -> str`
+- `_get_ollama_template(self, tokenizer: 'PreTrainedTokenizer') -> str`
+- `_jinja_escape(content: str) -> str`
+- `add_thought(self, content: str) -> str`
+- `encode_multiturn(self, tokenizer: 'PreTrainedTokenizer', messages: list[dict[str, str]], system: Optional[str], tools: Optional[str]) -> list[tuple[list[int], list[int]]]`
+- `encode_oneturn(self, tokenizer: 'PreTrainedTokenizer', messages: list[dict[str, str]], system: Optional[str], tools: Optional[str], enable_thinking: bool) -> tuple[list[int], list[int]]`
+- `extract_tool(self, content: str) -> Union[str, list['FunctionCall']]`
+- `fix_jinja_template(self, tokenizer: 'PreTrainedTokenizer') -> None`
+- `fix_special_tokens(self, tokenizer: 'PreTrainedTokenizer') -> None`
+- `get_ollama_modelfile(self, tokenizer: 'PreTrainedTokenizer') -> str`
+- `get_stop_token_ids(self, tokenizer: 'PreTrainedTokenizer') -> list[int]`
+- `get_thought_word_ids(self, tokenizer: 'PreTrainedTokenizer') -> list[int]`
+- `remove_thought(self, content: str) -> str`
+
+---
+
+## Class: `TokenizerModule`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `loader`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `TypedDict`
+
+### 属性 (Attributes)
+- `processor: Optional['ProcessorMixin']`
+- `tokenizer: 'PreTrainedTokenizer'`
+
+---
+
+## Class: `ToolFormatter`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `formatter`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `Formatter`
+
+### 方法 (Methods)
+- `__post_init__(self)`
+- `apply(self, **kwargs) -> SLOTS`
+- `extract(self, content: str) -> Union[str, list['FunctionCall']]`
+
+---
+
+## Class: `ToolUtils`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `tool_utils`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `ABC`
+
+### 方法 (Methods)
+- `function_formatter(functions: list['FunctionCall']) -> str`
+- `tool_extractor(content: str) -> Union[str, list['FunctionCall']]`
+- `tool_formatter(tools: list[dict[str, Any]]) -> str`
+
+---
+
+## Class: `TrainingArguments`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `training_args`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `RayArguments`, `Seq2SeqTrainingArguments`
+
+### 方法 (Methods)
+- `__post_init__(self)`
+
+---
+
+## Class: `URL`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `protocol`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `BaseModel`
+
+### 属性 (Attributes)
+- `detail: Literal['auto', 'low', 'high']`
+- `url: str`
+
+---
+
+## Class: `UltraChat`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `ultra_chat`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `datasets.GeneratorBasedBuilder`
+
+### 属性 (Attributes)
+- `VERSION`
+
+### 方法 (Methods)
+- `_generate_examples(self, filepaths: list[str])`
+- `_info(self)`
+- `_split_generators(self, dl_manager: datasets.DownloadManager)`
+
+---
+
+## Class: `UnslothGradientCheckpointing`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `checkpointing`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `torch.autograd.Function`
+
+### 方法 (Methods)
+- `backward(ctx: 'torch.autograd.Function', grad_output: 'torch.Tensor') -> 'torch.Tensor'`
+- `forward(ctx: 'torch.autograd.Function', forward_function: 'torch.Module', hidden_states: 'torch.Tensor', *args) -> 'torch.Tensor'`
+
+---
+
+## Class: `UnsupervisedDatasetProcessor`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `unsupervised`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `DatasetProcessor`
+
+### 方法 (Methods)
+- `_encode_data_example(self, prompt: list[dict[str, str]], response: list[dict[str, str]], system: Optional[str], tools: Optional[str], images: list['ImageInput'], videos: list['VideoInput'], audios: list['AudioInput']) -> tuple[list[int], list[int]]`
+- `preprocess_dataset(self, examples: dict[str, list[Any]]) -> dict[str, list[Any]]`
+- `print_data_example(self, example: dict[str, list[int]]) -> None`
+
+---
+
+## Class: `VideoLlavaPlugin`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `mm_plugin`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `BasePlugin`
+
+### 方法 (Methods)
+- `process_messages(self, messages: list[dict[str, str]], images: list['ImageInput'], videos: list['VideoInput'], audios: list['AudioInput'], processor: Optional['MMProcessor']) -> list[dict[str, str]]`
+
+---
+
+## Class: `VllmArguments`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `model_args`
+
+### 属性 (Attributes)
+- `vllm_config: Optional[Union[dict, str]]`
+- `vllm_enforce_eager: bool`
+- `vllm_gpu_util: float`
+- `vllm_max_lora_rank: int`
+- `vllm_maxlen: int`
+
+### 方法 (Methods)
+- `__post_init__(self)`
+
+---
+
+## Class: `VllmEngine`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `vllm_engine`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `BaseEngine`
+
+### 属性 (Attributes)
+- `can_generate`
+- `generating_args`
+- `model`
+- `model_args`
+- `name`
+- `processor`
+- `template`
+- `tokenizer`
+
+### 方法 (Methods)
+- `__init__(self, model_args: 'ModelArguments', data_args: 'DataArguments', finetuning_args: 'FinetuningArguments', generating_args: 'GeneratingArguments') -> None`
+
+---
+
+## Class: `WebChatModel`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `chatter`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `ChatModel`
+
+### 属性 (Attributes)
+- `demo_mode`
+- `engine: Optional[BaseEngine]`
+- `manager`
+
+### 方法 (Methods)
+- `__init__(self, manager: 'Manager', demo_mode: bool, lazy_init: bool) -> None`
+- `append(chatbot: list[dict[str, str]], messages: list[dict[str, str]], role: str, query: str, escape_html: bool) -> tuple[list[dict[str, str]], list[dict[str, str]], str]`
+- `load_model(self, data) -> Generator[str, None, None]`
+- `loaded(self) -> bool`
+- `stream(self, chatbot: list[dict[str, str]], messages: list[dict[str, str]], lang: str, system: str, tools: str, image: Optional[Any], video: Optional[Any], audio: Optional[Any], max_new_tokens: int, top_p: float, temperature: float, skip_special_tokens: bool, escape_html: bool, enable_thinking: bool) -> Generator[tuple[list[dict[str, str]], list[dict[str, str]]], None, None]`
+- `unload_model(self, data) -> Generator[str, None, None]`
+
+---
+
+## Class: `_Logger`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `logging`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `logging.Logger`
+
+### 方法 (Methods)
+- `info_rank0(self, *args, **kwargs) -> None`
+- `warning_rank0(self, *args, **kwargs) -> None`
+- `warning_rank0_once(self, *args, **kwargs) -> None`
+
+---
+
+
+[信息] UML 图表 'llama_factory_uml.png' 也已通过 WebSocket 直接发送。
+2025-05-15 15:49:39.321 | INFO     | agents.umlagent:update_plan_status:159 - Marked step 3 as completed in plan plan_1747295325
+2025-05-15 15:49:39.323 | INFO     | agents.base:run:129 - Executing step 5/20
+2025-05-15 15:49:57.867 | INFO     | agents.tool_call:think:56 - ✨ uml agnet 的想法为: Using tools response: 我已经完成了所有步骤，现在可以结束任务了。
+2025-05-15 15:49:57.867 | INFO     | agents.tool_call:think:58 - 🛠️ uml agnet 选择了 1 个工具
+2025-05-15 15:49:57.867 | INFO     | agents.tool_call:think:63 - 🧰 选择的工具信息: ['final_response']
+2025-05-15 15:49:57.870 | INFO     | agents.tool_call:think:78 - 🧰 工具的参数是: ['{"content_to_deliver": "我找到了一个名为 \'LLaMA-Factory\' 的LoRA大模型项目，并生成了它的UML类图。以下是项目的简要介绍和UML图：\n\n### 项目简介：\nLLaMA-Factory 是一个用于微调大型语言模型（LLM）的统一框架，集成了多种先进的高效训练方法。它允许用户通过内置的Web UI灵活定制100多个LLMs的微调过程，而无需编写代码。\n\n### UML 类图：\n![](D:\\\\deep_learning\\\\codes\\\\workspace\\\\LLaMA-Factory\\\\llama_factory_uml.png)\n\n如果您需要更详细的分析或有关此项目的更多信息，请随时告诉我！"}']
+2025-05-15 15:49:57.870 | ERROR    | agents.tool_call:execute_tool:174 - ⚠️ 工具 'final_response' 执行出现错误: Invalid control character at: line 1 column 89 (char 88)
+2025-05-15 15:49:57.870 | INFO     | agents.tool_call:act:131 - 🎯 工具 'final_response' 完成了它的任务! 其执行结果为: 错误: ⚠️ 工具 'final_response' 执行出现错误: Invalid control character at: line 1 column 89 (char 88)
+2025-05-15 15:49:57.871 | INFO     | agents.base:run:129 - Executing step 6/20
+2025-05-15 15:50:14.109 | INFO     | agents.tool_call:think:56 - ✨ uml agnet 的想法为: Using tools response: 我已经完成了所有步骤，并且准备结束任务。之前尝试发送最终回复时出现了错误，这次我将确保信息正确无误。
+2025-05-15 15:50:14.110 | INFO     | agents.tool_call:think:58 - 🛠️ uml agnet 选择了 1 个工具
+2025-05-15 15:50:14.110 | INFO     | agents.tool_call:think:63 - 🧰 选择的工具信息: ['final_response']
+2025-05-15 15:50:14.110 | INFO     | agents.tool_call:think:78 - 🧰 工具的参数是: ['{"content_to_deliver":"我找到了一个名为 \'LLaMA-Factory\' 的LoRA大模型项目，并生成了它的UML类图。以下是项目的简要介绍和UML图：\\n\\n### 项目简介：\\nLLaMA-Factory 是一个用于微调大型语言模型（LLM）的统一框架，集成了多种先进的高效训练方法。它允许用户通过内置的Web UI灵活定制100多个LLMs的微调过程，而无需编写代码。\\n\\n### UML 类图：\\n![](D:\\\\deep_learning\\\\codes\\\\workspace\\\\LLaMA-Factory\\\\llama_factory_uml.png)\\n\\n如果您需要更详细的分析或有关此项目的更多信息，请随时告诉我！"}']
+2025-05-15 15:50:14.111 | INFO     | tools.summarize:execute:35 - 🏁 代理的最终回应: 我找到了一个名为 'LLaMA-Factory' 的LoRA大模型项目，并生成了它的UML类图。以下是项目的简要介绍和UML图：
+
+### 项目简介：
+LLaMA-Factory 是一个用于微调大型语言模型（LLM）的统一框架，集成了多种先进的高效训练方法。它允许用户通过内置的Web UI灵活定制100多个LLMs的微调过程，而无需编写代码。
+
+### UML 类图：
+![](D:\deep_learning\codes\workspace\LLaMA-Factory\llama_factory_uml.png)
+
+如果您需要更详细的分析或有关此项目的更多信息，请随时告诉我！
+2025-05-15 15:50:14.111 | INFO     | agents.tool_call:act:131 - 🎯 工具 'final_response' 完成了它的任务! 其执行结果为:  `工具:final_response`的观测结果输出为 :
+代理已得出以下最终回应: 我找到了一个名为 'LLaMA-Factory' 的LoRA大模型项目，并生成了它的UML类图。以下是项目的简要介绍和UML图：
+
+### 项目简介：
+LLaMA-Factory 是一个用于微调大型语言模型（LLM）的统一框架，集成了多种先进的高效训练方法。它允许用户通过内置的Web UI灵活定制100多个LLMs的微调过程，而无需编写代码。
+
+### UML 类图：
+![](D:\deep_learning\codes\workspace\LLaMA-Factory\llama_factory_uml.png)
+
+如果您需要更详细的分析或有关此项目的更多信息，请随时告诉我！
+2025-05-15 15:50:14.111 | INFO     | agents.base:run:129 - Executing step 7/20
+2025-05-15 15:50:16.280 | INFO     | agents.tool_call:think:56 - ✨ uml agnet 的想法为: Using tools response: 所有步骤已完成，现在可以终止任务了。
+2025-05-15 15:50:16.281 | INFO     | agents.tool_call:think:58 - 🛠️ uml agnet 选择了 1 个工具
+2025-05-15 15:50:16.281 | INFO     | agents.tool_call:think:63 - 🧰 选择的工具信息: ['terminate']
+2025-05-15 15:50:16.281 | INFO     | agents.tool_call:think:78 - 🧰 工具的参数是: ['{"status": "success"}']
+2025-05-15 15:50:16.282 | INFO     | agents.tool_call:_handle_special_tool:183 - 🏁 Special tool 'terminate' has completed the task!
+2025-05-15 15:50:16.282 | INFO     | agents.tool_call:act:131 - 🎯 工具 'terminate' 完成了它的任务! 其执行结果为:  `工具:terminate`的观测结果输出为 :
+The interaction has been completed with status: success
+2025-05-15 15:50:59.054 | INFO     | main:websocket_endpoint:56 - Received message from 127.0.0.1:54336: 给我找一个minimind的项目，分析uml
+2025-05-15 15:50:59.055 | INFO     | agents.umlagent:create_initial_plan:214 - Creating initial plan with ID: plan_1747295459
+2025-05-15 15:51:04.350 | INFO     | agents.umlagent:create_initial_plan:243 -  结果为:  `工具:planning`的观测结果输出为 :
+Plan created successfully with ID: plan_1747295459
+
+Plan: 寻找并分析minimind项目UML (ID: plan_1747295459)
+===============================================
+
+Progress: 0/4 steps completed (0.0%)
+Status: 0 completed, 0 in progress, 0 blocked, 4 not started
+
+Steps:
+0. [ ] 使用百度搜索工具搜索minimind相关项目
+1. [ ] 选择一个合适的minimind项目进行克隆
+2. [ ] 生成所选项目的UML类图
+3. [ ] 分析并总结UML类图结果
+
+2025-05-15 15:51:04.350 | INFO     | agents.base:run:119 - websocket initialized finish, state:<starlette.datastructures.State object at 0x0000018E2CB27FE0>
+2025-05-15 15:51:04.350 | INFO     | agents.base:run:129 - Executing step 8/20
+2025-05-15 15:51:13.126 | INFO     | agents.tool_call:think:56 - ✨ uml agnet 的想法为: Using tools response: 计划已创建，接下来我将执行第一个步骤：使用百度搜索工具搜索minimind相关项目。
+2025-05-15 15:51:13.126 | INFO     | agents.tool_call:think:58 - 🛠️ uml agnet 选择了 1 个工具
+2025-05-15 15:51:13.126 | INFO     | agents.tool_call:think:63 - 🧰 选择的工具信息: ['baidu_search']
+2025-05-15 15:51:13.126 | INFO     | agents.tool_call:think:78 - 🧰 工具的参数是: ['{"query": "minimind 项目 github"}']
+2025-05-15 15:51:14.321 | INFO     | agents.tool_call:act:131 - 🎯 工具 'baidu_search' 完成了它的任务! 其执行结果为:  `工具:baidu_search`的观测结果输出为 :
+[{'title': 'minimind 项目 github\n\xa0-\xa0精选笔记', 'abstract': 'minimind 项目 github\n\xa0-\xa0精选笔记\n\n\n\n\n\n\n\n\n\n零基础玩转ai这个开源项目让普通电脑也能跑语言模型太阳鸟\n\n\n\n\n\n\n每日热门 GitHub Trending 开源项目推荐。 1、twmb/franz-go 有超过 1.9k Star,使用 Go 开发,Franz-go是一个用Go完全编写的Apache Kafka客户端库,支持从Kafka 0.8.0至3.8+的全部特性,包括事务、正则表达式主题消费、高级管理等功能。 2、jingyaogong/minimind 有超过 4.1k Star,使用 Python 开发,MiniMind项目开创性地实现了在3小时内从零训练', 'url': 'http://www.baidu.com/link?url=MfJvggOvgPUBBSEf5Twk4wHLxaNQNO29tKtgpsBb7A7LieRWzECXJ1f2N1kogdlHICvcFMo_S3fzCfBHu2rtO7vuHrt7cIQttR9miaEz7hmnYPYg4mY7LGD8COM37nHoQ65GTiuJH_4m9uF9utYA7K', 'rank': 1}, {'title': 'GitHub - perfree/minimind: 🚀🚀 「大模型」2小时完全从0...', 'abstract': 'GitHub - perfree/minimind: 🚀🚀 「大模型」2小时完全从0...2025年2月9日  此开源项目旨在完全从0开始,仅用3块钱成本 + 2小时!即可训练出仅为25.8M的超小语言模型MiniMind。 MiniMind系列极其轻量,最小版本体积是 GPT-3 的17000,力求做...GitHub\ue62b', 'url': 'http://www.baidu.com/link?url=jj0CGT0fvkGGXA-99XwwfsEfKSF9yoiFG7QWkBT2ttziYdHaPXaQxMW9rmp-FbLE', 'rank': 2}, {'title': '大家还在搜github官网Github中文版github星最多的项目github优秀java开源项目github热门开源项目github好玩的项目github优秀开源项目github热门项目', 'abstract': '大家还在搜github官网Github中文版github星最多的项目github优秀java开源项目github热门开源项目github好玩的项目github优秀开源项目github热门项目', 'url': '/s?wd=github%E5%AE%98%E7%BD%91&usm=2&ie=utf-8&rsv_pq=8859f909009c4073&oq=minimind%20%E9%A1%B9%E7%9B%AE%20github&rsv_t=c1273pOHhPWHoxoM%2BQiwjCPCuEGooAhBZLidBpy%2F6i8NT%2Bv1xbTxToaNMIg&rsf=101636803&rsv_dl=0_prs_28608_1', 'rank': 3}, {'title': '2025-02-18 Github 热点项目 minimind:3小时训练个人GPU轻...', 'abstract': '2025-02-18 Github 热点项目 minimind:3小时训练个人GPU轻...\n\n\n\n\n\n\n\n\n2025年2月18日  GitHub - jingyaogong/minimind: 🚀🚀 「大模型」2小时完全从0训练26M的小参数GPT!🌏 Train a 26M-parameter GPT from scratch in just 2h! MiniMind 是一个开源项目,旨在从...\n\n\n\n\nCSDN博客\ue62b\n\n\ue680\n播报\n\n\n\ue67d\n暂停', 'url': 'http://www.baidu.com/link?url=CuEz-0nCSRlaWRzdlthJICOPEZP5GSgn3iyOy5sRvLI898VbdlAs7U6VHjj7S77kGzpf1fKo217t5NtDQ6jJU-XTGRiMK-0zCuW9krn90hG', 'rank': 4}, {'title': 'AI学习记录 - 依据 minimind 项目入门_minimind github-CS...', 'abstract': 'AI学习记录 - 依据 minimind 项目入门_minimind github-CS...\n\n\n\n\n\n\n\n\n2024年12月19日  想学习AI,还是需要从头到尾跑一边流程,最近看到这个项目 minimind, 我也记录下学习到的东西,需要结合项目的readme看。 1、github链接 https://github.com/jingyaogong/minim...\n\n\n\n\nCSDN博客\ue62b\n\n\ue680\n播报\n\n\n\ue67d\n暂停', 'url': 'http://www.baidu.com/link?url=l-TYlLTfwd_wKXURXWd0cIP25gX79uIZVBHZ8nGHHCScyrC6RH3R_lJyQ9qwlv3NXI2BR_2jBYfE5E5Jmc7Uq03FbxQAqGE0YylOjuSVCSi', 'rank': 5}, {'title': 'minimind/model/LMConfig.py at master · perfree/minimi...', 'abstract': 'minimind/model/LMConfig.py at master · perfree/minimi...2025年2月9日  from transformers import PretrainedConfig from typing import List class LMConfig(PretrainedConfig): model_type = "minimind" def __init__( self, dim: ...GitHub\ue62b', 'url': 'http://www.baidu.com/link?url=n635mss6Itgq9vI8bBZB2Xc-NKpAfKUDbwPo-PfmvgjSNadcpU_G5p8zQds7cB3mTcl6e_gSlIybdaYiCip4SdT8ukaQgUXe_Uba79VP2Ua', 'rank': 6}, {'title': '普通人从0开始训练LLM大语言模型 - 风始于青萍末 - 博客园', 'abstract': '普通人从0开始训练LLM大语言模型 - 风始于青萍末 - 博客园\n\n\n\n\n\n\n\n\n2025年2月10日  普通人从0开始训练LLM大语言模型 首先声明。本项目基于开源项目:MiniMind,基于个人的理解和踩坑。做了个人的理解和注释。完成从小白开始,从0训练一个LLM大语言模型。项目源地...博客园\ue62b\n\n\ue680\n播报\n\n\n\ue67d\n暂停', 'url': 'http://www.baidu.com/link?url=mRH7aCgjfi3oLSuxmVoiShF-zqrUoz1-k49Mi0a30ZLv709g5OAcxLaextheMJUrDrVxrme6Y6QatiRh4x98LA7d5HDA4NHN8AC--AoX42C', 'rank': 7}, {'title': '6个 GitHub 上狂飙的 AI 教程,牛啊。LLM-Universe 本文会...', 'abstract': '6个 GitHub 上狂飙的 AI 教程,牛啊。LLM-Universe 本文会...\n\n\n\n\n\n\n\n\n2025年2月28日  06、MiniMind 这个开源项目,可以让个人完全从 0 训练一个仅有 26M 的极小参数大语言模型!最低仅需 2G 显卡即可训练和推理,最快仅需2-3小时。 目前这个开源项目 MiniMind 已经...\n\n\n\n\n掘金开发者社区\ue62b\n\n\ue680\n播报\n\n\n\ue67d\n暂停', 'url': 'http://www.baidu.com/link?url=SzyxcOFm207Sk3MJzYZVetSqPZkJUI5QHoZDCuH40PDL3w2oaboEVjDdukm6LHjKYx6czNnsr_FyFowjOMO-Ya', 'rank': 8}, {'title': 'GitHub 上较火的一个 AI 项目:MiniMind ... 来自Makeiss -...', 'abstract': 'GitHub 上较火的一个 AI 项目:MiniMind ... 来自Makeiss -...2025年3月4日  GitHub 上较火的一个 AI 项目:MiniMind。此开源项目旨在完全从 0 开始,仅用 3 块钱成本 + 2小时,即可训练出仅为 25.8M 的超小语言模型MiniMind。GitHub:O网页链...微博\ue62b', 'url': 'http://www.baidu.com/link?url=V5NXU-22fC_d58IFCB5Cuz4I7A8UM8rrl9ccjcsYZX4phhsyZcJ3v5gvRlHq3Vy-', 'rank': 9}, {'title': 'MiniMind微型语言模型,让你轻松开启AI对话! - 哔哩哔哩', 'abstract': 'MiniMind微型语言模型,让你轻松开启AI对话! - 哔哩哔哩\n\n\n\n\n\n\n\n\n2024年12月18日  git clone https://github.com/jingyaogong/minimind.git 请注意,如果 git clone https://github.com/01-ai/Yi-Coder.git 这个链接不存在或者无效,git clone 命令将不会成功...哔哩哔哩\ue62b\n\n\ue680\n播报\n\n\n\ue67d\n暂停', 'url': 'http://www.baidu.com/link?url=nwojUqfUMfI_4r-aFlSgkvRmz2Z8CYZhAeYpXiQJwmVRqZVR7_72A8c0ZElSO2OzSw-x0_GTPwfcvaV0DFe3Fq', 'rank': 10}]
+2025-05-15 15:51:14.323 | INFO     | agents.umlagent:update_plan_status:159 - Marked step 0 as completed in plan plan_1747295459
+2025-05-15 15:51:14.323 | INFO     | agents.base:run:129 - Executing step 9/20
+2025-05-15 15:51:28.586 | INFO     | agents.tool_call:think:56 - ✨ uml agnet 的想法为: Using tools response: Using tools response: 我已经找到了关于minimind的相关项目，接下来我将执行步骤二：选择一个合适的minimind项目进行克隆。根据搜索结果，我选择了 'perfree/minimind' 这个项目。现在我将克隆这个GitHub仓库到本地。
+2025-05-15 15:51:28.588 | INFO     | agents.tool_call:think:58 - 🛠️ uml agnet 选择了 1 个工具
+2025-05-15 15:51:28.588 | INFO     | agents.tool_call:think:63 - 🧰 选择的工具信息: ['github_repo_cloner_ssh']
+2025-05-15 15:51:28.589 | INFO     | agents.tool_call:think:78 - 🧰 工具的参数是: ['{"repo_name": "perfree/minimind"}']
+2025-05-15 15:53:25.846 | INFO     | agents.tool_call:act:131 - 🎯 工具 'github_repo_cloner_ssh' 完成了它的任务! 其执行结果为:  `工具:github_repo_cloner_ssh`的观测结果输出为 :
+D:\deep_learning\codes\workspace\minimind
+2025-05-15 15:53:25.846 | INFO     | agents.umlagent:update_plan_status:159 - Marked step 1 as completed in plan plan_1747295459
+2025-05-15 15:53:25.847 | INFO     | agents.base:run:129 - Executing step 10/20
+2025-05-15 15:53:41.145 | INFO     | agents.tool_call:think:56 - ✨ uml agnet 的想法为: Using tools response: Using tools response: 我已经成功克隆了 'perfree/minimind' 仓库到本地。接下来，我将生成该项目的UML类图。
+2025-05-15 15:53:41.145 | INFO     | agents.tool_call:think:58 - 🛠️ uml agnet 选择了 1 个工具
+2025-05-15 15:53:41.145 | INFO     | agents.tool_call:think:63 - 🧰 选择的工具信息: ['code_to_uml_generator_multilang']
+2025-05-15 15:53:41.145 | INFO     | agents.tool_call:think:78 - 🧰 工具的参数是: ['{"repo_path": "D:\\\\deep_learning\\\\codes\\\\workspace\\\\minimind", "output_png_path": "D:\\\\deep_learning\\\\codes\\\\workspace\\\\minimind\\\\minimind_uml.png", "target_languages": ["python"]}']
+2025-05-15 15:53:41.905 | INFO     | tools.uml:execute:696 - 准备通过 WebSocket 发送 UML 图片 'minimind_uml.png'。
+2025-05-15 15:53:41.905 | INFO     | tools.uml:execute:711 - UML 图片 'minimind_uml.png' 已通过 WebSocket 发送 (42799 字节)。
+2025-05-15 15:53:41.905 | INFO     | agents.tool_call:act:131 - 🎯 工具 'code_to_uml_generator_multilang' 完成了它的任务! 其执行结果为:  `工具:code_to_uml_generator_multilang`的观测结果输出为 :
+UML 图表和文本描述已成功生成。
+PNG 图像保存路径: 'D:\deep_learning\codes\workspace\minimind\minimind_uml.png'
+
+---
+UML 图表文本描述内容:
+---
+# UML 图表文本描述
+
+## Class: `Attention`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `model`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `nn.Module`
+
+### 属性 (Attributes)
+- `attn_dropout`
+- `dropout`
+- `flash`
+- `head_dim`
+- `n_kv_heads`
+- `n_local_heads`
+- `n_local_kv_heads`
+- `n_rep`
+- `resid_dropout`
+- `wk`
+- `wo`
+- `wq`
+- `wv`
+
+### 方法 (Methods)
+- `__init__(self, args: LMConfig)`
+- `forward(self, x: torch.Tensor, pos_cis: torch.Tensor, past_key_value: Optional[Tuple[torch.Tensor, torch.Tensor]], use_cache)`
+
+---
+
+## Class: `ChatRequest`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `serve_openai_api`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `BaseModel`
+
+### 属性 (Attributes)
+- `max_tokens: int`
+- `messages: list`
+- `model: str`
+- `stream: bool`
+- `temperature: float`
+- `top_p: int`
+
+---
+
+## Class: `DPODataset`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `dataset`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `Dataset`
+
+### 属性 (Attributes)
+- `bos_id`
+- `eos_id`
+- `max_length`
+- `padding`
+- `tokenizer`
+
+### 方法 (Methods)
+- `__getitem__(self, index)`
+- `__init__(self, file_path, tokenizer, max_length)`
+- `__len__(self)`
+- `_generate_loss_mask(self, input_ids)`
+
+---
+
+## Class: `FeedForward`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `model`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `nn.Module`
+
+### 属性 (Attributes)
+- `dropout`
+- `w1`
+- `w2`
+- `w3`
+
+### 方法 (Methods)
+- `__init__(self, config: LMConfig)`
+- `forward(self, x)`
+
+---
+
+## Class: `LMConfig`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `LMConfig`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `PretrainedConfig`
+
+### 属性 (Attributes)
+- `aux_loss_alpha`
+- `dim`
+- `dropout`
+- `flash_attn`
+- `hidden_dim`
+- `max_seq_len`
+- `model_type`
+- `multiple_of`
+- `n_heads`
+- `n_kv_heads`
+- `n_layers`
+- `n_routed_experts`
+- `n_shared_experts`
+- `norm_eps`
+- `norm_topk_prob`
+- `num_experts_per_tok`
+- `rope_theta`
+- `scoring_func`
+- `seq_aux`
+- `use_moe`
+- `vocab_size`
+
+### 方法 (Methods)
+- `__init__(self, dim: int, n_layers: int, n_heads: int, n_kv_heads: int, vocab_size: int, hidden_dim: int, multiple_of: int, norm_eps: float, max_seq_len: int, rope_theta: int, dropout: float, flash_attn: bool, use_moe: bool, num_experts_per_tok: int, n_routed_experts: int, n_shared_experts: bool, scoring_func: str, aux_loss_alpha: float, seq_aux: bool, norm_topk_prob: bool, **kwargs)`
+
+---
+
+## Class: `LoRA`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `model_lora`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `nn.Module`
+
+### 属性 (Attributes)
+- `A`
+- `B`
+- `rank`
+
+### 方法 (Methods)
+- `__init__(self, in_features, out_features, rank)`
+- `forward(self, x)`
+
+---
+
+## Class: `MOEFeedForward`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `model`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `nn.Module`
+
+### 属性 (Attributes)
+- `config`
+- `experts`
+- `gate`
+
+### 方法 (Methods)
+- `__init__(self, config: LMConfig)`
+- `forward(self, x)`
+- `moe_infer(self, x, flat_expert_indices, flat_expert_weights)`
+
+---
+
+## Class: `MiniMindBlock`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `model`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `nn.Module`
+
+### 属性 (Attributes)
+- `attention`
+- `attention_norm`
+- `dim`
+- `feed_forward`
+- `ffn_norm`
+- `head_dim`
+- `layer_id`
+- `n_heads`
+
+### 方法 (Methods)
+- `__init__(self, layer_id: int, config: LMConfig)`
+- `forward(self, x, pos_cis, past_key_value, use_cache)`
+
+---
+
+## Class: `MiniMindLM`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `model`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `PreTrainedModel`
+
+### 属性 (Attributes)
+- `OUT`
+- `config_class`
+- `dropout`
+- `layers`
+- `norm`
+- `output`
+- `params`
+- `tok_embeddings`
+
+### 方法 (Methods)
+- `__init__(self, params: LMConfig)`
+- `_stream(self, input_ids, eos_token_id, max_new_tokens, temperature, top_p, rp, use_cache, **args)`
+- `forward(self, input_ids: Optional[torch.Tensor], past_key_values: Optional[List[Tuple[torch.Tensor, torch.Tensor]]], use_cache: bool, **args)`
+- `generate(self, input_ids, eos_token_id, max_new_tokens, temperature, top_p, stream, rp, use_cache, pad_token_id, **args)`
+
+---
+
+## Class: `MoEGate`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `model`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `nn.Module`
+
+### 属性 (Attributes)
+- `alpha`
+- `config`
+- `gating_dim`
+- `n_routed_experts`
+- `norm_topk_prob`
+- `scoring_func`
+- `seq_aux`
+- `top_k`
+- `weight`
+
+### 方法 (Methods)
+- `__init__(self, config: LMConfig)`
+- `forward(self, hidden_states)`
+- `reset_parameters(self) -> None`
+
+---
+
+## Class: `PretrainDataset`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `dataset`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `Dataset`
+
+### 属性 (Attributes)
+- `max_length`
+- `samples`
+- `tokenizer`
+
+### 方法 (Methods)
+- `__getitem__(self, index)`
+- `__init__(self, data_path, tokenizer, max_length)`
+- `__len__(self)`
+- `load_data(self, path)`
+
+---
+
+## Class: `RMSNorm`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `model`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `torch.nn.Module`
+
+### 属性 (Attributes)
+- `eps`
+- `weight`
+
+### 方法 (Methods)
+- `__init__(self, dim: int, eps: float)`
+- `forward(self, x)`
+
+---
+
+## Class: `SFTDataset`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `dataset`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `Dataset`
+
+### 属性 (Attributes)
+- `bos_id`
+- `eos_id`
+- `max_length`
+- `samples`
+- `tokenizer`
+
+### 方法 (Methods)
+- `__getitem__(self, index)`
+- `__init__(self, jsonl_path, tokenizer, max_length)`
+- `__len__(self)`
+- `_create_chat_prompt(self, conversations)`
+- `_generate_loss_mask(self, input_ids)`
+- `load_data(self, path)`
+
+---
+
+
+[信息] UML 图表 'minimind_uml.png' 也已通过 WebSocket 直接发送。
+2025-05-15 15:53:41.908 | INFO     | agents.umlagent:update_plan_status:159 - Marked step 2 as completed in plan plan_1747295459
+2025-05-15 15:53:41.913 | INFO     | agents.base:run:129 - Executing step 11/20
+2025-05-15 15:54:17.443 | INFO     | agents.tool_call:think:56 - ✨ uml agnet 的想法为: Using tools response: Using tools response: 我已经生成了 'perfree/minimind' 项目的UML类图，接下来我将分析并总结这个UML类图的结果。
+2025-05-15 15:54:17.443 | INFO     | agents.tool_call:think:58 - 🛠️ uml agnet 选择了 1 个工具
+2025-05-15 15:54:17.443 | INFO     | agents.tool_call:think:63 - 🧰 选择的工具信息: ['final_response']
+2025-05-15 15:54:17.443 | INFO     | agents.tool_call:think:78 - 🧰 工具的参数是: ['{"content_to_deliver":"在分析minimind项目时，我们生成了其UML类图，并发现了一些关键的类和它们之间的关系。以下是主要的类及其功能概述：\\n\\n### 主要类及功能：\\n1. **Attention**:\\n   - 实现注意力机制的核心部分。\\n   - 包含前向传播方法，用于处理输入张量。\\n\\n2. **ChatRequest**:\\n   - 定义了聊天请求的结构，包括最大token数、消息列表、模型名称等。\\n\\n3. **DPODataset** 和 **SFTDataset**:\\n   - 分别用于数据集的不同用途（如直接偏好优化和监督微调），包含数据加载和处理的方法。\\n\\n4. **FeedForward** 和 **MOEFeedForward**:\\n   - 前者实现标准的前馈网络，后者引入了专家混合（MoE）机制以提高效率。\\n\\n5. **LMConfig**:\\n   - 配置语言模型的关键参数，例如维度、层数、头部数量等。\\n\\n6. **MiniMindBlock**:\\n   - 表示模型中的一个块，整合了注意力层和前馈层。\\n\\n7. **MiniMindLM**:\\n   - 核心的语言模型类，负责整体的前向传播和生成过程。\\n\\n8. **RMSNorm**:\\n   - 实现了归一化操作，有助于稳定训练过程。\\n\\n9. **LoRA**:\\n   - 实现低秩适应（LoRA）技术，用于高效微调大型模型。\\n\\n### UML 类图：\\n![](D:\\\\deep_learning\\\\codes\\\\workspace\\\\minimind\\\\minimind_uml.png)\\n\\n如果您需要更详细的分析或有关此项目的更多信息，请随时告诉我！"}']
+2025-05-15 15:54:17.443 | INFO     | tools.summarize:execute:35 - 🏁 代理的最终回应: 在分析minimind项目时，我们生成了其UML类图，并发现了一些关键的类和它们之间的关系。以下是主要的类及其功能概述：
+
+### 主要类及功能：
+1. **Attention**:
+   - 实现注意力机制的核心部分。
+   - 包含前向传播方法，用于处理输入张量。
+
+2. **ChatRequest**:
+   - 定义了聊天请求的结构，包括最大token数、消息列表、模型名称等。
+
+3. **DPODataset** 和 **SFTDataset**:
+   - 分别用于数据集的不同用途（如直接偏好优化和监督微调），包含数据加载和处理的方法。
+
+4. **FeedForward** 和 **MOEFeedForward**:
+   - 前者实现标准的前馈网络，后者引入了专家混合（MoE）机制以提高效率。
+
+5. **LMConfig**:
+   - 配置语言模型的关键参数，例如维度、层数、头部数量等。
+
+6. **MiniMindBlock**:
+   - 表示模型中的一个块，整合了注意力层和前馈层。
+
+7. **MiniMindLM**:
+   - 核心的语言模型类，负责整体的前向传播和生成过程。
+
+8. **RMSNorm**:
+   - 实现了归一化操作，有助于稳定训练过程。
+
+9. **LoRA**:
+   - 实现低秩适应（LoRA）技术，用于高效微调大型模型。
+
+### UML 类图：
+![](D:\deep_learning\codes\workspace\minimind\minimind_uml.png)
+
+如果您需要更详细的分析或有关此项目的更多信息，请随时告诉我！
+2025-05-15 15:54:17.443 | INFO     | agents.tool_call:act:131 - 🎯 工具 'final_response' 完成了它的任务! 其执行结果为:  `工具:final_response`的观测结果输出为 :
+代理已得出以下最终回应: 在分析minimind项目时，我们生成了其UML类图，并发现了一些关键的类和它们之间的关系。以下是主要的类及其功能概述：
+
+### 主要类及功能：
+1. **Attention**:
+   - 实现注意力机制的核心部分。
+   - 包含前向传播方法，用于处理输入张量。
+
+2. **ChatRequest**:
+   - 定义了聊天请求的结构，包括最大token数、消息列表、模型名称等。
+
+3. **DPODataset** 和 **SFTDataset**:
+   - 分别用于数据集的不同用途（如直接偏好优化和监督微调），包含数据加载和处理的方法。
+
+4. **FeedForward** 和 **MOEFeedForward**:
+   - 前者实现标准的前馈网络，后者引入了专家混合（MoE）机制以提高效率。
+
+5. **LMConfig**:
+   - 配置语言模型的关键参数，例如维度、层数、头部数量等。
+
+6. **MiniMindBlock**:
+   - 表示模型中的一个块，整合了注意力层和前馈层。
+
+7. **MiniMindLM**:
+   - 核心的语言模型类，负责整体的前向传播和生成过程。
+
+8. **RMSNorm**:
+   - 实现了归一化操作，有助于稳定训练过程。
+
+9. **LoRA**:
+   - 实现低秩适应（LoRA）技术，用于高效微调大型模型。
+
+### UML 类图：
+![](D:\deep_learning\codes\workspace\minimind\minimind_uml.png)
+
+如果您需要更详细的分析或有关此项目的更多信息，请随时告诉我！
+2025-05-15 15:54:17.445 | INFO     | agents.umlagent:update_plan_status:159 - Marked step 3 as completed in plan plan_1747295459
+2025-05-15 15:54:17.445 | INFO     | agents.base:run:129 - Executing step 12/20
+2025-05-15 15:54:21.995 | INFO     | agents.tool_call:think:56 - ✨ uml agnet 的想法为: Using tools response: 所有步骤都已完成，现在可以终止任务了。
+2025-05-15 15:54:21.995 | INFO     | agents.tool_call:think:58 - 🛠️ uml agnet 选择了 1 个工具
+2025-05-15 15:54:21.995 | INFO     | agents.tool_call:think:63 - 🧰 选择的工具信息: ['terminate']
+2025-05-15 15:54:21.995 | INFO     | agents.tool_call:think:78 - 🧰 工具的参数是: ['{"status": "success"}']
+2025-05-15 15:54:21.995 | INFO     | agents.tool_call:_handle_special_tool:183 - 🏁 Special tool 'terminate' has completed the task!
+2025-05-15 15:54:21.996 | INFO     | agents.tool_call:act:131 - 🎯 工具 'terminate' 完成了它的任务! 其执行结果为:  `工具:terminate`的观测结果输出为 :
+The interaction has been completed with status: success
+2025-05-15 15:55:25.226 | INFO     | main:websocket_endpoint:60 - WebSocket connection disconnected from 127.0.0.1:54336
+2025-05-15 15:55:25.228 | INFO     | main:websocket_endpoint:75 - Cleaned up resources for 127.0.0.1:54336

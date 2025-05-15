@@ -1,0 +1,213 @@
+2025-05-14 23:30:58.264 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:53841
+2025-05-14 23:30:58.435 | INFO     | main:websocket_endpoint:61 - WebSocket connection disconnected from 127.0.0.1:53841
+2025-05-14 23:30:58.436 | INFO     | main:websocket_endpoint:76 - Cleaned up resources for 127.0.0.1:53841
+2025-05-14 23:30:58.767 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:53872
+2025-05-14 23:30:58.954 | INFO     | main:websocket_endpoint:61 - WebSocket connection disconnected from 127.0.0.1:53872
+2025-05-14 23:30:58.954 | INFO     | main:websocket_endpoint:76 - Cleaned up resources for 127.0.0.1:53872
+2025-05-14 23:30:59.191 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:53907
+2025-05-14 23:30:59.370 | INFO     | main:websocket_endpoint:61 - WebSocket connection disconnected from 127.0.0.1:53907
+2025-05-14 23:30:59.370 | INFO     | main:websocket_endpoint:76 - Cleaned up resources for 127.0.0.1:53907
+2025-05-14 23:30:59.603 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:53936
+2025-05-14 23:30:59.781 | INFO     | main:websocket_endpoint:61 - WebSocket connection disconnected from 127.0.0.1:53936
+2025-05-14 23:30:59.782 | INFO     | main:websocket_endpoint:76 - Cleaned up resources for 127.0.0.1:53936
+2025-05-14 23:31:00.018 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:53956
+2025-05-14 23:31:00.193 | INFO     | main:websocket_endpoint:61 - WebSocket connection disconnected from 127.0.0.1:53956
+2025-05-14 23:31:00.193 | INFO     | main:websocket_endpoint:76 - Cleaned up resources for 127.0.0.1:53956
+2025-05-14 23:31:00.418 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:53987
+2025-05-14 23:31:00.594 | INFO     | main:websocket_endpoint:61 - WebSocket connection disconnected from 127.0.0.1:53987
+2025-05-14 23:31:00.595 | INFO     | main:websocket_endpoint:76 - Cleaned up resources for 127.0.0.1:53987
+2025-05-14 23:31:00.963 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:54034
+2025-05-14 23:31:01.104 | INFO     | main:websocket_endpoint:61 - WebSocket connection disconnected from 127.0.0.1:54034
+2025-05-14 23:31:01.105 | INFO     | main:websocket_endpoint:76 - Cleaned up resources for 127.0.0.1:54034
+2025-05-14 23:31:01.361 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:54063
+2025-05-14 23:31:01.510 | INFO     | main:websocket_endpoint:61 - WebSocket connection disconnected from 127.0.0.1:54063
+2025-05-14 23:31:01.510 | INFO     | main:websocket_endpoint:76 - Cleaned up resources for 127.0.0.1:54063
+2025-05-14 23:31:01.746 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:54093
+2025-05-14 23:31:01.915 | INFO     | main:websocket_endpoint:61 - WebSocket connection disconnected from 127.0.0.1:54093
+2025-05-14 23:31:01.915 | INFO     | main:websocket_endpoint:76 - Cleaned up resources for 127.0.0.1:54093
+2025-05-14 23:31:02.145 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:54137
+2025-05-14 23:31:02.327 | INFO     | main:websocket_endpoint:61 - WebSocket connection disconnected from 127.0.0.1:54137
+2025-05-14 23:31:02.327 | INFO     | main:websocket_endpoint:76 - Cleaned up resources for 127.0.0.1:54137
+2025-05-14 23:31:02.686 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:54184
+2025-05-14 23:31:29.826 | INFO     | main:websocket_endpoint:56 - Received message from 127.0.0.1:54184: 找一份llama3的代码，分析uml
+2025-05-14 23:31:29.826 | INFO     | agents.umlagent:create_initial_plan:206 - Creating initial plan with ID: plan_1747236662
+2025-05-14 23:31:30.169 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:55782
+2025-05-14 23:31:30.402 | INFO     | main:websocket_endpoint:61 - WebSocket connection disconnected from 127.0.0.1:55782
+2025-05-14 23:31:30.403 | INFO     | main:websocket_endpoint:76 - Cleaned up resources for 127.0.0.1:55782
+2025-05-14 23:31:30.587 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:55811
+2025-05-14 23:31:30.824 | INFO     | main:websocket_endpoint:61 - WebSocket connection disconnected from 127.0.0.1:55811
+2025-05-14 23:31:30.824 | INFO     | main:websocket_endpoint:76 - Cleaned up resources for 127.0.0.1:55811
+2025-05-14 23:31:31.005 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:55840
+2025-05-14 23:31:31.244 | INFO     | main:websocket_endpoint:61 - WebSocket connection disconnected from 127.0.0.1:55840
+2025-05-14 23:31:31.244 | INFO     | main:websocket_endpoint:76 - Cleaned up resources for 127.0.0.1:55840
+2025-05-14 23:31:31.438 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:55857
+2025-05-14 23:31:31.663 | INFO     | main:websocket_endpoint:61 - WebSocket connection disconnected from 127.0.0.1:55857
+2025-05-14 23:31:31.663 | INFO     | main:websocket_endpoint:76 - Cleaned up resources for 127.0.0.1:55857
+2025-05-14 23:31:31.851 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:55890
+2025-05-14 23:31:32.082 | INFO     | main:websocket_endpoint:61 - WebSocket connection disconnected from 127.0.0.1:55890
+2025-05-14 23:31:32.082 | INFO     | main:websocket_endpoint:76 - Cleaned up resources for 127.0.0.1:55890
+2025-05-14 23:31:32.275 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:55919
+2025-05-14 23:31:32.499 | INFO     | main:websocket_endpoint:61 - WebSocket connection disconnected from 127.0.0.1:55919
+2025-05-14 23:31:32.499 | INFO     | main:websocket_endpoint:76 - Cleaned up resources for 127.0.0.1:55919
+2025-05-14 23:31:32.694 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:55948
+2025-05-14 23:31:34.409 | INFO     | agents.umlagent:create_initial_plan:231 -  执行工具 planning 的结果为:  `工具:planning`的观测结果输出为 :
+Plan created successfully with ID: plan_1747236662
+
+Plan: 寻找Llama3代码并分析UML图 (ID: plan_1747236662)
+==============================================
+
+Progress: 0/3 steps completed (0.0%)
+Status: 0 completed, 0 in progress, 0 blocked, 3 not started
+
+Steps:
+0. [ ] 搜索Llama3的代码库或相关资源
+1. [ ] 下载Llama3代码
+2. [ ] 分析Llama3代码并生成UML图
+
+2025-05-14 23:31:34.410 | INFO     | agents.base:run:119 - websocket initialized finish, state:<starlette.datastructures.State object at 0x104b3a1b0>
+2025-05-14 23:31:34.410 | INFO     | agents.base:run:126 - Executing step 1/20
+2025-05-14 23:31:34.598 | INFO     | main:websocket_endpoint:61 - WebSocket connection disconnected from 127.0.0.1:55948
+2025-05-14 23:31:34.598 | INFO     | main:websocket_endpoint:76 - Cleaned up resources for 127.0.0.1:55948
+2025-05-14 23:31:34.852 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:56081
+2025-05-14 23:31:37.702 | INFO     | agents.tool_call:think:56 - ✨ uml agnet 的想法为: 计划看起来已经足够明确，无需进一步细化。接下来我将执行第一步：搜索Llama3的代码库或相关资源。
+2025-05-14 23:31:37.703 | INFO     | main:websocket_endpoint:61 - WebSocket connection disconnected from 127.0.0.1:54184
+2025-05-14 23:31:37.703 | INFO     | main:websocket_endpoint:76 - Cleaned up resources for 127.0.0.1:54184
+2025-05-14 23:31:37.893 | INFO     | main:websocket_endpoint:61 - WebSocket connection disconnected from 127.0.0.1:56081
+2025-05-14 23:31:37.893 | INFO     | main:websocket_endpoint:76 - Cleaned up resources for 127.0.0.1:56081
+2025-05-14 23:31:38.134 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:56266
+2025-05-14 23:32:09.647 | INFO     | main:websocket_endpoint:56 - Received message from 127.0.0.1:56266: 找一份llama3的代码 分析uml
+2025-05-14 23:32:09.650 | INFO     | agents.umlagent:create_initial_plan:206 - Creating initial plan with ID: plan_1747236698
+2025-05-14 23:32:10.039 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:58121
+2025-05-14 23:32:10.268 | INFO     | main:websocket_endpoint:61 - WebSocket connection disconnected from 127.0.0.1:58121
+2025-05-14 23:32:10.268 | INFO     | main:websocket_endpoint:76 - Cleaned up resources for 127.0.0.1:58121
+2025-05-14 23:32:10.454 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:58150
+2025-05-14 23:32:10.696 | INFO     | main:websocket_endpoint:61 - WebSocket connection disconnected from 127.0.0.1:58150
+2025-05-14 23:32:10.696 | INFO     | main:websocket_endpoint:76 - Cleaned up resources for 127.0.0.1:58150
+2025-05-14 23:32:10.885 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:58187
+2025-05-14 23:32:11.128 | INFO     | main:websocket_endpoint:61 - WebSocket connection disconnected from 127.0.0.1:58187
+2025-05-14 23:32:11.128 | INFO     | main:websocket_endpoint:76 - Cleaned up resources for 127.0.0.1:58187
+2025-05-14 23:32:11.323 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:58212
+2025-05-14 23:32:11.533 | INFO     | main:websocket_endpoint:61 - WebSocket connection disconnected from 127.0.0.1:58212
+2025-05-14 23:32:11.533 | INFO     | main:websocket_endpoint:76 - Cleaned up resources for 127.0.0.1:58212
+2025-05-14 23:32:11.724 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:58241
+2025-05-14 23:32:11.954 | INFO     | main:websocket_endpoint:61 - WebSocket connection disconnected from 127.0.0.1:58241
+2025-05-14 23:32:11.954 | INFO     | main:websocket_endpoint:76 - Cleaned up resources for 127.0.0.1:58241
+2025-05-14 23:32:12.147 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:58275
+2025-05-14 23:32:12.383 | INFO     | main:websocket_endpoint:61 - WebSocket connection disconnected from 127.0.0.1:58275
+2025-05-14 23:32:12.383 | INFO     | main:websocket_endpoint:76 - Cleaned up resources for 127.0.0.1:58275
+2025-05-14 23:32:12.586 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:58305
+2025-05-14 23:32:13.484 | INFO     | agents.umlagent:create_initial_plan:231 -  执行工具 planning 的结果为:  `工具:planning`的观测结果输出为 :
+Plan created successfully with ID: plan_1747236698
+
+Plan: 分析llama3代码并生成UML图 (ID: plan_1747236698)
+==============================================
+
+Progress: 0/4 steps completed (0.0%)
+Status: 0 completed, 0 in progress, 0 blocked, 4 not started
+
+Steps:
+0. [ ] 搜索llama3的代码库或相关资料
+1. [ ] 下载并研究llama3的源代码
+2. [ ] 根据代码结构创建UML类图
+3. [ ] 分析UML图并撰写解释文档
+
+2025-05-14 23:32:13.484 | INFO     | agents.base:run:119 - websocket initialized finish, state:<starlette.datastructures.State object at 0x10782acc0>
+2025-05-14 23:32:13.485 | INFO     | agents.base:run:126 - Executing step 1/20
+2025-05-14 23:32:13.653 | INFO     | main:websocket_endpoint:61 - WebSocket connection disconnected from 127.0.0.1:58305
+2025-05-14 23:32:13.653 | INFO     | main:websocket_endpoint:76 - Cleaned up resources for 127.0.0.1:58305
+2025-05-14 23:32:13.837 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:58380
+2025-05-14 23:32:14.071 | INFO     | main:websocket_endpoint:61 - WebSocket connection disconnected from 127.0.0.1:58380
+2025-05-14 23:32:14.072 | INFO     | main:websocket_endpoint:76 - Cleaned up resources for 127.0.0.1:58380
+2025-05-14 23:32:14.259 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:58407
+2025-05-14 23:32:14.491 | INFO     | main:websocket_endpoint:61 - WebSocket connection disconnected from 127.0.0.1:58407
+2025-05-14 23:32:14.491 | INFO     | main:websocket_endpoint:76 - Cleaned up resources for 127.0.0.1:58407
+2025-05-14 23:32:14.680 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:58440
+2025-05-14 23:32:14.909 | INFO     | main:websocket_endpoint:61 - WebSocket connection disconnected from 127.0.0.1:58440
+2025-05-14 23:32:14.909 | INFO     | main:websocket_endpoint:76 - Cleaned up resources for 127.0.0.1:58440
+2025-05-14 23:32:15.103 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:58469
+2025-05-14 23:32:15.335 | INFO     | main:websocket_endpoint:61 - WebSocket connection disconnected from 127.0.0.1:58469
+2025-05-14 23:32:15.335 | INFO     | main:websocket_endpoint:76 - Cleaned up resources for 127.0.0.1:58469
+2025-05-14 23:32:15.528 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:58492
+2025-05-14 23:32:18.129 | INFO     | agents.tool_call:think:56 - ✨ uml agnet 的想法为: 计划已经制定，接下来需要执行第一步：搜索llama3的代码库或相关资料。
+
+我将立即执行此步骤以查找llama3的代码库和相关资料。然后更新计划状态。
+2025-05-14 23:32:18.129 | INFO     | main:websocket_endpoint:61 - WebSocket connection disconnected from 127.0.0.1:56266
+2025-05-14 23:32:18.130 | INFO     | main:websocket_endpoint:76 - Cleaned up resources for 127.0.0.1:56266
+2025-05-14 23:32:18.356 | INFO     | main:websocket_endpoint:61 - WebSocket connection disconnected from 127.0.0.1:58492
+2025-05-14 23:32:18.357 | INFO     | main:websocket_endpoint:76 - Cleaned up resources for 127.0.0.1:58492
+2025-05-14 23:32:18.613 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:58689
+2025-05-14 23:32:37.645 | INFO     | main:websocket_endpoint:56 - Received message from 127.0.0.1:58689: 找一份llama3代码，分析uml
+2025-05-14 23:32:37.647 | INFO     | agents.umlagent:create_initial_plan:206 - Creating initial plan with ID: plan_1747236738
+2025-05-14 23:32:38.058 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:59847
+2025-05-14 23:32:38.280 | INFO     | main:websocket_endpoint:61 - WebSocket connection disconnected from 127.0.0.1:59847
+2025-05-14 23:32:38.280 | INFO     | main:websocket_endpoint:76 - Cleaned up resources for 127.0.0.1:59847
+2025-05-14 23:32:38.474 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:59884
+2025-05-14 23:32:38.709 | INFO     | main:websocket_endpoint:61 - WebSocket connection disconnected from 127.0.0.1:59884
+2025-05-14 23:32:38.710 | INFO     | main:websocket_endpoint:76 - Cleaned up resources for 127.0.0.1:59884
+2025-05-14 23:32:38.906 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:59915
+2025-05-14 23:32:39.127 | INFO     | main:websocket_endpoint:61 - WebSocket connection disconnected from 127.0.0.1:59915
+2025-05-14 23:32:39.127 | INFO     | main:websocket_endpoint:76 - Cleaned up resources for 127.0.0.1:59915
+2025-05-14 23:32:39.324 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:59934
+2025-05-14 23:32:39.557 | INFO     | main:websocket_endpoint:61 - WebSocket connection disconnected from 127.0.0.1:59934
+2025-05-14 23:32:39.557 | INFO     | main:websocket_endpoint:76 - Cleaned up resources for 127.0.0.1:59934
+2025-05-14 23:32:39.756 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:59955
+2025-05-14 23:32:42.761 | INFO     | agents.umlagent:create_initial_plan:231 -  执行工具 planning 的结果为:  `工具:planning`的观测结果输出为 :
+Plan created successfully with ID: plan_1747236738
+
+Plan: 分析 Llama3 代码并生成 UML 图 (ID: plan_1747236738)
+==================================================
+
+Progress: 0/7 steps completed (0.0%)
+Status: 0 completed, 0 in progress, 0 blocked, 7 not started
+
+Steps:
+0. [ ] 搜索 Llama3 的代码库或相关资源
+1. [ ] 下载代码并进行初步审查
+2. [ ] 识别主要类和模块
+3. [ ] 使用工具生成 UML 类图
+4. [ ] 分析并记录各组件的交互关系
+5. [ ] 生成序列图以展示主要流程
+6. [ ] 总结发现并编写文档
+
+2025-05-14 23:32:42.761 | INFO     | agents.base:run:119 - websocket initialized finish, state:<starlette.datastructures.State object at 0x1079aa750>
+2025-05-14 23:32:42.762 | INFO     | agents.base:run:126 - Executing step 1/20
+2025-05-14 23:32:43.005 | INFO     | main:websocket_endpoint:61 - WebSocket connection disconnected from 127.0.0.1:59955
+2025-05-14 23:32:43.005 | INFO     | main:websocket_endpoint:76 - Cleaned up resources for 127.0.0.1:59955
+2025-05-14 23:32:43.192 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:60146
+2025-05-14 23:32:43.412 | INFO     | main:websocket_endpoint:61 - WebSocket connection disconnected from 127.0.0.1:60146
+2025-05-14 23:32:43.412 | INFO     | main:websocket_endpoint:76 - Cleaned up resources for 127.0.0.1:60146
+2025-05-14 23:32:43.606 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:60175
+2025-05-14 23:32:43.842 | INFO     | main:websocket_endpoint:61 - WebSocket connection disconnected from 127.0.0.1:60175
+2025-05-14 23:32:43.842 | INFO     | main:websocket_endpoint:76 - Cleaned up resources for 127.0.0.1:60175
+2025-05-14 23:32:44.035 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:60212
+2025-05-14 23:32:44.268 | INFO     | main:websocket_endpoint:61 - WebSocket connection disconnected from 127.0.0.1:60212
+2025-05-14 23:32:44.268 | INFO     | main:websocket_endpoint:76 - Cleaned up resources for 127.0.0.1:60212
+2025-05-14 23:32:44.490 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:60244
+2025-05-14 23:32:44.674 | INFO     | main:websocket_endpoint:61 - WebSocket connection disconnected from 127.0.0.1:60244
+2025-05-14 23:32:44.674 | INFO     | main:websocket_endpoint:76 - Cleaned up resources for 127.0.0.1:60244
+2025-05-14 23:32:44.871 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:60279
+2025-05-14 23:32:45.044 | INFO     | main:websocket_endpoint:61 - WebSocket connection disconnected from 127.0.0.1:60279
+2025-05-14 23:32:45.045 | INFO     | main:websocket_endpoint:76 - Cleaned up resources for 127.0.0.1:60279
+2025-05-14 23:32:45.226 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:60300
+2025-05-14 23:32:46.694 | INFO     | agents.tool_call:think:56 - ✨ uml agnet 的想法为: 计划已经足够详细，不需要进一步的改进。下一步是执行计划中的第一个步骤，即搜索 Llama3 的代码库或相关资源。
+
+我将开始执行此步骤。
+2025-05-14 23:32:46.694 | INFO     | main:websocket_endpoint:61 - WebSocket connection disconnected from 127.0.0.1:58689
+2025-05-14 23:32:46.695 | INFO     | main:websocket_endpoint:76 - Cleaned up resources for 127.0.0.1:58689
+2025-05-14 23:32:46.935 | INFO     | main:websocket_endpoint:61 - WebSocket connection disconnected from 127.0.0.1:60300
+2025-05-14 23:32:46.935 | INFO     | main:websocket_endpoint:76 - Cleaned up resources for 127.0.0.1:60300
+2025-05-14 23:32:47.241 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:60428
+2025-05-14 23:32:47.448 | INFO     | main:websocket_endpoint:61 - WebSocket connection disconnected from 127.0.0.1:60428
+2025-05-14 23:32:47.448 | INFO     | main:websocket_endpoint:76 - Cleaned up resources for 127.0.0.1:60428
+2025-05-14 23:32:47.645 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:60460
+2025-05-14 23:32:47.875 | INFO     | main:websocket_endpoint:61 - WebSocket connection disconnected from 127.0.0.1:60460
+2025-05-14 23:32:47.875 | INFO     | main:websocket_endpoint:76 - Cleaned up resources for 127.0.0.1:60460
+2025-05-14 23:32:48.065 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:60501
+2025-05-14 23:32:48.304 | INFO     | main:websocket_endpoint:61 - WebSocket connection disconnected from 127.0.0.1:60501
+2025-05-14 23:32:48.304 | INFO     | main:websocket_endpoint:76 - Cleaned up resources for 127.0.0.1:60501
+2025-05-14 23:32:48.503 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:60528
+2025-05-14 23:32:48.716 | INFO     | main:websocket_endpoint:61 - WebSocket connection disconnected from 127.0.0.1:60528
+2025-05-14 23:32:48.716 | INFO     | main:websocket_endpoint:76 - Cleaned up resources for 127.0.0.1:60528
+2025-05-14 23:32:48.918 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:60557
+2025-05-14 23:33:36.350 | INFO     | main:websocket_endpoint:61 - WebSocket connection disconnected from 127.0.0.1:60557
+2025-05-14 23:33:36.352 | INFO     | main:websocket_endpoint:76 - Cleaned up resources for 127.0.0.1:60557
