@@ -1,0 +1,1200 @@
+2025-05-15 00:08:43.724 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:56017
+2025-05-15 00:09:01.049 | INFO     | main:websocket_endpoint:56 - Received message from 127.0.0.1:56017: 帮我找一个llama2的项目，并且分析uml
+2025-05-15 00:09:01.050 | INFO     | agents.umlagent:create_initial_plan:206 - Creating initial plan with ID: plan_1747238923
+2025-05-15 00:09:05.517 | INFO     | agents.umlagent:create_initial_plan:231 -  执行工具 planning 的结果为:  `工具:planning`的观测结果输出为 :
+Plan created successfully with ID: plan_1747238923
+
+Plan: 查找并分析一个Llama2项目的UML图 (ID: plan_1747238923)
+=================================================
+
+Progress: 0/4 steps completed (0.0%)
+Status: 0 completed, 0 in progress, 0 blocked, 4 not started
+
+Steps:
+0. [ ] 使用百度搜索工具查找Llama2项目
+1. [ ] 选择一个合适的Llama2项目进行克隆
+2. [ ] 生成所选Llama2项目的UML图
+3. [ ] 分析并提供UML图的解释
+
+2025-05-15 00:09:05.518 | INFO     | agents.base:run:119 - websocket initialized finish, state:<starlette.datastructures.State object at 0x105145400>
+2025-05-15 00:09:05.518 | INFO     | agents.base:run:126 - Executing step 1/20
+2025-05-15 00:09:07.767 | INFO     | agents.tool_call:think:56 - ✨ uml agnet 的想法为: 计划已创建，现在需要执行第一步：使用百度搜索工具查找Llama2项目。
+2025-05-15 00:09:07.768 | INFO     | agents.tool_call:think:58 - 🛠️ uml agnet 选择了 1 个工具
+2025-05-15 00:09:07.768 | INFO     | agents.tool_call:think:63 - 🧰 选择的工具信息: ['baidu_search']
+2025-05-15 00:09:07.768 | INFO     | agents.tool_call:think:78 - 🧰 工具的参数是: ['{"query": "llama2 项目 github", "num_results": 5}']
+2025-05-15 00:09:08.757 | INFO     | agents.tool_call:act:131 - 🎯 工具 'baidu_search' 完成了它的任务! 其执行结果为:  `工具:baidu_search`的观测结果输出为 :
+[{'title': 'llama2 · GitHub Topics · GitHub', 'abstract': 'llama2 · GitHub Topics · GitHub\n\n\n\n\n\n\n\n\n\n\n查看此网页的中文翻译，请点击\n\n\n翻译此页\n\n\n\n6天前ai self-hosted openai llama gpt gpt-4 llm chatgpt llamacpp llama-cpp gpt4all localai llama2 llama-2 code-llama codellama  Updated Apr 23, 2024 TypeScript ymcui / Chinese-LLaMA-Alpaca-2 Star 7.2k  Code Issues Pull requests Discussi', 'url': 'http://www.baidu.com/link?url=TjMRjxyJFL_6SXHk5tLMK97eIZO142snvkK-ncvmLRrjG8Y1TdrGJ82wEEyKP-ov', 'rank': 1}, {'title': '【大模型】基于 LlaMA2 的高 star 的 GitHub 开源项目汇总', 'abstract': '【大模型】基于 LlaMA2 的高 star 的 GitHub 开源项目汇总\n\n\n\n\n\n\n\n\n\n2023年8月24日NO4. LinkSoul-AI/Chinese-Llama-2-7b star:1.7K GitHub地址: https://github.com/LinkSoul-AI/Chinese-Llama-2-7b 介绍: 开源社区第一个能下载、能运行的中文 LLaMA2 模型! 全部开源,完全可商用的中文版 Llama2 模型及中英文 SFT 数据集,输入格式严格遵循 llama-2-chat 格式,兼容适配所有针对原版 llama-2...\n\n\nCSDN博客\n\n\n\n\n\n\n\n\n\ue680\n', 'url': 'http://www.baidu.com/link?url=7czex22P03M7i9TLYL6PfcgnfKoE0AKRMsBOjIYEOC8MicTUvGarDMtQf8ceAlCJZqTXgRjm0Bu2StlP38FFu9pNPgzYFvTWekJYWCcx8L_', 'rank': 2}, {'title': 'GitHub - Rayrtfr/Llama2-Chinese: 最好的中文Llama大模型', 'abstract': 'GitHub - Rayrtfr/Llama2-Chinese: 最好的中文Llama大模型\n\nMeta官方在2023年8月24日发布了Code Llama,基于代码数据对Llama2进行了微调,提供三个不同功能的版本:基础模型(Code Llama)、Python专用模型(Code Llama - Python)和指令跟随模型(Code Llama - Instruct),包含7B、13B、34B三种不同参数规模。不同模型能力区别如下表所示: 关于Code Llama的详细信息可以参考官方Github...\n\n\nGitHub\n\n\n\n\n\n\ue680\n播报\n\n\n\ue67d\n暂停', 'url': 'http://www.baidu.com/link?url=7czex22P03M7i9TLYL6PfbnhCs1xAtPOkAHckjeuYzRLv5lfGgKH0Ey8mN_lgtG-2Uvaiwi8jVy2V4CdIbgsP_', 'rank': 3}, {'title': '大家还在搜github优秀开源项目github项目luna算法稳定币github官网jenny猫娘luna模组文件github热门开源项目llama2模型下载github项目地址github热门项目landeng下载github', 'abstract': '大家还在搜github优秀开源项目github项目luna算法稳定币github官网jenny猫娘luna模组文件github热门开源项目llama2模型下载github项目地址github热门项目landeng下载github', 'url': '/s?wd=github%E4%BC%98%E7%A7%80%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE&usm=4&ie=utf-8&rsv_pq=bc83c2940073b49f&oq=llama2%20%E9%A1%B9%E7%9B%AE%20github&rsv_t=9ef6xbXEbMLLhajNrYJ4O4FoTZ6Xu5iTYt4YUx6TRQka6COKxLAGaP%2Fo1xY&rsf=101633403&rsv_dl=0_prs_28608_1', 'rank': 4}, {'title': 'llama 2 github官方文档_llama2文档-CSDN博客', 'abstract': 'llama 2 github官方文档_llama2文档-CSDN博客\n\n2023年7月29日Llama2是MetaAI发布的大型语言模型,提供7B到70B参数的版本。用户可以下载模型权重和代码进行实验和创新。下载过程涉及接受许可证并通过签名URL。模型支持HuggingFace平台,需要适当的Python环境和依赖。预训练模型和微调后的聊天模型有不同的使用方法。同时,文档强调了负责任的使用和风险提示,提供了错误报告和许可证信息。 \n\n\nCSDN博客', 'url': 'http://www.baidu.com/link?url=GWD8EuLBtUc673JOHOy5TBIqqM6fwyr5QW63hl4FCaOh2Gy4FzYKDQZlIpzxQUPuKelfhaYuIv2fs2M2W3P_R2Heu8N4DDR5jH7f6Wsqgr3', 'rank': 5}]
+2025-05-15 00:09:08.758 | INFO     | agents.umlagent:update_plan_status:155 - Marked step 0 as completed in plan plan_1747238923
+2025-05-15 00:09:08.758 | INFO     | agents.base:run:126 - Executing step 2/20
+2025-05-15 00:09:14.107 | INFO     | agents.tool_call:think:56 - ✨ uml agnet 的想法为: Using tools response: 我已经找到了一些关于Llama2项目的链接。现在需要选择一个合适的项目进行克隆。我将选择第一个搜索结果中的项目：'ymcui / Chinese-LLaMA-Alpaca-2'。接下来，我将执行第二步：克隆这个项目。
+2025-05-15 00:09:14.108 | INFO     | agents.tool_call:think:58 - 🛠️ uml agnet 选择了 1 个工具
+2025-05-15 00:09:14.108 | INFO     | agents.tool_call:think:63 - 🧰 选择的工具信息: ['github_repo_cloner_ssh']
+2025-05-15 00:09:14.108 | INFO     | agents.tool_call:think:78 - 🧰 工具的参数是: ['{"repo_name": "ymcui/Chinese-LLaMA-Alpaca-2"}']
+2025-05-15 00:09:24.172 | INFO     | agents.tool_call:act:131 - 🎯 工具 'github_repo_cloner_ssh' 完成了它的任务! 其执行结果为:  `工具:github_repo_cloner_ssh`的观测结果输出为 :
+/Users/peelsannaw/Desktop/codes/projects/umlagent/umlagent/workspace/Chinese-LLaMA-Alpaca-2
+2025-05-15 00:09:24.172 | INFO     | agents.umlagent:update_plan_status:155 - Marked step 1 as completed in plan plan_1747238923
+2025-05-15 00:09:24.172 | INFO     | agents.base:run:126 - Executing step 3/20
+2025-05-15 00:09:30.285 | INFO     | agents.tool_call:think:56 - ✨ uml agnet 的想法为: Using tools response: 已成功克隆Llama2项目。接下来，我将执行第三步：生成所选Llama2项目的UML图。
+2025-05-15 00:09:30.286 | INFO     | agents.tool_call:think:58 - 🛠️ uml agnet 选择了 1 个工具
+2025-05-15 00:09:30.286 | INFO     | agents.tool_call:think:63 - 🧰 选择的工具信息: ['code_to_uml_generator_multilang']
+2025-05-15 00:09:30.286 | INFO     | agents.tool_call:think:78 - 🧰 工具的参数是: ['{"repo_path": "/Users/peelsannaw/Desktop/codes/projects/umlagent/umlagent/workspace/Chinese-LLaMA-Alpaca-2", "output_png_path": "/Users/peelsannaw/Desktop/codes/projects/umlagent/umlagent/output/llama2_project_uml.png"}']
+2025-05-15 00:09:31.236 | INFO     | tools.uml:execute:696 - 准备通过 WebSocket 发送 UML 图片 'llama2_project_uml.png'。
+2025-05-15 00:09:31.257 | INFO     | tools.uml:execute:711 - UML 图片 'llama2_project_uml.png' 已通过 WebSocket 发送 (891200 字节)。
+2025-05-15 00:09:31.258 | INFO     | agents.tool_call:act:131 - 🎯 工具 'code_to_uml_generator_multilang' 完成了它的任务! 其执行结果为:  `工具:code_to_uml_generator_multilang`的观测结果输出为 :
+UML 图表和文本描述已成功生成。
+PNG 图像保存路径: '/Users/peelsannaw/Desktop/codes/projects/umlagent/umlagent/output/llama2_project_uml.png'
+
+---
+UML 图表文本描述内容:
+---
+# UML 图表文本描述
+
+## Class: `ChatCompletionRequest`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `openai_api_protocol_vllm`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `BaseModel`, `BaseModel`
+
+### 属性 (Attributes)
+- `best_of: Optional[int]`
+- `do_sample: Optional[bool]`
+- `frequency_penalty: Optional[float]`
+- `ignore_eos: Optional[bool]`
+- `logit_bias: Optional[Dict[str, float]]`
+- `max_tokens: Optional[int]`
+- `messages: Union[str, List[Dict[str, str]]]`
+- `model: str`
+- `n: Optional[int]`
+- `num_beams: Optional[int]`
+- `presence_penalty: Optional[float]`
+- `repetition_penalty: Optional[float]`
+- `stop: Optional[Union[str, List[str]]]`
+- `stream: Optional[bool]`
+- `temperature: Optional[float]`
+- `top_k: Optional[int]`
+- `top_p: Optional[float]`
+- `use_beam_search: Optional[bool]`
+- `user: Optional[str]`
+
+---
+
+## Class: `ChatCompletionResponse`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `openai_api_protocol_vllm`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `BaseModel`, `BaseModel`
+
+### 属性 (Attributes)
+- `choices: List[ChatCompletionResponseChoice]`
+- `choices: List[Union[ChatCompletionResponseChoice, ChatCompletionResponseStreamChoice]]`
+- `created: int`
+- `id: str`
+- `model: str`
+- `object: str`
+- `usage: UsageInfo`
+
+---
+
+## Class: `ChatCompletionResponseChoice`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `openai_api_protocol_vllm`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `BaseModel`, `BaseModel`
+
+### 属性 (Attributes)
+- `finish_reason: Optional[Literal['stop', 'length']]`
+- `index: int`
+- `message: ChatMessage`
+
+---
+
+## Class: `ChatCompletionResponseStreamChoice`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `openai_api_protocol_vllm`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `BaseModel`, `BaseModel`
+
+### 属性 (Attributes)
+- `delta: DeltaMessage`
+- `finish_reason: Optional[Literal['stop', 'length']]`
+- `index: int`
+
+---
+
+## Class: `ChatCompletionStreamResponse`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `openai_api_protocol_vllm`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `BaseModel`
+
+### 属性 (Attributes)
+- `choices: List[ChatCompletionResponseStreamChoice]`
+- `created: int`
+- `id: str`
+- `model: str`
+- `object: str`
+
+---
+
+## Class: `ChatMessage`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `openai_api_protocol_vllm`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `BaseModel`, `BaseModel`
+
+### 属性 (Attributes)
+- `content: str`
+- `role: str`
+
+---
+
+## Class: `ChineseLLaMAAlpaca2Adapter`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `openai_api_server_vllm`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `BaseModelAdapter`
+
+### 方法 (Methods)
+- `get_default_conv_template(self, model_path: str) -> Conversation`
+- `load_model(self, model_path: str, from_pretrained_kwargs: dict)`
+- `match(self, model_path: str)`
+
+---
+
+## Class: `ChineseLLaMAAlpacaAdapter`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `openai_api_server_vllm`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `BaseModelAdapter`
+
+### 属性 (Attributes)
+- `use_fast_tokenizer`
+
+### 方法 (Methods)
+- `get_default_conv_template(self, model_path: str) -> Conversation`
+- `match(self, model_path: str)`
+
+---
+
+## Class: `CompletionRequest`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `openai_api_protocol_vllm`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `BaseModel`, `BaseModel`
+
+### 属性 (Attributes)
+- `best_of: Optional[int]`
+- `do_sample: Optional[bool]`
+- `echo: Optional[bool]`
+- `frequency_penalty: Optional[float]`
+- `ignore_eos: Optional[bool]`
+- `logit_bias: Optional[Dict[str, float]]`
+- `logprobs: Optional[int]`
+- `max_tokens: Optional[int]`
+- `model: str`
+- `n: Optional[int]`
+- `num_beams: Optional[int]`
+- `presence_penalty: Optional[float]`
+- `prompt: Union[str, List[Any]]`
+- `prompt: Union[str, List[str]]`
+- `repetition_penalty: Optional[float]`
+- `stop: Optional[Union[str, List[str]]]`
+- `stream: Optional[bool]`
+- `suffix: Optional[str]`
+- `temperature: Optional[float]`
+- `top_k: Optional[int]`
+- `top_p: Optional[float]`
+- `use_beam_search: Optional[bool]`
+- `user: Optional[str]`
+
+---
+
+## Class: `CompletionResponse`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `openai_api_protocol_vllm`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `BaseModel`, `BaseModel`
+
+### 属性 (Attributes)
+- `choices: List[CompletionResponseChoice]`
+- `created: Optional[int]`
+- `created: int`
+- `id: Optional[str]`
+- `id: str`
+- `model: Optional[str]`
+- `model: str`
+- `object: Optional[str]`
+- `object: str`
+- `usage: UsageInfo`
+
+---
+
+## Class: `CompletionResponseChoice`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `openai_api_protocol_vllm`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `BaseModel`, `BaseModel`
+
+### 属性 (Attributes)
+- `finish_reason: Optional[Literal['stop', 'length']]`
+- `index: int`
+- `logprobs: Optional[LogProbs]`
+- `text: str`
+
+---
+
+## Class: `CompletionResponseStreamChoice`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `openai_api_protocol_vllm`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `BaseModel`
+
+### 属性 (Attributes)
+- `finish_reason: Optional[Literal['stop', 'length']]`
+- `index: int`
+- `logprobs: Optional[LogProbs]`
+- `text: str`
+
+---
+
+## Class: `CompletionStreamResponse`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `openai_api_protocol_vllm`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `BaseModel`
+
+### 属性 (Attributes)
+- `choices: List[CompletionResponseStreamChoice]`
+- `created: int`
+- `id: str`
+- `model: str`
+- `object: str`
+
+---
+
+## Class: `DataCollatorForSupervisedDataset`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `build_dataset`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `object`
+
+### 属性 (Attributes)
+- `tokenizer: transformers.PreTrainedTokenizer`
+
+### 方法 (Methods)
+- `__call__(self, instances: Sequence[Dict]) -> Dict[str, torch.Tensor]`
+
+---
+
+## Class: `DataTrainingArguments`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `run_clm_pt_with_peft`
+
+### 属性 (Attributes)
+- `block_size: Optional[int]`
+- `data_cache_dir: Optional[str]`
+- `dataset_config_name: Optional[str]`
+- `dataset_dir: Optional[str]`
+- `keep_linebreaks: bool`
+- `max_eval_samples: Optional[int]`
+- `max_seq_length: Optional[int]`
+- `max_train_samples: Optional[int]`
+- `overwrite_cache: bool`
+- `preprocessing_num_workers: Optional[int]`
+- `streaming: bool`
+- `train_file: Optional[str]`
+- `validation_file: Optional[str]`
+- `validation_split_percentage: Optional[float]`
+
+### 方法 (Methods)
+- `__post_init__(self)`
+
+---
+
+## Class: `DeltaMessage`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `openai_api_protocol_vllm`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `BaseModel`, `BaseModel`
+
+### 属性 (Attributes)
+- `content: Optional[str]`
+- `role: Optional[Literal['user', 'assistant', 'system']]`
+- `role: Optional[str]`
+
+---
+
+## Class: `EmbeddingsRequest`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `openai_api_protocol`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `BaseModel`
+
+### 属性 (Attributes)
+- `input: Union[str, List[Any]]`
+- `user: Optional[str]`
+
+---
+
+## Class: `EmbeddingsResponse`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `openai_api_protocol`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `BaseModel`
+
+### 属性 (Attributes)
+- `data: List[Dict[str, Any]]`
+- `model: str`
+- `object: str`
+
+---
+
+## Class: `ErrorResponse`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `openai_api_protocol_vllm`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `BaseModel`
+
+### 属性 (Attributes)
+- `code: Optional[str]`
+- `message: str`
+- `object: str`
+- `param: Optional[str]`
+- `type: str`
+
+---
+
+## Class: `Evaluator`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `evaluator`
+
+### 属性 (Attributes)
+- `choices`
+- `k`
+- `model_name`
+- `model_path`
+- `puncs`
+
+### 方法 (Methods)
+- `__init__(self, choices, model_name, k)`
+- `__init__(self, choices, model_path, k)`
+- `eval_subject(self, subject_name, test_df, dev_df, few_shot, save_result_dir)`
+- `exact_match(self, pred, target)`
+- `format_example(self, line, include_answer)`
+- `generate_few_shot_prompt(self, subject, dev_df)`
+- `normalize_answer(self, s)`
+
+---
+
+## Class: `Iteratorize`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `gradio_demo`
+
+### 属性 (Attributes)
+- `c_callback`
+- `kwargs`
+- `mfunc`
+- `q`
+- `sentinel`
+- `stop_now`
+- `thread`
+
+### 方法 (Methods)
+- `__del__(self)`
+- `__enter__(self)`
+- `__exit__(self, exc_type, exc_val, exc_tb)`
+- `__init__(self, func, kwargs, callback)`
+- `__iter__(self)`
+- `__next__(self)`
+
+---
+
+## Class: `Linear`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `lora`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `nn.Linear`, `LoraLayer`
+
+### 属性 (Attributes)
+- `fan_in_fan_out`
+
+### 方法 (Methods)
+- `__init__(self, in_features: int, out_features: int, r: int, lora_alpha: int, lora_dropout: float, fan_in_fan_out: bool, merge_weights: bool, **kwargs)`
+- `eval(self)`
+- `forward(self, x: torch.Tensor)`
+- `reset_parameters(self)`
+- `train(self, mode: bool)`
+
+---
+
+## Class: `Linear4bit`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `lora`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `bnb.nn.Linear4bit`, `LoraLayer`
+
+### 方法 (Methods)
+- `__init__(self, in_features, out_features, r: int, lora_alpha: int, lora_dropout: float, **kwargs)`
+- `forward(self, x: torch.Tensor)`
+- `reset_parameters(self)`
+
+---
+
+## Class: `Linear8bitLt`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `lora`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `bnb.nn.Linear8bitLt`, `LoraLayer`
+
+### 方法 (Methods)
+- `__init__(self, in_features, out_features, r: int, lora_alpha: int, lora_dropout: float, **kwargs)`
+- `forward(self, x: torch.Tensor)`
+- `reset_parameters(self)`
+
+---
+
+## Class: `Llama_Evaluator`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `llama2_evaluator`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `Evaluator`, `Evaluator`
+
+### 属性 (Attributes)
+- `A_id`
+- `B_id`
+- `C_id`
+- `D_id`
+- `device`
+- `generation_config`
+- `model`
+- `model_path`
+- `sA_id`
+- `sB_id`
+- `sC_id`
+- `sD_id`
+- `tokenizer`
+- `verbose`
+
+### 方法 (Methods)
+- `__init__(self, choices, k, model_path, device, temperature, verbose)`
+- `eval_subject(self, subject_name, test_df, dev_df, few_shot, cot, save_result_dir, with_prompt, constrained_decoding, do_test)`
+- `extract_answer(self, line, gen_ans)`
+- `format_example(self, line, include_answer, cot, with_prompt)`
+- `generate_alpaca2_few_shot_prompt(self, subject, dev_df, cot)`
+- `generate_few_shot_noprompt(self, subject, dev_df, cot)`
+- `generate_few_shot_prompt(self, subject, dev_df, cot)`
+- `generate_llama2_few_shot_prompt(self, subject, dev_df, cot)`
+
+---
+
+## Class: `LogProbs`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `openai_api_protocol_vllm`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `BaseModel`
+
+### 属性 (Attributes)
+- `text_offset: List[int]`
+- `token_logprobs: List[Optional[float]]`
+- `tokens: List[str]`
+- `top_logprobs: List[Optional[Dict[str, float]]]`
+
+---
+
+## Class: `LoraConfig`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `lora`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `PeftConfig`
+
+### 属性 (Attributes)
+- `bias: str`
+- `enable_lora: Optional[List[bool]]`
+- `fan_in_fan_out: bool`
+- `lora_alpha: int`
+- `lora_dropout: float`
+- `merge_weights: bool`
+- `modules_to_save: Optional[List[str]]`
+- `r: int`
+- `target_modules: Optional[Union[List[str], str]]`
+
+### 方法 (Methods)
+- `__post_init__(self)`
+
+---
+
+## Class: `LoraLayer`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `lora`
+
+### 属性 (Attributes)
+- `disable_adapters`
+- `lora_alpha`
+- `merge_weights`
+- `merged`
+- `r`
+
+### 方法 (Methods)
+- `__init__(self, r: int, lora_alpha: int, lora_dropout: float, merge_weights: bool)`
+
+---
+
+## Class: `LoraModel`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `lora`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `torch.nn.Module`
+
+### 属性 (Attributes)
+- `forward`
+- `model`
+- `peft_config`
+
+### 方法 (Methods)
+- `__getattr__(self, name: str)`
+- `__init__(self, config, model)`
+- `_find_and_replace(self)`
+- `_get_submodules(self, key)`
+- `_replace_module(self, parent_module, child_name, new_module, old_module)`
+- `_set_adapter_layers(self, enabled)`
+- `disable_adapter_layers(self)`
+- `enable_adapter_layers(self)`
+- `get_peft_config_as_dict(self, inference: bool)`
+- `modules_to_save(self)`
+
+---
+
+## Class: `MergedLinear`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `lora`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `nn.Linear`, `LoraLayer`
+
+### 属性 (Attributes)
+- `enable_lora`
+- `fan_in_fan_out`
+
+### 方法 (Methods)
+- `__init__(self, in_features: int, out_features: int, r: int, lora_alpha: int, lora_dropout: float, enable_lora: List[bool], fan_in_fan_out: bool, merge_weights: bool, **kwargs)`
+- `eval(self)`
+- `forward(self, x: torch.Tensor)`
+- `reset_parameters(self)`
+- `train(self, mode: bool)`
+- `zero_pad(self, x)`
+
+---
+
+## Class: `MergedLinear4bit`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `lora`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `bnb.nn.Linear4bit`, `LoraLayer`
+
+### 属性 (Attributes)
+- `enable_lora`
+
+### 方法 (Methods)
+- `__init__(self, in_features: int, out_features: int, r: int, lora_alpha: int, lora_dropout: float, enable_lora: List[bool], **kwargs)`
+- `forward(self, x: torch.Tensor)`
+- `reset_parameters(self)`
+- `zero_pad(self, x)`
+
+---
+
+## Class: `MergedLinear8bitLt`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `lora`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `bnb.nn.Linear8bitLt`, `LoraLayer`
+
+### 属性 (Attributes)
+- `enable_lora`
+
+### 方法 (Methods)
+- `__init__(self, in_features: int, out_features: int, r: int, lora_alpha: int, lora_dropout: float, enable_lora: List[bool], **kwargs)`
+- `forward(self, x: torch.Tensor)`
+- `reset_parameters(self)`
+- `zero_pad(self, x)`
+
+---
+
+## Class: `ModelArguments`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `run_clm_pt_with_peft`
+
+### 属性 (Attributes)
+- `cache_dir: Optional[str]`
+- `config_name: Optional[str]`
+- `config_overrides: Optional[str]`
+- `model_name_or_path: Optional[str]`
+- `model_revision: str`
+- `model_type: Optional[str]`
+- `tokenizer_name: Optional[str]`
+- `tokenizer_name_or_path: Optional[str]`
+- `torch_dtype: Optional[str]`
+- `use_auth_token: bool`
+- `use_fast_tokenizer: bool`
+
+### 方法 (Methods)
+- `__post_init__(self)`
+
+---
+
+## Class: `ModelCard`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `openai_api_protocol_vllm`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `BaseModel`
+
+### 属性 (Attributes)
+- `created: int`
+- `id: str`
+- `object: str`
+- `owned_by: str`
+- `parent: Optional[str]`
+- `permission: List[ModelPermission]`
+- `root: Optional[str]`
+
+---
+
+## Class: `ModelList`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `openai_api_protocol_vllm`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `BaseModel`
+
+### 属性 (Attributes)
+- `data: List[ModelCard]`
+- `object: str`
+
+---
+
+## Class: `ModelPermission`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `openai_api_protocol_vllm`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `BaseModel`
+
+### 属性 (Attributes)
+- `allow_create_engine: bool`
+- `allow_fine_tuning: bool`
+- `allow_logprobs: bool`
+- `allow_sampling: bool`
+- `allow_search_indices: bool`
+- `allow_view: bool`
+- `created: int`
+- `group: Optional[str]`
+- `id: str`
+- `is_blocking: str`
+- `object: str`
+- `organization: str`
+
+---
+
+## Class: `MyTrainingArguments`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `run_clm_pt_with_peft`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `TrainingArguments`, `TrainingArguments`
+
+### 属性 (Attributes)
+- `debug_mode: Optional[bool]`
+- `double_quant: Optional[bool]`
+- `full_finetuning: Optional[bool]`
+- `load_in_kbits: Optional[int]`
+- `lora_alpha: Optional[float]`
+- `lora_dropout: Optional[float]`
+- `lora_rank: Optional[int]`
+- `modules_to_save: Optional[str]`
+- `peft_path: Optional[str]`
+- `quant_type: Optional[str]`
+- `trainable: Optional[str]`
+- `use_flash_attention_2: Optional[bool]`
+
+---
+
+## Class: `PeftConfig`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `config`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `PeftConfigMixin`
+
+### 属性 (Attributes)
+- `base_model_name_or_path: str`
+- `inference_mode: bool`
+- `peft_type: Union[str, PeftType]`
+- `task_type: Union[str, TaskType]`
+
+---
+
+## Class: `PeftConfigMixin`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `config`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `PushToHubMixin`
+
+### 属性 (Attributes)
+- `peft_type: Optional[PeftType]`
+
+### 方法 (Methods)
+- `__dict__(self)`
+- `from_json_file(cls, path_json_file, **kwargs)`
+- `from_pretrained(cls, pretrained_model_name_or_path, **kwargs)`
+- `save_pretrained(self, save_directory, **kwargs)`
+- `to_dict(self)`
+
+---
+
+## Class: `PeftModel`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `peft_model`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `PushToHubMixin`, `torch.nn.Module`
+
+### 属性 (Attributes)
+- `base_model`
+- `config`
+- `device`
+- `modules_to_save`
+- `peft_config`
+
+### 方法 (Methods)
+- `__getattr__(self, name: str)`
+- `__init__(self, model, peft_config: PeftConfig)`
+- `_setup_prompt_encoder(self)`
+- `disable_adapter(self)`
+- `forward(self, *args, **kwargs)`
+- `from_pretrained(cls, model, model_id, **kwargs)`
+- `get_base_model(self)`
+- `get_prompt(self, batch_size)`
+- `get_prompt_embedding_to_save(self)`
+- `print_trainable_parameters(self)`
+- `save_pretrained(self, save_directory, **kwargs)`
+
+---
+
+## Class: `PeftModelForCausalLM`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `peft_model`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `PeftModel`
+
+### 属性 (Attributes)
+- `base_model_prepare_inputs_for_generation`
+
+### 方法 (Methods)
+- `__init__(self, model, peft_config: PeftConfig)`
+- `forward(self, input_ids, attention_mask, inputs_embeds, labels, output_attentions, output_hidden_states, return_dict, **kwargs)`
+- `generate(self, **kwargs)`
+- `prepare_inputs_for_generation(self, *args, **kwargs)`
+
+---
+
+## Class: `PeftModelForSeq2SeqLM`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `peft_model`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `PeftModel`
+
+### 属性 (Attributes)
+- `base_model_prepare_encoder_decoder_kwargs_for_generation`
+- `base_model_prepare_inputs_for_generation`
+
+### 方法 (Methods)
+- `__init__(self, model, peft_config: PeftConfig)`
+- `forward(self, input_ids, attention_mask, inputs_embeds, decoder_input_ids, decoder_attention_mask, decoder_inputs_embeds, labels, output_attentions, output_hidden_states, return_dict, **kwargs)`
+- `generate(self, **kwargs)`
+- `prepare_inputs_for_generation(self, *args, **kwargs)`
+
+---
+
+## Class: `PeftModelForSequenceClassification`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `peft_model`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `PeftModel`
+
+### 属性 (Attributes)
+- `modules_to_save`
+
+### 方法 (Methods)
+- `__init__(self, model, peft_config: PeftConfig)`
+- `_prefix_tuning_forward(self, input_ids, attention_mask, inputs_embeds, labels, output_attentions, output_hidden_states, return_dict, **kwargs)`
+- `forward(self, input_ids, attention_mask, inputs_embeds, labels, output_attentions, output_hidden_states, return_dict, **kwargs)`
+
+---
+
+## Class: `PeftModelForTokenClassification`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `peft_model`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `PeftModel`
+
+### 属性 (Attributes)
+- `modules_to_save`
+
+### 方法 (Methods)
+- `__init__(self, model, peft_config: PeftConfig)`
+- `_prefix_tuning_forward(self, input_ids, attention_mask, inputs_embeds, labels, output_attentions, output_hidden_states, return_dict, **kwargs)`
+- `forward(self, input_ids, attention_mask, inputs_embeds, labels, output_attentions, output_hidden_states, return_dict, **kwargs)`
+
+---
+
+## Class: `PeftType`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `config`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `str`, `enum.Enum`
+
+### 属性 (Attributes)
+- `LORA`
+- `PREFIX_TUNING`
+- `PROMPT_TUNING`
+- `P_TUNING`
+
+---
+
+## Class: `PrefixEncoder`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `prefix_tuning`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `torch.nn.Module`
+
+### 属性 (Attributes)
+- `prefix_projection`
+
+### 方法 (Methods)
+- `__init__(self, config)`
+- `forward(self, prefix: torch.Tensor)`
+
+---
+
+## Class: `PrefixTuningConfig`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `prefix_tuning`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `PromptLearningConfig`
+
+### 属性 (Attributes)
+- `encoder_hidden_size: int`
+- `prefix_projection: bool`
+
+### 方法 (Methods)
+- `__post_init__(self)`
+
+---
+
+## Class: `PromptEmbedding`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `prompt_tuning`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `torch.nn.Module`
+
+### 属性 (Attributes)
+- `embedding`
+
+### 方法 (Methods)
+- `__init__(self, config, word_embeddings)`
+- `forward(self, indices)`
+
+---
+
+## Class: `PromptEncoder`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `p_tuning`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `torch.nn.Module`
+
+### 属性 (Attributes)
+- `embedding`
+- `encoder_type`
+- `hidden_size`
+- `input_size`
+- `output_size`
+- `token_dim`
+- `total_virtual_tokens`
+
+### 方法 (Methods)
+- `__init__(self, config)`
+- `forward(self, indices)`
+
+---
+
+## Class: `PromptEncoderConfig`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `p_tuning`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `PromptLearningConfig`
+
+### 属性 (Attributes)
+- `encoder_dropout: float`
+- `encoder_hidden_size: int`
+- `encoder_num_layers: int`
+- `encoder_reparameterization_type: Union[str, PromptEncoderReparameterizationType]`
+
+### 方法 (Methods)
+- `__post_init__(self)`
+
+---
+
+## Class: `PromptEncoderReparameterizationType`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `p_tuning`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `str`, `enum.Enum`
+
+### 属性 (Attributes)
+- `LSTM`
+- `MLP`
+
+---
+
+## Class: `PromptLearningConfig`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `config`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `PeftConfig`
+
+### 属性 (Attributes)
+- `num_attention_heads: Optional[int]`
+- `num_layers: Optional[int]`
+- `num_transformer_submodules: Optional[int]`
+- `num_virtual_tokens: int`
+- `token_dim: int`
+
+---
+
+## Class: `PromptTuningConfig`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `prompt_tuning`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `PromptLearningConfig`
+
+### 属性 (Attributes)
+- `prompt_tuning_init: Union[PromptTuningInit, str]`
+- `prompt_tuning_init_text: Optional[str]`
+- `tokenizer_name_or_path: Optional[str]`
+
+### 方法 (Methods)
+- `__post_init__(self)`
+
+---
+
+## Class: `PromptTuningInit`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `prompt_tuning`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `str`, `enum.Enum`
+
+### 属性 (Attributes)
+- `RANDOM`
+- `TEXT`
+
+---
+
+## Class: `SavePeftModelCallback`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `run_clm_pt_with_peft`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `transformers.TrainerCallback`, `transformers.TrainerCallback`
+
+### 方法 (Methods)
+- `on_save(self, args, state, control, **kwargs)`
+- `on_train_end(self, args, state, control, **kwargs)`
+- `save_model(self, args, state, kwargs)`
+
+---
+
+## Class: `Stream`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `gradio_demo`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `StoppingCriteria`
+
+### 属性 (Attributes)
+- `callback_func`
+
+### 方法 (Methods)
+- `__call__(self, input_ids, scores) -> bool`
+- `__init__(self, callback_func)`
+
+---
+
+## Class: `TaskType`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `config`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `str`, `enum.Enum`
+
+### 属性 (Attributes)
+- `CAUSAL_LM`
+- `SEQ_2_SEQ_LM`
+- `SEQ_CLS`
+
+---
+
+## Class: `UsageInfo`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `openai_api_protocol_vllm`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `BaseModel`
+
+### 属性 (Attributes)
+- `completion_tokens: Optional[int]`
+- `prompt_tokens: int`
+- `total_tokens: int`
+
+---
+
+
+[信息] UML 图表 'llama2_project_uml.png' 也已通过 WebSocket 直接发送。
+2025-05-15 00:09:31.258 | INFO     | agents.umlagent:update_plan_status:155 - Marked step 2 as completed in plan plan_1747238923
+2025-05-15 00:09:31.259 | INFO     | agents.base:run:126 - Executing step 4/20
+2025-05-15 00:09:44.971 | INFO     | agents.tool_call:think:56 - ✨ uml agnet 的想法为: Using tools response: 已成功生成Llama2项目的UML图。接下来，我将执行第四步：分析并提供UML图的解释。
+2025-05-15 00:09:44.972 | INFO     | agents.tool_call:think:58 - 🛠️ uml agnet 选择了 1 个工具
+2025-05-15 00:09:44.972 | INFO     | agents.tool_call:think:63 - 🧰 选择的工具信息: ['final_response']
+2025-05-15 00:09:44.972 | INFO     | agents.tool_call:think:78 - 🧰 工具的参数是: ['{"content_to_deliver": "已找到一个名为\'Chinese-LLaMA-Alpaca-2\'的Llama2项目，并生成了其UML图。以下是UML图的解释：\\n\\n1. ChatCompletionRequest类：用于表示聊天完成请求，包含多个属性如messages、model等。\\n2. ChatCompletionResponse类：用于表示聊天完成响应，包含choices、created等属性。\\n3. ChineseLLaMAAlpaca2Adapter类：继承自BaseModelAdapter，提供了get_default_conv_template和load_model等方法。\\n4. Llama_Evaluator类：继承自Evaluator，提供了eval_subject、extract_answer等方法。\\n5. PeftModel类：继承自PushToHubMixin和torch.nn.Module，提供了disable_adapter、forward等方法。\\n\\n更多详细信息请参考生成的UML图。"}']
+2025-05-15 00:09:44.973 | INFO     | tools.summarize:execute:35 - 🏁 代理的最终回应: 已找到一个名为'Chinese-LLaMA-Alpaca-2'的Llama2项目，并生成了其UML图。以下是UML图的解释：
+
+1. ChatCompletionRequest类：用于表示聊天完成请求，包含多个属性如messages、model等。
+2. ChatCompletionResponse类：用于表示聊天完成响应，包含choices、created等属性。
+3. ChineseLLaMAAlpaca2Adapter类：继承自BaseModelAdapter，提供了get_default_conv_template和load_model等方法。
+4. Llama_Evaluator类：继承自Evaluator，提供了eval_subject、extract_answer等方法。
+5. PeftModel类：继承自PushToHubMixin和torch.nn.Module，提供了disable_adapter、forward等方法。
+
+更多详细信息请参考生成的UML图。
+2025-05-15 00:09:44.973 | INFO     | agents.tool_call:act:131 - 🎯 工具 'final_response' 完成了它的任务! 其执行结果为:  `工具:final_response`的观测结果输出为 :
+代理已得出以下最终回应: 已找到一个名为'Chinese-LLaMA-Alpaca-2'的Llama2项目，并生成了其UML图。以下是UML图的解释：
+
+1. ChatCompletionRequest类：用于表示聊天完成请求，包含多个属性如messages、model等。
+2. ChatCompletionResponse类：用于表示聊天完成响应，包含choices、created等属性。
+3. ChineseLLaMAAlpaca2Adapter类：继承自BaseModelAdapter，提供了get_default_conv_template和load_model等方法。
+4. Llama_Evaluator类：继承自Evaluator，提供了eval_subject、extract_answer等方法。
+5. PeftModel类：继承自PushToHubMixin和torch.nn.Module，提供了disable_adapter、forward等方法。
+
+更多详细信息请参考生成的UML图。
+2025-05-15 00:09:44.973 | INFO     | agents.umlagent:update_plan_status:155 - Marked step 3 as completed in plan plan_1747238923
+2025-05-15 00:09:44.973 | INFO     | agents.base:run:126 - Executing step 5/20
+2025-05-15 00:09:49.847 | INFO     | agents.tool_call:think:56 - ✨ uml agnet 的想法为: Using tools response: 所有步骤已完成，现在可以结束任务。
+2025-05-15 00:09:49.847 | INFO     | agents.tool_call:think:58 - 🛠️ uml agnet 选择了 1 个工具
+2025-05-15 00:09:49.848 | INFO     | agents.tool_call:think:63 - 🧰 选择的工具信息: ['terminate']
+2025-05-15 00:09:49.848 | INFO     | agents.tool_call:think:78 - 🧰 工具的参数是: ['{"status": "success"}']
+2025-05-15 00:09:49.848 | INFO     | agents.tool_call:_handle_special_tool:183 - 🏁 Special tool 'terminate' has completed the task!
+2025-05-15 00:09:49.848 | INFO     | agents.tool_call:act:131 - 🎯 工具 'terminate' 完成了它的任务! 其执行结果为:  `工具:terminate`的观测结果输出为 :
+The interaction has been completed with status: success
+2025-05-15 00:11:12.731 | INFO     | main:websocket_endpoint:61 - WebSocket connection disconnected from 127.0.0.1:56017
+2025-05-15 00:11:12.731 | INFO     | main:websocket_endpoint:76 - Cleaned up resources for 127.0.0.1:56017
+2025-05-15 08:37:58.089 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:57100
+2025-05-15 08:50:18.210 | INFO     | main:websocket_endpoint:61 - WebSocket connection disconnected from 127.0.0.1:57100
+2025-05-15 08:50:18.212 | INFO     | main:websocket_endpoint:76 - Cleaned up resources for 127.0.0.1:57100

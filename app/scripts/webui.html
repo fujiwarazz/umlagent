@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -137,4 +137,292 @@
     <script src="script.js"></script>
 </body>
 
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UML Agent 智能助理</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background-color: #f0f0f5; /* 更浅的灰色背景，接近苹果风格 */
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh; /* 改为100vh确保全屏高度 */
+            height: 100vh;     /* 确保body占据整个视口高度 */
+            margin: 0;
+            padding: 1rem; /* 给body一些内边距 */
+            box-sizing: border-box;
+        }
+
+        .main-container {
+            display: flex;
+            width: 100%;
+            max-width: 1200px; /* 整体容器最大宽度 */
+            height: calc(100vh - 2rem); /* 占据几乎所有视口高度，减去body的padding */
+            max-height: 900px; /* 设定一个更合理的max-height */
+            background-color: #ffffff;
+            border-radius: 12px; /* 更圆润的边角 */
+            box-shadow: 0 8px Kَعًا rgba(0, 0, 0, 0.12), 0 3px 6px rgba(0,0,0,0.08); /* 更精致的阴影 */
+            overflow: hidden; /* 这个很重要，确保子元素不会溢出圆角 */
+        }
+
+        /* 任务计划面板样式 */
+        .plan-panel {
+            width: 320px;  /* 固定宽度，可以微调 */
+            min-width: 320px; /* 确保不会被压缩得太小 */
+            flex-shrink: 0; /* 防止flex布局压缩此面板 */
+            background-color: #f9f9fb; /* 非常浅的灰色，类似macOS侧边栏 */
+            border-right: 1px solid #dcdce0; /* 分割线颜色调整 */
+            padding: 20px;
+            overflow-y: auto; /* 允许计划列表本身滚动 */
+            display: flex;
+            flex-direction: column;
+        }
+
+        .plan-panel h2 {
+            font-size: 1.25em; /* 调整字号 */
+            font-weight: 600;
+            color: #1d1d1f;
+            margin-bottom: 8px; /* 调整间距 */
+            padding-bottom: 12px;
+            border-bottom: 1px solid #e5e5e7;
+        }
+        .plan-title-id {
+            font-size: 0.75em; /* 调小ID字号 */
+            color: #8a8a8e;  /* 调整颜色 */
+            display: block;
+            margin-top: 2px;
+            margin-bottom: 12px; /* 增加ID和进度条之间的间距 */
+        }
+
+        .plan-progress-bar-container {
+            width: 100%;
+            background-color: #e5e5e7; /* 进度条背景调整 */
+            border-radius: 5px; /* 进度条圆角 */
+            height: 10px;
+            margin-bottom: 8px; /* 调整间距 */
+            overflow: hidden;
+        }
+
+        .plan-progress-bar {
+            height: 100%;
+            background-color: #007aff;
+            border-radius: 5px;
+            width: 0%;
+            transition: width 0.4s ease; /* 动画平滑 */
+        }
+         .plan-status-summary {
+            font-size: 0.8em; /* 调小字号 */
+            color: #636366;
+            margin-bottom: 16px;
+        }
+
+        .plan-steps-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            flex-grow: 1;
+        }
+
+        .plan-step {
+            display: flex;
+            align-items: flex-start; /* 图标和文本顶部对齐，以便长文本换行时更好看 */
+            padding: 12px 4px; /* 调整内边距 */
+            border-bottom: 1px solid #e5e5e7; /* 分割线颜色调整 */
+            font-size: 0.9em; /* 步骤文本大小 */
+            color: #1d1d1f;
+        }
+        .plan-step:last-child {
+            border-bottom: none;
+        }
+
+        .plan-step-icon {
+            margin-right: 10px; /* 图标和文本间距 */
+            font-size: 1em; /* 图标大小与文本协调 */
+            width: 22px;
+            text-align: center;
+            line-height: 1.5; /* 确保图标与第一行文本对齐 */
+            flex-shrink: 0; /* 防止图标被压缩 */
+        }
+        .plan-step-text {
+            flex-grow: 1;
+            line-height: 1.5; /* 增加行高 */
+            word-wrap: break-word; /* 允许长单词换行 */
+            overflow-wrap: break-word; /* 同上，更现代的属性 */
+        }
+
+        /* 不同状态的图标和颜色 (保持不变，但确保图标显示正常) */
+        .plan-step.not_started .plan-step-icon::before { content: '◻️'; color: #adb5bd; } /* 未选中方块 */
+        .plan-step.in_progress .plan-step-icon::before { content: '▶️'; color: #007aff; } /* 播放/进行中图标 */
+        .plan-step.completed .plan-step-icon::before { content: '✅'; color: #34c759; }
+        .plan-step.blocked .plan-step-icon::before { content: '🚫'; color: #ff3b30; }
+        
+        .plan-step.in_progress .plan-step-text { font-weight: 500; color: #007aff; }
+        .plan-step.completed .plan-step-text { text-decoration: line-through; color: #8a8a8e; }
+
+
+        /* 右侧聊天容器样式 */
+        .chat-container-wrapper { /* 重命名了原 .chat-container 为 .chat-container-wrapper 以避免混淆 */
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden; /* 这个很重要，限制内部 chatBox 的高度 */
+            background-color: #ffffff; /* 右侧聊天区域背景色 */
+        }
+
+        /* 聊天区域头部 */
+        .chat-header { /* 原先 header 标签的样式，改为类名以更明确 */
+            padding: 16px; /* Tailwind p-4 对应 1rem (16px)，可按需调整 */
+            border-bottom: 1px solid #e5e5e7; /* 分割线颜色 */
+            text-align: center;
+            background-color: #f9f9fb; /* 头部背景色，与 plan-panel 协调 */
+            flex-shrink: 0; /* 防止被压缩 */
+        }
+        .header-title { /* H1 的字体样式 */
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+        }
+
+        /* 聊天消息框 */
+        .chat-box { /* ID 为 chatBox 的元素 */
+            flex-grow: 1; /* 占据所有可用垂直空间 */
+            padding: 20px; /* 内边距 */
+            overflow-y: auto; /* 当内容超出时显示垂直滚动条 */
+            display: flex;
+            flex-direction: column;
+            gap: 12px; /* Tailwind space-y-3 对应 0.75rem (12px) */
+            background-color: #ffffff; /* 确保聊天背景是白色 */
+        }
+
+        .message {
+            max-width: 75%; /* 消息最大宽度 */
+            word-wrap: break-word;
+            white-space: pre-wrap;
+            padding: 10px 16px; /* 调整内边距 */
+            border-radius: 20px; /* 更圆润的边角 */
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+            line-height: 1.45;
+        }
+
+        .user-message {
+            align-self: flex-end;
+            background-color: #007aff;
+            color: white;
+            border-bottom-right-radius: 8px; /* 调整圆角 */
+        }
+
+        .agent-message {
+            align-self: flex-start;
+            background-color: #e9e9eb;
+            color: #1c1c1e;
+            border-bottom-left-radius: 8px; /* 调整圆角 */
+        }
+        .agent-message pre, .user-message pre {
+            background-color: rgba(0,0,0,0.04);
+            padding: 12px;
+            border-radius: 10px;
+            overflow-x: auto;
+            font-family: "SF Mono", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+            font-size: 0.875em; /* 调整代码字号 */
+            margin: 8px 0;
+        }
+        .agent-message code:not(pre code), .user-message code:not(pre code) {
+            background-color: rgba(0,0,0,0.04);
+            padding: 2px 5px;
+            border-radius: 5px;
+            font-family: "SF Mono", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+        }
+
+        /* 输入区域 */
+        .input-area {
+            padding: 12px; /* 调整内边距 */
+            border-top: 1px solid #dcdce0; /* 分割线颜色 */
+            background-color: #f9f9fbCC; /* 使用CC后缀表示80%透明度，或使用rgba */
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            flex-shrink: 0; /* 防止被压缩 */
+        }
+        #userInput {
+            background-color: #ffffff;
+            border: 1px solid #d1d1d6; /* 输入框边框颜色 */
+            padding-top: 0.6rem; /* 微调垂直内边距 */
+            padding-bottom: 0.6rem;
+        }
+        #sendButton {
+            padding-left: 1.25rem; /* px-5 */
+            padding-right: 1.25rem;
+            font-weight: 500; /* medium */
+        }
+
+
+        .spinner {
+            border: 3px solid rgba(0, 0, 0, 0.1);
+            border-left-color: #007aff;
+            border-radius: 50%;
+            width: 16px;
+            height: 16px;
+            animation: spin 0.8s linear infinite;
+            display: inline-block;
+            margin-left: 8px;
+            vertical-align: middle;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
+        .typing-cursor {
+            animation: blink 0.7s infinite step-start; /* step-start 确保光标闪烁效果 */
+            display: inline-block;
+            width: 1px; /* 更细的光标 */
+            height: 1.1em; /* 与文本高度匹配 */
+            vertical-align: text-bottom; /* 对齐方式 */
+            background-color: currentColor;
+            margin-left: 1px;
+        }
+        .error-message { color: #ff3b30; font-style: italic; }
+        .system-message { color: #8a8a8e; font-size: 0.9em; text-align: center; padding: 8px 0;}
+
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        
+        <aside id="planPanel" class="plan-panel">
+            <h2>任务计划</h2>
+            <div id="planDisplay" class="mt-2">
+                <p class="text-gray-500 text-sm">暂无计划。</p>
+            </div>
+        </aside>
+
+        <div class="chat-container-wrapper"> 
+            <header class="chat-header"> <h1 class="header-title text-2xl font-semibold text-gray-700 tracking-tight">
+                    UML <span class="font-normal text-gray-500">AGENT</span>
+                </h1>
+            </header>
+            <div id="chatBox" class="chat-box"> 
+                </div>
+            <div class="input-area flex p-3 border-t border-gray-200 bg-gray-50/80 frosted-glass">
+                <input type="text" id="userInput" placeholder="输入消息..."
+                    class="flex-grow px-4 py-2.5 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-800 bg-white shadow-sm mr-2 text-base">
+                <button id="sendButton"
+                    class="px-5 py-2.5 bg-blue-500 text-white font-medium rounded-lg shadow-sm hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition-colors disabled:opacity-60 disabled:cursor-not-allowed text-base">
+                    发送
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
 </html>

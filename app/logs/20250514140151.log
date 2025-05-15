@@ -1,6 +1,0 @@
-2025-05-14 14:01:52.525 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:61915
-2025-05-14 14:01:52.525 | ERROR    | main:websocket_endpoint:86 - Error in WebSocket handler for 127.0.0.1:61915: "ReAsk" object has no field "response_queue"
-2025-05-14 14:01:52.527 | INFO     | main:websocket_endpoint:96 - Cleaned up resources for 127.0.0.1:61915
-2025-05-14 14:02:02.293 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:61934
-2025-05-14 14:02:02.293 | ERROR    | main:websocket_endpoint:86 - Error in WebSocket handler for 127.0.0.1:61934: "ReAsk" object has no field "response_queue"
-2025-05-14 14:02:02.295 | INFO     | main:websocket_endpoint:96 - Cleaned up resources for 127.0.0.1:61934

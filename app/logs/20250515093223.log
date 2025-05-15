@@ -1,0 +1,20 @@
+2025-05-15 09:32:29.057 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:50291
+2025-05-15 09:32:30.711 | INFO     | main:websocket_endpoint:56 - Received message from 127.0.0.1:50291: hi
+2025-05-15 09:32:30.711 | INFO     | agents.umlagent:create_initial_plan:208 - Creating initial plan with ID: plan_1747272749
+2025-05-15 09:32:34.642 | INFO     | agents.umlagent:create_initial_plan:235 -  结果为:  `工具:planning`的观测结果输出为 :
+Plan created successfully with ID: plan_1747272749
+
+Plan: Respond to User's Greeting (ID: plan_1747272749)
+=======================================================
+
+Progress: 0/3 steps completed (0.0%)
+Status: 0 completed, 0 in progress, 0 blocked, 3 not started
+
+Steps:
+0. [ ] Understand the user's greeting.
+1. [ ] Create a friendly and engaging response.
+2. [ ] Deliver the response to the user.
+
+2025-05-15 09:32:34.643 | WARNING  | agents.umlagent:create_initial_plan:251 - No plan created from initial request
+2025-05-15 09:32:34.643 | ERROR    | main:websocket_endpoint:66 - Error in WebSocket handler for 127.0.0.1:50291: 'NoneType' object has no attribute 'state'
+2025-05-15 09:32:34.643 | INFO     | main:websocket_endpoint:76 - Cleaned up resources for 127.0.0.1:50291

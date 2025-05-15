@@ -4,6 +4,7 @@ from typing import Dict, List, Literal, Optional
 from utils.exceptions import ToolError
 from tools.base import BaseTool, ToolResult
 
+import json
 
 _PLANNING_TOOL_DESCRIPTION = """
 A planning tool that allows the agent to create and manage plans for solving complex tasks.
@@ -153,7 +154,6 @@ class PlanningTool(BaseTool):
 
         self.plans[plan_id] = plan
         self._current_plan_id = plan_id  # Set as active plan
-
         return ToolResult(
             output=f"Plan created successfully with ID: {plan_id}\n\n{self._format_plan(plan)}"
         )
@@ -358,7 +358,7 @@ class PlanningTool(BaseTool):
             }.get(status, "[ ]")
 
             output += f"{i}. {status_symbol} {step}\n"
-            if notes:
-                output += f"   Notes: {notes}\n"
+            # if notes:
+            #     output += f"   Notes: {notes}\n"
 
         return output

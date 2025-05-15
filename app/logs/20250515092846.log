@@ -1,0 +1,5 @@
+2025-05-15 09:28:55.442 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:54897
+2025-05-15 09:28:56.674 | INFO     | main:websocket_endpoint:56 - Received message from 127.0.0.1:54897: 我想学习llava2，帮我找一个项目并分析uml
+2025-05-15 09:28:56.675 | INFO     | agents.umlagent:create_initial_plan:206 - Creating initial plan with ID: plan_1747272535
+2025-05-15 09:29:01.661 | ERROR    | main:websocket_endpoint:66 - Error in WebSocket handler for 127.0.0.1:54897: 'NoneType' object has no attribute 'send_text'
+2025-05-15 09:29:01.661 | INFO     | main:websocket_endpoint:76 - Cleaned up resources for 127.0.0.1:54897

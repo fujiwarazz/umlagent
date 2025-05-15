@@ -44,30 +44,17 @@ async def websocket_endpoint(websocket: WebSocket):
             CodeToUMLTool(websocket=websocket),
             Terminate(),
             CreateChatCompletion(),
-            GitHubRepoCloner(local_clone_base_dir="D:\\deep_learning\\codes\\workspace"),
+            GitHubRepoCloner(local_clone_base_dir="/Users/peelsannaw/Desktop/codes/projects/umlagent/umlagent/workspace"),
             FileSeeker(),
-            FileSaver())
+            FileSaver()
+            )
             )
         
-        active_agents[client_id] = agent
-
-        # The frontend sends the initial user message once connected
-        
+        active_agents[client_id] = agent        
         while True:
             data = await websocket.receive_text()
             logger.info(f"Received message from {client_id}: {data}")
-            # if data.startswith("<<<REASK>>>"):
-            #     user_response_data = data[len("<<<REASK>>>"):].strip()
-            #     tool = agent.available_tools.get_tool('re_ask')
-            #     if isinstance(tool, ReAsk):
-            #         logger.info(f"Putting re-ask response into ReAsk tool's queue: '{user_response_data}'")
-            #         # 将提取的回复内容放入 ReAsk 工具实例内部的队列中
-            #         # ReAsk.execute 方法正在等待这个队列
-            #         await tool.response_queue.put(user_response_data)
-
-            #         continue 
-            
-            # else: 
+        
             await agent.run(query=data, websocket=websocket)
 
     except WebSocketDisconnect:
@@ -75,19 +62,29 @@ async def websocket_endpoint(websocket: WebSocket):
         # Clean up the agent instance for this client
         if client_id in active_agents:
             del active_agents[client_id]
-    # except Exception as e:
-    #     logger.error(f"Error in WebSocket handler for {client_id}: {e}")
-    #     try:
-    #         await websocket.send_text(f"An error occurred: {e}")
-    #     except RuntimeError:
-    #         # Handle cases where the websocket is already closed
-    #         pass
+    except Exception as e:
+        logger.error(f"Error in WebSocket handler for {client_id}: {e}")
+        try:
+            await websocket.send_text(f"An error occurred: {e}")
+        except RuntimeError:
+            # Handle cases where the websocket is already closed
+            pass
     finally:
         # Ensure agent is removed even if other exceptions occur
         if client_id in active_agents:
              del active_agents[client_id]
         logger.info(f"Cleaned up resources for {client_id}")
 
+@app.websocket("/simple")
+async def websocket_endpoint(websocket: WebSocket):
+    await websocket.accept()
+    client_id = str(websocket.client.host) + ":" + str(websocket.client.port)
+    logger.info(f"WebSocket connection accepted from {client_id}")
+    while True:
+            data = await websocket.receive_text()
+            logger.info(f"Received message from {client_id}: {data}")
+        
+    
 
 # To run this application:
 # 1. Save the modified agent code (e.g., agents/tool_call.py).

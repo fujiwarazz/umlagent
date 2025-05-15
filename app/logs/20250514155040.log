@@ -1,9 +1,0 @@
-2025-05-14 15:50:41.380 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:51920
-2025-05-14 15:50:41.381 | ERROR    | main:websocket_endpoint:87 - Error in WebSocket handler for 127.0.0.1:51920: CodeToUMLTool.__init__() missing 1 required positional argument: 'websocket'
-2025-05-14 15:50:41.381 | INFO     | main:websocket_endpoint:97 - Cleaned up resources for 127.0.0.1:51920
-2025-05-14 15:51:12.041 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:51984
-2025-05-14 15:51:12.043 | ERROR    | main:websocket_endpoint:87 - Error in WebSocket handler for 127.0.0.1:51984: CodeToUMLTool.__init__() missing 1 required positional argument: 'websocket'
-2025-05-14 15:51:12.044 | INFO     | main:websocket_endpoint:97 - Cleaned up resources for 127.0.0.1:51984
-2025-05-14 15:51:13.999 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:51990
-2025-05-14 15:51:14.001 | ERROR    | main:websocket_endpoint:87 - Error in WebSocket handler for 127.0.0.1:51990: CodeToUMLTool.__init__() missing 1 required positional argument: 'websocket'
-2025-05-14 15:51:14.001 | INFO     | main:websocket_endpoint:97 - Cleaned up resources for 127.0.0.1:51990

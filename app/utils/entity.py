@@ -2,7 +2,13 @@ from pydantic  import BaseModel,Field
 from enum import Enum
 from typing import List,Union,Any,Dict,Literal,Optional
 
-
+class PlanStatus(BaseModel):
+    step_index: int = Field(default=0)
+    step_status: str = Field(default="not_started")
+    step_notes: str = Field(default="")
+    
+    
+    
 class AgentState(str, Enum):
     IDLE = "IDLE"
     RUNNING = "RUNNING"

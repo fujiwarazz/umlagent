@@ -1,0 +1,96 @@
+2025-05-14 23:50:23.775 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:57942
+2025-05-14 23:50:34.944 | INFO     | main:websocket_endpoint:56 - Received message from 127.0.0.1:57942: 介绍厦门
+2025-05-14 23:50:34.946 | INFO     | agents.umlagent:create_initial_plan:206 - Creating initial plan with ID: plan_1747237823
+2025-05-14 23:50:35.408 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:58606
+2025-05-14 23:50:38.337 | INFO     | agents.umlagent:create_initial_plan:231 -  执行工具 planning 的结果为:  `工具:planning`的观测结果输出为 :
+Plan created successfully with ID: plan_1747237823
+
+Plan: 介绍厦门 (ID: plan_1747237823)
+=================================
+
+Progress: 0/3 steps completed (0.0%)
+Status: 0 completed, 0 in progress, 0 blocked, 3 not started
+
+Steps:
+0. [ ] 查找关于厦门的相关信息
+1. [ ] 整理并总结厦门的关键特点和信息
+2. [ ] 以结构化的方式呈现厦门的介绍
+
+2025-05-14 23:50:38.337 | INFO     | agents.base:run:119 - websocket initialized finish, state:<starlette.datastructures.State object at 0x1107c2e10>
+2025-05-14 23:50:38.337 | INFO     | agents.base:run:126 - Executing step 1/20
+2025-05-14 23:50:41.610 | INFO     | agents.tool_call:think:56 - ✨ uml agnet 的想法为: 计划已创建，下一步是执行第一个步骤：查找关于厦门的相关信息。为此，我将使用 `baidu_search` 工具来搜索相关信息。
+2025-05-14 23:50:41.611 | INFO     | main:websocket_endpoint:61 - WebSocket connection disconnected from 127.0.0.1:57942
+2025-05-14 23:50:41.611 | INFO     | main:websocket_endpoint:76 - Cleaned up resources for 127.0.0.1:57942
+2025-05-14 23:51:07.225 | INFO     | main:websocket_endpoint:56 - Received message from 127.0.0.1:58606: 介绍厦门
+2025-05-14 23:51:07.225 | INFO     | agents.umlagent:create_initial_plan:206 - Creating initial plan with ID: plan_1747237835
+2025-05-14 23:51:10.667 | INFO     | agents.umlagent:create_initial_plan:231 -  执行工具 planning 的结果为:  `工具:planning`的观测结果输出为 :
+Plan created successfully with ID: plan_1747237835
+
+Plan: 介绍厦门 (ID: plan_1747237835)
+=================================
+
+Progress: 0/3 steps completed (0.0%)
+Status: 0 completed, 0 in progress, 0 blocked, 3 not started
+
+Steps:
+0. [ ] 搜索厦门的相关信息
+1. [ ] 整理搜索结果并形成介绍内容
+2. [ ] 向用户提供最终的介绍内容
+
+2025-05-14 23:51:10.668 | INFO     | agents.base:run:119 - websocket initialized finish, state:<starlette.datastructures.State object at 0x110e7a3c0>
+2025-05-14 23:51:10.668 | INFO     | agents.base:run:126 - Executing step 1/20
+2025-05-14 23:51:12.332 | INFO     | agents.tool_call:think:56 - ✨ uml agnet 的想法为: 计划已经创建，下一步是执行搜索厦门的相关信息。我将使用百度搜索工具来获取相关信息。
+
+接下来，我将执行百度搜索工具。
+2025-05-14 23:51:12.332 | INFO     | main:websocket_endpoint:61 - WebSocket connection disconnected from 127.0.0.1:58606
+2025-05-14 23:51:12.333 | INFO     | main:websocket_endpoint:76 - Cleaned up resources for 127.0.0.1:58606
+2025-05-14 23:51:13.872 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:60718
+2025-05-14 23:51:14.083 | INFO     | main:websocket_endpoint:61 - WebSocket connection disconnected from 127.0.0.1:60718
+2025-05-14 23:51:14.083 | INFO     | main:websocket_endpoint:76 - Cleaned up resources for 127.0.0.1:60718
+2025-05-14 23:51:16.573 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:60882
+2025-05-14 23:51:37.423 | INFO     | main:websocket_endpoint:56 - Received message from 127.0.0.1:60882: 介绍厦门
+2025-05-14 23:51:37.425 | INFO     | agents.umlagent:create_initial_plan:206 - Creating initial plan with ID: plan_1747237876
+2025-05-14 23:51:40.596 | INFO     | agents.umlagent:create_initial_plan:231 -  执行工具 planning 的结果为:  `工具:planning`的观测结果输出为 :
+Plan created successfully with ID: plan_1747237876
+
+Plan: 介绍厦门 (ID: plan_1747237876)
+=================================
+
+Progress: 0/3 steps completed (0.0%)
+Status: 0 completed, 0 in progress, 0 blocked, 3 not started
+
+Steps:
+0. [ ] 搜索关于厦门的相关信息
+1. [ ] 整理并总结厦门的地理、历史、文化和旅游特色
+2. [ ] 生成一份详细的厦门介绍
+
+2025-05-14 23:51:40.597 | INFO     | agents.base:run:119 - websocket initialized finish, state:<starlette.datastructures.State object at 0x110e79d60>
+2025-05-14 23:51:40.597 | INFO     | agents.base:run:126 - Executing step 1/20
+2025-05-14 23:51:43.360 | INFO     | agents.tool_call:think:56 - ✨ uml agnet 的想法为: 计划已创建，接下来需要执行第一步：搜索关于厦门的相关信息。
+2025-05-14 23:51:43.361 | INFO     | main:websocket_endpoint:61 - WebSocket connection disconnected from 127.0.0.1:60882
+2025-05-14 23:51:43.361 | INFO     | main:websocket_endpoint:76 - Cleaned up resources for 127.0.0.1:60882
+2025-05-14 23:51:52.692 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:62820
+2025-05-14 23:54:01.264 | INFO     | main:websocket_endpoint:56 - Received message from 127.0.0.1:62820: 介绍厦门
+2025-05-14 23:54:01.264 | INFO     | agents.umlagent:create_initial_plan:206 - Creating initial plan with ID: plan_1747237912
+2025-05-14 23:54:04.360 | INFO     | agents.umlagent:create_initial_plan:231 -  执行工具 planning 的结果为:  `工具:planning`的观测结果输出为 :
+Plan created successfully with ID: plan_1747237912
+
+Plan: 介绍厦门 (ID: plan_1747237912)
+=================================
+
+Progress: 0/3 steps completed (0.0%)
+Status: 0 completed, 0 in progress, 0 blocked, 3 not started
+
+Steps:
+0. [ ] 搜索有关厦门的信息
+1. [ ] 整理信息并创建关于厦门的简介
+2. [ ] 向用户提供最终的简介
+
+2025-05-14 23:54:04.360 | INFO     | agents.base:run:119 - websocket initialized finish, state:<starlette.datastructures.State object at 0x110ec7920>
+2025-05-14 23:54:04.361 | INFO     | agents.base:run:126 - Executing step 1/20
+2025-05-14 23:54:06.491 | INFO     | agents.tool_call:think:56 - ✨ uml agnet 的想法为: 计划已创建，现在需要执行第一步：搜索有关厦门的信息。
+2025-05-14 23:54:06.491 | INFO     | main:websocket_endpoint:61 - WebSocket connection disconnected from 127.0.0.1:62820
+2025-05-14 23:54:06.491 | INFO     | main:websocket_endpoint:76 - Cleaned up resources for 127.0.0.1:62820
+2025-05-14 23:54:07.982 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:54553
+2025-05-14 23:54:25.858 | INFO     | main:websocket_endpoint:61 - WebSocket connection disconnected from 127.0.0.1:54553
+2025-05-14 23:54:25.860 | INFO     | main:websocket_endpoint:76 - Cleaned up resources for 127.0.0.1:54553

@@ -31,7 +31,7 @@ class UMLAgent(ToolCallAgent):
 
     tool_calls: List[ToolCall] = Field(default_factory=list)
     active_plan_id: Optional[str] = Field(default=None)
-
+    last_activate_plan_id: Optional[str] = Field(default=None)
     # Add a dictionary to track the step status for each tool call
     step_execution_tracker: Dict[str, Dict] = Field(default_factory=dict)
     current_step_index: Optional[int] = None
@@ -41,8 +41,8 @@ class UMLAgent(ToolCallAgent):
     @model_validator(mode="after")
     def initialize_plan_and_verify_tools(self) -> "UMLAgent":
         """Initialize the agent with a default plan ID and validate required tools."""
-        self.active_plan_id = f"plan_{int(time.time())}"
-
+       # self.active_plan_id = f"plan_{int(time.time())}"
+        self.last_activate_plan_id = None
         if "planning" not in self.available_tools.tool_map:
             self.available_tools.add_tool(PlanningTool())
 
@@ -117,8 +117,10 @@ class UMLAgent(ToolCallAgent):
 
     async def run(self, query: Optional[str] = None,websocket:Optional[WebSocket] = None) -> str:
         """Run the agent with an optional initial request."""
+        self.websocket = websocket
         if query:
             await self.create_initial_plan(query)
+
         return await super().run(websocket=websocket)
 
     async def update_plan_status(self, tool_call_id: str) -> None:
@@ -203,6 +205,8 @@ class UMLAgent(ToolCallAgent):
 
     async def create_initial_plan(self, request: str) -> None:
         """Create an initial plan based on the request."""
+        self.active_plan_id = f"plan_{int(time.time())}"
+
         logger.info(f"Creating initial plan with ID: {self.active_plan_id}")
 
         messages = [
@@ -226,20 +230,25 @@ class UMLAgent(ToolCallAgent):
         plan_created = False
         for tool_call in response.tool_calls:
             if tool_call.function.name == "planning":
+                
                 result = await self.execute_tool(tool_call)
+                plan_created  = True    
+                await self.websocket.send_text(f"<<<PLAN_CREATED>>>{result}")
+                
                 
                 logger.info(
-                    f" 执行工具 {tool_call.function.name} 的结果为: {result}"
+                    f" 结果为: {result}"
                 )
-
-                # Add tool response to memory
                 tool_msg = Message.tool_message(
-                    content=result,
-                    tool_call_id=tool_call.id,
-                    name=tool_call.function.name,
-                )
+                        content=result,
+                        tool_call_id=tool_call.id,
+                        name=tool_call.function.name,
+                    )
+                # Add tool response to memory
+
                 self.memory.add_message(tool_msg)
-                plan_created = True
+                
+                
                 break
 
         if not plan_created:
