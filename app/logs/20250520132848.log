@@ -1,0 +1,11 @@
+2025-05-20 13:29:24.304 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:60541
+2025-05-20 13:29:43.667 | INFO     | main:websocket_endpoint:56 - Received message from 127.0.0.1:60541: 我想学习RAG，帮我推荐一个项目，并且分析UML
+2025-05-20 13:29:43.670 | INFO     | agents.umlagent:create_initial_plan:214 - Creating initial plan with ID: plan_1747718983
+2025-05-20 13:29:44.666 | ERROR    | llm:ask_tools:249 - Authentication failed. Check API key.
+2025-05-20 13:29:46.112 | ERROR    | llm:ask_tools:249 - Authentication failed. Check API key.
+2025-05-20 13:29:48.185 | ERROR    | llm:ask_tools:249 - Authentication failed. Check API key.
+2025-05-20 13:29:51.235 | ERROR    | llm:ask_tools:249 - Authentication failed. Check API key.
+2025-05-20 13:29:54.965 | ERROR    | llm:ask_tools:249 - Authentication failed. Check API key.
+2025-05-20 13:29:57.426 | ERROR    | llm:ask_tools:249 - Authentication failed. Check API key.
+2025-05-20 13:29:57.426 | ERROR    | main:websocket_endpoint:65 - Error in WebSocket handler for 127.0.0.1:60541: RetryError[<Future at 0x108eaa480 state=finished raised AuthenticationError>]
+2025-05-20 13:29:57.427 | INFO     | main:websocket_endpoint:75 - Cleaned up resources for 127.0.0.1:60541
