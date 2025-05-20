@@ -90,8 +90,8 @@ class GitHubRepoCloner(BaseTool):
         # HTTPS 格式: https://github.com/所有者/仓库名.git
         # SSH 格式:   git@github.com:所有者/仓库名.git
         repo_url_name = f"git@github.com:{repo_name}.git" # <--- 主要修改点在这里
-
-        command = ["git", "clone", "--depth", "1", repo_url_name, target_dir]
+        repo_url_name_https = f"https://github.com/{repo_name}.git"
+        command = ["git", "clone", "--depth", "1", repo_url_name_https, target_dir]
 
         try:
             print(f"正在执行命令 (SSH): {' '.join(command)}")

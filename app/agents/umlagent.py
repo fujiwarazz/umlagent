@@ -10,7 +10,6 @@ from utils.entity import Message, ToolCall
 from tools import PlanningTool, ToolCollection, Terminate
 from fastapi import WebSocket
 
-
 class UMLAgent(ToolCallAgent):
     
     """
@@ -37,6 +36,10 @@ class UMLAgent(ToolCallAgent):
     current_step_index: Optional[int] = None
 
     max_steps: int = 20
+    
+    
+    
+    sweagent:ToolCallAgent  = Field(default_factory=lambda: ToolCallAgent())
 
     @model_validator(mode="after")
     def initialize_plan_and_verify_tools(self) -> "UMLAgent":

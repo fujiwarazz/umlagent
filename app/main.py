@@ -1,5 +1,6 @@
 from agents.tool_call import ToolCallAgent
 from agents.umlagent import UMLAgent
+from agents.sweagent import SWEAgent
 from tools import ToolCollection, Terminate,PlanningTool,BaiduSearch,GitHubRepoCloner,FileSaver,FileSeeker,ReAsk,CreateChatCompletion,CodeToUMLTool,FinalResponse
 
 # async def main():
@@ -35,7 +36,9 @@ async def websocket_endpoint(websocket: WebSocket):
     client_id = str(websocket.client.host) + ":" + str(websocket.client.port)
     logger.info(f"WebSocket connection accepted from {client_id}")
     try:
-      
+        
+        sweagent = SWEAgent() #  用于分析代码的专用agent
+
         agent = UMLAgent(available_tools=ToolCollection(
             PlanningTool(),
             FinalResponse(),
@@ -47,9 +50,8 @@ async def websocket_endpoint(websocket: WebSocket):
             GitHubRepoCloner(local_clone_base_dir="D:\\deep_learning\\codes\\workspace"),
             FileSeeker(),
             FileSaver()
+            ),sweagent= sweagent
             )
-            )
-        
         active_agents[client_id] = agent        
         while True:
             data = await websocket.receive_text()

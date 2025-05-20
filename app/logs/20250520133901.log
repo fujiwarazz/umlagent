@@ -1,0 +1,72 @@
+2025-05-20 13:39:18.401 | INFO     | main:websocket_endpoint:36 - WebSocket connection accepted from 127.0.0.1:61137
+2025-05-20 13:39:19.836 | INFO     | main:websocket_endpoint:56 - Received message from 127.0.0.1:61137: 我想学习RAG项目，帮我找一个并且分析UML
+2025-05-20 13:39:19.836 | INFO     | agents.umlagent:create_initial_plan:214 - Creating initial plan with ID: plan_1747719559
+2025-05-20 13:39:26.563 | INFO     | agents.umlagent:create_initial_plan:243 -  结果为:  `工具:planning`的观测结果输出为 :
+Plan created successfully with ID: plan_1747719559
+
+Plan: 寻找并分析RAG项目的UML图 (ID: plan_1747719559)
+============================================
+
+Progress: 0/5 steps completed (0.0%)
+Status: 0 completed, 0 in progress, 0 blocked, 5 not started
+
+Steps:
+0. [ ] 搜索RAG相关项目
+1. [ ] 选择一个合适的RAG项目进行深入分析
+2. [ ] 克隆选定的GitHub仓库到本地
+3. [ ] 生成所选项目的UML类图
+4. [ ] 分析并解释UML图
+
+2025-05-20 13:39:26.563 | INFO     | agents.base:run:119 - websocket initialized finish, state:<starlette.datastructures.State object at 0x106c33c80>
+2025-05-20 13:39:26.563 | INFO     | agents.base:run:129 - Executing step 1/20
+2025-05-20 13:39:30.750 | INFO     | agents.tool_call:think:56 - ✨ uml agnet 的想法为: 计划已创建，现在需要执行第一步：搜索RAG相关项目。
+2025-05-20 13:39:30.750 | INFO     | agents.tool_call:think:58 - 🛠️ uml agnet 选择了 1 个工具
+2025-05-20 13:39:30.751 | INFO     | agents.tool_call:think:63 - 🧰 选择的工具信息: ['baidu_search']
+2025-05-20 13:39:30.751 | INFO     | agents.tool_call:think:78 - 🧰 工具的参数是: ['{"query": "RAG 项目 github"}']
+2025-05-20 13:39:33.687 | INFO     | agents.tool_call:act:131 - 🎯 工具 'baidu_search' 完成了它的任务! 其执行结果为:  `工具:baidu_search`的观测结果输出为 :
+[{'title': '2025年值得关注的21个RAG开源项目_rag项目-CSDN博客', 'abstract': '2025年值得关注的21个RAG开源项目_rag项目-CSDN博客\n\n\n\n\n\n\n\n\n\n2025年4月5日•网址:https://github.com/RUC-NLPIR/FlashRAG •特点:针对推理速度进行了优化,采用了多种加速技术。 •适用对象:适用于需要实时 RAG 应用的开发者和组织。 •功能:支持多种检索模型、经过优化的重排序器以及高性能生成器。 •应用场景:例如在线客户支持和智能助手等需要即时、准确响应的系统。 •优势:...\n\n\nCSDN博客\n\n\n\n\n\n\n\n\n\ue680\n播报\n\n\n\ue67d\n暂停', 'url': 'http://www.baidu.com/link?url=ovQQN6ddLqLjMk6BxE76TolYfrhOsI1JDnaJpSUcIQM9olzbPtrM5OCLb4JLeGqe0EXuaIYIsBQTJb0d8IP479uyBaPYQ_Dg-HhJYkQVCd_', 'rank': 1}, {'title': '2025年值得关注的21个RAG开源项目_开源rag-CSDN博客', 'abstract': '2025年值得关注的21个RAG开源项目_开源rag-CSDN博客\n\n\n\n\n\n\n\n\n\n2025年3月12日FlashRAG •网址:https://github.com/RUC-NLPIR/FlashRAG •特点:针对推理速度进行了优化,采用了多种加速技术。 •适用对象:适用于需要实时 RAG 应用的开发者和组织。 •功能:支持多种检索模型、经过优化的重排序器以及高性能生成器。 •应用场景:例如在线客户支持和智能助手等需要即时、准确响应的系统。 \n\n\nCSDN博客\n\n\n\n\n\n\n\n\n\ue680\n播报\n\n\n\ue67d\n暂停', 'url': 'http://www.baidu.com/link?url=ovQQN6ddLqLjMk6BxE76TolYfrhOsI1JDnaJpSUcIQK9urITnUk-7S_S3qcmW5vEeQmAoR87hIwRuHT87cxSoea_L3yNf-RAqkWTmER0SMS', 'rank': 2}, {'title': '跟着8.6k Star 的开源数据库,搞 RAG! - 削微寒 - 博客园', 'abstract': '跟着8.6k Star 的开源数据库,搞 RAG! - 削微寒 - 博客园\n\n\n\n\n\n\n\n\n\n2024年12月25日还好最近 OceanBase 搞事情,在 4.3.3 版本里支持了向量检索功能,更贴心的是,还专门为像我这样对 RAG 感兴趣的新手,准备了一个用 Python 搭建 RAG 聊天机器人的实战教程。 GitHub 地址:github.com/oceanbase/oceanbase 光看永远只是纸上谈兵,所以我干脆上手把玩了一番。 接下来,我将分享如何基于该项目,打造一款 ...\n\n\n博客园\n\n\n\n\n\n\n\n\n\ue680\n播报\n\n\n\ue67d\n暂停', 'url': 'http://www.baidu.com/link?url=A_XHvnpC1hm-4MULw9mBIceGBrKcs8N0Y53NxhoregZvxAR31A48xrgZtapEyTZcg-HrZHCZDe-nPemlIkvSG_', 'rank': 3}, {'title': '大家还在搜github优秀开源项目github官网github项目github热门开源项目github如何下载整个项目github新手开源项目推荐github项目推荐github优秀web开源项目', 'abstract': '大家还在搜github优秀开源项目github官网github项目github热门开源项目github如何下载整个项目github新手开源项目推荐github项目推荐github优秀web开源项目', 'url': '/s?wd=github%E4%BC%98%E7%A7%80%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE&usm=2&ie=utf-8&rsv_pq=815c7b600059e53c&oq=RAG%20%E9%A1%B9%E7%9B%AE%20github&rsv_t=dad2iyD6L3H1YhymPbZfnAzX6bC8AqlxcwoeI%2Bm5x2vXQj7wQpCU0qYnffg&rsf=101633403&rsv_dl=0_prs_28608_1', 'rank': 4}, {'title': 'GitHub超18k星的最全RAG和AI Agent开发实践项目集合,收藏这一篇就...', 'abstract': 'GitHub超18k星的最全RAG和AI Agent开发实践项目集合,收藏这一篇就...\n\n\n\n\n\n\n\n\n\n2025年3月12日2. RAG(检索增强生成) 自主检索生成应用 例如Autonomous RAG 和 Agentic RAG,这些项目展示了如何结合外部知识库,实现生成内容的实时检索与增强。 本地化检索应用 如Deepseek Local RAG Reasoning Agent、Llama3.1 Local RAG 和 Local RAG Agent,都是针对如何在本地环境中部署和优化 RAG 模型的实践案例。 混合搜索与...\n\n\n51CTO博客\n\n\n\n\n\n\n\n\n\ue680\n播报\n\n\n\ue67d\n', 'url': 'http://www.baidu.com/link?url=a2fist8XQFao7Dbgmhw0jh_DsFNhNfIVwgX3BaMTUp-uPpW-vWHcLkjFz3x-NzZjx8wEM6VfpZ8ZVZJlmy9nE_', 'rank': 5}, {'title': '2025年 3 月 GitHub 上 10 大热门 RAG 数据处理开源项目分析', 'abstract': '2025年 3 月 GitHub 上 10 大热门 RAG 数据处理开源项目分析 \n\n2025年3月27日6.LightRAG(GitHub) LightRAG 旨在提供轻量级的 RAG 方案,并且带有友好的 Web UI。 特点:支持 Ollama API,直观的 UI 界面。 适用场景:快速搭建 RAG Demo、教育教学。 7.RAGHub(GitHub) RAGHub 是一个开源社区维护的 RAG 项目集合,提供多种资源和代码示例。 \n\n\n掘金开发者社区\n\n\n\n\n\n\ue680\n播报\n\n\n\ue67d\n暂停', 'url': 'http://www.baidu.com/link?url=a2fist8XQFao7Dbgmhw0jagS6tDkAhVxBCb1K6ZsMaKfQFnLR1P37YjTliSBW0Y-nAnjdG1R5-GS9xjqcWdszq', 'rank': 6}, {'title': 'RAG 项目 github - 聊一下更多精彩', 'abstract': 'RAG 项目 github - 聊一下更多精彩github助手1.3万人聊过\n\n\n\ngithub助手1.3万人聊过\n\nGITHUB指南16人聊过\n\nGITHUB专家729人聊过\n\n\n\n\n\n\n你好，我是GitHub专家助手，拥有丰富的GitHub使用经验和专业技能。很高兴与你交流，请问有什么关于GitHub的问题或需求，我可以帮你解答或协助解决吗？\n\n您好！我是GITHUB指南实战专家助手，可以用AI阅读大模型提取并浏览GITHUB平台信息，同步翻译与国内的GITHUB中文社区进行信息比对，筛选优质的国内开发者行业应用实战落地场景软件开源项目。请问有什么我可以帮助您的吗？\n\n你好，我是GITHU', 'url': 'http://www.baidu.com/link?url=bs5zvm4oGGMTW5qEp9BTyVwHctnGzdVjLOKSBWns8MR0NpLnkl6Dl8xqO3GSGcKsYf9YEUAQ4iPfop7X3Y9mMLpRFyFxD5hrooAHKCHt3LNB0OGaAmKuuCYAdmNBT_Gs00dSzcAHJ0AcscYOKzR9x2oFpf0VV8T6WJBmojBaGcvfR_Pc-NY8T08RFtibvag5UOyHlCtankufIYp2Etu9-KAU_8iQN4TD8MAA2ZXGfcNRVRL7ErLq73RznGO6fzRfsMdabSrdwg4iE7h8rVRw0XzfArpurlO3utoGTjC3ZcNEH0zw8dLFJIHuCuMjd1h45JpSCScY4XRCxKLOTvQrynknu7jNz_xsym98hNZ5elDFgLm5AOCaV7vzAbKLUGTl4Knhx61u5hSNX7edTG8HzinYSE91WXcZJ7Kx7CNTIrotdcCxpbV17ZG0FaMxB1U4AN0HN22jsUakOL39wAklasL2lNi9NINoZzac58I8wAlio1gblnmnnBmjZ5MvXg4LofPixn62mre8C9eiAC9WW6mbxLZG0C6dZfiqL05EJd_', 'rank': 7}, {'title': '2024年十大热门RAG框架GitHub仓库推荐_慕课手记', 'abstract': '2024年十大热门RAG框架GitHub仓库推荐_慕课手记 \n\n\n\n\n\n\n\n\n\n2024年10月29日目前最佳的 GitHub 上的 10 个 RAG 框架  这篇文章将带你了解目前在 GitHub 上排名前十的 RAG 框架。这些框架代表了 RAG 技术的最新发展,对于想要实施或改进其 AI 应用程序的开发者、研究者和组织来说非常有参考价值。 deepset-ai 的 Haystack  GitHub星标数:14.6千星 RAG Framework:由 deepset-ai 开发的 ...\n\n\n慕课网', 'url': 'http://www.baidu.com/link?url=U0HoNNdEU9AXCC_EsrO5Z8aSOSOWxiNi6pCvX6sXPTG6MTJyr0XADe6WdBphrVDP', 'rank': 8}, {'title': 'GitHub上流行的RAG框架介绍及优缺点分析 - 与非网', 'abstract': 'GitHub上流行的RAG框架介绍及优缺点分析 - 与非网\n\n2025年2月17日近年来,GitHub 上涌现出了大量开源RAG 框架,它们在架构设计、数据预处理、检索策略、生成策略等方面各具特色。接下来,我们将详细介绍几款较为流行的 RAG 框架,并分析它们各自的优缺点。 主流RAG 框架简介 1. Haystack Haystack 是 deepset 团队推出的一款功能强大且灵活的 RAG 框架,主要用于构建端到端的问答和搜索...\n\n\n与非网\n\n\n\n\n\n\ue680\n播报\n\n\n\ue67d\n暂停', 'url': 'http://www.baidu.com/link?url=a2fist8XQFao7Dbgmhw0jiJ0CTKqsKFDhU1s_-o-6EzQuSPaD37c_VveWl1HUClfxVVXSYpUrk53G-0hr-V_V_', 'rank': 9}, {'title': '开源RAG 引擎,大模型应用开发必备框架', 'abstract': '开源RAG 引擎,大模型应用开发必备框架\n\n\n\n\n\n\n\n\n\n2024年5月1日今天要给大家推荐一个 GitHub 开源项目 infiniflow/ragflow，该项目在 GitHub 有超过 1.2k Star，一句话介绍该项目：RAGFlow is an open-source RAG (Retrieval-Augmented Generation) engine based on deep document understanding.项目介绍 RAGFlow 是一个开源的基于深入文档理解的 RAG (Retrieval-Augmented ...\n\n\nGitHub开源精选\n\n\n\n\n\n\n', 'url': 'http://www.baidu.com/link?url=SSncfskqsLUOaUfJqpDwcnHdIospYiv2bWvPx29kXMwmDxWIdgrV-6lYewfROUojgWMJVdCVz7F3zj9CTYJ5Cj7W3jnlfno6kA_-TdTkLJq', 'rank': 10}]
+2025-05-20 13:39:33.688 | INFO     | agents.umlagent:update_plan_status:159 - Marked step 0 as completed in plan plan_1747719559
+2025-05-20 13:39:33.688 | INFO     | agents.base:run:129 - Executing step 2/20
+2025-05-20 13:39:46.837 | INFO     | agents.tool_call:think:56 - ✨ uml agnet 的想法为: Using tools response: 计划正在按步骤进行，现在需要执行第二步：选择一个合适的RAG项目进行深入分析。根据搜索结果，选择了"FlashRAG"项目，因为它针对推理速度进行了优化，并采用了多种加速技术。
+2025-05-20 13:39:46.838 | INFO     | agents.tool_call:think:58 - 🛠️ uml agnet 选择了 1 个工具
+2025-05-20 13:39:46.838 | INFO     | agents.tool_call:think:63 - 🧰 选择的工具信息: ['planning']
+2025-05-20 13:39:46.839 | INFO     | agents.tool_call:think:78 - 🧰 工具的参数是: ['{"command": "mark_step", "plan_id": "plan_1747719559", "step_index": 1, "step_status": "completed", "step_notes": "选择了一个名为\'FlashRAG\'的RAG项目，它针对推理速度进行了优化，并采用了多种加速技术。"}']
+2025-05-20 13:39:46.839 | INFO     | agents.tool_call:act:131 - 🎯 工具 'planning' 完成了它的任务! 其执行结果为:  `工具:planning`的观测结果输出为 :
+Step 1 updated in plan 'plan_1747719559'.
+
+Plan: 寻找并分析RAG项目的UML图 (ID: plan_1747719559)
+============================================
+
+Progress: 2/5 steps completed (40.0%)
+Status: 2 completed, 0 in progress, 0 blocked, 3 not started
+
+Steps:
+0. [✓] 搜索RAG相关项目
+1. [✓] 选择一个合适的RAG项目进行深入分析
+2. [ ] 克隆选定的GitHub仓库到本地
+3. [ ] 生成所选项目的UML类图
+4. [ ] 分析并解释UML图
+
+2025-05-20 13:39:46.839 | INFO     | agents.base:run:129 - Executing step 3/20
+2025-05-20 13:39:54.900 | INFO     | agents.tool_call:think:56 - ✨ uml agnet 的想法为: Using tools response: 计划正在按步骤进行，现在需要执行第三步：克隆选定的GitHub仓库到本地。
+2025-05-20 13:39:54.901 | INFO     | agents.tool_call:think:58 - 🛠️ uml agnet 选择了 1 个工具
+2025-05-20 13:39:54.901 | INFO     | agents.tool_call:think:63 - 🧰 选择的工具信息: ['github_repo_cloner_ssh']
+2025-05-20 13:39:54.902 | INFO     | agents.tool_call:think:78 - 🧰 工具的参数是: ['{"repo_name": "RUC-NLPIR/FlashRAG"}']
+2025-05-20 13:50:03.733 | INFO     | agents.tool_call:act:131 - 🎯 工具 'github_repo_cloner_ssh' 完成了它的任务! 其执行结果为:  `工具:github_repo_cloner_ssh`的观测结果输出为 :
+错误：通过 SSH 克隆仓库 'RUC-NLPIR/FlashRAG' 失败。
+命令退出码: 128
+Git 标准错误输出:
+Cloning into 'D:\deep_learning\codes\workspace/FlashRAG'...
+error: RPC failed; curl 18 Transferred a partial file
+error: 17281 bytes of body are still expected
+fetch-pack: unexpected disconnect while reading sideband packet
+fatal: early EOF
+fatal: fetch-pack: invalid index-pack output
+Git 标准输出:
+
+2025-05-20 13:50:03.734 | WARNING  | agents.umlagent:update_plan_status:163 - Failed to update plan status: 
+2025-05-20 13:50:03.734 | INFO     | agents.base:run:129 - Executing step 4/20
+2025-05-20 13:50:03.734 | WARNING  | agents.umlagent:_get_current_step_index:207 - Error finding current step index: Cannot call "send" once a close message has been sent.
+2025-05-20 13:50:14.059 | INFO     | agents.tool_call:think:56 - ✨ uml agnet 的想法为: Using tools response: 计划正在按步骤进行，现在需要执行第四步：生成所选项目的UML类图。
+2025-05-20 13:50:14.060 | ERROR    | main:websocket_endpoint:65 - Error in WebSocket handler for 127.0.0.1:61137: Cannot call "send" once a close message has been sent.
+2025-05-20 13:50:14.060 | INFO     | main:websocket_endpoint:75 - Cleaned up resources for 127.0.0.1:61137
