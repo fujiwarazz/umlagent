@@ -1,0 +1,216 @@
+/* static/style.css */
+
+/* Custom styles for frosted glass */
+.frosted-glass {
+    background-color: rgba(255, 255, 255, 0.6);
+    /* Semi-transparent white background */
+    backdrop-filter: blur(10px);
+    /* Apply the blur effect */
+    -webkit-backdrop-filter: blur(10px);
+    /* For Safari support */
+}
+
+/* Styles for chat messages */
+.message {
+    max-width: 70%;
+    /* Limit message width */
+    word-wrap: break-word;
+    /* Break long words */
+    white-space: pre-wrap;
+    /* Preserve line breaks */
+    padding: 10px 15px;
+    border-radius: 15px;
+    /* More rounded corners */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    /* Subtle shadow */
+}
+
+.user-message {
+    align-self: flex-end;
+    /* Align user messages to the right */
+    background-color: #007aff;
+    /* Apple blue */
+    color: white;
+    border-bottom-right-radius: 5px;
+    /* Taper the bottom right corner for user */
+}
+
+.agent-message {
+    align-self: flex-start;
+    /* Align agent messages to the left */
+    background-color: #e5e5ea;
+    /* Apple light gray */
+    color: #3a3a3c;
+    /* Dark gray text */
+    border-bottom-left-radius: 5px;
+    /* Taper the bottom left corner for agent */
+}
+
+/* Simple animation for typewriter effect cursor */
+@keyframes blink {
+
+    from,
+    to {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+}
+
+.typing-cursor {
+    animation: blink 0.7s infinite step-start;
+    display: inline-block;
+    width: 0.5em;
+    height: 1em;
+    vertical-align: -0.15em;
+    background-color: currentColor;
+    margin-left: 2px;
+}
+
+/* Add this to your static/style.css if not already present */
+.spinner {
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    border-left: 4px solid #3498db;
+    /* Blue spinner */
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    animation: spin 1s linear infinite;
+    display: inline-block;
+    margin-left: 8px;
+    /* Space next to text */
+    vertical-align: middle;
+    /* Align with text */
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Also ensure you have the typing cursor CSS if you want it */
+@keyframes blink {
+
+    from,
+    to {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+}
+
+.typing-cursor {
+    animation: blink 0.7s infinite step-start;
+    display: inline-block;
+    width: 0.5em;
+    height: 1em;
+    vertical-align: -0.15em;
+    background-color: currentColor;
+    margin-left: 2px;
+}
+/* 这些大部分已包含在 HTML 的 <style> 标签内 */
+/* 任务计划面板相关样式 */
+.plan-panel {
+    width: 300px; /* 或者你希望的宽度，例如 25% */
+    background-color: #f8f8fa; /* 例如苹果侧边栏的浅灰色 */
+    border-right: 1px solid #e0e0e0; /* 分割线 */
+    padding: 20px;
+    overflow-y: auto;
+    display: flex; /* 允许标题固定，步骤滚动 */
+    flex-direction: column;
+}
+
+.plan-panel h2 {
+    font-size: 1.3em; /* 标题字号 */
+    font-weight: 600; /* 标题字重 */
+    color: #1d1d1f;   /* 苹果深灰色 */
+    margin-bottom: 10px; /* 标题和进度条间距 */
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e0e0e0; /* 标题下的分割线 */
+}
+.plan-title-id { /* 用于显示计划ID */
+    font-size: 0.8em;
+    color: #888;
+    display: block; 
+    margin-top: 4px;
+}
+
+.plan-progress-bar-container {
+    width: 100%;
+    background-color: #e9ecef; /* 进度条背景色 */
+    border-radius: 4px;
+    height: 8px;
+    margin-bottom: 15px; /* 进度条和状态总结的间距 */
+    overflow: hidden;
+}
+
+.plan-progress-bar {
+    height: 100%;
+    background-color: #007aff; /* 苹果蓝 */
+    border-radius: 4px;
+    width: 0%; /* 初始宽度 */
+    transition: width 0.3s ease-in-out; /* 宽度变化动画 */
+}
+
+.plan-status-summary {
+    font-size: 0.85em;
+    color: #6c757d; /* 中灰色 */
+    margin-bottom: 20px; /* 状态总结和步骤列表的间距 */
+}
+
+.plan-steps-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex-grow: 1; /* 占据剩余空间，使得面板底部内容可以对齐 */
+}
+
+.plan-step {
+    display: flex;
+    align-items: center; /* 图标和文字垂直居中 */
+    padding: 10px 0;
+    border-bottom: 1px solid #f0f0f0; /* 更细的步骤分割线 */
+    font-size: 0.95em;
+    color: #333;
+    transition: background-color 0.2s; /* 鼠标悬停效果（可选）*/
+}
+
+.plan-step:last-child {
+    border-bottom: none;
+}
+
+/* 可选的鼠标悬停效果 */
+/* .plan-step:hover { background-color: #e9e9eb; } */
+
+.plan-step-icon {
+    margin-right: 12px;
+    font-size: 1.1em; /* 让图标稍大一点 */
+    width: 20px; /* 固定宽度以对齐 */
+    text-align: center; /* 图标居中 */
+}
+.plan-step-text {
+    flex-grow: 1; /* 占据剩余宽度 */
+    line-height: 1.4; /* 改善多行文本的可读性 */
+}
+
+/* 根据状态应用不同图标和样式 */
+.plan-step.not_started .plan-step-icon::before { content: '🔲'; color: #adb5bd; } /* 方框 */
+.plan-step.in_progress .plan-step-icon::before { content: '⏳'; color: #007aff; } /* 沙漏/进行中 */
+.plan-step.completed .plan-step-icon::before { content: '✅'; color: #34c759; } /* 绿色勾选 */
+.plan-step.blocked .plan-step-icon::before { content: '🚫'; color: #ff3b30; } /* 红色禁止 */
+
+.plan-step.in_progress .plan-step-text { font-weight: 500; color: #007aff; }
+.plan-step.completed .plan-step-text { text-decoration: line-through; color: #8e8e93; }
+
+/* 使聊天消息中的代码块有更好的显示效果 (已在HTML的<style>中) */
+/* .agent-message pre, .user-message pre { ... } */
+/* .agent-message code:not(pre code), .user-message code:not(pre code) { ... } */

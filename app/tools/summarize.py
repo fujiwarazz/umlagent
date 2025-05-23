@@ -22,7 +22,7 @@ class FinalResponse(BaseTool):
         "required": ["content_to_deliver"], # 声明 content_to_deliver 是必需的
     }
 
-    async def execute(self, content_to_deliver: str):
+    async def execute(self, re: str):
         """
         执行最终响应/总结的呈现。
 

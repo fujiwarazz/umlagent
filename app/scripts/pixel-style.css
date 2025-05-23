@@ -1,0 +1,706 @@
+/* 像素风格基础设置 */
+@font-face {
+  font-family: 'Press Start 2P';
+  src: url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+}
+
+@font-face {
+  font-family: 'VT323';
+  src: url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+}
+
+body {
+  background-color: #191929;
+  font-family: 'VT323', monospace;
+  color: #33ff66;
+  line-height: 1.3; /* 增大行高 */
+  font-size: 18px; /* 设置基础字体大小 */
+  image-rendering: pixelated;
+  margin: 0;
+  padding: 0;
+  background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%232a2a3a' fill-opacity='0.4' fill-rule='evenodd'%3E%3Cpath d='M0 0h20v20H0V0zm20 20h20v20H20V20z'/%3E%3C/g%3E%3C/svg%3E");
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* 主容器样式 - 修改为固定宽高和居中 */
+.main-container {
+  display: flex;
+  width: 95%; /* 增加宽度从90%到95% */
+  max-width: 1400px; /* 增大最大宽度从1200px到1400px */
+  height: 95vh; /* 增加高度 */
+  max-height: 900px; /* 增大最大高度从800px到900px */
+  background-color: #1a1a2e;
+  border: 6px solid #33ff66; /* 增大边框 */
+  border-image: linear-gradient(#00ff66, #3344ff) 1;
+  box-shadow: 0 0 0 6px #191929, 0 0 0 10px #2a2a3a; /* 增大阴影 */
+  overflow: hidden;
+  image-rendering: pixelated;
+  margin: 0 auto;
+  position: relative;
+}
+
+/* 像素风格边框和元素 */
+.pixel-border {
+  position: relative;
+  border: 6px solid #33ff66; /* 增大边框 */
+  box-shadow: 0 0 0 6px #1a1a2e;
+}
+
+.pixel-border:before {
+  content: '';
+  position: absolute;
+  top: -6px; left: -6px; right: -6px; bottom: -6px; /* 调整边框位置 */
+  border: 3px solid #1a1a2e; /* 增大边框 */
+}
+
+/* 像素风计划面板 - 固定宽度 */
+.plan-panel {
+  width: 320px; /* 增加宽度从280px到320px */
+  flex-shrink: 0; /* 防止收缩 */
+  background-color: #1a1a2e;
+  border-right: 6px solid #33ff66; /* 增大边框 */
+  padding: 20px; /* 增大内边距 */
+  font-family: 'VT323', monospace;
+  color: #33ff66;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #33ff66 #1a1a2e;
+}
+
+.plan-panel h2 {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 1.2rem; /* 增大标题字体 */
+  color: #33ff66;
+  margin-bottom: 24px; /* 增大底部间距 */
+  padding-bottom: 12px; /* 增大内边距 */
+  border-bottom: 6px solid #33ff66; /* 增大边框 */
+  text-transform: uppercase;
+  letter-spacing: 3px; /* 增大字母间距 */
+  text-shadow: 3px 3px 0px #121224; /* 增大文字阴影 */
+}
+
+.plan-title-id {
+  color: #66aaff;
+  font-size: 1.1em; /* 增大字体大小 */
+  margin-top: 10px;
+  margin-bottom: 20px; /* 增大底部间距 */
+}
+
+/* 像素风进度条 */
+.plan-progress-bar-container {
+  width: 100%;
+  background-color: #121224;
+  height: 16px; /* 增大高度 */
+  margin-bottom: 16px; /* 增大底部间距 */
+  border: 3px solid #33ff66; /* 增大边框 */
+  padding: 0;
+  position: relative;
+}
+
+.plan-progress-bar {
+  height: 100%;
+  background: repeating-linear-gradient(
+    45deg,
+    #33ff66,
+    #33ff66 10px,
+    #66aaff 10px,
+    #66aaff 20px
+  );
+  width: 0%;
+  transition: width 0.5s steps(10, end);
+}
+
+.plan-status-summary {
+  color: #66aaff;
+  font-size: 1em;
+  margin-bottom: 16px;
+  text-shadow: 1px 1px 0px #121224;
+}
+
+/* 像素风计划步骤 */
+.plan-steps-list {
+  list-style: none;
+  padding: 0;
+}
+
+.plan-step {
+  display: flex;
+  align-items: flex-start;
+  padding: 14px 6px; /* 增大内边距 */
+  border-bottom: 3px dashed #33ff66; /* 增大边框 */
+  margin-bottom: 12px; /* 增大底部间距 */
+}
+
+.plan-step:hover {
+  background-color: rgba(51, 255, 102, 0.1);
+}
+
+.plan-step-icon {
+  margin-right: 16px; /* 增大右边距 */
+  font-size: 1.4em; /* 增大图标大小 */
+  width: 30px; /* 增大宽度 */
+  flex-shrink: 0;
+  filter: drop-shadow(2px 2px 0 #121224);
+}
+
+.plan-step-text {
+  font-size: 1.2em; /* 增大字体大小 */
+  line-height: 1.5; /* 增大行高 */
+}
+
+/* 像素风各种状态图标 */
+.plan-step.not_started .plan-step-icon::before { content: '□'; }
+.plan-step.in_progress .plan-step-icon::before { content: '▶'; }
+.plan-step.completed .plan-step-icon::before { content: '■'; }
+.plan-step.blocked .plan-step-icon::before { content: '×'; }
+
+.plan-step.in_progress .plan-step-text { 
+  color: #66aaff;
+  text-shadow: 1px 1px 0 #121224;
+}
+.plan-step.completed .plan-step-text { 
+  text-decoration: line-through;
+  color: #66aa66;
+}
+.plan-step.blocked .plan-step-text {
+  color: #ff6666;
+}
+
+/* 像素风聊天区域 - 增加 flex 布局 */
+.chat-container-wrapper {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: #1a1a2e;
+  border-left: 6px solid #121224; /* 增大边框 */
+  width: calc(100% - 320px - 40px); /* 调整宽度计算 */
+}
+
+.chat-header {
+  padding: 20px; /* 增大内边距 */
+  background-color: #121224;
+  border-bottom: 6px solid #33ff66; /* 增大边框 */
+  text-align: center;
+}
+
+.header-title {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 1.5rem; /* 增大字体大小 */
+  color: #33ff66;
+  text-shadow: 3px 3px 0px #121224, 6px 6px 0px #33ff6644; /* 增大文字阴影 */
+  letter-spacing: 3px; /* 增大字母间距 */
+  padding: 6px 0; /* 增大内边距 */
+  margin: 0;
+}
+
+/* 像素风聊天框 */
+.chat-box {
+  flex-grow: 1;
+  padding: 24px; /* 增大内边距 */
+  background-color: #191929;
+  background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='1' height='1' fill='%232a2a3a' x='10' y='10'/%3E%3C/svg%3E");
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* 增大间距 */
+  scrollbar-width: thin;
+  scrollbar-color: #33ff66 #121224;
+}
+
+/* 滚动条样式 */
+.chat-box::-webkit-scrollbar, .plan-panel::-webkit-scrollbar {
+  width: 10px; /* 增大宽度 */
+}
+
+.chat-box::-webkit-scrollbar-track, .plan-panel::-webkit-scrollbar-track {
+  background: #121224;
+}
+
+.chat-box::-webkit-scrollbar-thumb, .plan-panel::-webkit-scrollbar-thumb {
+  background-color: #33ff66;
+  border: 3px solid #121224; /* 增大边框 */
+}
+
+/* 像素风消息气泡 */
+.message {
+  max-width: 85%; /* 增大最大宽度从75%到85% */
+  padding: 20px; /* 增大内边距从12px到20px */
+  position: relative;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  line-height: 1.6; /* 增大行高 */
+  margin-bottom: 16px; /* 增大底部间距 */
+  border: 3px solid; /* 增大边框 */
+  box-shadow: 5px 5px 0px #121224; /* 增大阴影 */
+  font-size: 1.2em; /* 增大字体大小 */
+}
+
+.user-message {
+  align-self: flex-end;
+  background-color: #1d293a;
+  color: #66aaff;
+  border-color: #66aaff;
+  text-align: right;
+  border-right: 6px solid #66aaff; /* 增大边框 */
+}
+
+.user-message::after {
+  content: '';
+  position: absolute;
+  bottom: -6px; /* 调整位置 */
+  right: 14px; /* 调整位置 */
+  width: 12px; /* 增大宽度 */
+  height: 6px; /* 增大高度 */
+  background-color: #66aaff;
+}
+
+.agent-message {
+  align-self: flex-start;
+  background-color: #1a2a1a;
+  color: #33ff66;
+  border-color: #33ff66;
+  border-left: 6px solid #33ff66; /* 增大边框 */
+}
+
+.agent-message::after {
+  content: '';
+  position: absolute;
+  bottom: -6px; /* 调整位置 */
+  left: 14px; /* 调整位置 */
+  width: 12px; /* 增大宽度 */
+  height: 6px; /* 增大高度 */
+  background-color: #33ff66;
+}
+
+/* 添加像素艺术风格的指示标记 */
+.user-message::before {
+  content: '> ';
+  color: #66aaff;
+  opacity: 0.7;
+  font-size: 1.2em; /* 增大字体大小 */
+}
+
+.agent-message::before {
+  content: '$ ';
+  color: #33ff66;
+  opacity: 0.7;
+  font-size: 1.2em; /* 增大字体大小 */
+}
+
+/* 增强像素风的方块感 */
+.agent-message, .user-message {
+  image-rendering: pixelated;
+  padding: 20px; /* 增大内边距 */
+  border-radius: 0; /* 确保是方形 */
+}
+
+/* 为方形消息添加悬停效果 */
+.agent-message:hover {
+  box-shadow: 0 0 0 2px #33ff66, 5px 5px 0 #121224; /* 增大阴影 */
+}
+
+.user-message:hover {
+  box-shadow: 0 0 0 2px #66aaff, 5px 5px 0 #121224; /* 增大阴影 */
+}
+
+/* 错误和系统消息保持方形一致性 */
+.error-message {
+  color: #ff6666;
+  border-color: #ff6666;
+  background-color: #2a1a1a;
+  border-left: 6px solid #ff6666; /* 增大边框 */
+}
+
+.system-message {
+  align-self: center;
+  background-color: #121224;
+  color: #66aaff;
+  border-color: #66aaff;
+  font-size: 1.1em; /* 增大字体大小 */
+  text-align: center;
+  max-width: 85%; /* 增大最大宽度 */
+  border-top: 6px solid #66aaff; /* 增大边框 */
+}
+
+/* 像素风代码块 */
+.agent-message pre, .user-message pre {
+  background-color: #121224;
+  border: 3px solid #33ff66; /* 增大边框 */
+  padding: 18px; /* 增大内边距 */
+  margin: 14px 0; /* 增大外边距 */
+  font-family: 'VT323', monospace;
+  font-size: 1.1em; /* 增大字体大小 */
+  color: #33ff66;
+  overflow-x: auto;
+}
+
+.agent-message code:not(pre code), .user-message code:not(pre code) {
+  background-color: #121224;
+  color: #66aaff;
+  padding: 4px 6px; /* 增大内边距 */
+  border: 2px solid #33ff66; /* 增大边框 */
+  font-family: 'VT323', monospace;
+  font-size: 1.1em; /* 增大字体大小 */
+}
+
+/* 像素风输入区域 */
+.input-area {
+  padding: 20px; /* 增大内边距 */
+  background-color: #121224;
+  border-top: 6px solid #33ff66; /* 增大边框 */
+  display: flex;
+}
+
+#userInput {
+  flex-grow: 1;
+  background-color: #191929;
+  border: 3px solid #33ff66; /* 增大边框 */
+  color: #33ff66;
+  font-family: 'VT323', monospace;
+  font-size: 1.4rem; /* 增大字体大小 */
+  padding: 16px 20px; /* 增大内边距 */
+  margin-right: 16px; /* 增大右边距 */
+  outline: none;
+}
+
+#userInput::placeholder {
+  color: #33ff6688;
+}
+
+#userInput:focus {
+  box-shadow: 0 0 0 2px #33ff66, 0 0 16px #33ff66;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 2px #33ff66, 0 0 8px #33ff66; }
+  50% { box-shadow: 0 0 0 2px #33ff66, 0 0 16px #33ff66; }
+  100% { box-shadow: 0 0 0 2px #33ff66, 0 0 8px #33ff66; }
+}
+
+#sendButton {
+  background-color: #33ff66;
+  color: #121224;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 1rem; /* 增大字体大小 */
+  border: none;
+  padding: 16px 24px; /* 增大内边距 */
+  cursor: pointer;
+  transition: all 0.1s steps(3);
+  border: 3px solid #121224; /* 增大边框 */
+  outline: 3px solid #33ff66; /* 增大边框 */
+}
+
+#sendButton:hover {
+  background-color: #66aaff;
+  outline: 3px solid #66aaff;
+  transform: translateY(-2px);
+}
+
+#sendButton:active {
+  transform: translateY(2px);
+}
+
+#sendButton:disabled {
+  background-color: #335566;
+  outline: 3px solid #335566;
+  color: #121224;
+  cursor: not-allowed;
+}
+
+/* 加载动画 */
+.spinner {
+  width: 16px;
+  height: 16px;
+  margin-left: 8px;
+  vertical-align: middle;
+  animation: pixel-spin 1s steps(8) infinite;
+  background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8 0h2v2H8V0zm4 2h2v2h-2V2zm2 4v2h-2V6h2zM8 14v2H6v-2h2zm-4-2v2H2v-2h2zm-2-4v2H0V8h2zm2-4V2h2v2H4z' fill='%2333ff66'/%3E%3C/svg%3E");
+  image-rendering: pixelated;
+}
+
+@keyframes pixel-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* 错误和系统消息 */
+.error-message {
+  color: #ff6666;
+  border-color: #ff6666;
+  background-color: #2a1a1a;
+}
+
+.system-message {
+  align-self: center;
+  background-color: #121224;
+  color: #66aaff;
+  border-color: #66aaff;
+  font-size: 1.1em; /* 增大字体大小 */
+  text-align: center;
+  max-width: 85%; /* 增大最大宽度 */
+}
+
+/* 光标闪烁动画 */
+@keyframes blink {
+  0% { opacity: 1; }
+  49% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 0; }
+}
+
+.typing-cursor {
+  animation: blink 1s steps(2) infinite;
+  display: inline-block;
+  width: 12px; /* 增大宽度 */
+  height: 20px; /* 增大高度 */
+  background-color: #33ff66;
+  vertical-align: middle;
+  margin-left: 6px; /* 增大左边距 */
+}
+
+/* 响应式设计 - 小屏幕调整 */
+@media (max-width: 768px) {
+  .main-container {
+    flex-direction: column;
+    width: 95%;
+    height: 95vh;
+  }
+
+  .plan-panel {
+    width: 100%;
+    max-height: 35%;
+    border-right: none;
+    border-bottom: 6px solid #33ff66; /* 增大边框 */
+  }
+
+  .chat-container-wrapper {
+    width: 100%;
+    border-left: none;
+  }
+}
+
+/* 对于稍大的屏幕，确保主容器不会太宽或太高 */
+@media (min-width: 1400px) {
+  .main-container {
+    max-width: 1400px; /* 增大最大宽度 */
+    max-height: 900px; /* 增大最大高度 */
+  }
+}
+
+/* 对于超小屏幕，进一步减小元素大小 */
+@media (max-width: 480px) {
+  .plan-panel h2 {
+    font-size: 0.8rem;
+  }
+  
+  .header-title {
+    font-size: 1rem;
+  }
+  
+  .plan-step-text {
+    font-size: 0.9em;
+  }
+}
+
+/* 增强UML图的显示效果 */
+/* UML 图表样式 */
+.uml-diagram-wrapper {
+  position: relative;
+  display: inline-block;
+  margin: 10px auto;
+  transition: transform 0.2s steps(5);
+}
+
+.uml-diagram {
+  max-width: 90%;
+  display: block;
+  margin: 0 auto;
+  image-rendering: auto; /* 对图表不使用像素化渲染，保持清晰 */
+  transition: all 0.2s steps(5);
+}
+
+.zoom-hint {
+  opacity: 0;
+  transition: opacity 0.3s steps(5);
+}
+
+.uml-diagram-wrapper:hover .zoom-hint {
+  opacity: 1;
+}
+
+/* 模态框动画 */
+@keyframes pixel-fade-in {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.pixel-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(10, 10, 20, 0.95);
+  z-index: 10000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: pixel-fade-in 0.3s steps(5) forwards;
+  backdrop-filter: blur(5px);
+}
+
+.pixel-modal-content {
+  position: relative;
+  width: 98vw;
+  height: 96vh;
+  background-color: #1a1a2e;
+  border: 6px solid #33ff66;
+  box-shadow: 0 0 0 3px #121224, 0 0 20px rgba(51, 255, 102, 0.6);
+  padding: 10px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: pixel-fade-in 0.4s steps(6) forwards;
+}
+
+.pixel-image-wrapper {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  background-color: #121218;
+  border: 2px solid #121224;
+}
+
+.pixel-fullscreen-image {
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: contain;
+  user-select: none;
+  -webkit-user-drag: none;
+  cursor: grab;
+}
+
+.pixel-fullscreen-image:active {
+  cursor: grabbing;
+}
+
+/* 控制按钮样式 */
+.pixel-control-btn {
+  background-color: #121224;
+  color: #33ff66;
+  border: 3px solid #33ff66;
+  padding: 10px 15px;
+  font-family: 'VT323', monospace;
+  font-size: 1.3em;
+  cursor: pointer;
+  min-width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pixel-control-btn:hover {
+  background-color: #33ff66;
+  color: #121224;
+}
+
+.pixel-close-button {
+  width: 50px;
+  height: 50px;
+  background-color: #33ff66;
+  border: 3px solid #121224;
+  color: #121224;
+  font-size: 36px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  line-height: 1;
+}
+
+.pixel-help-text {
+  color: #33ff66;
+  font-family: 'VT323', monospace;
+  font-size: 1.4em;
+  animation: pixel-blink 3s infinite;
+}
+
+.pixel-zoom-display {
+  background-color: rgba(18, 18, 36, 0.8);
+  color: #33ff66;
+  padding: 5px 15px;
+  font-family: 'VT323', monospace;
+  font-size: 1.4em;
+  border: 2px solid #33ff66;
+  min-width: 120px;
+  text-align: center;
+}
+
+@keyframes pixel-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+/* 像素风滑块样式 */
+.pixel-slider {
+  appearance: none;
+  width: 90%;
+  height: 12px;
+  background: #121224;
+  border: 2px solid #33ff66;
+  outline: none;
+  margin: 15px 0;
+}
+
+.pixel-slider::-webkit-slider-thumb {
+  appearance: none;
+  width: 24px;
+  height: 24px;
+  background: #33ff66;
+  border: 2px solid #121224;
+  cursor: pointer;
+}
+
+.pixel-slider::-moz-range-thumb {
+  width: 24px;
+  height: 24px;
+  background: #33ff66;
+  border: 2px solid #121224;
+  cursor: pointer;
+}
+
+/* 控制按钮样式 */
+.pixel-controls {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 15px;
+  padding: 10px;
+  border-top: 2px dashed #33ff66;
+}
+
+.pixel-control-btn {
+  background-color: #121224;
+  color: #33ff66;
+  border: 2px solid #33ff66;
+  padding: 8px 12px;
+  font-family: 'VT323', monospace;
+  font-size: 1.1em;
+  cursor: pointer;
+}
+
+.pixel-control-btn:hover {
+  background-color: #33ff66;
+  color: #121224;
+}

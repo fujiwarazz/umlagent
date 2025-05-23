@@ -5,7 +5,7 @@ const planDisplay = document.getElementById('planDisplay'); // 新增：获取�
 
 let currentAgentMessageElement = null;
 let isTyping = false;
-const typingQueue = [];
+let typingQueue = [];
 
 const websocketUrl = `ws://localhost:8000/ws`;
 let websocket;
@@ -30,23 +30,56 @@ function connectWebSocket() {
         console.log('服务器消息:', event.data);
 
         if (event.data instanceof Blob || event.data instanceof ArrayBuffer) {
-            // ... (处理图片二进制数据的逻辑保持不变) ...
             console.log("收到二进制数据 (应为图片)");
             const imageBlob = (event.data instanceof Blob) ? event.data : new Blob([event.data], { type: 'image/png' });
             const imageUrl = URL.createObjectURL(imageBlob);
             const imageContainer = createAndAppendMessage(null, 'agent', {});
             imageContainer.innerHTML = '';
+            
+            // 创建一个包裹图片的容器，并添加放大效果的提示
+            const imageWrapper = document.createElement('div');
+            imageWrapper.className = 'uml-diagram-wrapper';
+            imageWrapper.style.position = 'relative';
+            imageWrapper.style.cursor = 'zoom-in';
+            
+            // 创建图片元素
             const imgElement = document.createElement('img');
             imgElement.src = imageUrl;
             imgElement.alt = pendingImageContext ? pendingImageContext.filename : "UML Diagram";
+            imgElement.className = 'uml-diagram';
             imgElement.style.maxWidth = "90%";
             imgElement.style.maxHeight = "600px"; // 调整了图片最大高度
             imgElement.style.display = "block";
             imgElement.style.marginTop = "10px";
             imgElement.style.marginBottom = "10px";
-            imgElement.style.border = "1px solid #ccc";
-            imgElement.style.borderRadius = "4px";
-            imageContainer.appendChild(imgElement);
+            imgElement.style.border = "3px solid #33ff66"; // 像素风边框
+            imgElement.style.borderRadius = "0"; // 方形边框
+            imgElement.style.boxShadow = "4px 4px 0 #121224"; // 像素风阴影
+
+            // 添加点击提示标签
+            const zoomHint = document.createElement('div');
+            zoomHint.className = 'zoom-hint';
+            zoomHint.innerHTML = '🔍 点击放大';
+            zoomHint.style.position = 'absolute';
+            zoomHint.style.bottom = '15px';
+            zoomHint.style.right = '15px';
+            zoomHint.style.background = 'rgba(18, 18, 36, 0.7)';
+            zoomHint.style.color = '#33ff66';
+            zoomHint.style.padding = '5px 10px';
+            zoomHint.style.fontFamily = 'VT323, monospace';
+            zoomHint.style.fontSize = '1.1em';
+            zoomHint.style.border = '2px solid #33ff66';
+            
+            // 点击图片时放大显示
+            imgElement.addEventListener('click', function() {
+                createFullscreenImageView(imageUrl, pendingImageContext ? pendingImageContext.filename : "UML Diagram");
+            });
+            
+            // 将图片和提示添加到容器
+            imageWrapper.appendChild(imgElement);
+            imageWrapper.appendChild(zoomHint);
+            imageContainer.appendChild(imageWrapper);
+            
             scrollToBottom();
             pendingImageContext = null;
             return;
@@ -324,14 +357,14 @@ function renderPlan() {
     if (!planDisplay) return;
 
     if (!currentPlan || !currentPlan.steps || currentPlan.steps.length === 0) {
-        planDisplay.innerHTML = '<p class="text-gray-500 text-sm">暂无计划，或计划正在生成中...</p>';
+        planDisplay.innerHTML = '<p style="color: #66aaff; font-size: 1.1em; text-align: center;">暂无计划，或计划正在生成中...</p>';
         return;
     }
 
     let html = `
-        <h3 class="text-lg font-semibold text-gray-700 mb-1">${currentPlan.title || '任务计划'}</h3>
+        <h3 style="font-family: 'Press Start 2P', cursive; font-size: 1rem; margin-bottom: 12px; color: #33ff66; text-shadow: 2px 2px 0 #121224;">${currentPlan.title || '任务计划'}</h3>
         ${currentPlan.id ? `<span class="plan-title-id">ID: ${currentPlan.id}</span>` : ''}
-        <div class="plan-progress-bar-container mt-3">
+        <div class="plan-progress-bar-container">
             <div class="plan-progress-bar" style="width: ${currentPlan.progress || 0}%;"></div>
         </div>
         <p class="plan-status-summary">${currentPlan.progress.toFixed(1)}% 完成. ${currentPlan.statusSummary || ''}</p>
@@ -339,6 +372,11 @@ function renderPlan() {
     `;
 
     currentPlan.steps.forEach(step => {
+        let statusIcon = '□';
+        if (step.status === 'completed') statusIcon = '■';
+        else if (step.status === 'in_progress') statusIcon = '▶';
+        else if (step.status === 'blocked') statusIcon = '×';
+        
         html += `
             <li class="plan-step ${step.status}" data-step-id="${step.id}">
                 <span class="plan-step-icon"></span>
@@ -408,8 +446,6 @@ async function processTypingQueue() {
              // 为了简单起见，这里仍用 textContent，这意味着 HTML 标签会以文本形式打出。
              // 如果要支持富文本打字，processTypingQueue 需要更复杂。
              // 或者，createAndAppendMessage 在收到包含代码块的文本时，直接设置innerHTML，不走打字队列。
-             // 目前的 PLAN_CREATED 消息会直接在 onmessage 中通过 typingQueue.push 发送，
-             // 而 createAndAppendMessage 已修改为支持 innerHTML。
              // 我们需要确保打字效果能正确处理或绕过HTML。
 
             // 简单处理：如果包含HTML，则直接附加，不逐字打印 (牺牲打字效果，保证HTML渲染)
@@ -509,4 +545,354 @@ if (document.readyState === 'loading') {
     disableInput();
     createAndAppendMessage("正在连接到 UML Agent...", 'agent');
     connectWebSocket();
+}
+
+// 创建全屏图片查看功能
+function createFullscreenImageView(imageUrl, altText) {
+    // 创建模态框背景 - 使用固定定位覆盖整个视口
+    const modal = document.createElement('div');
+    modal.className = 'pixel-modal';
+    modal.style.position = 'fixed';
+    modal.style.top = '0';
+    modal.style.left = '0';
+    modal.style.width = '100vw'; // 使用视口宽度单位
+    modal.style.height = '100vh'; // 使用视口高度单位
+    modal.style.backgroundColor = 'rgba(10, 10, 20, 0.95)'; // 增加背景不透明度
+    modal.style.display = 'flex';
+    modal.style.justifyContent = 'center';
+    modal.style.alignItems = 'center';
+    modal.style.zIndex = '10000';
+    modal.style.padding = '0'; // 移除内边距以实现真正的全屏
+    modal.style.margin = '0'; // 移除外边距
+    modal.style.boxSizing = 'border-box';
+    modal.style.backdropFilter = 'blur(5px)';
+    
+    // 创建图片容器 - 占据几乎整个屏幕
+    const imageContainer = document.createElement('div');
+    imageContainer.className = 'pixel-modal-content';
+    imageContainer.style.position = 'relative';
+    imageContainer.style.width = '98vw'; // 几乎占据整个视口宽度
+    imageContainer.style.height = '96vh'; // 几乎占据整个视口高度
+    imageContainer.style.maxWidth = 'none'; // 移除最大宽度限制
+    imageContainer.style.maxHeight = 'none'; // 移除最大高度限制
+    imageContainer.style.border = '6px solid #33ff66';
+    imageContainer.style.boxShadow = '0 0 0 3px #121224, 0 0 20px rgba(51, 255, 102, 0.6)';
+    imageContainer.style.backgroundColor = '#1a1a2e';
+    imageContainer.style.padding = '10px';
+    imageContainer.style.overflow = 'hidden';
+    imageContainer.style.display = 'flex';
+    imageContainer.style.flexDirection = 'column';
+    
+    // 创建标题栏
+    const titleBar = document.createElement('div');
+    titleBar.style.display = 'flex';
+    titleBar.style.justifyContent = 'space-between';
+    titleBar.style.alignItems = 'center';
+    titleBar.style.borderBottom = '3px dashed #33ff66';
+    titleBar.style.marginBottom = '10px';
+    titleBar.style.padding = '10px 0';
+    
+    // 创建关闭按钮
+    const closeButton = document.createElement('button');
+    closeButton.className = 'pixel-close-button';
+    closeButton.innerHTML = '×';
+    closeButton.style.width = '50px';
+    closeButton.style.height = '50px';
+    closeButton.style.backgroundColor = '#33ff66';
+    closeButton.style.border = '3px solid #121224';
+    closeButton.style.borderRadius = '0';
+    closeButton.style.color = '#121224';
+    closeButton.style.fontSize = '36px';
+    closeButton.style.fontWeight = 'bold';
+    closeButton.style.cursor = 'pointer';
+    closeButton.style.display = 'flex';
+    closeButton.style.justifyContent = 'center';
+    closeButton.style.alignItems = 'center';
+    closeButton.style.padding = '0';
+    closeButton.style.lineHeight = '1';
+    closeButton.style.marginLeft = '10px';
+    
+    // 创建图片标题
+    const imageTitle = document.createElement('div');
+    imageTitle.className = 'pixel-image-title';
+    imageTitle.style.fontFamily = 'Press Start 2P, cursive';
+    imageTitle.style.color = '#33ff66';
+    imageTitle.style.fontSize = '1.2em';
+    imageTitle.style.textAlign = 'center';
+    imageTitle.style.flex = '1';
+    imageTitle.textContent = altText || 'UML 图表';
+    
+    // 创建缩放信息显示
+    const zoomDisplay = document.createElement('div');
+    zoomDisplay.className = 'pixel-zoom-display';
+    zoomDisplay.style.backgroundColor = 'rgba(18, 18, 36, 0.8)';
+    zoomDisplay.style.color = '#33ff66';
+    zoomDisplay.style.padding = '5px 15px';
+    zoomDisplay.style.fontFamily = 'VT323, monospace';
+    zoomDisplay.style.fontSize = '1.4em';
+    zoomDisplay.style.border = '2px solid #33ff66';
+    zoomDisplay.style.marginRight = '10px';
+    zoomDisplay.style.minWidth = '120px';
+    zoomDisplay.style.textAlign = 'center';
+    
+    // 图片包装器 - 使用flex-grow占据容器的所有可用空间
+    const imageWrapper = document.createElement('div');
+    imageWrapper.className = 'pixel-image-wrapper';
+    imageWrapper.style.flex = '1';
+    imageWrapper.style.display = 'flex';
+    imageWrapper.style.justifyContent = 'center';
+    imageWrapper.style.alignItems = 'center';
+    imageWrapper.style.position = 'relative';
+    imageWrapper.style.overflow = 'hidden';
+    imageWrapper.style.width = '100%';
+    imageWrapper.style.height = 'calc(100% - 70px)'; // 减去标题栏和底栏的高度
+    
+    // 创建放大后的图片 - 初始不设置尺寸限制，由缩放控制
+    const fullImage = document.createElement('img');
+    fullImage.src = imageUrl;
+    fullImage.alt = altText;
+    fullImage.className = 'pixel-fullscreen-image';
+    fullImage.style.maxHeight = '100%';
+    fullImage.style.maxWidth = '100%';
+    fullImage.style.transformOrigin = 'center center';
+    fullImage.style.objectFit = 'contain'; // 确保图片完整显示
+    fullImage.style.cursor = 'grab';
+    fullImage.style.transition = 'transform 0.1s';
+    
+    // 底部控制栏
+    const controlsBar = document.createElement('div');
+    controlsBar.style.display = 'flex';
+    controlsBar.style.justifyContent = 'space-between';
+    controlsBar.style.alignItems = 'center';
+    controlsBar.style.borderTop = '3px dashed #33ff66';
+    controlsBar.style.marginTop = '10px';
+    controlsBar.style.padding = '10px 0';
+    
+    // 帮助提示
+    const helpText = document.createElement('div');
+    helpText.className = 'pixel-help-text';
+    helpText.style.color = '#33ff66';
+    helpText.style.fontFamily = 'VT323, monospace';
+    helpText.style.fontSize = '1.4em';
+    helpText.innerHTML = '🔍 滚轮缩放 | 拖动移动 | 双击重置 | ESC关闭';
+    
+    // 按钮组
+    const buttonGroup = document.createElement('div');
+    buttonGroup.style.display = 'flex';
+    buttonGroup.style.gap = '10px';
+    
+    // 缩小按钮
+    const zoomOutBtn = document.createElement('button');
+    zoomOutBtn.className = 'pixel-control-btn';
+    zoomOutBtn.innerHTML = '➖';
+    zoomOutBtn.title = '缩小 (-)';
+    
+    // 重置按钮
+    const resetBtn = document.createElement('button');
+    resetBtn.className = 'pixel-control-btn';
+    resetBtn.innerHTML = '↺';
+    resetBtn.title = '重置缩放 (0)';
+    
+    // 放大按钮
+    const zoomInBtn = document.createElement('button');
+    zoomInBtn.className = 'pixel-control-btn';
+    zoomInBtn.innerHTML = '➕';
+    zoomInBtn.title = '放大 (+)';
+    
+    // 初始化缩放和平移变量
+    let scale = 1;
+    let isDragging = false;
+    let startX, startY, translateX = 0, translateY = 0;
+    
+    // 显示当前缩放级别
+    function updateZoomDisplay() {
+        zoomDisplay.textContent = `缩放: ${Math.round(scale * 100)}%`;
+    }
+    
+    // 应用变换到图片
+    function applyTransform() {
+        fullImage.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+    }
+    
+    // 重置缩放和位置
+    function resetView() {
+        scale = 1;
+        translateX = 0;
+        translateY = 0;
+        applyTransform();
+        updateZoomDisplay();
+    }
+    
+    // 鼠标滚轮缩放
+    imageWrapper.addEventListener('wheel', function(e) {
+        e.preventDefault();
+        const rect = imageWrapper.getBoundingClientRect();
+        const mouseX = e.clientX - rect.left;
+        const mouseY = e.clientY - rect.top;
+        
+        // 计算缩放因子 - 增大步长使缩放更快
+        const delta = e.deltaY > 0 ? 0.9 : 1.1;
+        const newScale = Math.max(0.1, Math.min(10, scale * delta));
+        
+        // 计算新的平移值，以使鼠标位置保持不变
+        if (scale !== newScale) {
+            const scaleRatio = newScale / scale;
+            translateX = mouseX - scaleRatio * (mouseX - translateX);
+            translateY = mouseY - scaleRatio * (mouseY - translateY);
+            scale = newScale;
+        }
+        
+        applyTransform();
+        updateZoomDisplay();
+    });
+    
+    // 鼠标拖动操作
+    fullImage.addEventListener('mousedown', function(e) {
+        if (e.button === 0) { // 只在左键点击时触发
+            e.preventDefault();
+            isDragging = true;
+            startX = e.clientX - translateX;
+            startY = e.clientY - translateY;
+            fullImage.style.cursor = 'grabbing';
+        }
+    });
+    
+    document.addEventListener('mousemove', function(e) {
+        if (isDragging) {
+            translateX = e.clientX - startX;
+            translateY = e.clientY - startY;
+            applyTransform();
+        }
+    });
+    
+    document.addEventListener('mouseup', function() {
+        if (isDragging) {
+            isDragging = false;
+            fullImage.style.cursor = 'grab';
+        }
+    });
+    
+    // 双击重置图片
+    fullImage.addEventListener('dblclick', resetView);
+    
+    // 按钮点击事件
+    zoomInBtn.addEventListener('click', function() {
+        scale = Math.min(10, scale * 1.2);
+        applyTransform();
+        updateZoomDisplay();
+    });
+    
+    zoomOutBtn.addEventListener('click', function() {
+        scale = Math.max(0.1, scale * 0.8);
+        applyTransform();
+        updateZoomDisplay();
+    });
+    
+    resetBtn.addEventListener('click', resetView);
+    
+    // 添加键盘控制
+    const keyboardControls = function(e) {
+        // ESC 关闭
+        if (e.key === 'Escape') {
+            document.body.removeChild(modal);
+            document.removeEventListener('keydown', keyboardControls);
+        }
+        // + 键放大
+        else if (e.key === '+' || e.key === '=') {
+            e.preventDefault();
+            scale = Math.min(10, scale * 1.2);
+            applyTransform();
+            updateZoomDisplay();
+        }
+        // - 键缩小
+        else if (e.key === '-') {
+            e.preventDefault();
+            scale = Math.max(0.1, scale * 0.8);
+            applyTransform();
+            updateZoomDisplay();
+        }
+        // 0 键重置
+        else if (e.key === '0') {
+            e.preventDefault();
+            resetView();
+        }
+        // 方向键移动
+        else if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(e.key)) {
+            e.preventDefault();
+            const moveAmount = 50;
+            if (e.key === 'ArrowUp') translateY += moveAmount;
+            if (e.key === 'ArrowDown') translateY -= moveAmount;
+            if (e.key === 'ArrowLeft') translateX += moveAmount;
+            if (e.key === 'ArrowRight') translateX -= moveAmount;
+            applyTransform();
+        }
+    };
+    
+    // 添加点击关闭模态框的处理
+    closeButton.addEventListener('click', function() {
+        document.body.removeChild(modal);
+        document.removeEventListener('keydown', keyboardControls);
+    });
+    
+    // 点击模态框背景也可以关闭
+    modal.addEventListener('click', function(event) {
+        if (event.target === modal) {
+            document.body.removeChild(modal);
+            document.removeEventListener('keydown', keyboardControls);
+        }
+    });
+    
+    // 阻止图片区域的点击事件冒泡到模态框
+    imageContainer.addEventListener('click', function(e) {
+        e.stopPropagation();
+    });
+    
+    // 按钮组装
+    buttonGroup.appendChild(zoomOutBtn);
+    buttonGroup.appendChild(resetBtn);
+    buttonGroup.appendChild(zoomInBtn);
+    
+    // 标题栏装配
+    titleBar.appendChild(imageTitle);
+    titleBar.appendChild(zoomDisplay);
+    titleBar.appendChild(closeButton);
+    
+    // 控制栏装配
+    controlsBar.appendChild(helpText);
+    controlsBar.appendChild(buttonGroup);
+    
+    // 图片包装器装配
+    imageWrapper.appendChild(fullImage);
+    
+    // 组装模态框
+    imageContainer.appendChild(titleBar);
+    imageContainer.appendChild(imageWrapper);
+    imageContainer.appendChild(controlsBar);
+    modal.appendChild(imageContainer);
+    
+    // 添加到页面
+    document.body.appendChild(modal);
+    
+    // 添加键盘事件监听器
+    document.addEventListener('keydown', keyboardControls);
+    
+    // 初始显示缩放级别
+    updateZoomDisplay();
+    
+    // 将图片调整为最佳初始显示大小
+    setTimeout(() => {
+        resetView();
+        
+        // 检测图片是否太大或太小，调整到适合的大小
+        fullImage.onload = function() {
+            const imgAspect = this.naturalWidth / this.naturalHeight;
+            const containerAspect = imageWrapper.clientWidth / imageWrapper.clientHeight;
+            
+            // 如果图片太大，自动缩小以适应容器
+            if (this.naturalWidth > imageWrapper.clientWidth * 0.9 || 
+                this.naturalHeight > imageWrapper.clientHeight * 0.9) {
+                resetView(); // 确保初始显示合适
+            }
+        };
+    }, 100);
 }

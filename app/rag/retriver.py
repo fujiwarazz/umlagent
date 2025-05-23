@@ -1,14 +1,14 @@
 from langchain_community.embeddings import OllamaEmbeddings
 from langchain_community.vectorstores import FAISS
-# BaseRetriever是检索器的基类,提供了检索文档的基本接口
 from langchain.schema import BaseRetriever
 from utils.logger import logger
 import os
 import asyncio
-# BaseModel 是一个抽象基类，用于数据验证，Field用于字段定义
 from pydantic import BaseModel, Field
 from typing import Any
 from config.app_config import VECTORDB_PATH
+from langchain.schema.document import Document
+from typing import List
 class AsyncVectorStoreRetriever(BaseRetriever):
     retriever:Any = Field(description= "原始向量存储检索器")
     
@@ -33,56 +33,86 @@ class AsyncVectorStoreRetriever(BaseRetriever):
             **kwargs
         )
     def _get_relevant_documents(self,query,**kwargs):
-        # 同步调用, 调用原始检索器的get_relevant_documents方法
-        return query | self.retriever
+        return self.retriever.get_relevant_documents(query, **kwargs)
         
+
+from langchain.embeddings import DashScopeEmbeddings
 
 class VectorStore:
     def __init__(self):
         """ 初始化向量数据库 """
         try:
-            # self.embedding = OllamaEmbeddings(
-            #     model = settings.OLLAMA_MODEL,
-            # )
-            # logger.info(f"已加载embedding模型:{settings.OLLAMA_MODEL}")
+            self.embedding = DashScopeEmbeddings(
+                model = 'text-embedding-v3',
+                dashscope_api_key =  os.environ.get("DASHSCOPE_API_KEY")
+            )
         except Exception as e:
             logger.error(f"加载embedding模型失败:{e}")
             raise
+        self.db_lock = asyncio.Lock()
         
-    async def get_vectorstore(self,docs):
-        """创建或者加载FAISS数据库"""
+    async def add_chunks(self,chunks):
+        chunks = self._handle_indexer_chunks(chunks)
+        index_path = os.path.join(VECTORDB_PATH,"index.faiss")
+        if os.path.exists(index_path):
+            try:
+                async with self.db_lock:
+                    vec_store = FAISS.load_local(
+                            VECTORDB_PATH,
+                            embeddings=self.embedding
+                        )
+                    vec_store.add_documents(chunks)
+            except Exception as e:
+                async with self.db_lock:
+                    vec_store = await self._create_vector_store(chunks)
+        else:
+            async with self.db_lock:
+                vec_store = await self._create_vector_store(chunks)
+        
+        return True if vec_store else False
+    
+    async def get_async_retriever(self,chunks_origin=None):
         try:
-            os.mkdir(settings.VECTOR_DB_PATH,exist_ok = True)
-            
-            index_path = os.path.join(settings.VECTOR_DB_PATH,settings.VECTOR_DB_NAME)
-            
+            os.mkdir(VECTORDB_PATH,exist_ok = True)
+            index_path = os.path.join(VECTORDB_PATH,"index.faiss")
             if os.path.exists(index_path):
                 try:
-                    vec_store = FAISS.load_local(
-                        settings.VECTOR_DB_PATH,
-                        self.embedding
-                    )
+                    async with self.db_lock:
+                        vec_store = FAISS.load_local(
+                            VECTORDB_PATH,
+                            embeddings=self.embedding
+                        )
                     logger.info("加载本地向量数据库成功")
                 except Exception as e:
                     logger.error(f"加载本地向量数据库失败:{e}, 将创建新的向量数据库")
-                    vec_store = await self._create_vector_store(docs)
-                    
+                    async with self.db_lock:
+                        vec_store = await self._create_vector_store(chunks_origin)
             else:
-                vec_store = await self._create_vector_store(docs)
+                async with self.db_lock:
+                    vec_store = await self._create_vector_store(chunks_origin)
             
-           # 创建基础检索器，用于从FAISS中检索最匹配的文本片段
             base_retriever = vec_store.as_retriever(
-                search_kwargs={"k": settings.TOP_K},
-                search_type="similarity",
+                search_type="mmr",
+                search_kwargs= {"k": 5, "fetch_k": 20, "lambda_mult": 0.5},
             )
-            # 创建异步向量存储检索器，用于异步检索最匹配的文本片段
             return AsyncVectorStoreRetriever(base_retriever)
             
         except Exception as e:
            logger.error(f"创建或加载向量存储失败:{e}",exc_info = True)
            raise
-       
-    async def _create_vector_store(self,docs):
+    
+    def _handle_indexer_chunks(self,chunks) -> List[Document]:
+        documents_for_faiss: List[Document] = []
+            
+        for file_info in chunks:
+            file_path = file_info["file"]
+            for chunk_text in file_info["chunks"]:
+                documents_for_faiss.append(
+                    Document(page_content=chunk_text, metadata={"source": file_path})
+                )
+        
+        return documents_for_faiss
+    async def _create_vector_store(self,chunks):
         try:
             """
             创建向量存储
@@ -92,11 +122,14 @@ class VectorStore:
                 3. 创建文档和向量的mapping
             Args:
                 docs (_type_): 文档
+                
             """
+            documents_for_faiss = self._handle_indexer_chunks(chunks)
+                    
             vec_store = await asyncio.to_thread(FAISS.from_documents,
-                                                docs,
+                                                documents_for_faiss,
                                                 self.embedding)
-            vec_store.save_local(settings.VECTOR_DB_PATH)   
+            vec_store.save_local(os.path.join(VECTORDB_PATH,"code_base.faiss"))   
             logger.info(f"向量数据库创建成功，已保存")
             return vec_store 
         
