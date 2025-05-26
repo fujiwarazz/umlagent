@@ -48,12 +48,8 @@ class ReAsk(BaseTool):
         logger.info("waiting for user's re-ask response from queue...")
 
         try:
-            # 在这里等待用户回复从队列中获取
             user_response: str = await self.response_queue.get()
             logger.info(f"Received user response for re-ask: {user_response}")
-
-            # 如果你在类顶层保留了 re_ask_str 字段，并且想在这里更新它，可以加上这行：
-            # self.re_ask_str = user_response
 
             return ToolResult(output=f"for question:'{question}', user response:'{user_response}'")
 
@@ -65,7 +61,6 @@ class ReAsk(BaseTool):
             except Exception:
                 pass # 连接可能已断开
 
-            # 清空队列，防止下次错误地获取到旧消息（保险起见）
             while not self.response_queue.empty():
                  try:
                      self.response_queue.get_nowait()

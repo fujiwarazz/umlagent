@@ -13,7 +13,7 @@ from tools import Terminate, ToolCollection
 
 class SWEAgent(ToolCallAgent):
     system_prompt:str = SWE_SYSTEM_PROMPT
-    next_step_prompt:str = SWE_NEXT_STEP_PROMPT 
+    next_step_prompt:str = SWE_NEXT_STEP_TEMPLATE 
     available_tools: ToolCollection = ToolCollection(
         Terminate())
     

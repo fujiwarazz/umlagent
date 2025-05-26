@@ -11,6 +11,12 @@ from tools.re_ask import ReAsk
 from tools.create_chat_completion import CreateChatCompletion
 from tools.uml import CodeToUMLTool
 from tools.summarize import FinalResponse
+
+from tools.swe_tools.blueprint import BlueprintTool
+from tools.swe_tools.explain import CodeAnalyzer
+from tools.swe_tools.rag import RAG
+from tools.swe_tools.file_operator import FileOperatorTool
+
 __all__ = [
     "BaseTool",
     "Bash",
@@ -26,5 +32,8 @@ __all__ = [
     "ReAsk"
     "CodeToUMLTool",
     "FinalResponse"
-    
+    "RAG",
+    "BluePrintTool",
+    "CodeAnalyzer",
+    "FileOperatorTool"
 ]
