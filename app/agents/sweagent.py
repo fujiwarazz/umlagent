@@ -13,7 +13,7 @@ from tools import Terminate, ToolCollection
 
 class SWEAgent(ToolCallAgent):
     system_prompt:str = SWE_SYSTEM_PROMPT
-    next_step_prompt:str = SWE_NEXT_STEP_PROMPT 
+    next_step_prompt:str = SWE_NEXT_STEP_TEMPLATE 
     available_tools: ToolCollection = ToolCollection(
         Terminate())
     
@@ -22,10 +22,7 @@ class SWEAgent(ToolCallAgent):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.available_tools.add_tools(
-            CreateChatCompletion(),
-            
-        )
+        
         if kwargs.get('available_tools') is not None:
             self.available_tools.add_tools(*kwargs.get('available_tools').tools)
             
