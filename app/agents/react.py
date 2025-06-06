@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from typing import Optional
+from typing import Optional,List
 
 from pydantic import Field
 
@@ -9,7 +9,7 @@ from utils.entity import AgentState, Memory
 
 class ReActAgent(BaseAgent, ABC):
     name: str
-    description: Optional[str] = None
+    description: Optional[str] = "An agent that can reason and act based on its state"
 
     system_prompt: Optional[str] = None
     next_step_prompt: Optional[str] = None
@@ -20,6 +20,8 @@ class ReActAgent(BaseAgent, ABC):
 
     max_steps: int = 10
     current_step: int = 0
+    
+    hand_off_agents: Optional[List[BaseAgent]] = None
 
     @abstractmethod
     async def think(self) -> bool:

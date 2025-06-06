@@ -9,11 +9,13 @@ from openai import (
 )
 
 from tenacity import retry, stop_after_attempt, wait_random_exponential
-
+import json
 from config.llm_config import LLMSettings
 from utils.logger import logger  
 from utils.entity import Message
 from config.llm_config import llm_settings
+from agents.base import BaseAgent
+from utils.entity import Handoff
 class LLM:
     
     # 单例模式创建LLM clinet，为了能够互不影响同时创建多个client
@@ -32,8 +34,6 @@ class LLM:
         self, config_name: str = "default", llm_config: Optional[LLMSettings] = None
     ):
         if not hasattr(self, "client"):  # Only initialize if not already initialized
-            
-            #llm_config = llm_config.get(config_name, llm_config["default"])
             self.model = llm_config.model
             self.max_tokens = llm_config.max_tokens
             self.temperature = llm_config.temperature
@@ -174,12 +174,97 @@ class LLM:
         wait=wait_random_exponential(min=1, max=60),
         stop=stop_after_attempt(6),
     )
+    async def ask_handoff(self, messages, system_msgs=None, handoffs_agents: Optional[List[BaseAgent]] = None, 
+                     tools: Optional[List[dict]] = None, timeout: int = 60, temperature=0.6, **kwargs) -> Union[Handoff, str]:
+        try:
+            # 创建handoff工具定义
+            handoff_tool = {
+                "type": "function",
+                "function": {
+                    "name": "handoff_to_agent",
+                    "description": "Hand off the conversation to another specialized agent",
+                    "parameters": {
+                        "type": "object",
+                        "properties": {
+                            "name": {
+                                "type": "string",
+                                "description": "The name of the agent to hand off to"
+                            },
+                            "input": {
+                                "type": "string", 
+                                "description": "The input/query to pass to the agent"
+                            }
+                        },
+                        "required": ["name", "input"]
+                    }
+                }
+            }
+            all_tools = tools or []
+            if handoffs_agents:
+                all_tools.append(handoff_tool)
+            
+            if system_msgs:
+                system_msgs = self.format_messages(system_msgs)
+                messages = system_msgs + self.format_messages(messages)
+            else:
+                agent_infos = [
+                    {
+                        "agent_name": agent.name,
+                        "agent_description": agent.description,
+                    } 
+                    for agent in handoffs_agents] if handoffs_agents else []
+                
+                system_msgs = {
+                    "role": "system",
+                    "content": f"""You are a helpful assistant. Available agents: {agent_infos} 
+                    Use the handoff_to_agent tool when you need to delegate to a specialized agent."""
+                }
+                messages = [system_msgs] + self.format_messages(messages)
+            
+            response = await self.client.chat.completions.create(
+                model=self.model,
+                messages=messages,
+                temperature=temperature or self.temperature,
+                max_tokens=self.max_tokens,
+                tools=all_tools,
+                tool_choice="auto",  
+                timeout=timeout,
+                **kwargs,
+            )
+            
+            if not response.choices or not response.choices[0].message:
+                raise ValueError("Invalid or empty response from LLM")
+            
+            message = response.choices[0].message
+            
+            # 检查是否有工具调用
+            if message.tool_calls:
+                for tool_call in message.tool_calls:
+                    if tool_call.function.name == "handoff_to_agent":
+                        try:
+                            args = json.loads(tool_call.function.arguments)
+                            return Handoff(name=args["name"], input=args["input"])
+                        except (json.JSONDecodeError, KeyError) as e:
+                            logger.error(f"Failed to parse handoff arguments: {e}")
+            
+            # 如果没有工具调用，返回文本内容
+            return message.content or "No response content"
+            
+        except Exception as e:
+            logger.error(f"Error in ask_handoff: {e}")
+            raise
+        
+    @retry(
+        wait=wait_random_exponential(min=1, max=60),
+        stop=stop_after_attempt(6),
+    )
     async def ask_tools(
          self,
         messages: List[Union[dict, Message]],
         system_msgs: Optional[List[Union[dict, Message]]] = None,
         timeout: int = 60,
         tools: Optional[List[dict]] = None,
+        handoffs_agents: Optional[List[BaseAgent]] = None,
         tool_choice: Literal["none", "auto", "required"] = "auto",
         temperature: Optional[float] = None,
         **kwargs,
@@ -205,16 +290,57 @@ class LLM:
             Exception: For unexpected errors
         """
         try:
+            handoff_tool = {
+                "type": "function",
+                "function": {
+                    "name": "handoff_to_agent",
+                    "description": "Hand off the conversation to another specialized agent",
+                    "parameters": {
+                        "type": "object",
+                        "properties": {
+                            "name": {
+                                "type": "string",
+                                "description": "The name of the agent to hand off to"
+                            },
+                            "input": {
+                                "type": "string", 
+                                "description": "The input/query to pass to the agent"
+                            }
+                        },
+                        "required": ["name", "input"]
+                    }
+                }
+            }
+            all_tools = tools or []
+            if handoffs_agents:
+                all_tools.append(handoff_tool)
+                
             # Validate tool_choice
             if tool_choice not in ["none", "auto", "required"]:
                 raise ValueError(f"Invalid tool_choice: {tool_choice}")
-
+            agent_infos = [
+                                {
+                                    "agent_name": agent.name,
+                                    "agent_description": agent.description,
+                                } 
+                                for agent in handoffs_agents] if handoffs_agents else []
+                            
+            system_msg = {
+                "role": "system",
+                "content": f"""You are a helpful assistant. Available agents: {agent_infos} 
+                Use the `handoff_to_agent` tool when you need to delegate to a specialized agent."""
+            } if handoffs_agents else None
+            
             # Format messages
             if system_msgs:
                 system_msgs = self.format_messages(system_msgs)
+                if system_msg:
+                    system_msgs = [system_msg] + system_msgs
                 messages = system_msgs + self.format_messages(messages)
             else:
-                messages = self.format_messages(messages)
+                if system_msg:
+                    system_msgs = [system_msg]
+                messages = system_msgs + self.format_messages(messages)
 
             # Validate tools if provided
             if tools:
@@ -236,7 +362,7 @@ class LLM:
 
             # Check if response is valid
             if not response.choices or not response.choices[0].message:
-                print(response)
+            #    print(response)
                 raise ValueError("Invalid or empty response from LLM")
 
             return response.choices[0].message

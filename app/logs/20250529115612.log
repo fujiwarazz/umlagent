@@ -1,0 +1,13 @@
+2025-05-29 11:56:13.079 | INFO     | main:websocket_endpoint:29 - WebSocket connection accepted from 127.0.0.1:54768
+2025-05-29 11:56:13.080 | INFO     | tools.swe_tools.file_operator:__init__:80 - FileOperatorTool initialized with workspace_root: D:\deep_learning\codes\workspace
+2025-05-29 11:56:13.129 | INFO     | main:websocket_endpoint:29 - WebSocket connection accepted from 127.0.0.1:54774
+2025-05-29 11:56:13.131 | INFO     | tools.swe_tools.file_operator:__init__:80 - FileOperatorTool initialized with workspace_root: D:\deep_learning\codes\workspace
+2025-05-29 11:56:13.132 | INFO     | main:websocket_endpoint:60 - WebSocket connection disconnected from 127.0.0.1:54768
+2025-05-29 11:56:21.741 | INFO     | main:websocket_endpoint:56 - Received message from 127.0.0.1:54774: 我想学习D:\deep_learning\codes\deepseek-r1\langchain这个项目
+2025-05-29 11:56:21.744 | INFO     | agents.base:run:119 - websocket initialized finish, state:<starlette.datastructures.State object at 0x000001A11B877BF0>
+2025-05-29 11:56:21.744 | INFO     | agents.base:run:129 - Executing step 1/30
+2025-05-29 11:56:25.003 | INFO     | agents.tool_call:think:56 - ✨ swe 的想法为: 
+2025-05-29 11:56:25.004 | INFO     | agents.tool_call:think:58 - 🛠️ swe 选择了 1 个工具
+2025-05-29 11:56:25.004 | INFO     | agents.tool_call:think:63 - 🧰 选择的工具信息: ['project_blueprint']
+2025-05-29 11:56:25.005 | ERROR    | main:websocket_endpoint:65 - Error in WebSocket handler for 127.0.0.1:54774: 'project_blueprint'
+2025-05-29 11:56:25.005 | INFO     | main:websocket_endpoint:76 - Cleaned up resources for 127.0.0.1:54774

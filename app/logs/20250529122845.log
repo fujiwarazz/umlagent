@@ -1,0 +1,5 @@
+2025-05-29 12:28:45.989 | INFO     | main:websocket_endpoint:29 - WebSocket connection accepted from 127.0.0.1:57398
+2025-05-29 12:28:46.045 | ERROR    | main:websocket_endpoint:66 - Error in WebSocket handler for 127.0.0.1:57398: name 'sweagent' is not defined
+2025-05-29 12:28:46.045 | INFO     | main:websocket_endpoint:29 - WebSocket connection accepted from 127.0.0.1:57392
+2025-05-29 12:28:46.046 | ERROR    | main:websocket_endpoint:66 - Error in WebSocket handler for 127.0.0.1:57392: name 'sweagent' is not defined
+2025-05-29 12:28:46.056 | INFO     | main:websocket_endpoint:78 - Cleaned up resources for 127.0.0.1:57398

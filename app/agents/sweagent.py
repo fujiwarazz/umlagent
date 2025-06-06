@@ -10,24 +10,6 @@ from utils.entity import AgentState, Message, ToolCall
 from tools import CreateChatCompletion,Terminate,BaiduSearch
 from tools import Terminate, ToolCollection
 
-
-class SWEAgent(ToolCallAgent):
-    system_prompt:str = SWE_SYSTEM_PROMPT
-    next_step_prompt:str = SWE_NEXT_STEP_TEMPLATE 
-    available_tools: ToolCollection = ToolCollection(
-        Terminate())
-    
-    special_tool_names: List[str] = Field(default_factory=lambda: [Terminate().name])
-    tool_choice:Literal['none','auto','required'] =  "required"
-
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-        
-        if kwargs.get('available_tools') is not None:
-            self.available_tools.add_tools(*kwargs.get('available_tools').tools)
-            
-            
-
 class SWEAgent(ToolCallAgent):
     """An agent that implements the SWEAgent paradigm for executing code and natural conversations."""
 
@@ -38,15 +20,18 @@ class SWEAgent(ToolCallAgent):
     next_step_prompt: str = SWE_NEXT_STEP_TEMPLATE
 
     available_tools: ToolCollection = ToolCollection(
-        Terminate(),BaiduSearch()
+        Terminate()
     )
+    
+    tool_choice:Literal['none','auto','required'] =  "required"
     special_tool_names: List[str] = Field(default_factory=lambda: [Terminate().name])
 
     max_steps: int = 30
-
-
     async def think(self) -> bool:
         """Process current state and decide next action"""
         # Update working directory
         
         return await super().think()
+    
+    async def act(self):
+        return await super().act()

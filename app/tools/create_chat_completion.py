@@ -161,9 +161,9 @@ class CreateChatCompletion(BaseTool):
             return self.response_type(**kwargs)
 
         if get_origin(self.response_type) in (list, dict):
-            return result  # Assuming result is already in correct format
-
+            return result  
         try:
             return self.response_type(result)
+        
         except (ValueError, TypeError):
             return result

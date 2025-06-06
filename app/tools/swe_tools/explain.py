@@ -74,8 +74,7 @@ class CodeAnalyzer(BaseTool):
             if not content.strip(): # 检查文件是否为空或只包含空白符
                 analysis_result = "文件为空或只包含空白字符，无实质内容可分析。"
             else:
-                # **重要**: 在此处调用您实际的LLM分析函数
-                # 例如: analysis_result = await actual_llm_client.analyze_code(content, file_path=file_path)
+               
                 analysis_result = await self._ask_llm(content)
             
             return f"对于 {file_path} 文件，大致内容为：{analysis_result}"
@@ -98,12 +97,14 @@ class CodeAnalyzer(BaseTool):
                  不同文件的分析结果之间用两个换行符分隔。
         """
         if not file_paths:
-            return "错误：未提供文件路径列表。请提供一个包含一个或多个文件路径的列表。"
+            return ToolResult(error = "错误：未提供文件路径列表。请提供一个包含一个或多个文件路径的列表。")
         
         # 为每个文件路径创建一个分析任务
         # asyncio.gather 并发执行所有这些独立的分析任务
-        analysis_tasks = [self._analyze_single_file(fp) for fp in file_paths]
-        results = await asyncio.gather(*analysis_tasks)
-        
+        try:
+            analysis_tasks = [self._analyze_single_file(fp) for fp in file_paths]
+            results = await asyncio.gather(*analysis_tasks)
+        except Exception as e:
+            logger.error(str(e))
         # 将所有任务的返回结果（每个都是一个格式化字符串）用换行符连接起来
-        return "\n\n".join(results)
+        return  ToolResult(output = "\n\n".join(results))

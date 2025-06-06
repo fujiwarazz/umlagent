@@ -10,12 +10,12 @@ from tools.base import BaseTool
 class EnsureInitPyTool(BaseTool):
    
     name: str = "ensure_init_py"
-    description: str = """扫描指定根目录下的所有Python包（即包含至少一个.py文件的文件夹），
-如果某个Python包内缺少 __init__.py 文件，则自动在该包内创建一个空的 __init__.py 文件。
-该工具会递归地检查所有子目录。
-成功时，返回已创建 __init__.py 文件的目录列表；如果无需创建或操作完成但未创建任何文件，则返回相应信息。
-失败时，返回包含错误详情的字符串。
-"""
+    description: str = """扫描指定根目录下的所有Python包（即包含至少一个.py文件的文件夹），如果你未来可能要使用UML工具，那么一定要先使用此工具！
+    如果某个Python包内缺少 __init__.py 文件，则自动在该包内创建一个空的 __init__.py 文件。
+    该工具会递归地检查所有子目录。
+    成功时，返回已创建 __init__.py 文件的目录列表；如果无需创建或操作完成但未创建任何文件，则返回相应信息。
+    失败时，返回包含错误详情的字符串。
+    """
     parameters: dict = {
         "type": "object",
         "properties": {

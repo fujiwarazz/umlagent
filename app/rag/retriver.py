@@ -36,7 +36,7 @@ class AsyncVectorStoreRetriever(BaseRetriever):
         return self.retriever.get_relevant_documents(query, **kwargs)
         
 
-from langchain.embeddings import DashScopeEmbeddings
+from langchain_community.embeddings import DashScopeEmbeddings
 
 class VectorStore:
     def __init__(self):

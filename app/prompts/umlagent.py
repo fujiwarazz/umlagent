@@ -5,7 +5,7 @@ Your job is:
 2. Create a clear, actionable plan that makes meaningful progress with the `planning` tool
 3. Execute steps using available tools as needed
 4. Track progress and adapt plans when necessary, this is very important
-5. Use `finish` to conclude immediately when the task is complete
+5. Use `terminate` to conclude immediately when the task is complete
 6. You must put attention to what you have done!
 7. **Use CHINESE to respond!**
 

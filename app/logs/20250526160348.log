@@ -1,0 +1,3 @@
+2025-05-26 16:03:53.057 | INFO     | main:websocket_endpoint:29 - WebSocket connection accepted from 127.0.0.1:53360
+2025-05-26 16:03:53.057 | ERROR    | main:websocket_endpoint:65 - Error in WebSocket handler for 127.0.0.1:53360: "FileOperatorTool" object has no field "workspace_root"
+2025-05-26 16:03:53.058 | INFO     | main:websocket_endpoint:75 - Cleaned up resources for 127.0.0.1:53360

@@ -1,5 +1,5 @@
 import json
-from typing import Any, List, Literal
+from typing import Any, List, Literal,Optional
 
 from pydantic import Field
 
@@ -9,6 +9,9 @@ from prompts.umlagent import NEXT_STEP_PROMPT, PLANNING_SYSTEM_PROMPT
 from utils.entity import AgentState, Message, ToolCall
 # from tools import CreateChatCompletion, Terminate, ToolCollection, CodeExcute, Bash, FileSaver,FileSeeker,Github,UML,REASK
 from tools import Terminate, ToolCollection
+from agents.base import BaseAgent
+from utils.entity import Handoff
+
 class ToolCallAgent(ReActAgent):
     """
     Args:
@@ -28,10 +31,13 @@ class ToolCallAgent(ReActAgent):
     
     special_tool_names: List[str] = Field(default_factory=lambda: [Terminate().name])
 
-    tool_calls: List[ToolCall] = Field(default_factory=list)
+   # tool_calls: List[ToolCall] = Field(default_factory=list)
+    tool_calls: Optional[List[ToolCall]] = None
 
     max_steps: int = 30
     
+    hands_offs:List[BaseAgent] = Field(default_factory=list)
+
     async def think(self) -> bool:
         """让llm基于现在的情况进行决定是否采取下一步措施"""
         if self.next_step_prompt:
@@ -46,12 +52,21 @@ class ToolCallAgent(ReActAgent):
             tools=self.available_tools.to_params(),
             tool_choice=self.tool_choice,
         )
-        if response.tool_calls is None:
-            return False
         
+        # response_use_agent = await self.llm.ask_handoff(messages=self.messages,
+        #     handoffs_agents= self.hands_offs,
+        #     tools=self.available_tools.to_params(),
+        # )
+      
+            
+        if response.tool_calls is None:
+            logger.info(f"🚨 {self.name} 没有选择任何工具或代理来执行任务")
+            return False
+        # if isinstance(response_use_agent, Handoff):
+        #     self.agents_call = response_use_agent
+            
         self.tool_calls = response.tool_calls
-
-                
+        
         # todo 返回给前端
         logger.info(f"✨ {self.name} 的想法为: {response.content}")
         await self.websocket.send_text(f"✨ {self.name} 的想法为: {response.content}")
@@ -72,7 +87,9 @@ class ToolCallAgent(ReActAgent):
                 "re_ask" : "重问工具",
                 "final_response" : "总结工具",
                 "terminate" : "结束回答",
-                "baidu_search" : "百度搜索"
+                "baidu_search" : "百度搜索",
+                "ensure_init_py":"结构修补工具",
+                "handoff_to_agent": "代理交接",
             }
             await self.websocket.send_text( f"🧰 选择的工具信息: {[function_name_map[call.function.name] for call in  self.tool_calls]}")
             logger.info(
@@ -145,20 +162,34 @@ class ToolCallAgent(ReActAgent):
         #await self.websocket.send_text("\n\n".join(tool_excute_results))
         return "\n\n".join(tool_excute_results)
         
+        
+        
     async def execute_tool(self, command: ToolCall) -> str:
         
         if not command or not command.function or not command.function.name:
             return "执行的工具参数错误"
 
         name = command.function.name
-        if name not in self.available_tools.tool_map:
+        if name not in self.available_tools.tool_map and not name == 'handoff_to_agent':
             return f"{name} 是未知工具，或者无法被{self.name}使用'"
         
         try:
+            
             args = command.function.arguments
             args = json.loads(args) if args else {}
-            result = await self.available_tools.execute(name=name, tool_input=args)
             
+            if name == "handoff_to_agent":
+                # Handle agent handoff
+                if not self.hands_offs:
+                    return "没有可用的代理进行交接"
+                for agent in self.hands_offs:
+                    if agent.name == command.function.arguments.get("name"):
+                        logger.info(f"🔄 交接给代理: {agent.name}")
+                        
+                        result = await agent.run(query=command.function.arguments.get("query", ""))
+            else:
+                result = await self.available_tools.execute(name=name, tool_input=args)
+                
             # Format result for display
             observation = (
                 f" `工具:{name}`的观测结果输出为 :\n{str(result)}"

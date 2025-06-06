@@ -1,0 +1,10 @@
+2025-05-26 16:08:03.604 | INFO     | main:websocket_endpoint:29 - WebSocket connection accepted from 127.0.0.1:53884
+2025-05-26 16:08:03.606 | INFO     | tools.swe_tools.file_operator:__init__:80 - FileOperatorTool initialized with workspace_root: D:\deep_learning\codes\workspace
+2025-05-26 16:10:40.466 | INFO     | main:websocket_endpoint:56 - Received message from 127.0.0.1:53884: 帮我分析：D:\deep_learning\codes\umlagent这个路径下的代码
+2025-05-26 16:10:40.466 | INFO     | agents.base:run:119 - websocket initialized finish, state:<starlette.datastructures.State object at 0x0000020DFFBF6180>
+2025-05-26 16:10:40.466 | INFO     | agents.base:run:129 - Executing step 1/30
+2025-05-26 16:10:43.292 | INFO     | agents.tool_call:think:56 - ✨ swe 的想法为: 
+2025-05-26 16:10:43.294 | INFO     | agents.tool_call:think:58 - 🛠️ swe 选择了 1 个工具
+2025-05-26 16:10:43.294 | INFO     | agents.tool_call:think:63 - 🧰 选择的工具信息: ['project_blueprint']
+2025-05-26 16:10:43.294 | ERROR    | main:websocket_endpoint:65 - Error in WebSocket handler for 127.0.0.1:53884: 'project_blueprint'
+2025-05-26 16:10:43.294 | INFO     | main:websocket_endpoint:75 - Cleaned up resources for 127.0.0.1:53884

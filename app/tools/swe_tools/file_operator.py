@@ -73,11 +73,12 @@ class FileOperatorTool(BaseTool):
         "additionalProperties": False,
         "required": ["command", "path"]
     }
+    workspace_root:str
 
     def __init__(self, workspace_root: str, **kwargs): # Agent的工作区根目录，用于安全和路径解析
-        super().__init__(**kwargs)
-        self.workspace_root = os.path.abspath(workspace_root)
-        logger.info(f"FileOperatorTool initialized with workspace_root: {self.workspace_root}")
+        workspace_root = os.path.abspath(workspace_root)
+        logger.info(f"FileOperatorTool initialized with workspace_root: {workspace_root}")
+        super().__init__(workspace_root = workspace_root,**kwargs)
 
     def _resolve_path(self, path: str) -> str | None:
         """将用户提供的路径解析为工作区内的绝对路径，并进行安全检查。"""
@@ -91,9 +92,9 @@ class FileOperatorTool(BaseTool):
         logger.info(f"FileOperatorTool: 'read_file' for path: {path}, lines: {start_line}-{end_line}, encoding: {encoding}")
         safe_path = self._resolve_path(path)
         if not safe_path:
-            return ToolFailure(f"路径 '{path}' 无效或位于允许的工作区之外。")
+            return ToolResult(error=f"路径 '{path}' 无效或位于允许的工作区之外。")
         if not os.path.isfile(safe_path):
-            return ToolFailure(f"文件 '{safe_path}' 不存在或不是一个文件。")
+            return ToolResult(error=f"文件 '{safe_path}' 不存在或不是一个文件。")
         try:
             with open(safe_path, 'r', encoding=encoding) as f:
                 if start_line is not None and end_line is not None:
@@ -109,31 +110,31 @@ class FileOperatorTool(BaseTool):
                     content = "".join(content_lines)
                 else: # 读取整个文件
                     content = f.read()
-            return ToolResult(content=f"文件 '{path}' 的内容 (共 {len(content.splitlines()) if content else 0} 行):\n{content}", success=True)
+            return ToolResult(output=f"文件 '{path}' 的内容 (共 {len(content.splitlines()) if content else 0} 行):\n{content}", success=True)
         except Exception as e:
             logger.error(f"FileOperatorTool read_file 异常: {e}", exc_info=True)
-            return ToolFailure(error_message=f"读取文件 '{path}' 时发生错误: {e}", error_details=str(e))
+            return ToolResult(error=f"读取文件 '{path}' 时发生错误: {e}", error_details=str(e))
 
     async def write_file(self, path: str, content: str, mode: str = 'w', encoding: str = 'utf-8') -> ToolResult | ToolFailure:
         logger.info(f"FileOperatorTool: 'write_file' to path: {path}, mode: {mode}, encoding: {encoding}")
         safe_path = self._resolve_path(path)
         if not safe_path:
-            return ToolFailure(f"路径 '{path}' 无效或位于允许的工作区之外。")
+            return ToolResult(error=f"路径 '{path}' 无效或位于允许的工作区之外。")
         
         parent_dir = os.path.dirname(safe_path)
         if not os.path.isdir(parent_dir):
-             return ToolFailure(f"父目录 '{parent_dir}' 不存在。请先使用 'create_directory' 创建。")
+             return ToolResult(error=f"父目录 '{parent_dir}' 不存在。请先使用 'create_directory' 创建。")
 
         if mode not in ['w', 'a']:
-            return ToolFailure(f"无效的写入模式 '{mode}'。仅支持 'w' (覆盖) 或 'a' (追加)。")
+            return ToolResult(error=f"无效的写入模式 '{mode}'。仅支持 'w' (覆盖) 或 'a' (追加)。")
         try:
             with open(safe_path, mode, encoding=encoding) as f:
                 f.write(content)
             action = "覆盖写入" if mode == 'w' else "追加写入"
-            return ToolResult(content=f"成功将内容 {action} 到文件 '{path}'。", success=True)
+            return ToolResult(output=f"成功将内容 {action} 到文件 '{path}'。", success=True)
         except Exception as e:
             logger.error(f"FileOperatorTool write_file 异常: {e}", exc_info=True)
-            return ToolFailure(error_message=f"写入文件 '{path}' 时发生错误: {e}", error_details=str(e))
+            return ToolResult(error=f"写入文件 '{path}' 时发生错误: {e}", error_details=str(e))
 
     def _list_dir_recursive(self, dir_path: str, current_depth: int, max_depth: Optional[int], prefix: str = "") -> List[str]:
         """辅助函数：递归列出目录内容并格式化"""
@@ -156,9 +157,9 @@ class FileOperatorTool(BaseTool):
         logger.info(f"FileOperatorTool: 'list_directory' for path: {path}, recursive: {recursive}, max_depth: {max_depth}")
         safe_path = self._resolve_path(path)
         if not safe_path:
-            return ToolFailure(f"路径 '{path}' 无效或位于允许的工作区之外。")
+            return ToolResult(error=f"路径 '{path}' 无效或位于允许的工作区之外。")
         if not os.path.isdir(safe_path):
-            return ToolFailure(f"路径 '{safe_path}' 不是一个有效的目录。")
+            return ToolResult(error=f"路径 '{safe_path}' 不是一个有效的目录。")
         try:
             if recursive:
                 contents = self._list_dir_recursive(safe_path, 0, max_depth)
@@ -166,21 +167,21 @@ class FileOperatorTool(BaseTool):
                 contents = [f"{item}{'/' if os.path.isdir(os.path.join(safe_path, item)) else ''}" for item in sorted(os.listdir(safe_path))]
             
             if not contents:
-                return ToolResult(content=f"目录 '{path}' 为空。", success=True)
-            return ToolResult(content=f"目录 '{path}' 的内容:\n" + "\n".join(contents), success=True)
+                return ToolResult(output=f"目录 '{path}' 为空。")
+            return ToolResult(output=f"目录 '{path}' 的内容:\n" + "\n".join(contents))
         except Exception as e:
             logger.error(f"FileOperatorTool list_directory 异常: {e}", exc_info=True)
-            return ToolFailure(error_message=f"列出目录 '{path}' 内容时发生错误: {e}", error_details=str(e))
+            return ToolResult(error=f"列出目录 '{path}' 内容时发生错误: {e}")
 
     async def create_file(self, path: str, content: Optional[str] = None, encoding: str = 'utf-8') -> ToolResult | ToolFailure:
         logger.info(f"FileOperatorTool: 'create_file' at path: {path}")
         safe_path = self._resolve_path(path)
         if not safe_path:
-            return ToolFailure(f"路径 '{path}' 无效或位于允许的工作区之外。")
+            return ToolResult(error = f"路径 '{path}' 无效或位于允许的工作区之外。")
         
         parent_dir = os.path.dirname(safe_path)
         if not os.path.isdir(parent_dir):
-             return ToolFailure(f"父目录 '{parent_dir}' 不存在。请先使用 'create_directory' 创建。")
+             return ToolResult(error=f"父目录 '{parent_dir}' 不存在。请先使用 'create_directory' 创建。")
 
         if os.path.exists(safe_path):
             return ToolFailure(f"文件 '{path}' 已存在。")
@@ -190,7 +191,7 @@ class FileOperatorTool(BaseTool):
                     f.write(content)
             return ToolResult(content=f"成功创建文件 '{path}'。" + (f" 并写入了 {len(content)} 字节内容。" if content else ""), success=True)
         except Exception as e:
-            logger.error(f"FileOperatorTool create_file 异常: {e}", exc_info=True)
+            logger.error(f"Fi create_file 异常: {e}", exc_info=True)
             return ToolFailure(error_message=f"创建文件 '{path}' 时发生错误: {e}", error_details=str(e))
 
     async def create_directory(self, path: str, parents: bool = False) -> ToolResult | ToolFailure:
@@ -210,44 +211,44 @@ class FileOperatorTool(BaseTool):
                 if not os.path.isdir(parent_dir):
                     return ToolFailure(f"父目录 '{parent_dir}' 不存在。如果需要创建父目录，请设置 'parents' 参数为 true。")
                 os.mkdir(safe_path)
-            return ToolResult(content=f"成功创建目录 '{path}'。", success=True)
+            return ToolResult(output=f"成功创建目录 '{path}'。", success=True)
         except Exception as e:
             logger.error(f"FileOperatorTool create_directory 异常: {e}", exc_info=True)
-            return ToolFailure(error_message=f"创建目录 '{path}' 时发生错误: {e}", error_details=str(e))
+            return ToolResult(error=f"创建目录 '{path}' 时发生错误: {e}")
 
     async def delete_file(self, path: str) -> ToolResult | ToolFailure:
         logger.info(f"FileOperatorTool: 'delete_file' at path: {path}")
         safe_path = self._resolve_path(path)
         if not safe_path:
-            return ToolFailure(f"路径 '{path}' 无效或位于允许的工作区之外。")
+            return ToolResult(error=f"路径 '{path}' 无效或位于允许的工作区之外。")
         if not os.path.isfile(safe_path):
-            return ToolFailure(f"文件 '{path}' 不存在或不是一个文件。")
+            return ToolResult(error = f"文件 '{path}' 不存在或不是一个文件。")
         try:
             os.remove(safe_path)
-            return ToolResult(content=f"成功删除文件 '{path}'。", success=True)
+            return ToolResult(output=f"成功删除文件 '{path}'。")
         except Exception as e:
             logger.error(f"FileOperatorTool delete_file 异常: {e}", exc_info=True)
-            return ToolFailure(error_message=f"删除文件 '{path}' 时发生错误: {e}", error_details=str(e))
+            return ToolResult(error=f"删除文件 '{path}' 时发生错误: {e}")
 
     async def delete_directory(self, path: str, recursive: bool = False) -> ToolResult | ToolFailure:
         logger.info(f"FileOperatorTool: 'delete_directory' at path: {path}, recursive: {recursive}")
         safe_path = self._resolve_path(path)
         if not safe_path:
-            return ToolFailure(f"路径 '{path}' 无效或位于允许的工作区之外。")
+            return ToolResult(error = f"路径 '{path}' 无效或位于允许的工作区之外。")
         if not os.path.isdir(safe_path):
-            return ToolFailure(f"目录 '{path}' 不存在或不是一个目录。")
+            return ToolResult(error = f"目录 '{path}' 不存在或不是一个目录。")
         try:
             if recursive:
                 shutil.rmtree(safe_path)
-                return ToolResult(content=f"成功递归删除目录 '{path}' 及其所有内容。", success=True)
+                return ToolResult(output=f"成功递归删除目录 '{path}' 及其所有内容。")
             else:
                 if os.listdir(safe_path): # 检查目录是否为空
-                    return ToolFailure(f"目录 '{path}' 非空。请使用 'recursive: true' 参数进行删除，或先清空目录。")
+                    return ToolResult(error = f"目录 '{path}' 非空。请使用 'recursive: true' 参数进行删除，或先清空目录。")
                 os.rmdir(safe_path)
-                return ToolResult(content=f"成功删除空目录 '{path}'。", success=True)
+                return ToolResult(output=f"成功删除空目录 '{path}'。")
         except Exception as e:
             logger.error(f"FileOperatorTool delete_directory 异常: {e}", exc_info=True)
-            return ToolFailure(error_message=f"删除目录 '{path}' 时发生错误: {e}", error_details=str(e))
+            return ToolResult(error=f"删除目录 '{path}' 时发生错误: {e}")
 
 
     async def execute(self, command: str, path: str, **kwargs: Any) -> ToolResult | ToolFailure:
@@ -266,7 +267,7 @@ class FileOperatorTool(BaseTool):
         if command == 'read_file':
             return await self.read_file(path=path, start_line=start_line, end_line=end_line, encoding=encoding)
         elif command == 'write_file':
-            if content is None: return ToolFailure("命令 'write_file' 需要 'content' 参数。")
+            if content is None: return ToolResult(error="命令 'write_file' 需要 'content' 参数。")
             return await self.write_file(path=path, content=content, mode=mode, encoding=encoding)
         elif command == 'list_directory':
             return await self.list_directory(path=path, recursive=recursive_param, max_depth=max_depth)
@@ -279,4 +280,4 @@ class FileOperatorTool(BaseTool):
         elif command == 'delete_directory':
             return await self.delete_directory(path=path, recursive=recursive_param)
         else:
-            return ToolFailure(f"未知命令 '{command}'。")
+            return ToolResult(error=f"未知命令 '{command}'。")

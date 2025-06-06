@@ -35,9 +35,7 @@ class BlueprintTool(BaseTool):
         "additionalProperties": False,
         "required": ["command", "project_path"]
     }
-
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
+    
 
     def _generate_directory_tree(self, startpath: str, max_depth: Optional[int] = None) -> str:
         """生成目录树的字符串表示。"""
@@ -76,18 +74,18 @@ class BlueprintTool(BaseTool):
     async def get_project_structure(self, project_path: str, max_depth: Optional[int] = None) -> ToolResult | ToolFailure:
         logger.info(f"BlueprintTool: 'get_project_structure' for path: {project_path}, max_depth: {max_depth}")
         if not os.path.isdir(project_path):
-            return ToolFailure(f"提供的项目路径 '{project_path}' 不是一个有效的目录或不存在。")
+            return ToolResult(error = f"提供的项目路径 '{project_path}' 不是一个有效的目录或不存在。")
         try:
             structure = self._generate_directory_tree(project_path, max_depth)
-            return ToolResult(content=f"项目 '{project_path}' 的文件结构:\n{structure}", success=True)
+            return ToolResult(output=f"项目 '{project_path}' 的文件结构:\n{structure}")
         except Exception as e:
             logger.error(f"BlueprintTool get_project_structure 异常: {e}", exc_info=True)
-            return ToolFailure(error_message=f"获取项目结构时发生错误: {e}", error_details=str(e))
+            return ToolResult(error=f"获取项目结构时发生错误: {e}")
 
     async def get_readme_content(self, project_path: str, readme_filename: Optional[str] = None) -> ToolResult | ToolFailure:
         logger.info(f"BlueprintTool: 'get_readme_content' for path: {project_path}, readme_filename: {readme_filename}")
         if not os.path.isdir(project_path):
-            return ToolFailure(f"提供的项目路径 '{project_path}' 不是一个有效的目录或不存在。")
+            return ToolResult(error = f"提供的项目路径 '{project_path}' 不是一个有效的目录或不存在。")
 
         possible_readme_names = [readme_filename] if readme_filename else ['README.md', 'README.rst', 'README.txt', 'readme.md']
         readme_file_path = None
@@ -99,7 +97,7 @@ class BlueprintTool(BaseTool):
                 break
         
         if not readme_file_path:
-            return ToolResult(content=f"在项目 '{project_path}' 中未找到 README 文件 (尝试了: {', '.join(possible_readme_names)})。", success=True) # 成功但未找到
+            return ToolResult(output=f"在项目 '{project_path}' 中未找到 README 文件 (尝试了: {', '.join(possible_readme_names)})。") # 成功但未找到
 
         try:
             with open(readme_file_path, 'r', encoding='utf-8') as f:
@@ -107,7 +105,7 @@ class BlueprintTool(BaseTool):
             return ToolResult(content=f"项目 '{project_path}' 中 '{os.path.basename(readme_file_path)}' 的内容:\n{content}", success=True)
         except Exception as e:
             logger.error(f"BlueprintTool get_readme_content 异常: {e}", exc_info=True)
-            return ToolFailure(error_message=f"读取 README 文件 '{readme_file_path}' 时发生错误: {e}", error_details=str(e))
+            return ToolResult(error=f"读取 README 文件 '{readme_file_path}' 时发生错误: {e}")
 
     async def execute(self, command: str, project_path: str, max_depth: Optional[int] = None, readme_filename: Optional[str] = None) -> ToolResult | ToolFailure:
         logger.info(f"BlueprintTool executing command: {command} for project_path: {project_path}")
@@ -116,4 +114,4 @@ class BlueprintTool(BaseTool):
         elif command == 'get_readme_content':
             return await self.get_readme_content(project_path=project_path, readme_filename=readme_filename)
         else:
-            return ToolFailure(f"未知命令 '{command}'。可用命令: 'get_project_structure', 'get_readme_content'。")
+            return ToolResult(error = f"未知命令 '{command}'。可用命令: 'get_project_structure', 'get_readme_content'。")

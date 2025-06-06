@@ -15,6 +15,10 @@ class BaseAgent(ABC,BaseModel):
         
     name: str = Field(..., description="Unique name of the agent")
     
+    description: Optional[str] = Field(
+        None, description="Optional agent description"
+    )
+    
     system_prompt: Optional[str] = Field(
         None, description="系统prompt"
     )
@@ -24,6 +28,7 @@ class BaseAgent(ABC,BaseModel):
         None, description="让llm进行下一步骤的prompt,用于让agent自己进行下一步操作"
     )
     
+
     llm: LLM = Field(default_factory=LLM, description="选择的llm模型,")
     memory: Memory = Field(default_factory=Memory, description="用于保存LLM记忆")
     

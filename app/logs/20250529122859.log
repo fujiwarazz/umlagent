@@ -1,0 +1,4 @@
+2025-05-29 12:29:00.498 | INFO     | main:websocket_endpoint:29 - WebSocket connection accepted from 127.0.0.1:57443
+2025-05-29 12:29:00.552 | INFO     | main:websocket_endpoint:29 - WebSocket connection accepted from 127.0.0.1:57454
+2025-05-29 12:29:00.554 | INFO     | main:websocket_endpoint:60 - WebSocket connection disconnected from 127.0.0.1:57443
+2025-05-29 12:29:01.158 | INFO     | main:websocket_endpoint:60 - WebSocket connection disconnected from 127.0.0.1:57454

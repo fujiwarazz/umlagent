@@ -179,7 +179,6 @@ function connectWebSocket() {
         }
     };
 
-    // ... (onerror, onclose 逻辑保持不变) ...
     websocket.onerror = function(event) {
         console.error('WebSocket 错误:', event);
         handleConnectionIssue("处理过程中发生错误。请检查服务器日志。", true);

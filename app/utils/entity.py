@@ -28,7 +28,15 @@ class ToolCall(BaseModel):
     def from_dict(call:dict):
         return ToolCall(type="function", function=Function(**call))
 
+ 
+class Handoff(BaseModel):
+    """Represents a handoff to another agent"""
+    type: Literal["handoff"] = "handoff"
+    name: str
+    input: str
     
+    def from_dict(call:dict):
+        return Handoff(**call)
 class Message(BaseModel):
     
     role: Literal["system", "user", "assistant", "tool"] = Field(...)

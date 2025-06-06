@@ -1,0 +1,6 @@
+2025-05-26 16:02:46.838 | INFO     | main:websocket_endpoint:29 - WebSocket connection accepted from 127.0.0.1:53229
+2025-05-26 16:02:46.839 | ERROR    | main:websocket_endpoint:64 - Error in WebSocket handler for 127.0.0.1:53229: FileOperatorTool.__init__() missing 1 required positional argument: 'workspace_root'
+2025-05-26 16:02:46.840 | INFO     | main:websocket_endpoint:74 - Cleaned up resources for 127.0.0.1:53229
+2025-05-26 16:03:39.156 | INFO     | main:websocket_endpoint:29 - WebSocket connection accepted from 127.0.0.1:53334
+2025-05-26 16:03:39.157 | ERROR    | main:websocket_endpoint:64 - Error in WebSocket handler for 127.0.0.1:53334: FileOperatorTool.__init__() missing 1 required positional argument: 'workspace_root'
+2025-05-26 16:03:39.158 | INFO     | main:websocket_endpoint:74 - Cleaned up resources for 127.0.0.1:53334

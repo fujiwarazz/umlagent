@@ -1,0 +1,10 @@
+2025-05-29 12:23:12.761 | INFO     | main:websocket_endpoint:29 - WebSocket connection accepted from 127.0.0.1:56485
+2025-05-29 12:23:12.762 | INFO     | tools.swe_tools.file_operator:__init__:80 - FileOperatorTool initialized with workspace_root: D:\deep_learning\codes\workspace
+2025-05-29 12:23:17.382 | INFO     | main:websocket_endpoint:56 - Received message from 127.0.0.1:56485: 我想学习：D:\deep_learning\codes\deepseek-r1\langchain
+2025-05-29 12:23:17.382 | INFO     | agents.base:run:119 - websocket initialized finish, state:<starlette.datastructures.State object at 0x0000027E5AEF75F0>
+2025-05-29 12:23:17.383 | INFO     | agents.base:run:129 - Executing step 1/30
+2025-05-29 12:23:30.961 | INFO     | agents.tool_call:think:56 - ✨ swe 的想法为: 
+2025-05-29 12:23:30.963 | INFO     | agents.tool_call:think:58 - 🛠️ swe 选择了 1 个工具
+2025-05-29 12:23:30.964 | INFO     | agents.tool_call:think:63 - 🧰 选择的工具信息: ['code_analyzer']
+2025-05-29 12:23:30.964 | ERROR    | main:websocket_endpoint:66 - Error in WebSocket handler for 127.0.0.1:56485: 'code_analyzer'
+2025-05-29 12:23:30.965 | INFO     | main:websocket_endpoint:78 - Cleaned up resources for 127.0.0.1:56485

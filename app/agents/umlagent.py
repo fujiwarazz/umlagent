@@ -10,8 +10,7 @@ from utils.entity import Message, ToolCall
 from tools import PlanningTool, ToolCollection, Terminate
 from fastapi import WebSocket
 
-class UMLAgent(ToolCallAgent):
-    
+class UMLAgent(ToolCallAgent):    
     """
     UML agent是一个Plan-and-Execute模型,能够通过planning tool创建任务列表并且按照这个列表执行任务,同时还会最终任务的状态知道完成
     """
@@ -25,6 +24,7 @@ class UMLAgent(ToolCallAgent):
     available_tools: ToolCollection = Field(
         default_factory=lambda: ToolCollection(PlanningTool(), Terminate())
     )
+    
     tool_choices: Literal["none", "auto", "required"] = "auto"
     special_tool_names: List[str] = Field(default_factory=lambda: [Terminate().name])
 
@@ -34,12 +34,9 @@ class UMLAgent(ToolCallAgent):
     # Add a dictionary to track the step status for each tool call
     step_execution_tracker: Dict[str, Dict] = Field(default_factory=dict)
     current_step_index: Optional[int] = None
-
     max_steps: int = 20
     
-    
-    
-    sweagent:ToolCallAgent  = Field(default_factory=lambda: ToolCallAgent())
+   # sweagent:ToolCallAgent  = Field(default_factory=lambda: ToolCallAgent())
 
     @model_validator(mode="after")
     def initialize_plan_and_verify_tools(self) -> "UMLAgent":
@@ -65,9 +62,8 @@ class UMLAgent(ToolCallAgent):
         self.current_step_index = await self._get_current_step_index()
 
         result = await super().think()
-
-        # After thinking, if we decided to execute a tool and it's not a planning tool or special tool,
-        # associate it with the current step for tracking
+        
+        
         if result and self.tool_calls:
             latest_tool_call = self.tool_calls[0]  # Get the most recent tool call
             if (
@@ -75,18 +71,16 @@ class UMLAgent(ToolCallAgent):
                 and latest_tool_call.function.name not in self.special_tool_names
                 and self.current_step_index is not None
             ):
+                
                 self.step_execution_tracker[latest_tool_call.id] = {
                     "step_index": self.current_step_index,
                     "tool_name": latest_tool_call.function.name,
                     "status": "pending",  # Will be updated after execution
                 }
-                
-
         return result
 
     # from base class
     async def act(self) -> str:
-        """Execute a step and track its completion status."""
         result = await super().act()
 
         # After executing the tool, update the plan status
@@ -98,13 +92,12 @@ class UMLAgent(ToolCallAgent):
                 self.step_execution_tracker[latest_tool_call.id]["status"] = "completed"
                 self.step_execution_tracker[latest_tool_call.id]["result"] = result
 
-                # Update the plan status if this was a non-planning, non-special tool
                 if (
                     latest_tool_call.function.name != "planning"
                     and latest_tool_call.function.name not in self.special_tool_names
                 ):
                     await self.update_plan_status(latest_tool_call.id)
-
+                    
         return result
 
     async def get_plan(self) -> str:
@@ -128,10 +121,7 @@ class UMLAgent(ToolCallAgent):
         return await super().run(websocket=websocket)
 
     async def update_plan_status(self, tool_call_id: str) -> None:
-        """
-        Update the current plan progress based on completed tool execution.
-        Only marks a step as completed if the associated tool has been successfully executed.
-        """
+       
         if not self.active_plan_id:
             return
 
@@ -145,6 +135,7 @@ class UMLAgent(ToolCallAgent):
             return
 
         step_index = tracker["step_index"]
+
 
         try:
             # Mark the step as completed
