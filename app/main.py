@@ -34,7 +34,7 @@ async def websocket_endpoint(websocket: WebSocket):
         
         sweagent = SWEAgent(available_tools=ToolCollection(
             RAG(),
-            CodeAnalyzer(),FileOperatorTool(workspace_root=CODE_PATH),BlueprintTool(),PythonExecute()
+            CodeAnalyzer(),FileOperatorTool(workspace_root=str(CODE_PATH)),BlueprintTool(),PythonExecute()
             )) #  用于分析代码的专用agent
 
         agent = UMLAgent(
@@ -46,7 +46,7 @@ async def websocket_endpoint(websocket: WebSocket):
                                 CodeToUMLTool(websocket=websocket),
                                 Terminate(),
                                 CreateChatCompletion(),
-                                GitHubRepoCloner(local_clone_base_dir=CODE_PATH),
+                                GitHubRepoCloner(local_clone_base_dir=str(CODE_PATH)),
                                 FileSeeker(),
                                 FileSaver(),
                                 EnsureInitPyTool()
