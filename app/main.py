@@ -34,8 +34,8 @@ async def websocket_endpoint(websocket: WebSocket):
         
         sweagent = SWEAgent(available_tools=ToolCollection(
             RAG(),
-            CodeAnalyzer(),FileOperatorTool(workspace_root="D:\\deep_learning\\codes\\workspace"),BlueprintTool(),PythonExecute()
-            )) 
+            CodeAnalyzer(),FileOperatorTool(workspace_root=CODE_PATH),BlueprintTool(),PythonExecute()
+            )) #  用于分析代码的专用agent
 
         agent = UMLAgent(
             available_tools=ToolCollection(
@@ -46,13 +46,13 @@ async def websocket_endpoint(websocket: WebSocket):
                                 CodeToUMLTool(websocket=websocket),
                                 Terminate(),
                                 CreateChatCompletion(),
-                                GitHubRepoCloner(local_clone_base_dir="D:\\deep_learning\\codes\\workspace"), # 改成自己的临时目录
+                                GitHubRepoCloner(local_clone_base_dir=CODE_PATH),
                                 FileSeeker(),
                                 FileSaver(),
                                 EnsureInitPyTool()
                                 ),
             websocket=websocket,
-          #  hands_offs=[sweagent]
+            hands_offs=[sweagent]
             )
         
         active_agents[client_id] = agent        
@@ -70,4 +70,5 @@ async def websocket_endpoint(websocket: WebSocket):
             del active_agents[client_id]
         await websocket.send_text("<<<END_OF_RESPONSE>>>")
         logger.info(f"Cleaned up resources for {client_id}")
+
 
