@@ -24,4 +24,4 @@ class Terminate(BaseTool):
     }
     
     async def execute(self, status):
-        return f"The interaction has been completed with status: {status}"
+        return f"本次agent执行任务的结果状态: 成功 😆" if status == "success" else "本次agent执行任务的结果状态: 失败 😭"

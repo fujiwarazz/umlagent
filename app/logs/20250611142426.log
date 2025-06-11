@@ -1,0 +1,182 @@
+2025-06-11 14:24:27.652 | INFO     | tools.swe_tools.file_operator:__init__:80 - FileOperatorTool initialized with workspace_root: D:\deep_learning\codes\umlagent\app\workspace\tmp_codes
+2025-06-11 14:24:27.653 | INFO     | agents.base:run:125 - websocket is None Using logger instead
+2025-06-11 14:24:27.654 | INFO     | agents.base:run:133 - Executing step 1/30
+2025-06-11 14:24:31.479 | INFO     | agents.tool_call:think:68 - 🛠️ swe 选择了 1 个工具
+2025-06-11 14:24:31.479 | INFO     | agents.tool_call:think:74 - 🧰 选择的工具信息: ['project_blueprint']
+2025-06-11 14:24:31.479 | INFO     | agents.tool_call:think:99 - 🧰 工具的参数是: ['{"command": "get_project_structure", "project_path": "D:\\\\deep_learning\\\\codes\\\\umlagent\\\\app\\\\workspace\\\\tmp_codes\\\\LLaVA-NeXT", "max_depth": 3}']
+2025-06-11 14:24:31.479 | INFO     | tools.swe_tools.blueprint:execute:111 - BlueprintTool executing command: get_project_structure for project_path: D:\deep_learning\codes\umlagent\app\workspace\tmp_codes\LLaVA-NeXT
+2025-06-11 14:24:31.481 | INFO     | tools.swe_tools.blueprint:get_project_structure:75 - BlueprintTool: 'get_project_structure' for path: D:\deep_learning\codes\umlagent\app\workspace\tmp_codes\LLaVA-NeXT, max_depth: 3
+2025-06-11 14:24:31.489 | INFO     | agents.tool_call:act:152 - 🎯 工具 'project_blueprint' 完成了它的任务! 其执行结果为:  `工具:project_blueprint`的观测结果输出为 :
+项目 'D:\deep_learning\codes\umlagent\app\workspace\tmp_codes\LLaVA-NeXT' 的文件结构:
+LLaVA-NeXT/
+├── .dockerignore
+├── .editorconfig
+├── .gitattributes
+├── .gitignore
+├── LICENSE
+├── README.md
+├── __init__.py
+├── cog.yaml
+├── docs/
+│   ├── LLaVA-NeXT-Interleave.md
+│   ├── LLaVA-NeXT-Video.md
+│   ├── LLaVA-NeXT-Video_0716.md
+│   ├── LLaVA-NeXT.md
+│   ├── LLaVA_OneVision.md
+│   ├── LLaVA_OneVision_Chat.md
+│   ├── LLaVA_OneVision_Tutorials.ipynb
+│   ├── LLaVA_Video_1003.md
+│   ├── README.md
+│   ├── jobs.mp4
+│   ├── onevision_trial.py
+│   └── ov_chat_images/
+│       ├── chat_results.png
+│       ├── example1_tree.png
+│       └── example2_dog.jpg
+├── llava/
+│   ├── __init__.py
+│   ├── constants.py
+│   ├── conversation.py
+│   ├── eval/
+│   │   ├── __init__.py
+│   │   ├── evaluate_interleave.py
+│   │   └── model_vqa.py
+│   ├── mm_utils.py
+│   ├── model/
+│   │   ├── __init__.py
+│   │   ├── apply_delta.py
+│   │   ├── builder.py
+│   │   ├── consolidate.py
+│   │   ├── language_model/
+│   │   ├── llava_arch.py
+│   │   ├── make_delta.py
+│   │   ├── multimodal_encoder/
+│   │   ├── multimodal_projector/
+│   │   ├── multimodal_resampler/
+│   │   └── utils.py
+│   ├── serve/
+│   │   ├── __init__.py
+│   │   ├── cli.py
+│   │   ├── controller.py
+│   │   ├── examples/
+│   │   ├── gradio_multi_image.py
+│   │   ├── gradio_web_server.py
+│   │   ├── model_worker.py
+│   │   ├── register_worker.py
+│   │   ├── sglang_worker.py
+│   │   └── test_message.py
+│   ├── train/
+│   │   ├── __init__.py
+│   │   ├── llama_flash_attn_monkey_patch.py
+│   │   ├── llava_trainer.py
+│   │   ├── llava_trainer_eval.py
+│   │   ├── train.py
+│   │   ├── train_dpo.py
+│   │   └── train_mem.py
+│   └── utils.py
+├── playground/
+│   ├── 2d_hist.py
+│   ├── __init__.py
+│   ├── data_checker.py
+│   ├── demo/
+│   │   ├── __init__.py
+│   │   ├── video_demo.py
+│   │   └── xU25MMA2N4aVtYay.mp4
+│   ├── equal_splitter.py
+│   ├── remove_mid_ckpt.py
+│   ├── sgl_llava_inference_multinode.py
+│   └── upload_data.py
+├── predict.py
+├── pyproject.toml
+├── requirements.txt
+├── scripts/
+│   ├── __init__.py
+│   ├── archived/
+│   │   ├── __init__.py
+│   │   ├── convert_gqa_for_eval.py
+│   │   ├── convert_mmvet_for_eval.py
+│   │   ├── convert_sqa_to_llava.py
+│   │   ├── convert_sqa_to_llava_base_prompt.py
+│   │   ├── convert_vizwiz_for_submission.py
+│   │   ├── convert_vqav2_for_submission.py
+│   │   ├── data_info.py
+│   │   ├── dpo_data_info.py
+│   │   ├── entry_cmd.sh
+│   │   ├── finetune.sh
+│   │   ├── finetune_1.5.sh
+│   │   ├── finetune_full_schedule.sh
+│   │   ├── finetune_lora.sh
+│   │   ├── finetune_mixtral.sh
+│   │   ├── finetune_mixtral_1.5.sh
+│   │   ├── finetune_mixtral_1.6_336px_anyres.sh
+│   │   ├── finetune_mixtral_1.6_336px_anyres_freeze_vision.sh
+│   │   ├── finetune_mixtral_1.6_336px_anyres_lmms_eval.sh
+│   │   ├── finetune_mixtral_copy.sh
+│   │   ├── finetune_qlora.sh
+│   │   ├── finetune_sqa.sh
+│   │   ├── merge_lora_weights.py
+│   │   ├── pretrain.sh
+│   │   ├── quick_check.py
+│   │   ├── sqa_eval_batch.sh
+│   │   └── sqa_eval_gather.sh
+│   ├── interleave/
+│   │   ├── eval_all.sh
+│   │   ├── eval_interleave_3d.sh
+│   │   └── eval_multiprocess.sh
+│   ├── qwen.py
+│   ├── summarize_data.py
+│   ├── train/
+│   │   ├── README.md
+│   │   ├── direct_finetune_clip.sh
+│   │   ├── direct_finetune_siglip_a4.sh
+│   │   ├── dpo.sh
+│   │   ├── dpo_ov7b.sh
+│   │   ├── finetune_ov.sh
+│   │   ├── finetune_si.sh
+│   │   ├── mid_stage.yaml
+│   │   ├── onevision.yaml
+│   │   ├── pretrain_clip.sh
+│   │   ├── pretrain_siglip.sh
+│   │   └── single_image.yaml
+│   ├── video/
+│   │   ├── demo/
+│   │   ├── eval/
+│   │   └── train/
+│   ├── zero2.json
+│   ├── zero2_fused_adamw.json
+│   ├── zero2_offload.json
+│   ├── zero3.json
+│   ├── zero3_offload.json
+│   └── zero3pp.json
+└── trl/
+    ├── __init__.py
+    ├── core.py
+    ├── environment/
+    │   ├── __init__.py
+    │   └── base_environment.py
+    ├── extras/
+    │   ├── __init__.py
+    │   ├── best_of_n_sampler.py
+    │   └── dataset_formatting.py
+    ├── import_utils.py
+    ├── models/
+    │   ├── __init__.py
+    │   ├── modeling_base.py
+    │   ├── modeling_sd_base.py
+    │   ├── modeling_value_head.py
+    │   └── utils.py
+    └── trainer/
+        ├── __init__.py
+        ├── base.py
+        ├── ddpo_config.py
+        ├── ddpo_trainer.py
+        ├── dpo_trainer.py
+        ├── iterative_sft_trainer.py
+        ├── model_config.py
+        ├── ppo_config.py
+        ├── ppo_trainer.py
+        ├── reward_config.py
+        ├── reward_trainer.py
+        ├── sft_trainer.py
+        └── utils.py
+2025-06-11 14:24:31.491 | INFO     | agents.base:run:133 - Executing step 2/30

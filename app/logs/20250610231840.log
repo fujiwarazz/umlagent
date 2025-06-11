@@ -1,0 +1,13 @@
+2025-06-10 23:18:41.608 | INFO     | agents.base:run:125 - websocket is None Using logger instead
+2025-06-10 23:18:41.609 | INFO     | agents.base:run:133 - Executing step 1/30
+2025-06-10 23:18:44.177 | INFO     | agents.tool_call:think:68 - 🛠️ toolcall 选择了 1 个工具
+2025-06-10 23:18:44.177 | INFO     | agents.tool_call:think:74 - 🧰 选择的工具信息: ['handoff_to_agent']
+2025-06-10 23:18:44.177 | INFO     | agents.tool_call:think:99 - 🧰 工具的参数是: ['{"name": "toolcall", "input": "搜索一个tarjan的python代码,并且执行"}']
+2025-06-10 23:18:44.177 | INFO     | agents.tool_call:execute_tool:195 - 🔄 交接给代理: toolcall
+2025-06-10 23:18:44.177 | INFO     | agents.base:run:125 - websocket is None Using logger instead
+2025-06-10 23:18:44.187 | INFO     | agents.base:run:133 - Executing step 1/30
+2025-06-10 23:18:48.188 | INFO     | agents.tool_call:think:68 - 🛠️ toolcall 选择了 1 个工具
+2025-06-10 23:18:48.188 | INFO     | agents.tool_call:think:74 - 🧰 选择的工具信息: ['planning']
+2025-06-10 23:18:48.188 | INFO     | agents.tool_call:think:99 - 🧰 工具的参数是: ['{"command": "create", "plan": {"title": "搜索并执行Tarjan算法的Python代码", "steps": [{"description": "搜索Tarjan算法的Python代码", "status": "not_started"}, {"description": "执行找到的Tarjan算法代码", "status": "not_started"}]}}']
+2025-06-10 23:18:48.188 | INFO     | agents.tool_call:act:152 - 🎯 工具 'planning' 完成了它的任务! 其执行结果为: planning 是未知工具，或者无法被toolcall使用'
+2025-06-10 23:18:48.189 | INFO     | agents.base:run:133 - Executing step 2/30

@@ -22,7 +22,7 @@ class BaseAgent(ABC,BaseModel):
     system_prompt: Optional[str] = Field(
         None, description="系统prompt"
     )
-    websocket:WebSocket = Field(default=None)
+    websocket:Optional[WebSocket] = Field(default=None)
     
     next_step_prompt: Optional[str] = Field(
         None, description="让llm进行下一步骤的prompt,用于让agent自己进行下一步操作"
@@ -101,7 +101,7 @@ class BaseAgent(ABC,BaseModel):
 
 
     # agent的运行函数，所有agent都通用，run -> step call
-    async def run(self, query: Optional[str] = None,websocket:Optional[WebSocket] = None) -> str:
+    async def run(self, query: Optional[str] = None) -> str:
         """Execute the agent's main loop asynchronously.
 
         Args:
@@ -119,11 +119,10 @@ class BaseAgent(ABC,BaseModel):
         if query:
             self.update_memory("user", query)
         
-        if websocket is not None:
-            self.websocket = websocket
+        if self.websocket is not None:
             logger.info(f"websocket initialized finish, state:{self.websocket.state}")
         else:
-            logger.error(f"websocket is None")
+            logger.info(f"websocket is None Using logger instead")
             
             
         results: List[str] = []
@@ -136,13 +135,15 @@ class BaseAgent(ABC,BaseModel):
                 step_result = await self.step()
                 ## todo: 新增等待超时重试机制
                 
-                results.append(f"Step {self.current_step}: {step_result}")
+                results.append(f"第 {self.current_step} 步: {step_result}")
                 
                 ## 记忆总结，维护短期记忆
-                if self.current_step == 10 * times:
-                    tokens = self.memory.count_tokens()
-                    if tokens >= 8192 // 2:
-                        self.summerize_memories(count=10)
+                # if self.current_step == 10 * times:
+                #     times += 1
+                #     logger.info(f"Summarizing memories at step {self.current_step}")
+                #     tokens = self.memory.count_tokens()
+                #     if tokens >= 8192 // 2:
+                #         await self.summerize_memories(count=10)
 
             if self.current_step >= self.max_steps:
                 results.append(f"Terminated: Reached max steps ({self.max_steps})")

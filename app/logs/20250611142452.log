@@ -1,0 +1,635 @@
+2025-06-11 14:24:53.219 | INFO     | tools.swe_tools.file_operator:__init__:80 - FileOperatorTool initialized with workspace_root: D:\deep_learning\codes\umlagent\app\workspace\tmp_codes
+2025-06-11 14:24:53.221 | INFO     | agents.base:run:125 - websocket is None Using logger instead
+2025-06-11 14:24:53.221 | INFO     | agents.base:run:133 - Executing step 1/30
+2025-06-11 14:24:58.650 | INFO     | agents.tool_call:think:68 - 🛠️ swe 选择了 1 个工具
+2025-06-11 14:24:58.650 | INFO     | agents.tool_call:think:74 - 🧰 选择的工具信息: ['project_blueprint']
+2025-06-11 14:24:58.650 | INFO     | agents.tool_call:think:99 - 🧰 工具的参数是: ['{"command": "get_project_structure", "project_path": "D:\\\\deep_learning\\\\codes\\\\umlagent\\\\app\\\\workspace\\\\tmp_codes\\\\LLaVA-NeXT", "max_depth": 3}']
+2025-06-11 14:24:58.651 | INFO     | tools.swe_tools.blueprint:execute:111 - BlueprintTool executing command: get_project_structure for project_path: D:\deep_learning\codes\umlagent\app\workspace\tmp_codes\LLaVA-NeXT
+2025-06-11 14:24:58.651 | INFO     | tools.swe_tools.blueprint:get_project_structure:75 - BlueprintTool: 'get_project_structure' for path: D:\deep_learning\codes\umlagent\app\workspace\tmp_codes\LLaVA-NeXT, max_depth: 3
+2025-06-11 14:24:58.657 | INFO     | agents.tool_call:act:152 - 🎯 工具 'project_blueprint' 完成了它的任务! 其执行结果为:  `工具:project_blueprint`的观测结果输出为 :
+项目 'D:\deep_learning\codes\umlagent\app\workspace\tmp_codes\LLaVA-NeXT' 的文件结构:
+LLaVA-NeXT/
+├── .dockerignore
+├── .editorconfig
+├── .gitattributes
+├── .gitignore
+├── LICENSE
+├── README.md
+├── __init__.py
+├── cog.yaml
+├── docs/
+│   ├── LLaVA-NeXT-Interleave.md
+│   ├── LLaVA-NeXT-Video.md
+│   ├── LLaVA-NeXT-Video_0716.md
+│   ├── LLaVA-NeXT.md
+│   ├── LLaVA_OneVision.md
+│   ├── LLaVA_OneVision_Chat.md
+│   ├── LLaVA_OneVision_Tutorials.ipynb
+│   ├── LLaVA_Video_1003.md
+│   ├── README.md
+│   ├── jobs.mp4
+│   ├── onevision_trial.py
+│   └── ov_chat_images/
+│       ├── chat_results.png
+│       ├── example1_tree.png
+│       └── example2_dog.jpg
+├── llava/
+│   ├── __init__.py
+│   ├── constants.py
+│   ├── conversation.py
+│   ├── eval/
+│   │   ├── __init__.py
+│   │   ├── evaluate_interleave.py
+│   │   └── model_vqa.py
+│   ├── mm_utils.py
+│   ├── model/
+│   │   ├── __init__.py
+│   │   ├── apply_delta.py
+│   │   ├── builder.py
+│   │   ├── consolidate.py
+│   │   ├── language_model/
+│   │   ├── llava_arch.py
+│   │   ├── make_delta.py
+│   │   ├── multimodal_encoder/
+│   │   ├── multimodal_projector/
+│   │   ├── multimodal_resampler/
+│   │   └── utils.py
+│   ├── serve/
+│   │   ├── __init__.py
+│   │   ├── cli.py
+│   │   ├── controller.py
+│   │   ├── examples/
+│   │   ├── gradio_multi_image.py
+│   │   ├── gradio_web_server.py
+│   │   ├── model_worker.py
+│   │   ├── register_worker.py
+│   │   ├── sglang_worker.py
+│   │   └── test_message.py
+│   ├── train/
+│   │   ├── __init__.py
+│   │   ├── llama_flash_attn_monkey_patch.py
+│   │   ├── llava_trainer.py
+│   │   ├── llava_trainer_eval.py
+│   │   ├── train.py
+│   │   ├── train_dpo.py
+│   │   └── train_mem.py
+│   └── utils.py
+├── playground/
+│   ├── 2d_hist.py
+│   ├── __init__.py
+│   ├── data_checker.py
+│   ├── demo/
+│   │   ├── __init__.py
+│   │   ├── video_demo.py
+│   │   └── xU25MMA2N4aVtYay.mp4
+│   ├── equal_splitter.py
+│   ├── remove_mid_ckpt.py
+│   ├── sgl_llava_inference_multinode.py
+│   └── upload_data.py
+├── predict.py
+├── pyproject.toml
+├── requirements.txt
+├── scripts/
+│   ├── __init__.py
+│   ├── archived/
+│   │   ├── __init__.py
+│   │   ├── convert_gqa_for_eval.py
+│   │   ├── convert_mmvet_for_eval.py
+│   │   ├── convert_sqa_to_llava.py
+│   │   ├── convert_sqa_to_llava_base_prompt.py
+│   │   ├── convert_vizwiz_for_submission.py
+│   │   ├── convert_vqav2_for_submission.py
+│   │   ├── data_info.py
+│   │   ├── dpo_data_info.py
+│   │   ├── entry_cmd.sh
+│   │   ├── finetune.sh
+│   │   ├── finetune_1.5.sh
+│   │   ├── finetune_full_schedule.sh
+│   │   ├── finetune_lora.sh
+│   │   ├── finetune_mixtral.sh
+│   │   ├── finetune_mixtral_1.5.sh
+│   │   ├── finetune_mixtral_1.6_336px_anyres.sh
+│   │   ├── finetune_mixtral_1.6_336px_anyres_freeze_vision.sh
+│   │   ├── finetune_mixtral_1.6_336px_anyres_lmms_eval.sh
+│   │   ├── finetune_mixtral_copy.sh
+│   │   ├── finetune_qlora.sh
+│   │   ├── finetune_sqa.sh
+│   │   ├── merge_lora_weights.py
+│   │   ├── pretrain.sh
+│   │   ├── quick_check.py
+│   │   ├── sqa_eval_batch.sh
+│   │   └── sqa_eval_gather.sh
+│   ├── interleave/
+│   │   ├── eval_all.sh
+│   │   ├── eval_interleave_3d.sh
+│   │   └── eval_multiprocess.sh
+│   ├── qwen.py
+│   ├── summarize_data.py
+│   ├── train/
+│   │   ├── README.md
+│   │   ├── direct_finetune_clip.sh
+│   │   ├── direct_finetune_siglip_a4.sh
+│   │   ├── dpo.sh
+│   │   ├── dpo_ov7b.sh
+│   │   ├── finetune_ov.sh
+│   │   ├── finetune_si.sh
+│   │   ├── mid_stage.yaml
+│   │   ├── onevision.yaml
+│   │   ├── pretrain_clip.sh
+│   │   ├── pretrain_siglip.sh
+│   │   └── single_image.yaml
+│   ├── video/
+│   │   ├── demo/
+│   │   ├── eval/
+│   │   └── train/
+│   ├── zero2.json
+│   ├── zero2_fused_adamw.json
+│   ├── zero2_offload.json
+│   ├── zero3.json
+│   ├── zero3_offload.json
+│   └── zero3pp.json
+└── trl/
+    ├── __init__.py
+    ├── core.py
+    ├── environment/
+    │   ├── __init__.py
+    │   └── base_environment.py
+    ├── extras/
+    │   ├── __init__.py
+    │   ├── best_of_n_sampler.py
+    │   └── dataset_formatting.py
+    ├── import_utils.py
+    ├── models/
+    │   ├── __init__.py
+    │   ├── modeling_base.py
+    │   ├── modeling_sd_base.py
+    │   ├── modeling_value_head.py
+    │   └── utils.py
+    └── trainer/
+        ├── __init__.py
+        ├── base.py
+        ├── ddpo_config.py
+        ├── ddpo_trainer.py
+        ├── dpo_trainer.py
+        ├── iterative_sft_trainer.py
+        ├── model_config.py
+        ├── ppo_config.py
+        ├── ppo_trainer.py
+        ├── reward_config.py
+        ├── reward_trainer.py
+        ├── sft_trainer.py
+        └── utils.py
+2025-06-11 14:24:58.660 | INFO     | agents.base:run:133 - Executing step 2/30
+2025-06-11 14:25:07.970 | INFO     | agents.tool_call:think:68 - 🛠️ swe 选择了 1 个工具
+2025-06-11 14:25:07.970 | INFO     | agents.tool_call:think:74 - 🧰 选择的工具信息: ['code_analyzer']
+2025-06-11 14:25:07.970 | INFO     | agents.tool_call:think:99 - 🧰 工具的参数是: ['{"file_paths": ["D:\\\\deep_learning\\\\codes\\\\umlagent\\\\app\\\\workspace\\\\tmp_codes\\\\LLaVA-NeXT\\\\llava\\\\train\\\\llava_trainer.py", "D:\\\\deep_learning\\\\codes\\\\umlagent\\\\app\\\\workspace\\\\tmp_codes\\\\LLaVA-NeXT\\\\llava\\\\model\\\\builder.py", "D:\\\\deep_learning\\\\codes\\\\umlagent\\\\app\\\\workspace\\\\tmp_codes\\\\LLaVA-NeXT\\\\llava\\\\serve\\\\gradio_web_server.py"]}']
+2025-06-11 14:26:40.700 | INFO     | agents.tool_call:act:152 - 🎯 工具 'code_analyzer' 完成了它的任务! 其执行结果为:  `工具:code_analyzer`的观测结果输出为 :
+对于 D:\deep_learning\codes\umlagent\app\workspace\tmp_codes\LLaVA-NeXT\llava\train\llava_trainer.py 文件，大致内容为：### Code Analysis
+
+The provided code is a custom implementation of a deep learning trainer for multi-modal tasks, specifically designed to handle both language and vision data. It extends the functionality of Hugging Face's `Trainer` and `DPOTrainer` classes by introducing specialized sampling strategies, optimizer configurations, and checkpoint-saving mechanisms. Below is a detailed breakdown of the key components:
+
+---
+
+### **1. Imports and Dependencies**
+- **Core Libraries**: The code imports essential libraries such as `torch`, `transformers`, and `accelerate`.
+- **Custom Modules**: Functions like `maybe_zero_3`, `get_mm_adapter_state_maybe_zero_3`, and various `get_length_grouped_indices_*` functions are defined to handle zero-redundancy optimization (ZeRO) and efficient batching.
+- **Utility Functions**: These include `split_to_even_chunks`, `get_variable_length_grouped_indices`, and others, which help in grouping indices based on sequence lengths or modalities.
+
+---
+
+### **2. Key Functions**
+
+#### **2.1 `maybe_zero_3`**
+- **Purpose**: Handles parameters in DeepSpeed's ZeRO stage 3 optimization.
+- **Logic**:
+  - Checks if the parameter has a `ds_id` attribute (indicating it's managed by DeepSpeed).
+  - If the parameter is not available (`ZeroParamStatus.NOT_AVAILABLE`), it gathers the parameter using `GatheredParameters`.
+
+#### **2.2 `get_mm_adapter_state_maybe_zero_3`**
+- **Purpose**: Extracts the state of multi-modal adapters (e.g., `mm_projector` and `vision_resampler`) while handling ZeRO stage 3.
+- **Logic**:
+  - Filters named parameters based on specified keys (e.g., `mm_projector`, `vision_resampler`).
+  - Applies `maybe_zero_3` to ensure compatibility with ZeRO.
+
+#### **2.3 Index Grouping Functions**
+- **Functions**:
+  - `split_to_even_chunks`: Splits indices into chunks of roughly equal length.
+  - `get_variable_length_grouped_indices`: Groups indices by variable lengths across batches.
+  - `get_modality_length_grouped_indices`: Groups indices by modality (e.g., text vs. image).
+  - `get_length_grouped_indices`: Groups indices by sequence lengths.
+- **Purpose**: Optimizes batch formation to minimize padding and improve training efficiency.
+
+#### **2.4 `LengthGroupedSampler`**
+- **Purpose**: A custom sampler that groups dataset indices by sequence length or modality.
+- **Key Parameters**:
+  - `batch_size`: Size of each batch.
+  - `world_size`: Number of processes in distributed training.
+  - `lengths`: Sequence lengths for grouping.
+  - `variable_length`, `group_by_modality`, `group_by_modality_auto`: Flags to enable specific grouping strategies.
+
+---
+
+### **3. Custom Trainer Classes**
+
+#### **3.1 `LLaVATrainer`**
+- **Inheritance**: Extends Hugging Face's `Trainer` class.
+- **Key Methods**:
+  - **`create_accelerator_and_postprocess`**:
+    - Configures the `Accelerator` object for distributed training.
+    - Handles flags for DeepSpeed and FSDP (Fully Sharded Data Parallel).
+  - **`_get_train_sampler`**:
+    - Returns a custom sampler based on the training arguments (e.g., `group_by_length`, `group_by_modality_length`).
+  - **`get_train_dataloader`**:
+    - Creates the training data loader with the appropriate sampler and collator.
+  - **`create_optimizer`**:
+    - Sets up the optimizer, allowing for different learning rates for specific modules (e.g., `mm_projector`, `vision_tower`).
+  - **`_save_checkpoint`**:
+    - Saves only the multi-modal adapter weights if `tune_mm_mlp_adapter` is enabled.
+  - **`_save`**:
+    - Overrides the default saving mechanism if multi-modal tuning is enabled.
+
+#### **3.2 `LLaVADPOTrainer`**
+- **Inheritance**: Extends Hugging Face's `DPOTrainer` class.
+- **Key Methods**:
+  - **`_get_train_sampler`**:
+    - Similar to `LLaVATrainer` but focuses on modality-based grouping.
+  - **`_save_checkpoint`**:
+    - Saves either the multi-modal adapter weights or LoRA checkpoints, depending on the configuration.
+  - **`_save`**:
+    - Ensures compatibility with multi-modal tuning.
+
+---
+
+### **4. Key Features**
+
+#### **4.1 Multi-Modal Handling**
+- The trainer supports datasets with mixed modalities (e.g., text and images).
+- Indices are grouped based on modality or sequence length to optimize memory usage and training speed.
+
+#### **4.2 Distributed Training**
+- The code integrates seamlessly with distributed training frameworks like DeepSpeed and FSDP.
+- Handles synchronization and gradient accumulation across multiple GPUs/TPUs.
+
+#### **4.3 Efficient Sampling**
+- Custom samplers ensure that batches contain sequences of similar lengths, reducing padding overhead.
+- Supports variable-length batching and modality-specific grouping.
+
+#### **4.4 Optimizer Flexibility**
+- Allows fine-grained control over learning rates for different parts of the model (e.g., vision tower, text encoder).
+
+#### **4.5 Checkpoint Management**
+- Saves only the necessary components (e.g., multi-modal adapters or LoRA weights) to reduce storage requirements.
+
+---
+
+### **5. Potential Use Cases**
+
+1. **Multi-Modal Pretraining**:
+   - Train models on datasets containing both text and image data.
+   - Optimize for scenarios where sequence lengths vary significantly.
+
+2. **Fine-Tuning with Adapter Weights**:
+   - Focus on updating only the multi-modal adapters while keeping the rest of the model frozen.
+
+3. **LoRA Integration**:
+   - Incorporate Low-Rank Adaptation (LoRA) for efficient fine-tuning.
+
+4. **Distributed Training**:
+   - Scale training to multiple GPUs/TPUs using DeepSpeed or FSDP.
+
+---
+
+### **6. Limitations and Considerations**
+
+- **Complexity**: The code introduces several layers of abstraction, which may increase complexity for users unfamiliar with distributed training or multi-modal datasets.
+- **Performance Tuning**: Efficient sampling strategies require accurate sequence length information, which might not always be available.
+- **Compatibility**: Assumes familiarity with Hugging Face's `Trainer` API and DeepSpeed/FSDP configurations.
+
+---
+
+### **7. Suggestions for Improvement**
+
+1. **Documentation**:
+   - Add docstrings to all methods and functions to clarify their purpose and usage.
+   - Provide examples of how to use the custom trainer classes.
+
+2. **Testing**:
+   - Include unit tests for the custom functions and methods to ensure correctness.
+
+3. **Optimization**:
+   - Explore alternative sampling strategies to further reduce padding overhead.
+   - Investigate ways to dynamically adjust batch sizes based on available GPU memory.
+
+4. **User-Friendly APIs**:
+   - Simplify the interface for users who do not need advanced features like ZeRO or FSDP.
+
+---
+
+This code provides a robust framework for training multi-modal models in distributed environments, with a focus on efficiency and flexibility. However, its complexity requires careful documentation and testing to ensure usability and maintainability.
+
+对于 D:\deep_learning\codes\umlagent\app\workspace\tmp_codes\LLaVA-NeXT\llava\model\builder.py 文件，大致内容为：### Analysis of the Code
+
+The provided code is a Python script that implements functionality for loading and managing LLaVA (Language Model with Vision Ability) models. It includes two primary components: 
+
+1. **LLaVATrainer and LLaVADPOTrainer**: These are custom trainers based on Hugging Face's `Trainer` and `DPOTrainer`, respectively, designed for training multimodal models like LLaVA.
+2. **load_pretrained_model function**: A utility function to load pretrained LLaVA models, including handling quantization, LoRA weights, and multimodal configurations.
+
+Below, I break down each component in detail:
+
+---
+
+### 1. **LLaVATrainer**
+
+#### Purpose:
+This class extends Hugging Face's `Trainer` to handle specific requirements for training LLaVA models, such as:
+- Custom data samplers (`LengthGroupedSampler`) to group similar-length samples together for efficient batching.
+- Handling gradient accumulation and distributed training with `Accelerator`.
+- Custom optimizer creation with support for learning rate tuning of specific modules (e.g., `mm_projector`).
+- Saving only the multimodal adapter weights during checkpointing.
+
+#### Key Methods:
+- **`create_accelerator_and_postprocess`**:
+  - Sets up the `Accelerator` object for distributed training and gradient accumulation.
+  - Configures FSDP (Fully Sharded Data Parallel) or DeepSpeed if enabled.
+
+- **`_get_train_sampler`**:
+  - Returns a custom sampler (`LengthGroupedSampler`) based on the dataset's modality lengths or variable lengths.
+  - Supports grouping by modality (e.g., text vs. image), variable lengths, or standard length grouping.
+
+- **`get_train_dataloader`**:
+  - Creates the training dataloader with the appropriate sampler and collation function.
+
+- **`create_optimizer`**:
+  - Defines parameter groups for weight decay and learning rate tuning of specific modules (e.g., `mm_projector`, `vision_tower`).
+  - Supports mixed precision training with `bitsandbytes`.
+
+- **`_save_checkpoint`**:
+  - Saves only the multimodal adapter weights (e.g., `mm_projector`, `vision_resampler`) if specified in the training arguments.
+  - Otherwise, saves the full model.
+
+- **`_save`**:
+  - Handles saving the model checkpoint, skipping unnecessary parts if multimodal adapters are being tuned.
+
+---
+
+### 2. **LLaVADPOTrainer**
+
+#### Purpose:
+This class extends Hugging Face's `DPOTrainer` (used for Direct Preference Optimization) to handle LLaVA-specific requirements, similar to `LLaVATrainer`.
+
+#### Key Differences:
+- **`_get_train_sampler`**:
+  - Similar to `LLaVATrainer` but specifically handles modality grouping for DPO training.
+
+- **`_save_checkpoint`**:
+  - Supports saving LoRA weights or multimodal adapter weights depending on the configuration.
+
+---
+
+### 3. **load_pretrained_model Function**
+
+#### Purpose:
+This function loads a pretrained LLaVA model, handling various configurations such as:
+- Quantization (8-bit, 4-bit).
+- Loading LoRA weights.
+- Multimodal settings (e.g., vision tower integration).
+- Overwriting model configurations dynamically.
+
+#### Parameters:
+- **`model_path`**: Path to the pretrained model.
+- **`model_base`**: Optional base model path (used for LoRA or multimodal projector-only models).
+- **`model_name`**: Name of the model to determine its type (e.g., Mixtral, Mistral, Qwen).
+- **Quantization Settings**: `load_8bit`, `load_4bit`, `torch_dtype`.
+- **Device Mapping**: `device_map` for controlling GPU allocation.
+- **Custom Configurations**: `customized_config`, `overwrite_config`.
+
+#### Key Steps:
+1. **Model Type Detection**:
+   - Determines whether the model is multimodal (LLaVA) or a standard language model.
+   - Handles special cases like Mixtral, Mistral, Qwen, etc.
+
+2. **Tokenizer Initialization**:
+   - Loads the tokenizer from the base model or the provided model path.
+
+3. **Model Initialization**:
+   - Loads the model using the appropriate class (`LlavaMixtralForCausalLM`, `LlavaMistralForCausalLM`, etc.).
+   - Applies quantization if specified.
+
+4. **LoRA Weights Loading**:
+   - If the model name contains "lora", it loads and merges LoRA weights.
+
+5. **Multimodal Adapter Loading**:
+   - Loads the multimodal adapter weights (`mm_projector.bin`) if present.
+   - Resizes token embeddings to include special tokens for images (e.g., `<image_patch>`).
+
+6. **Vision Tower Integration**:
+   - Loads and initializes the vision tower if the model is multimodal.
+   - Ensures the vision tower is loaded on the correct device with the specified dtype.
+
+7. **Context Length Determination**:
+   - Extracts the maximum sequence length from the model configuration.
+
+#### Return Values:
+- **`tokenizer`**: Tokenizer for the model.
+- **`model`**: Loaded LLaVA model.
+- **`image_processor`**: Image processor for the vision tower (if multimodal).
+- **`context_len`**: Maximum sequence length supported by the model.
+
+---
+
+### Summary of Key Features
+
+1. **Custom Trainers**:
+   - `LLaVATrainer` and `LLaVADPOTrainer` provide specialized functionality for training LLaVA models, including custom samplers, optimizers, and checkpointing.
+
+2. **Dynamic Model Loading**:
+   - The `load_pretrained_model` function supports a wide range of models and configurations, making it flexible for different use cases.
+   - Handles quantization, LoRA weights, and multimodal settings seamlessly.
+
+3. **Multimodal Support**:
+   - Integrates vision towers and multimodal adapters, enabling the model to process both text and images.
+
+4. **Efficient Training**:
+   - Utilizes `Accelerator` for distributed training and gradient accumulation.
+   - Optimizes memory usage with quantization and mixed precision training.
+
+---
+
+### Use Cases
+
+1. **Training LLaVA Models**:
+   - Use `LLaVATrainer` or `LLaVADPOTrainer` for training multimodal models with custom sampling and optimization strategies.
+
+2. **Loading Pretrained Models**:
+   - Use the `load_pretrained_model` function to load LLaVA models with various configurations, including quantization and LoRA support.
+
+3. **Fine-Tuning**:
+   - Fine-tune LLaVA models on downstream tasks by leveraging the custom trainers and dynamic model loading capabilities.
+
+---
+
+### Potential Improvements
+
+1. **Error Handling**:
+   - Add more robust error handling for unsupported model types or configurations.
+
+2. **Documentation**:
+   - Provide detailed documentation for each method and parameter to make the code easier to understand and extend.
+
+3. **Testing**:
+   - Include unit tests for edge cases, such as unsupported model names or invalid configurations.
+
+4. **Performance Optimization**:
+   - Optimize the `get_length_grouped_indices` and related functions for large datasets to reduce computation time.
+
+---
+
+This code provides a comprehensive framework for working with LLaVA models, offering flexibility and efficiency for training and inference tasks.
+
+对于 D:\deep_learning\codes\umlagent\app\workspace\tmp_codes\LLaVA-NeXT\llava\serve\gradio_web_server.py 文件，大致内容为：### Analysis of the Code
+
+The provided code is a comprehensive implementation of a multimodal conversational AI system based on LLaVA (Large Language and Vision Assistant). It includes components for training, inference, and deployment. Below is a structured analysis of the three main sections of the code.
+
+---
+
+## **1. Training Components**
+
+### **Code Overview**
+This section defines custom trainers (`LLaVATrainer` and `LLaVADPOTrainer`) for fine-tuning LLaVA models. It also includes utilities for grouping samples by length or modality, managing distributed training, and optimizing model parameters.
+
+### **Key Features**
+1. **Custom Trainers**:
+   - `LLaVATrainer`: Extends the Hugging Face `Trainer` to support multimodal training.
+   - `LLaVADPOTrainer`: Extends the `DPOTrainer` for reinforcement learning with DPO (Direct Preference Optimization).
+
+2. **Data Sampling**:
+   - Implements `LengthGroupedSampler` to group samples by their lengths or modalities for efficient batching.
+   - Functions like `get_length_grouped_indices`, `get_modality_length_grouped_indices`, and `split_to_even_chunks` ensure balanced batches.
+
+3. **Optimizer Setup**:
+   - Customizes parameter groups for weight decay and learning rates.
+   - Supports specialized learning rates for modules like `mm_projector` and `vision_tower`.
+
+4. **Checkpoint Saving**:
+   - Saves only the adapter weights (`mm_projector.bin`) when tuning specific parts of the model.
+   - Handles LoRA (Low-Rank Adaptation) checkpoints for efficient memory usage.
+
+5. **Distributed Training**:
+   - Uses `Accelerator` from Hugging Face's `accelerate` library for distributed training.
+   - Configures gradient accumulation, NCCL timeout, and FSDP/DeepSpeed plugins.
+
+6. **Utility Functions**:
+   - `maybe_zero_3`: Handles zero-3 optimization for deepspeed.
+   - `get_mm_adapter_state_maybe_zero_3`: Extracts multimodal adapter states for checkpointing.
+
+### **Use Case**
+This section is designed for fine-tuning LLaVA models on custom datasets, especially for multimodal tasks where text and images coexist. It ensures efficient training by grouping similar-length samples and supports advanced optimizations like LoRA and DeepSpeed.
+
+---
+
+## **2. Model Loading Components**
+
+### **Code Overview**
+This section defines the `load_pretrained_model` function, which loads pre-trained LLaVA models with various configurations (e.g., 8-bit, 4-bit quantization, mixed precision).
+
+### **Key Features**
+1. **Model Selection**:
+   - Supports multiple architectures: Mixtral, Mistral, Gemma, Qwen, and others.
+   - Automatically detects whether the model is multimodal or purely textual.
+
+2. **Quantization**:
+   - Supports 8-bit and 4-bit quantization using `bitsandbytes`.
+   - Allows customization of `torch_dtype` (e.g., `float16`, `bfloat16`).
+
+3. **LoRA Integration**:
+   - Loads LoRA weights and merges them into the base model.
+   - Handles cases where LoRA weights are stored separately from the base model.
+
+4. **Tokenizer Configuration**:
+   - Adds special tokens for multimodal inputs (e.g., `<image>`, `<im_start>`, `<im_end>`).
+   - Resizes token embeddings to accommodate new tokens.
+
+5. **Vision Tower**:
+   - Loads and initializes the vision tower for image processing.
+   - Ensures the vision tower is loaded onto the appropriate device.
+
+6. **Custom Configurations**:
+   - Allows overriding default configurations using `customized_config` and `overwrite_config`.
+
+7. **Error Handling**:
+   - Provides detailed error messages for unsupported models or configurations.
+
+### **Use Case**
+This function is used to load pre-trained LLaVA models for inference or fine-tuning. It ensures compatibility with various architectures and optimizes memory usage through quantization and mixed precision.
+
+---
+
+## **3. Web Interface Components**
+
+### **Code Overview**
+This section defines a Gradio-based web interface for interacting with LLaVA models. It includes functionality for chatting, upvoting/downvoting responses, flagging inappropriate content, and regenerating responses.
+
+### **Key Features**
+1. **UI Layout**:
+   - Organizes the interface into two columns: one for input (text/image) and another for chat history.
+   - Includes buttons for actions like upvote, downvote, flag, regenerate, and clear history.
+
+2. **Model Selection**:
+   - Dynamically fetches available models from a controller server.
+   - Allows users to select a model from the dropdown menu.
+
+3. **Conversation Management**:
+   - Maintains conversation state using `default_conversation` and `conv_templates`.
+   - Supports multimodal inputs (text + image).
+
+4. **Moderation**:
+   - Implements content moderation to prevent offensive or harmful responses.
+   - Logs flagged responses for future improvement.
+
+5. **API Communication**:
+   - Sends requests to worker servers for generating responses.
+   - Handles streaming output for real-time updates.
+
+6. **Logging**:
+   - Logs user interactions (e.g., votes, flags) and model responses for analysis.
+   - Stores logs in a JSON file for later use.
+
+7. **Embedding Mode**:
+   - Supports embedding the interface into other applications without displaying branding or additional information.
+
+8. **Error Handling**:
+   - Displays server error messages when requests fail.
+   - Ensures robustness by handling exceptions during API communication.
+
+### **Use Case**
+This section provides a user-friendly interface for interacting with LLaVA models. It enables users to engage in multimodal conversations, evaluate model performance, and provide feedback for improvement.
+
+---
+
+## **Integration and Workflow**
+
+1. **Training**:
+   - Use the `LLaVATrainer` or `LLaVADPOTrainer` to fine-tune LLaVA models on custom datasets.
+   - Save checkpoints with adapter weights for efficient storage.
+
+2. **Model Loading**:
+   - Load pre-trained models using the `load_pretrained_model` function.
+   - Customize configurations for specific use cases (e.g., quantization, LoRA).
+
+3. **Deployment**:
+   - Deploy the model as a web service using the Gradio-based interface.
+   - Allow users to interact with the model via text and images.
+   - Collect feedback for continuous improvement.
+
+---
+
+## **Conclusion**
+
+This codebase provides a complete pipeline for training, loading, and deploying LLaVA models. It leverages advanced techniques like distributed training, quantization, and LoRA for efficiency and scalability. The Gradio-based web interface ensures an intuitive user experience while enabling interaction with multimodal models. This implementation is well-suited for research and production environments, supporting both academic exploration and real-world applications.
+2025-06-11 14:26:40.705 | INFO     | agents.base:run:133 - Executing step 3/30
+2025-06-11 14:26:43.725 | INFO     | agents.tool_call:think:68 - 🛠️ swe 选择了 1 个工具
+2025-06-11 14:26:43.725 | INFO     | agents.tool_call:think:74 - 🧰 选择的工具信息: ['terminate']
+2025-06-11 14:26:43.726 | INFO     | agents.tool_call:think:99 - 🧰 工具的参数是: ['{"status": "success"}']
+2025-06-11 14:26:43.726 | INFO     | agents.tool_call:_handle_special_tool:224 - 🏁 Special tool 'terminate' has completed the task!
+2025-06-11 14:26:43.726 | INFO     | agents.tool_call:act:152 - 🎯 工具 'terminate' 完成了它的任务! 其执行结果为:  `工具:terminate`的观测结果输出为 :
+本次agent执行任务的结果状态: 成功 😆

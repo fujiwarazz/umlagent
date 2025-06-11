@@ -1,7 +1,14 @@
 from langchain_community.embeddings import OllamaEmbeddings
 from langchain_community.vectorstores import FAISS
 from langchain.schema import BaseRetriever
+from typing import Optional
+import sys
+from pathlib import Path
+sys.path.append(str(Path(__file__).parent.parent))
+
+
 from utils.logger import logger
+
 import os
 import asyncio
 from pydantic import BaseModel, Field
@@ -16,9 +23,9 @@ class AsyncVectorStoreRetriever(BaseRetriever):
         arbitary_types_allowed = True
     
     def __init__(self,retriever,**kwargs) -> None:
-        super.__init__(retriever = retriever,**kwargs)
+        super().__init__(retriever=retriever, **kwargs)
         
-    async def _aget_relevant_documents(self,query,**kwargs):
+    async def aget_relevant_documents(self,query,**kwargs):
         """
         在单独的线程中调用原始向量存储检索器的相关文档
         Args:
@@ -32,7 +39,7 @@ class AsyncVectorStoreRetriever(BaseRetriever):
             query,
             **kwargs
         )
-    def _get_relevant_documents(self,query,**kwargs):
+    def get_relevant_documents(self,query,**kwargs):
         return self.retriever.get_relevant_documents(query, **kwargs)
         
 
@@ -53,13 +60,14 @@ class VectorStore:
         
     async def add_chunks(self,chunks):
         chunks = self._handle_indexer_chunks(chunks)
-        index_path = os.path.join(VECTORDB_PATH,"index.faiss")
+        index_path = os.path.join(VECTORDB_PATH,"code_base")
         if os.path.exists(index_path):
             try:
                 async with self.db_lock:
                     vec_store = FAISS.load_local(
                             VECTORDB_PATH,
-                            embeddings=self.embedding
+                            embeddings=self.embedding,
+                            allow_dangerous_deserialization=True
                         )
                     vec_store.add_documents(chunks)
             except Exception as e:
@@ -71,25 +79,26 @@ class VectorStore:
         
         return True if vec_store else False
     
-    async def get_async_retriever(self,chunks_origin=None):
+    async def get_async_retriever(self,chunks_origin:Optional[List[Any]]=None) -> AsyncVectorStoreRetriever:
         try:
-            os.mkdir(VECTORDB_PATH,exist_ok = True)
-            index_path = os.path.join(VECTORDB_PATH,"index.faiss")
+            os.makedirs(str(VECTORDB_PATH),exist_ok = True)
+            index_path = os.path.join(VECTORDB_PATH,"code_base")
             if os.path.exists(index_path):
                 try:
                     async with self.db_lock:
                         vec_store = FAISS.load_local(
-                            VECTORDB_PATH,
-                            embeddings=self.embedding
+                            index_path,
+                            embeddings=self.embedding,
+                            allow_dangerous_deserialization=True
                         )
                     logger.info("加载本地向量数据库成功")
                 except Exception as e:
                     logger.error(f"加载本地向量数据库失败:{e}, 将创建新的向量数据库")
                     async with self.db_lock:
-                        vec_store = await self._create_vector_store(chunks_origin)
+                        vec_store = await self._create_vector_store(chunks = chunks_origin)
             else:
                 async with self.db_lock:
-                    vec_store = await self._create_vector_store(chunks_origin)
+                    vec_store = await self._create_vector_store(chunks = chunks_origin)
             
             base_retriever = vec_store.as_retriever(
                 search_type="mmr",
@@ -124,12 +133,15 @@ class VectorStore:
                 docs (_type_): 文档
                 
             """
+            logger.info(f"开始创建向量数据库,条数：{len(chunks)}")
             documents_for_faiss = self._handle_indexer_chunks(chunks)
-                    
+            logger.info(f"处理后的文档数量：{len(documents_for_faiss)}")
+            
             vec_store = await asyncio.to_thread(FAISS.from_documents,
                                                 documents_for_faiss,
                                                 self.embedding)
-            vec_store.save_local(os.path.join(VECTORDB_PATH,"code_base.faiss"))   
+            
+            vec_store.save_local(os.path.join(VECTORDB_PATH,"code_base"))   
             logger.info(f"向量数据库创建成功，已保存")
             return vec_store 
         

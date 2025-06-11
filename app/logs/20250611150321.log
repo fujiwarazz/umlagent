@@ -1,0 +1,1 @@
+2025-06-11 15:03:21.404 | ERROR    | retriver:__init__:57 - 加载embedding模型失败:No module named 'dashscope'

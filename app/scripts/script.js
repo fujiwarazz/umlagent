@@ -7,7 +7,7 @@ let currentAgentMessageElement = null;
 let isTyping = false;
 let typingQueue = [];
 
-const websocketUrl = `ws://localhost:8000/ws`;
+const websocketUrl = `http://127.0.0.1:8000/ws`;
 let websocket;
 let re_ask = false;
 let pendingImageContext = null;

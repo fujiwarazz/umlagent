@@ -55,6 +55,8 @@ class FileSeeker(BaseTool):
         if filename.startswith('.') or '~' in filename or '#' in filename:
             return matches  # 基本跳过隐藏文件/临时文件/备份文件
 
+        max_line = 100
+        current_line = 0
         try:
             async with aiofiles.open(file_path, mode="r", encoding="utf-8", errors="ignore") as file:
                 line_number = 0
@@ -62,6 +64,10 @@ class FileSeeker(BaseTool):
                     line_number += 1
                     if search_content in line:
                         matches.append((line.strip(), line_number))  # 存储去除空白的行内容和行号
+                        current_line += 1
+                    if current_line >= max_line:
+                        # 如果达到最大行数限制，停止搜索
+                        break
         except Exception as e:
             # 捕获文件读取期间的错误（例如，权限错误，解码问题）
             # print(f"无法读取或搜索文件 {file_path}: {e}") # 可选：记录错误

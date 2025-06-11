@@ -112,13 +112,12 @@ class UMLAgent(ToolCallAgent):
         return result.output if hasattr(result, "output") else str(result)
     
 
-    async def run(self, query: Optional[str] = None,websocket:Optional[WebSocket] = None) -> str:
+    async def run(self, query: Optional[str] = None) -> str:
         """Run the agent with an optional initial request."""
-        self.websocket = websocket
         if query:
             await self.create_initial_plan(query)
 
-        return await super().run(websocket=websocket)
+        return await super().run()
 
     async def update_plan_status(self, tool_call_id: str) -> None:
        
@@ -148,8 +147,8 @@ class UMLAgent(ToolCallAgent):
                     "step_status": "completed",
                 },
             )
-            
-            await self.websocket.send_text(f"<<<MARK_PLAN>>>{step_index},completed")
+            if self.websocket:
+                await self.websocket.send_text(f"<<<MARK_PLAN>>>{step_index},completed")
             logger.info(
                 f"Marked step {step_index} as completed in plan {self.active_plan_id}"
             )
@@ -192,7 +191,8 @@ class UMLAgent(ToolCallAgent):
                             "step_status": "in_progress",
                         },
                     )
-                    await self.websocket.send_text(f"<<<MARK_PLAN>>>{i},in_progress")
+                    if self.websocket:
+                        await self.websocket.send_text(f"<<<MARK_PLAN>>>{i},in_progress")
 
                     return i
 
@@ -231,7 +231,9 @@ class UMLAgent(ToolCallAgent):
                 
                 result = await self.execute_tool(tool_call)
                 plan_created  = True    
-                await self.websocket.send_text(f"<<<PLAN_CREATED>>>{result}")
+                
+                if self.websocket:
+                    await self.websocket.send_text(f"<<<PLAN_CREATED>>>{result}")
                 
                 
                 logger.info(

@@ -645,7 +645,7 @@ class CodeToUMLTool(BaseTool):
         # Java 和 C++ 解析部分也类似...
         if "java" in langs_to_parse and detected_files_by_lang["java"]:
             if not javalang: # javalang 在 __init__ 或类级别检查
-                return ToolResult(output="", error="Java 解析请求，但 'javalang' 库未安装。请安装它。")
+                return ToolResult(error="Java 解析请求，但 'javalang' 库未安装。请安装它。")
             for java_file in detected_files_by_lang["java"]:
                 self._parse_java_file(java_file)
                 scanned_files_count +=1
@@ -653,7 +653,7 @@ class CodeToUMLTool(BaseTool):
 
         if "cpp" in langs_to_parse and detected_files_by_lang["cpp"]:
             if not cindex: # cindex 在 __init__ 或类级别检查
-                return ToolResult(output="", error="C++ 解析请求，但 'libclang' 库不可用或未配置。请安装它和 Clang 系统库。")
+                return ToolResult(error="C++ 解析请求，但 'libclang' 库不可用或未配置。请安装它和 Clang 系统库。")
             clang_idx = cindex.Index.create()
             final_cpp_compiler_args = cpp_compiler_args[:] # 复制列表
             for path_str in cpp_include_paths:

@@ -5,7 +5,7 @@ from pydantic import Field
 
 from agents.react import ReActAgent
 from utils.logger import logger
-from prompts.umlagent import NEXT_STEP_PROMPT, PLANNING_SYSTEM_PROMPT
+from prompts.toolcall import NEXT_STEP_PROMPT, SYSTEM_PROMPT
 from utils.entity import AgentState, Message, ToolCall
 # from tools import CreateChatCompletion, Terminate, ToolCollection, CodeExcute, Bash, FileSaver,FileSeeker,Github,UML,REASK
 from tools import Terminate, ToolCollection
@@ -21,11 +21,10 @@ class ToolCallAgent(ReActAgent):
     name: str = "toolcall"
     description: str = "an agent that can execute tool calls."
 
-    system_prompt: str = PLANNING_SYSTEM_PROMPT
+    system_prompt: str = SYSTEM_PROMPT
     next_step_prompt: str = NEXT_STEP_PROMPT
 
-    available_tools: ToolCollection = ToolCollection(
-         Terminate() )
+    available_tools: ToolCollection = ToolCollection(Terminate())
     
     tool_choice:Literal['none','auto','required'] =  "required"
     
@@ -35,8 +34,6 @@ class ToolCallAgent(ReActAgent):
     tool_calls: Optional[List[ToolCall]] = None
 
     max_steps: int = 30
-    
-    hands_offs:List[BaseAgent] = Field(default_factory=list)
 
     async def think(self) -> bool:
         """让llm基于现在的情况进行决定是否采取下一步措施"""
@@ -49,15 +46,10 @@ class ToolCallAgent(ReActAgent):
             system_msgs=[Message.system_message(self.system_prompt)] # system msg
             if self.system_prompt
             else None,
+            handoffs_agents=self.hands_offs,
             tools=self.available_tools.to_params(),
             tool_choice=self.tool_choice,
         )
-        
-        # response_use_agent = await self.llm.ask_handoff(messages=self.messages,
-        #     handoffs_agents= self.hands_offs,
-        #     tools=self.available_tools.to_params(),
-        # )
-      
             
         if response.tool_calls is None:
             logger.info(f"🚨 {self.name} 没有选择任何工具或代理来执行任务")
@@ -68,16 +60,21 @@ class ToolCallAgent(ReActAgent):
         self.tool_calls = response.tool_calls
         
         # todo 返回给前端
-        logger.info(f"✨ {self.name} 的想法为: {response.content}")
-        await self.websocket.send_text(f"✨ {self.name} 的想法为: {response.content}")
+        if response.content:
+            logger.info(f"✨ {self.name} 的想法为: {response.content} , {response.tool_calls}") 
+            if self.websocket:
+                await self.websocket.send_text(f"✨ {self.name} 的想法为: {response.content}")
+            
         logger.info(
             f"🛠️ {self.name} 选择了 {len(response.tool_calls) if response.tool_calls else 0} 个工具"
         )
-        await self.websocket.send_text(f"🛠️ {self.name} 选择了 {len(response.tool_calls) if response.tool_calls else 0} 个工具")
+        if self.websocket:
+            await self.websocket.send_text(f"🛠️ {self.name} 选择了 {len(response.tool_calls) if response.tool_calls else 0} 个工具")
         if self.tool_calls:
             logger.info(
                 f"🧰 选择的工具信息: {[call.function.name for call in  self.tool_calls]}"
             )
+            
             function_name_map = {
                 "code_to_uml_generator_multilang" : "UML绘图工具",
                 "github_repo_cloner_ssh" : "GITHUB克隆工具",
@@ -90,8 +87,15 @@ class ToolCallAgent(ReActAgent):
                 "baidu_search" : "百度搜索",
                 "ensure_init_py":"结构修补工具",
                 "handoff_to_agent": "代理交接",
+                "project_blueprint" : "项目蓝图生成工具",
+                "code_analyzer" : "代码分析工具",
+                "file_operator" : "文件操作工具",
+                "rag": "RAG工具",
+                "get_weather_tool":"天气工具"
             }
-            await self.websocket.send_text( f"🧰 选择的工具信息: {[function_name_map[call.function.name] for call in  self.tool_calls]}")
+            if self.websocket:
+                await self.websocket.send_text( f"🧰 选择的工具信息: {[function_name_map[call.function.name] for call in  self.tool_calls]}")
+            
             logger.info(
                 f"🧰 工具的参数是: {[call.function.arguments for call in  self.tool_calls]}"
             )
@@ -106,7 +110,7 @@ class ToolCallAgent(ReActAgent):
             else:
                 assistant_msg = (
                     Message.from_tool_calls(
-                        content="Using tools response: " + response.content, tool_calls=self.tool_calls
+                        content= response.content, tool_calls=self.tool_calls
                     )
                     if self.tool_calls is not None
                     else Message.assistant_message(response.content)
@@ -122,7 +126,6 @@ class ToolCallAgent(ReActAgent):
 
         except Exception as e:
             logger.error(f"🚨 出错啦! The {self.name} 在思考时出现了错误，错误信息如下: {e}")
-            #await self.websocket.send(f"🚨 出错啦! The {self.name} 在思考时出现了错误，错误信息如下: {e}")
             self.memory.add_message(
                 Message.assistant_message(
                     f"Error encountered while processing: {str(e)}"
@@ -144,10 +147,14 @@ class ToolCallAgent(ReActAgent):
 
         tool_excute_results = []
         for tool_call in self.tool_calls:
+            
             result = await self.execute_tool(tool_call)
             logger.info(
                 f"🎯 工具 '{tool_call.function.name}' 完成了它的任务! 其执行结果为: {result}"   
             )
+            if self.tool_calls[0].function.name == 'final_response':
+                if self.websocket:
+                    await self.websocket.send_text(f"✨最终回复:{result}")
             # Add tool response to memory
             tool_msg = Message.tool_message(
                 content=result, tool_call_id=tool_call.id, name=tool_call.function.name
@@ -157,7 +164,8 @@ class ToolCallAgent(ReActAgent):
             tool_excute_results.append(result)
             
             if tool_call.function.name == 'terminate':
-                await self.websocket.send_text("<<<END_OF_RESPONSE>>>")
+                if self.websocket:
+                    await self.websocket.send_text("<<<END_OF_SESSION>>>")
                 
         #await self.websocket.send_text("\n\n".join(tool_excute_results))
         return "\n\n".join(tool_excute_results)
@@ -183,10 +191,12 @@ class ToolCallAgent(ReActAgent):
                 if not self.hands_offs:
                     return "没有可用的代理进行交接"
                 for agent in self.hands_offs:
-                    if agent.name == command.function.arguments.get("name"):
+                    if agent.name == args.get("name"):
                         logger.info(f"🔄 交接给代理: {agent.name}")
+                        result = await agent.run(query=args.get("input", ""))
+                        results = result.split("\n")
+                        result = ''.join(f"\t{result}\n" for result in results)
                         
-                        result = await agent.run(query=command.function.arguments.get("query", ""))
             else:
                 result = await self.available_tools.execute(name=name, tool_input=args)
                 

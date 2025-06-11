@@ -13,3 +13,4 @@ tomli==2.2.1
 uvicorn==0.34.0
 langchain==0.3.25
 langchain-community==0.3.24
+websockets==15.0.1

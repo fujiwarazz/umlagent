@@ -14,8 +14,8 @@ from config.llm_config import LLMSettings
 from utils.logger import logger  
 from utils.entity import Message
 from config.llm_config import llm_settings
-from agents.base import BaseAgent
 from utils.entity import Handoff
+from typing import Any
 class LLM:
     
     # 单例模式创建LLM clinet，为了能够互不影响同时创建多个client
@@ -41,10 +41,9 @@ class LLM:
             self.api_key = llm_config.api_key
             self.api_version = llm_config.api_version
             self.base_url = llm_config.base_url
-            
             self.client = AsyncOpenAI(api_key=self.api_key, base_url=self.base_url)
                 
-                
+
     @staticmethod
     def format_messages(messages: List[Union[dict, Message]]) -> List[dict]:
         """
@@ -174,7 +173,7 @@ class LLM:
         wait=wait_random_exponential(min=1, max=60),
         stop=stop_after_attempt(6),
     )
-    async def ask_handoff(self, messages, system_msgs=None, handoffs_agents: Optional[List[BaseAgent]] = None, 
+    async def ask_handoff(self, messages, system_msgs=None, handoffs_agents: Optional[List[Any]] = None, 
                      tools: Optional[List[dict]] = None, timeout: int = 60, temperature=0.6, **kwargs) -> Union[Handoff, str]:
         try:
             # 创建handoff工具定义
@@ -192,7 +191,7 @@ class LLM:
                             },
                             "input": {
                                 "type": "string", 
-                                "description": "The input/query to pass to the agent"
+                                "description": "The input/query to pass to the agent, the input should be sufficiently detailed, such as the local file path etc, in order to allow the agent to understand the context and respond appropriately."
                             }
                         },
                         "required": ["name", "input"]
@@ -211,13 +210,17 @@ class LLM:
                     {
                         "agent_name": agent.name,
                         "agent_description": agent.description,
+                        "agent_tools":agent.available_tools.to_params() if hasattr(agent, 'available_tools') else []
                     } 
                     for agent in handoffs_agents] if handoffs_agents else []
                 
                 system_msgs = {
                     "role": "system",
-                    "content": f"""You are a helpful assistant. Available agents: {agent_infos} 
-                    Use the handoff_to_agent tool when you need to delegate to a specialized agent."""
+                    "content": f"""You are a helpful assistant. Available agents: {agent_infos},
+                    If you are unable to answer the question using your available tools,
+                    Use the handoff_to_agent tool when you need to delegate to a specialized agent.
+                    You must make sure that the agent you hand off to can handle the input you provide.
+                    """
                 }
                 messages = [system_msgs] + self.format_messages(messages)
             
@@ -264,7 +267,7 @@ class LLM:
         system_msgs: Optional[List[Union[dict, Message]]] = None,
         timeout: int = 60,
         tools: Optional[List[dict]] = None,
-        handoffs_agents: Optional[List[BaseAgent]] = None,
+        handoffs_agents: Optional[List[Any]] = None,
         tool_choice: Literal["none", "auto", "required"] = "auto",
         temperature: Optional[float] = None,
         **kwargs,
@@ -294,7 +297,7 @@ class LLM:
                 "type": "function",
                 "function": {
                     "name": "handoff_to_agent",
-                    "description": "Hand off the conversation to another specialized agent",
+                    "description": "Hand off the conversation to another specialized agent, use this tool when you are unable to answer the question in your  another available tools and you are indeed sure that another agent can answer it.",
                     "parameters": {
                         "type": "object",
                         "properties": {
@@ -327,7 +330,7 @@ class LLM:
                             
             system_msg = {
                 "role": "system",
-                "content": f"""You are a helpful assistant. Available agents: {agent_infos} 
+                "content": f"""You are a helpful assistant to select another agent to delegate when you need. Available agents: {agent_infos} 
                 Use the `handoff_to_agent` tool when you need to delegate to a specialized agent."""
             } if handoffs_agents else None
             

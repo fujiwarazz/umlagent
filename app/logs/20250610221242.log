@@ -1,0 +1,2 @@
+2025-06-10 22:12:43.668 | INFO     | agents.base:run:125 - websocket is None Using logger instead
+2025-06-10 22:12:43.669 | INFO     | agents.base:run:133 - Executing step 1/30

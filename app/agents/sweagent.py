@@ -9,12 +9,12 @@ from prompts.sweagent import SWE_NEXT_STEP_TEMPLATE, SWE_SYSTEM_PROMPT
 from utils.entity import AgentState, Message, ToolCall
 from tools import CreateChatCompletion,Terminate,BaiduSearch
 from tools import Terminate, ToolCollection
-
+from pydantic import model_validator
 class SWEAgent(ToolCallAgent):
     """An agent that implements the SWEAgent paradigm for executing code and natural conversations."""
 
     name: str = "swe"
-    description: str = "an software engineering agent that can read and interact with codes."
+    description: str = "一个能理解代码，修改代码的agent, 可以代码方面问题交给这个agent。"
 
     system_prompt: str = SWE_SYSTEM_PROMPT
     next_step_prompt: str = SWE_NEXT_STEP_TEMPLATE
@@ -27,6 +27,13 @@ class SWEAgent(ToolCallAgent):
     special_tool_names: List[str] = Field(default_factory=lambda: [Terminate().name])
 
     max_steps: int = 30
+    
+    @model_validator(mode="after")
+    def initialize_plan_and_verify_tools(self) -> "SWEAgent":
+        self.last_activate_plan_id = None
+        if 'terminate' not in self.available_tools.tool_map:
+            self.available_tools.add_tool(Terminate())
+        
     async def think(self) -> bool:
         """Process current state and decide next action"""
         # Update working directory

@@ -1,7 +1,9 @@
 from agents.tool_call import ToolCallAgent
 from agents.umlagent import UMLAgent
 from agents.sweagent import SWEAgent
-from tools import ToolCollection, Terminate,PlanningTool,BaiduSearch,GitHubRepoCloner,FileSaver,FileSeeker,ReAsk,CreateChatCompletion,CodeToUMLTool,FinalResponse,EnsureInitPyTool
+from agents.tool_call import ToolCallAgent
+
+from tools import ToolCollection, Terminate,PlanningTool,BaiduSearch,GitHubRepoCloner,FileSaver,FileSeeker,ReAsk,CreateChatCompletion,CodeToUMLTool,PythonExecute,FinalResponse,EnsureInitPyTool,RAG,CodeAnalyzer,FileOperatorTool,BlueprintTool
 
    
 
@@ -14,59 +16,137 @@ from fastapi import FastAPI, WebSocket, WebSocketDisconnect
 from fastapi.responses import HTMLResponse
 from utils.logger import logger
 from config.app_config import CODE_PATH
+from typing import Annotated
 
 app = FastAPI()
 
-
 active_agents: dict[str, ToolCallAgent] = {}
 
+from tools.factory.mtool import mtool,IsRequired
+from tools.base import ToolResult
+import sys
+import io
+import asyncio
 
+@mtool(
+    name = "get_weather_tool",
+    description = "A tool to get the current weather information for a specified location.",
+    strict = True
+)
+async def weather(location: Annotated[str,IsRequired]) -> str:
+    """
+    Args:
+        location (str): The name of the location to get the weather for.
+    """
 
+    return ToolResult(
+        output=f"The current weather in {location} is sunny with a temperature of 25°C."
+    )
+@mtool(
+    name = 'python_execute',
+    description = "A tool to execute Python code.",
+    strict = True,
+)
+async def python_execute(code: Annotated[str, IsRequired]) -> str:
+    """
+    Args:
+        code (Annotated[str, IsRequired]): The Python code to execute.
+    """
+    async def run_code_with_timeout(code, timeout=5):
+        loop = asyncio.get_running_loop()
+        def exec_code():
+            old_stdout = sys.stdout
+            old_stderr = sys.stderr
+            sys.stdout = io.StringIO()
+            sys.stderr = io.StringIO()
+            try:
+                exec(code, {})
+                output = sys.stdout.getvalue()
+                error = sys.stderr.getvalue()
+                return output + error
+            except Exception as e:
+                return str(e)
+            finally:
+                sys.stdout = old_stdout
+                sys.stderr = old_stderr
 
-@app.websocket("/ws")
-async def websocket_endpoint(websocket: WebSocket):
-    await websocket.accept()
-    client_id = str(websocket.client.host) + ":" + str(websocket.client.port)
-    logger.info(f"WebSocket connection accepted from {client_id}")
+        return await asyncio.wait_for(loop.run_in_executor(None, exec_code), timeout=timeout)
+
     try:
-        from tools import RAG,CodeAnalyzer,FileOperatorTool,BlueprintTool
+        result = await run_code_with_timeout(code, timeout=5)
+    except asyncio.TimeoutError:
+        result = "Execution timed out."
+    return ToolResult(output=result)
+    
+    
+async def main():
+    
+    aagent = ToolCallAgent(available_tools=ToolCollection(Terminate(),CreateChatCompletion(),FinalResponse(),python_execute,weather),
+                           description="A agent that can execute Python code and get weather information.")
+    
+    bagent = ToolCallAgent(available_tools=ToolCollection(Terminate(),BaiduSearch(),CreateChatCompletion(),FinalResponse()),
+                           description="A helpful agent",
+                           hands_offs=[aagent])
+    
+    sweagent = SWEAgent(available_tools=ToolCollection(
+                                RAG(),
+                                CodeAnalyzer(),FileOperatorTool(workspace_root=str(CODE_PATH)),BlueprintTool(),PythonExecute(),Terminate(),BaiduSearch(),CreateChatCompletion(),FinalResponse()
+                                ))
+    
+    res = await sweagent.run("帮我分析路径：D:\\deep_learning\\codes\\umlagent\\app\\workspace\\tmp_codes\\LLaVA-NeXT,这个项目")
+    print(res)
+
+if __name__ == "__main__":
+    asyncio.run(main())
+    
+# @app.websocket("/ws")
+# async def websocket_endpoint(websocket: WebSocket):
+#     await websocket.accept()
+#     client_id = str(websocket.client.host) + ":" + str(websocket.client.port)
+#     logger.info(f"WebSocket connection accepted from {client_id}")
+#     try:
+#         from tools import RAG,CodeAnalyzer,FileOperatorTool,BlueprintTool
         
         
         # sweagent = SWEAgent(available_tools=ToolCollection(
-        #     RAG(),
-        #     CodeAnalyzer(),FileOperatorTool(workspace_root="D:\\deep_learning\\codes\\workspace"),BlueprintTool()
-        #     )) #  用于分析代码的专用agent
+        #                         RAG(),
+        #                         CodeAnalyzer(),FileOperatorTool(workspace_root=str(CODE_PATH)),BlueprintTool(),PythonExecute()
+        #                         ),
+#                             websocket=websocket,) #  用于分析代码的专用agent
 
-        agent = UMLAgent(available_tools=ToolCollection(
-                PlanningTool(),
-                FinalResponse(),
-                BaiduSearch(),
-                #ReAsk(websocket), deadlock bug 
-                CodeToUMLTool(websocket=websocket),
-                Terminate(),
-                CreateChatCompletion(),
-                GitHubRepoCloner(local_clone_base_dir="D:\\deep_learning\\codes\\workspace"),
-                FileSeeker(),
-                FileSaver(),
-                EnsureInitPyTool()
-                )
-            )
+#         agent = UMLAgent(
+#             available_tools=ToolCollection(
+#                                 PlanningTool(),
+#                                 FinalResponse(),
+#                                 BaiduSearch(),
+#                                 #ReAsk(websocket), deadlock bug 
+#                                 CodeToUMLTool(websocket=websocket),
+#                                 Terminate(),
+#                                 CreateChatCompletion(),
+#                                 GitHubRepoCloner(local_clone_base_dir=str(CODE_PATH)),
+#                                 FileSeeker(),
+#                                 FileSaver(),
+#                                 EnsureInitPyTool()
+#                                 ),
+#             websocket=websocket,
+#             hands_offs=[sweagent]
+#             )
         
-        active_agents[client_id] = agent        
-        while True:
-            data = await websocket.receive_text()
-            logger.info(f"Received message from {client_id}: {data}")
-            await agent.run(query=data, websocket=websocket)
+#         active_agents[client_id] = agent        
+#         while True:
+#             data = await websocket.receive_text()
+#             logger.info(f"Received message from {client_id}: {data}")
+#             await agent.run(query=data)
 
-    except WebSocketDisconnect:
-        logger.info(f"WebSocket connection disconnected from {client_id}")
-        if client_id in active_agents:
-            del active_agents[client_id]
-    finally:
-        if client_id in active_agents:
-            del active_agents[client_id]
-        await websocket.send_text("<<<END_OF_RESPONSE>>>")
-        logger.info(f"Cleaned up resources for {client_id}")
+#     except WebSocketDisconnect:
+#         logger.info(f"WebSocket connection disconnected from {client_id}")
+#         #await websocket.send_text("<<<END_OF_RESPONSE>>>")
+#         if client_id in active_agents:
+#             del active_agents[client_id]
+#     finally:
+#         if client_id in active_agents:
+#             del active_agents[client_id]
+#         logger.info(f"Cleaned up resources for {client_id}")
 
 
 
@@ -185,3 +265,5 @@ async def websocket_endpoint(websocket: WebSocket):
         
 #         # 4. 确保 WebSocket 安全关闭 (FastAPI 通常会自动处理)
 #         # await websocket.close() # 通常不需要手动调用，除非特殊情况
+
+

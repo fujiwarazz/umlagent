@@ -1,0 +1,12 @@
+2025-06-08 16:30:34.146 | INFO     | main:websocket_endpoint:30 - WebSocket connection accepted from 127.0.0.1:57487
+2025-06-08 16:30:34.147 | INFO     | tools.swe_tools.file_operator:__init__:80 - FileOperatorTool initialized with workspace_root: D:\deep_learning\codes\umlagent\app\workspace\tmp_codes
+2025-06-08 16:32:18.546 | INFO     | main:websocket_endpoint:65 - WebSocket connection disconnected from 127.0.0.1:57487
+2025-06-08 16:32:18.546 | INFO     | main:websocket_endpoint:72 - Cleaned up resources for 127.0.0.1:57487
+2025-06-08 16:32:18.871 | INFO     | main:websocket_endpoint:30 - WebSocket connection accepted from 127.0.0.1:57653
+2025-06-08 16:32:18.871 | INFO     | tools.swe_tools.file_operator:__init__:80 - FileOperatorTool initialized with workspace_root: D:\deep_learning\codes\umlagent\app\workspace\tmp_codes
+2025-06-08 16:32:22.486 | INFO     | main:websocket_endpoint:65 - WebSocket connection disconnected from 127.0.0.1:57653
+2025-06-08 16:32:22.487 | INFO     | main:websocket_endpoint:72 - Cleaned up resources for 127.0.0.1:57653
+2025-06-08 16:32:22.643 | INFO     | main:websocket_endpoint:30 - WebSocket connection accepted from 127.0.0.1:57663
+2025-06-08 16:32:22.644 | INFO     | tools.swe_tools.file_operator:__init__:80 - FileOperatorTool initialized with workspace_root: D:\deep_learning\codes\umlagent\app\workspace\tmp_codes
+2025-06-08 16:32:27.101 | INFO     | main:websocket_endpoint:65 - WebSocket connection disconnected from 127.0.0.1:57663
+2025-06-08 16:32:27.101 | INFO     | main:websocket_endpoint:72 - Cleaned up resources for 127.0.0.1:57663

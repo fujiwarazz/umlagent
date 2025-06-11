@@ -17,11 +17,10 @@ class GitHubRepoCloner(BaseTool):
     """
     name: str = "github_repo_cloner_ssh" # 可以稍微修改名称以区分，或保持原样
     description: str = """通过 SSH 克隆 GitHub 仓库到本地文件系统上的指定目录，并返回克隆后仓库的本地完整路径。
-该工具接受 GitHub 仓库的名称（格式为 '所有者/仓库名'，例如 'shareAI-lab/open-Manus'）。
-它将使用 'git clone' 命令（SSH方式）将仓库克隆到工具初始化时配置的本地基础目录的子目录中。
-成功时，返回仓库在本地的完整文件路径；失败时，返回包含错误详情的字符串。
-使用此工具前，请确保您的机器已正确配置 SSH 密钥，并已授权给您的 GitHub 账户。
-"""
+                        该工具接受 GitHub 仓库的名称（格式为 '所有者/仓库名'，例如 'shareAI-lab/open-Manus'）。
+                        它将使用 'git clone' 命令（SSH方式）将仓库克隆到工具初始化时配置的本地基础目录的子目录中。
+                        成功时，返回仓库在本地的完整文件路径；失败时，返回包含错误详情的字符串。如果出现了失败，可以重复使用这个工具来尝试克隆同一个仓库。
+                        """
     parameters: dict = {
         "type": "object",
         "properties": {
@@ -64,9 +63,12 @@ class GitHubRepoCloner(BaseTool):
             str: 成功时返回仓库在本地的完整文件路径字符串；
                  失败时返回包含错误详情的字符串（通常以“错误：”开头）。
         """
-        if not os.path.isdir(self.local_clone_base_dir):
-            return f"错误：基础克隆目录 '{self.local_clone_base_dir}' 不存在或不是一个有效的目录。"
-
+        try:
+            os.makedirs(self.local_clone_base_dir, exist_ok=True)
+        except OSError as e:
+            print(f"警告：创建基础克隆目录 '{self.local_clone_base_dir}' 时发生错误: {e}")
+            
+        
         if '/' not in repo_name or repo_name.count('/') != 1:
             return f"错误：仓库名称格式无效。请使用 '所有者/仓库名' 格式 (例如，'shareAI-lab/open-Manus')。"
 

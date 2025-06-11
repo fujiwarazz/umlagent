@@ -12,7 +12,7 @@ from openai import (
     RateLimitError,
 )
 
-from config.llm_config import LLMSettings
+from config.llm_config import llm_settings
 class CodeAnalyzer(BaseTool):
     name: str = "code_analyzer"
     description: str = """使用LLM分析一个或多个代码文件。
@@ -37,16 +37,16 @@ class CodeAnalyzer(BaseTool):
     
     async def _ask_llm(self,content) -> str:
         if self.client is None:
-            self.client = AsyncOpenAI(api_key=LLMSettings.api_key,base_url=LLMSettings.base_url)
+            self.client = AsyncOpenAI(api_key=llm_settings.api_key,base_url=llm_settings.base_url)
             
         prompt = f"帮我分析以下代码：{content}"
         self.history.append({"role":"user","content":prompt})
         
         response = await self.client.chat.completions.create(
-                    model=LLMSettings.model,
+                    model=llm_settings.model,
                     messages=self.history,
-                    max_tokens=LLMSettings.max_tokens,
-                    temperature=LLMSettings.temperature,
+                    max_tokens=llm_settings.max_tokens,
+                    temperature=llm_settings.temperature,
                     stream=False,
                 )
         
@@ -68,6 +68,7 @@ class CodeAnalyzer(BaseTool):
             str: 针对该文件的格式化分析结果。
         """
         try:
+            logger.info(f"😇开始分析文件: {file_path}")
             async with aiofiles.open(file_path, mode="r", encoding="utf-8") as file:
                 content = await file.read()
             

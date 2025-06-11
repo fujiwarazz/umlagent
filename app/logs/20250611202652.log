@@ -1,0 +1,2 @@
+2025-06-11 20:26:53.643 | INFO     | retriver:get_async_retriever:94 - 加载本地向量数据库成功
+2025-06-11 20:26:53.643 | ERROR    | retriver:get_async_retriever:110 - 创建或加载向量存储失败:descriptor '__init__' of 'super' object needs an argument

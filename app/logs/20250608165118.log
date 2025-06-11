@@ -1,0 +1,76 @@
+2025-06-08 16:51:19.943 | INFO     | main:websocket_endpoint:30 - WebSocket connection accepted from 127.0.0.1:51535
+2025-06-08 16:51:19.943 | INFO     | tools.swe_tools.file_operator:__init__:80 - FileOperatorTool initialized with workspace_root: D:\deep_learning\codes\umlagent\app\workspace\tmp_codes
+2025-06-08 16:51:20.002 | INFO     | main:websocket_endpoint:30 - WebSocket connection accepted from 127.0.0.1:51526
+2025-06-08 16:51:20.003 | INFO     | tools.swe_tools.file_operator:__init__:80 - FileOperatorTool initialized with workspace_root: D:\deep_learning\codes\umlagent\app\workspace\tmp_codes
+2025-06-08 16:51:20.004 | INFO     | main:websocket_endpoint:65 - WebSocket connection disconnected from 127.0.0.1:51526
+2025-06-08 16:51:20.006 | INFO     | main:websocket_endpoint:72 - Cleaned up resources for 127.0.0.1:51526
+2025-06-08 16:51:55.852 | INFO     | main:websocket_endpoint:61 - Received message from 127.0.0.1:51535: 我想学习llava，帮我找个项目，并且分析UML
+2025-06-08 16:51:55.852 | INFO     | agents.umlagent:create_initial_plan:208 - Creating initial plan with ID: plan_1749372715
+2025-06-08 16:52:02.482 | INFO     | agents.umlagent:create_initial_plan:237 -  结果为:  `工具:planning`的观测结果输出为 :
+Plan created successfully with ID: plan_1749372715
+
+Plan: 学习llava并分析相关项目的UML (ID: plan_1749372715)
+===============================================
+
+Progress: 0/5 steps completed (0.0%)
+Status: 0 completed, 0 in progress, 0 blocked, 5 not started
+
+Steps:
+0. [ ] 搜索与llava相关的项目
+1. [ ] 选择一个合适的项目进行分析
+2. [ ] 克隆选中的GitHub项目到本地
+3. [ ] 确保项目代码中有__init__.py文件（如果需要）
+4. [ ] 生成项目的UML类图
+
+2025-06-08 16:52:02.483 | INFO     | agents.base:run:123 - websocket initialized finish, state:<starlette.datastructures.State object at 0x00000229773ADAC0>
+2025-06-08 16:52:02.483 | INFO     | agents.base:run:133 - Executing step 1/20
+2025-06-08 16:52:04.875 | INFO     | agents.tool_call:think:64 - ✨ uml agnet 的想法为: 
+2025-06-08 16:52:04.875 | INFO     | agents.tool_call:think:66 - 🛠️ uml agnet 选择了 1 个工具
+2025-06-08 16:52:04.875 | INFO     | agents.tool_call:think:71 - 🧰 选择的工具信息: ['baidu_search']
+2025-06-08 16:52:04.876 | INFO     | agents.tool_call:think:89 - 🧰 工具的参数是: ['{"query": "llava 相关项目"}']
+2025-06-08 16:52:06.119 | INFO     | agents.tool_call:act:142 - 🎯 工具 'baidu_search' 完成了它的任务! 其执行结果为:  `工具:baidu_search`的观测结果输出为 :
+[{'title': '主流六大开源项目,高效提升代码审计、数据管理和图像生成', 'abstract': '主流六大开源项目,高效提升代码审计、数据管理和图像生成 \n\n\n\n\n\n\n\n\n\n2024年8月16日2.LLaVA-NeXT:大型多模式模型 ️仓库名称:LLaVA-VL/LLaVA-NeXT 截止发稿星数:1530(今日新增:31) 仓库语言:Python 仓库开源协议:Apache License 2.0 引言 本文旨在总结 LLaVA-NeXT Github 仓库的相关信息,提供有关项目作用、技术分析和使用建议的深入见解。 项目作用 LLaVA-NeXT 构建在 \n\n\n个人图书馆\n\n\n\n\n\n\n\n\n\ue680\n播报\n\n\n\ue67d\n暂停', 'url': 'http://www.baidu.com/link?url=yd2uV0WQgJKN2b-o1QViDXhcZAiBGXSVCh_8U5vP2Fk97_LZjWh_JANQYjSeincaJ8NWtalid4hIW_1WW4LUCrSUUBHUeVSVmnUJkWl0gxu', 'rank': 1}, {'title': '超全大模型资源汇总|30 个优质 NLP 数据集和模型,一键使用 8 个...', 'abstract': '超全大模型资源汇总|30 个优质 NLP 数据集和模型,一键使用 8 个...\n\n2024年4月7日LLaVA 是一个能够进行视觉和语言多模态转换的模型,由视觉编码器和大型语言模型 (Vicuna v1.5 13B) 组成。 * LLaVA-v1.5-7B 该模型是 LLaVA-v1.5 系列的 70 亿参数规模的模型。 直接使用:https://my5353.com/lava7b * LLaVA-v1.5-13B 该模型是 LLaVA-v1.5 系列的 130 亿参数规模的模型。 直接使用:...\n\n\n腾讯网\n\n\n\n\n\n\ue680\n播报\n\n\n\ue67d\n暂停', 'url': 'http://www.baidu.com/link?url=HSaViyQbiUlYqmW8fYCXZhUvqDAc-2JlJf2CPu-hNND8U3s1UIpUbdc416vymY_VB6Ye2PUJC7F_a3n3qdVrvK', 'rank': 2}, {'title': '阿里云中标9亿AI算力大单;浙大校友开源LLaVA-1.5多模态大模型|ai|科 ...', 'abstract': '阿里云中标9亿AI算力大单;浙大校友开源LLaVA-1.5多模态大模型|ai|科 ...\n\n\n\n\n\n\n\n\n\n2023年10月8日2、阿里云中标京能国际9亿AI算力大单 据云头条报道,10月7日,北京京能国际控股有限公司发布《京能国际北京人工智能公共算力平台建设项目》招标中标候选人公示,阿里云以9.16亿元中标。 3、小冰成立上海新公司 李笛任执行董事 据DoNews报道,天眼查显示,近日,上海红棉小冰人工智能科技有限公司成立,“小冰之父”李笛任法定代表...\n\n\n网易\n\n\n\n\n\n\n\n\n\ue680\n播报\n\n\n\ue67d\n暂停', 'url': 'http://www.baidu.com/link?url=2W61xGhDMdk_hVTwi7c4W9TzAP9CsDf_aIgaL7lnMTkjInfWRN0tBqYj3bm1ju6SWPRWxbvwiMfHFStok4ZiJq', 'rank': 3}, {'title': '大家还在搜llava模型项目相关方vargas llosaLLA赛区llm项目LDT项目lla是哪个国家的lla公开赛itasia项目llano设计LLA英雄联盟中外合作llm项目有哪些lla赛区排名llta和a3r', 'abstract': '大家还在搜llava模型项目相关方vargas llosaLLA赛区llm项目LDT项目lla是哪个国家的lla公开赛itasia项目llano设计LLA英雄联盟中外合作llm项目有哪些lla赛区排名llta和a3r', 'url': '/s?wd=llava%E6%A8%A1%E5%9E%8B&usm=1&ie=utf-8&rsv_pq=d933f6a601d40a06&oq=llava%20%E7%9B%B8%E5%85%B3%E9%A1%B9%E7%9B%AE&rsv_t=e40cMP8dGjnYdMnuzf%2F6ZfVsFMmOuiXO02ggTbF7f74nTtbWK3wnz8H4k9s&rsf=101636803&rsv_dl=0_prs_28608_1', 'rank': 4}, {'title': '当我拿出手撕LLM+手撕多模态,阁下又该如何应对?_腾讯新闻', 'abstract': '当我拿出手撕LLM+手撕多模态,阁下又该如何应对?_腾讯新闻\n\n\n\n\n\n\n\n\n\n2024年8月14日3.1 实操项目 实操项目1 :垂域LLM微调Notebook 1个月从0搭建LLM,覆盖LLaMA-LoRA-Pretrained-sft-RM-RLHF DeepSpeed多卡RLHF-PPO训练实操代码仓库 Llama-3-8B 全流程实操训练效果 基于Llama-3-8B 预训练模型,混合中英alpaca和ruozhiba数据;全参微调SFT,轻松回复ruozhiba问题 QLoRA高效微调DPO、Reward Model和PPO ...\n\n\n腾讯新闻\n\n\n\n\n\n\n\n\n\ue680\n播报\n\n\n\ue67d\n', 'url': 'http://www.baidu.com/link?url=yMQoF0cD3arFUtt9ZgtMO12Lc1dg4b329c4SGmOi6AxkRi_UVB4OYFqKhBbPwkf-N_CVPmMMDLaosqbKPERD8_', 'rank': 5}, {'title': '中文版开源Llama 2同时有了语言、多模态大模型,完全可商用|翻译|...', 'abstract': '中文版开源Llama 2同时有了语言、多模态大模型,完全可商用|翻译|...\n\n\n\n\n\n\n\n\n\n2023年8月4日项目地址:https://github.com/LinkSoul-AI/Chinese-LLaVA 数据集: https://huggingface.co/datasets/LinkSoul/Chinese-LLaVA-Vision-Instructions 下面是 Chinese LLaVA 的一个视觉 - 文本对话示例。 模型、代码和数据地址:https://huggingface.co/spaces/LinkSoul/Chinese-LLaVa ...\n\n\n网易\n\n\n\n\n\n\n', 'url': 'http://www.baidu.com/link?url=2W61xGhDMdk_hVTwi7c4W9TzAP9CsDf_aIgaL7lnMTk1v0TMVYj8CqWPyIo8DY90ogMHm5zOSm2-WOZ4_9e52_', 'rank': 6}, {'title': 'AIGC(MLLM、VLM、LLM、SD)系列——论文解读目录_llm vlm-CSDN博客', 'abstract': 'AIGC(MLLM、VLM、LLM、SD)系列——论文解读目录_llm vlm-CSDN博客\n\n2025年2月18日Llava 1.5 论文题目:Visual Instruction Tuning 关键词:Llava 1.5、解读、VLM、图文大模型、AIGC、多模态大模型 论文解读:VLM 系列——Llava1.5——论文解读-CSDN博客 应用测试:暂无 MoE-LLaVa 论文题目:MoE-LLaVA: Mixture of Experts for Large Vision-Language Models 关键词:MoE-LLaVA、解读、VLM、图文大模...\n\n\nCSDN博客', 'url': 'http://www.baidu.com/link?url=HSaViyQbiUlYqmW8fYCXZaUSLcszVLNFXX5jFj0oMYpZkMjhKw-4NERKJgTRx6j0JV7ubpntHTP80MX-ZUph8Dwlxd5BOzTBFHJnZPcqqN3', 'rank': 7}, {'title': '大模型:LLaVA-OneVision 震撼登场!字节跳动引领多模态智能新潮流-CSD...', 'abstract': '大模型:LLaVA-OneVision 震撼登场!字节跳动引领多模态智能新潮流-CSD...\n\n\n\n\n\n\n\n\n\n2024年9月12日三、LLaVA-OneVision的架构与数据处理 1. 架构设计 语言模型:选择Qwen-2作为语言模型,具有强大的语言理解和生成能力。 视觉编码器:采用Siglip作为视觉编码器,能够有效地提取图像和视频的特征。 特征映射层:通过一个2层的MLP将图像特征映射到语言嵌入空间,得到一系列视觉标记。 \n\n\nCSDN博客\n\n\n\n\n\n\n\n\n\ue680\n播报\n\n\n\ue67d\n暂停', 'url': 'http://www.baidu.com/link?url=3e7T0k2_5Z3LxUMt771slNrly5h5vF7ia5FM27rUfFUNGCmncmCXWB-cJ_F0daycvfQSj3FYpNNdYPFtcU-gmwZuqz-kTUwhRX0e7txUzgC', 'rank': 8}, {'title': '挑战GPT-4V,浙大校友推出开源版多模态大模型_澎湃号·湃客_澎湃...', 'abstract': '挑战GPT-4V,浙大校友推出开源版多模态大模型_澎湃号·湃客_澎湃...\n\n\n\n\n\n\n\n\n\n2023年10月12日此外,来自微软研究院和哥伦比亚大学的学者也有参与LLaVA的相关工作。 项目主页(内含DEMO及GitHub、HuggingFace链接): https://llava-vl.github.io/ 论文地址: [1]https://arxiv.org/abs/2304.08485 [2]https://arxiv.org/abs/2310.03744 —完— 科技前沿进展日日相见 ~ ...\n\n\n澎湃新闻\n\n\n\n\n\n\n\n\n\ue680\n播报\n\n\n\ue67d\n暂停', 'url': 'http://www.baidu.com/link?url=uh8BaujsxJ6KFg7lVd8Vqz4MOSoi50ktK6HkuhuqJHNhwJmVuiJzdEeAI94UetqUaG87QMubzmkxgmB0T3fZwa', 'rank': 9}, {'title': 'LLaVA项目实战:如何运行Demo-百度开发者中心', 'abstract': 'LLaVA项目实战:如何运行Demo-百度开发者中心\n\n2024年3月28日LLaVA项目是一个基于深度学习的开源项目,旨在实现高效的自然语言处理任务。通过利用先进的神经网络模型,LLaVA能够在多种场景下实现高效的文本分类、情感分析、机器翻译等功能。 二、环境搭建 在运行LLaVA项目的Demo之前,我们需要先搭建一个适合项目的运行环境。这主要包括以下几个方面: 安装Git:Git是一个开源的分布式版...\n\n\n百度开发者中心\n\n\n\n\n\n\ue680\n播报\n\n\n\ue67d\n暂停', 'url': 'http://www.baidu.com/link?url=uh8BaujsxJ6KFg7lVd8Vqz9k6WhPomBMXgcLzH7c5XxsKdhZQfPoV1-QkdC7Mh6m3gUTUgZHLG4p6T0y7sdS3a', 'rank': 10}]
+2025-06-08 16:52:06.121 | INFO     | agents.umlagent:update_plan_status:153 - Marked step 0 as completed in plan plan_1749372715
+2025-06-08 16:52:06.121 | INFO     | agents.base:run:133 - Executing step 2/20
+2025-06-08 16:52:09.709 | INFO     | agents.tool_call:think:64 - ✨ uml agnet 的想法为: 
+2025-06-08 16:52:09.710 | INFO     | agents.tool_call:think:66 - 🛠️ uml agnet 选择了 1 个工具
+2025-06-08 16:52:09.710 | INFO     | agents.tool_call:think:71 - 🧰 选择的工具信息: ['planning']
+2025-06-08 16:52:09.710 | INFO     | agents.tool_call:think:89 - 🧰 工具的参数是: ['{"command":"mark_step","plan_id":"plan_1749372715","step_index":0,"step_status":"completed"}']
+2025-06-08 16:52:09.710 | INFO     | agents.tool_call:act:142 - 🎯 工具 'planning' 完成了它的任务! 其执行结果为:  `工具:planning`的观测结果输出为 :
+Step 0 updated in plan 'plan_1749372715'.
+
+Plan: 学习llava并分析相关项目的UML (ID: plan_1749372715)
+===============================================
+
+Progress: 1/5 steps completed (20.0%)
+Status: 1 completed, 1 in progress, 0 blocked, 3 not started
+
+Steps:
+0. [✓] 搜索与llava相关的项目
+1. [→] 选择一个合适的项目进行分析
+2. [ ] 克隆选中的GitHub项目到本地
+3. [ ] 确保项目代码中有__init__.py文件（如果需要）
+4. [ ] 生成项目的UML类图
+
+2025-06-08 16:52:09.711 | INFO     | agents.base:run:133 - Executing step 3/20
+2025-06-08 16:52:17.189 | INFO     | agents.tool_call:think:64 - ✨ uml agnet 的想法为: 在搜索结果中，我们可以选择 "LLaVA-VL/LLaVA-NeXT" 项目进行分析。这个项目是一个大型多模式模型，使用 Python 编写，并且具有较高的星数。
+
+接下来，我们将克隆该项目到本地文件系统。让我们执行此操作。
+2025-06-08 16:52:17.189 | INFO     | agents.tool_call:think:66 - 🛠️ uml agnet 选择了 1 个工具
+2025-06-08 16:52:17.189 | INFO     | agents.tool_call:think:71 - 🧰 选择的工具信息: ['github_repo_cloner_ssh']
+2025-06-08 16:52:17.190 | INFO     | agents.tool_call:think:89 - 🧰 工具的参数是: ['{"repo_name":"LLaVA-VL/LLaVA-NeXT"}']
+2025-06-08 16:52:17.536 | INFO     | main:websocket_endpoint:30 - WebSocket connection accepted from 127.0.0.1:51676
+2025-06-08 16:52:17.536 | INFO     | tools.swe_tools.file_operator:__init__:80 - FileOperatorTool initialized with workspace_root: D:\deep_learning\codes\umlagent\app\workspace\tmp_codes
+2025-06-08 16:52:20.060 | INFO     | main:websocket_endpoint:65 - WebSocket connection disconnected from 127.0.0.1:51676
+2025-06-08 16:52:20.061 | INFO     | main:websocket_endpoint:72 - Cleaned up resources for 127.0.0.1:51676
+2025-06-08 16:52:20.135 | INFO     | main:websocket_endpoint:30 - WebSocket connection accepted from 127.0.0.1:51689
+2025-06-08 16:52:20.135 | INFO     | tools.swe_tools.file_operator:__init__:80 - FileOperatorTool initialized with workspace_root: D:\deep_learning\codes\umlagent\app\workspace\tmp_codes
+2025-06-08 16:52:20.444 | INFO     | agents.tool_call:act:142 - 🎯 工具 'github_repo_cloner_ssh' 完成了它的任务! 其执行结果为:  `工具:github_repo_cloner_ssh`的观测结果输出为 :
+D:\deep_learning\codes\umlagent\app\workspace\tmp_codes\LLaVA-NeXT
+2025-06-08 16:52:20.444 | WARNING  | agents.umlagent:update_plan_status:157 - Failed to update plan status: 
+2025-06-08 16:52:20.445 | INFO     | agents.base:run:133 - Executing step 4/20
+2025-06-08 16:52:20.445 | WARNING  | agents.umlagent:_get_current_step_index:201 - Error finding current step index: Cannot call "send" once a close message has been sent.
+2025-06-08 16:52:24.770 | INFO     | agents.tool_call:think:64 - ✨ uml agnet 的想法为: Using tools response:
+2025-06-08 16:52:24.770 | INFO     | main:websocket_endpoint:72 - Cleaned up resources for 127.0.0.1:51535
+2025-06-08 16:52:28.851 | INFO     | main:websocket_endpoint:65 - WebSocket connection disconnected from 127.0.0.1:51689
+2025-06-08 16:52:28.851 | INFO     | main:websocket_endpoint:72 - Cleaned up resources for 127.0.0.1:51689

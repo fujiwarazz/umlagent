@@ -1,0 +1,4 @@
+2025-06-11 15:32:15.474 | INFO     | retriver:_create_vector_store:134 - 开始创建向量数据库,条数：150
+2025-06-11 15:32:15.479 | INFO     | retriver:_create_vector_store:136 - 处理后的文档数量：2067
+2025-06-11 15:36:28.833 | ERROR    | retriver:_create_vector_store:147 - 向量数据库创建失败，错误信息：Could not import faiss python package. Please install it with `pip install faiss-gpu` (for CUDA supported GPU) or `pip install faiss-cpu` (depending on Python version).
+2025-06-11 15:36:28.834 | ERROR    | retriver:get_async_retriever:108 - 创建或加载向量存储失败:Could not import faiss python package. Please install it with `pip install faiss-gpu` (for CUDA supported GPU) or `pip install faiss-cpu` (depending on Python version).

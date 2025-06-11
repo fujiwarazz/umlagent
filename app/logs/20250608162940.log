@@ -1,0 +1,9 @@
+2025-06-08 16:29:40.997 | INFO     | main:websocket_endpoint:30 - WebSocket connection accepted from 127.0.0.1:57356
+2025-06-08 16:29:40.998 | INFO     | tools.swe_tools.file_operator:__init__:80 - FileOperatorTool initialized with workspace_root: D:\deep_learning\codes\umlagent\app\workspace\tmp_codes
+2025-06-08 16:29:41.057 | INFO     | main:websocket_endpoint:30 - WebSocket connection accepted from 127.0.0.1:57336
+2025-06-08 16:29:41.058 | INFO     | tools.swe_tools.file_operator:__init__:80 - FileOperatorTool initialized with workspace_root: D:\deep_learning\codes\umlagent\app\workspace\tmp_codes
+2025-06-08 16:29:41.060 | INFO     | main:websocket_endpoint:65 - WebSocket connection disconnected from 127.0.0.1:57336
+2025-06-08 16:29:42.621 | INFO     | main:websocket_endpoint:65 - WebSocket connection disconnected from 127.0.0.1:57356
+2025-06-08 16:29:42.800 | INFO     | main:websocket_endpoint:30 - WebSocket connection accepted from 127.0.0.1:57362
+2025-06-08 16:29:42.801 | INFO     | tools.swe_tools.file_operator:__init__:80 - FileOperatorTool initialized with workspace_root: D:\deep_learning\codes\umlagent\app\workspace\tmp_codes
+2025-06-08 16:29:42.827 | INFO     | main:websocket_endpoint:65 - WebSocket connection disconnected from 127.0.0.1:57362

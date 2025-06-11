@@ -1,0 +1,39 @@
+2025-06-10 22:03:54.103 | INFO     | agents.base:run:125 - websocket is None Using logger instead
+2025-06-10 22:03:54.104 | INFO     | agents.base:run:133 - Executing step 1/30
+2025-06-10 22:03:56.590 | INFO     | agents.tool_call:think:69 - 🛠️ toolcall 选择了 1 个工具
+2025-06-10 22:03:56.590 | INFO     | agents.tool_call:think:75 - 🧰 选择的工具信息: ['get_weather_tool']
+2025-06-10 22:03:56.592 | INFO     | agents.tool_call:think:100 - 🧰 工具的参数是: ['{"location": "杭州"}']
+2025-06-10 22:03:56.592 | ERROR    | agents.tool_call:execute_tool:214 - ⚠️ 工具 'get_weather_tool' 执行出现错误: 'ToolWrapper' object is not callable
+2025-06-10 22:03:56.593 | INFO     | agents.tool_call:act:153 - 🎯 工具 'get_weather_tool' 完成了它的任务! 其执行结果为: 错误: ⚠️ 工具 'get_weather_tool' 执行出现错误: 'ToolWrapper' object is not callable
+2025-06-10 22:03:56.593 | INFO     | agents.base:run:133 - Executing step 2/30
+2025-06-10 22:03:58.539 | INFO     | agents.tool_call:think:65 - ✨ toolcall 的想法为: 由于获取天气信息的工具出现了错误，我将尝试再次执行该步骤以获取杭州明天的天气信息。 , [ChatCompletionMessageToolCall(id='call_45b9f2723c9b4ebe9a3600', function=Function(arguments='{"location": "杭州"}', name='get_weather_tool'), type='function', index=0)]
+2025-06-10 22:03:58.540 | INFO     | agents.tool_call:think:69 - 🛠️ toolcall 选择了 1 个工具
+2025-06-10 22:03:58.541 | INFO     | agents.tool_call:think:75 - 🧰 选择的工具信息: ['get_weather_tool']
+2025-06-10 22:03:58.541 | INFO     | agents.tool_call:think:100 - 🧰 工具的参数是: ['{"location": "杭州"}']
+2025-06-10 22:03:58.541 | ERROR    | agents.tool_call:execute_tool:214 - ⚠️ 工具 'get_weather_tool' 执行出现错误: 'ToolWrapper' object is not callable
+2025-06-10 22:03:58.541 | INFO     | agents.tool_call:act:153 - 🎯 工具 'get_weather_tool' 完成了它的任务! 其执行结果为: 错误: ⚠️ 工具 'get_weather_tool' 执行出现错误: 'ToolWrapper' object is not callable
+2025-06-10 22:03:58.542 | INFO     | agents.base:run:133 - Executing step 3/30
+2025-06-10 22:04:02.010 | INFO     | agents.tool_call:think:65 - ✨ toolcall 的想法为: 由于工具连续出现错误，我将停止尝试使用该工具并告知您目前无法获取杭州明天的天气信息。 , [ChatCompletionMessageToolCall(id='call_3a6e882c6aed4e9898912f', function=Function(arguments='{"reason": "由于工具执行错误，无法获取杭州明天的天气信息。", "result": "失败"}', name='terminate'), type='function', index=0)]
+2025-06-10 22:04:02.011 | INFO     | agents.tool_call:think:69 - 🛠️ toolcall 选择了 1 个工具
+2025-06-10 22:04:02.011 | INFO     | agents.tool_call:think:75 - 🧰 选择的工具信息: ['terminate']
+2025-06-10 22:04:02.011 | INFO     | agents.tool_call:think:100 - 🧰 工具的参数是: ['{"reason": "由于工具执行错误，无法获取杭州明天的天气信息。", "result": "失败"}']
+2025-06-10 22:04:02.011 | INFO     | agents.tool_call:act:153 - 🎯 工具 'terminate' 完成了它的任务! 其执行结果为: terminate 是未知工具，或者无法被toolcall使用'
+2025-06-10 22:04:02.011 | INFO     | agents.base:run:133 - Executing step 4/30
+2025-06-10 22:04:04.842 | INFO     | agents.tool_call:think:65 - ✨ toolcall 的想法为: 由于工具执行错误，我无法获取杭州明天的天气信息。现在我将结束任务。 , [ChatCompletionMessageToolCall(id='call_083d589589f44a43853e3a', function=Function(arguments='{"command": "mark_step", "step_index": 1, "status": "failed"}', name='planning'), type='function', index=0)]
+2025-06-10 22:04:04.843 | INFO     | agents.tool_call:think:69 - 🛠️ toolcall 选择了 1 个工具
+2025-06-10 22:04:04.843 | INFO     | agents.tool_call:think:75 - 🧰 选择的工具信息: ['planning']
+2025-06-10 22:04:04.843 | INFO     | agents.tool_call:think:100 - 🧰 工具的参数是: ['{"command": "mark_step", "step_index": 1, "status": "failed"}']
+2025-06-10 22:04:04.844 | INFO     | agents.tool_call:act:153 - 🎯 工具 'planning' 完成了它的任务! 其执行结果为: planning 是未知工具，或者无法被toolcall使用'
+2025-06-10 22:04:04.844 | INFO     | agents.base:run:133 - Executing step 5/30
+2025-06-10 22:04:07.074 | INFO     | agents.tool_call:think:56 - 🚨 toolcall 没有选择任何工具或代理来执行任务
+2025-06-10 22:04:07.075 | INFO     | agents.base:run:133 - Executing step 6/30
+2025-06-10 22:04:09.768 | INFO     | agents.tool_call:think:65 - ✨ toolcall 的想法为: 由于工具执行错误，我无法获取杭州明天的天气信息。现在我将结束任务。 , [ChatCompletionMessageToolCall(id='call_0c3ff3ebb3ae4bcabdeb1f', function=Function(arguments='{"reason": "由于工具执行错误，无法获取杭州明天的天气信息。", "result": "失败"}', name='terminate'), type='function', index=0)]
+2025-06-10 22:04:09.769 | INFO     | agents.tool_call:think:69 - 🛠️ toolcall 选择了 1 个工具
+2025-06-10 22:04:09.769 | INFO     | agents.tool_call:think:75 - 🧰 选择的工具信息: ['terminate']
+2025-06-10 22:04:09.769 | INFO     | agents.tool_call:think:100 - 🧰 工具的参数是: ['{"reason": "由于工具执行错误，无法获取杭州明天的天气信息。", "result": "失败"}']
+2025-06-10 22:04:09.769 | INFO     | agents.tool_call:act:153 - 🎯 工具 'terminate' 完成了它的任务! 其执行结果为: terminate 是未知工具，或者无法被toolcall使用'
+2025-06-10 22:04:09.769 | INFO     | agents.base:run:133 - Executing step 7/30
+2025-06-10 22:04:12.080 | INFO     | agents.tool_call:think:56 - 🚨 toolcall 没有选择任何工具或代理来执行任务
+2025-06-10 22:04:12.080 | INFO     | agents.base:run:133 - Executing step 8/30
+2025-06-10 22:04:15.106 | INFO     | agents.tool_call:think:56 - 🚨 toolcall 没有选择任何工具或代理来执行任务
+2025-06-10 22:04:15.107 | INFO     | agents.base:run:133 - Executing step 9/30

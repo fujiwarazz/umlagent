@@ -1,0 +1,1 @@
+2025-06-11 15:04:44.436 | ERROR    | retriver:_create_vector_store:144 - 向量数据库创建失败，错误信息：'Document' object is not subscriptable

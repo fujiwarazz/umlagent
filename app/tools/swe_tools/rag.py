@@ -11,19 +11,19 @@ from typing import List
 from langchain.schema.document import Document
 
 
-
 class RAG(BaseTool):
     name: str = "rag"
-    description: str = """一个RAG工具，可以通过这个工具将文本内容embedding化并存入向量数据库，或从数据库中查询相似内容。
-    用于代码库索引化和查询相关代码片段。
-    命令 'add_rag'：需要 'code_path' 参数，用于索引代码库并将其添加到向量数据库。
-    命令 'query_rag'：需要 'query' 参数，用于从已索引的数据库中检索相关代码片段。"""
+    description: str = """A Retrieval-Augmented Generation (RAG) tool for embedding text content into a vector database and querying similar content from it.
+        Designed for indexing codebases and retrieving relevant code snippets.
+        Use this tool firstly to embed and store code into a vector database for future semantic search.
+        Command 'add_rag': Requires the 'code_path' parameter to index a codebase and add it to the vector database.
+        Command 'query_rag': Requires the 'query' parameter to retrieve relevant code snippets from the indexed database."""
     strict: bool = True # As per your definition
     parameters: dict = {
         "type": "object",
         "properties": {
             "command": {
-                "description": "要执行的命令。可用命令: `query_rag`, `add_rag`。使用 `query_rag` 从RAG获取相关块。使用 `add_rag` 生成向量数据库并将块添加到其中，或仅将块添加到其中。",
+                "description": "The command to execute. Available commands: `query_rag`, `add_rag`. Use `query_rag` to retrieve relevant chunks from RAG. Use `add_rag` to generate a vector database and add chunks to it, or just add chunks.",
                 "enum": [
                     "query_rag",
                     "add_rag"
@@ -31,15 +31,15 @@ class RAG(BaseTool):
                 "type": "string"
             },
             "query": {
-                "description": "您对向量数据库的查询，您可以获得一些与您的查询相关的块。",
+                "description": "Your query to the vector database. You can retrieve some chunks related to your query.",
                 "type": "string"
             },
             "code_path": {
-                "description": "将被嵌入并放入向量数据库的代码的路径。",
-                "type": "string" # Corrected from missing type in prompt
+                "description": "The path of the code to be embedded and put into the vector database.",
+                "type": "string"
             }
         },
-        "additionalProperties": False, # Corrected from 'addtionalProperties'
+        "additionalProperties": False,
         "required": ["command"]
     }
     
@@ -72,10 +72,10 @@ class RAG(BaseTool):
 
         except ValueError as ve: # Catch specific errors like invalid path for CodeProjectIndexer
             logger.error(f"RAG _add_rag ValueError: {ve}", exc_info=True)
-            return ToolFailure(error_message=f"处理 'add_rag' 命令时发生值错误: {ve}")
+            return ToolFailure(error=f"处理 'add_rag' 命令时发生值错误: {ve}")
         except Exception as e:
             logger.error(f"RAG _add_rag 异常: {e}", exc_info=True)
-            return ToolFailure(error_message=f"处理 'add_rag' 命令时发生意外错误: {e}", error_details=str(e))
+            return ToolFailure(error=f"处理 'add_rag' 命令时发生意外错误: {e}")
 
     async def query_rag(self, query: str) -> ToolResult | ToolFailure:
         logger.info(f"RAG Tool: 'query_rag' command received with query: '{query}'")
@@ -85,7 +85,7 @@ class RAG(BaseTool):
             # so get_retriever will fail if DB doesn't exist.
             retriever = await vector_store_manager.get_async_retriever() 
             
-            documents: List[Document] = await retriever._aget_relevant_documents(query) # Using the async method
+            documents: List[Document] = await retriever.aget_relevant_documents(query) # Using the async method
             
             if not documents:
                 return ToolResult(content=f"未能找到与查询 '{query}' 相关的文档。", success=True) # Success=True, but no results
@@ -101,27 +101,27 @@ class RAG(BaseTool):
 
         except FileNotFoundError as fnfe: # Specifically catch if DB not found and no init data
             logger.error(f"RAG _query_rag FileNotFoundError: {fnfe}", exc_info=True)
-            return ToolFailure(error_message=f"查询RAG数据库失败: {fnfe}. 请先使用 'add_rag' 命令添加数据。")
+            return ToolFailure(error=f"查询RAG数据库失败: {fnfe}. 请先使用 'add_rag' 命令添加数据。")
         except ValueError as ve: # Catch other ValueErrors from get_retriever
              logger.error(f"RAG _query_rag ValueError: {ve}", exc_info=True)
-             return ToolFailure(error_message=f"查询RAG数据库时发生值错误: {ve}")
+             return ToolFailure(error=f"查询RAG数据库时发生值错误: {ve}")
         except Exception as e:
             logger.error(f"RAG _query_rag 异常: {e}", exc_info=True)
-            return ToolFailure(error_message=f"查询RAG数据库时发生意外错误: {e}", error_details=str(e))
+            return ToolFailure(error=f"查询RAG数据库时发生意外错误: {e}")
 
     async def execute(self, command: str, query: Optional[str] = None, code_path: Optional[str] = None) -> ToolResult | ToolFailure:
         logger.info(f"RAG Tool executing command: {command}")
         # Parameter validation as per schema 'required' for command
         if command == 'query_rag':
             if not query:
-                return ToolFailure("命令 'query_rag' 需要 'query' 参数。")
+                return ToolFailure(error="命令 'query_rag' 需要 'query' 参数。")
             # Ensure code_path is not mistakenly passed or used
             if code_path is not None:
                 logger.warning("为 'query_rag' 命令传递了 'code_path' 参数，该参数将被忽略。")
             return await self.query_rag(query=query)
         elif command == "add_rag":
             if not code_path:
-                return ToolFailure("命令 'add_rag' 需要 'code_path' 参数。")
+                return ToolFailure(error="命令 'add_rag' 需要 'code_path' 参数。")
             # Ensure query is not mistakenly passed or used
             if query is not None:
                 logger.warning("为 'add_rag' 命令传递了 'query' 参数，该参数将被忽略。")
@@ -129,5 +129,5 @@ class RAG(BaseTool):
         else:
             # This case should ideally be caught by schema validation before execute is called
             # if the calling mechanism uses the tool's parameters schema.
-            return ToolFailure(f"未知命令 '{command}'。可用命令: 'query_rag', 'add_rag'。")
+            return ToolFailure(error=f"未知命令 '{command}'。可用命令: 'query_rag', 'add_rag'。")
         

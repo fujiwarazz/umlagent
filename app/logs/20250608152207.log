@@ -1,0 +1,9 @@
+2025-06-08 15:22:08.649 | INFO     | main:websocket_endpoint:30 - WebSocket connection accepted from 127.0.0.1:51176
+2025-06-08 15:22:08.649 | INFO     | tools.swe_tools.file_operator:__init__:80 - FileOperatorTool initialized with workspace_root: D:\deep_learning\codes\workspace
+2025-06-08 15:22:08.705 | INFO     | main:websocket_endpoint:30 - WebSocket connection accepted from 127.0.0.1:51189
+2025-06-08 15:22:08.705 | INFO     | tools.swe_tools.file_operator:__init__:80 - FileOperatorTool initialized with workspace_root: D:\deep_learning\codes\workspace
+2025-06-08 15:22:08.707 | INFO     | main:websocket_endpoint:30 - WebSocket connection accepted from 127.0.0.1:51183
+2025-06-08 15:22:08.708 | INFO     | tools.swe_tools.file_operator:__init__:80 - FileOperatorTool initialized with workspace_root: D:\deep_learning\codes\workspace
+2025-06-08 15:22:08.710 | INFO     | main:websocket_endpoint:65 - WebSocket connection disconnected from 127.0.0.1:51176
+2025-06-08 15:22:08.717 | INFO     | main:websocket_endpoint:65 - WebSocket connection disconnected from 127.0.0.1:51183
+2025-06-08 15:22:10.989 | INFO     | main:websocket_endpoint:65 - WebSocket connection disconnected from 127.0.0.1:51189

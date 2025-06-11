@@ -1,0 +1,4 @@
+2025-06-09 14:34:58.300 | INFO     | main:websocket_endpoint:30 - WebSocket connection accepted from 127.0.0.1:50409
+2025-06-09 14:34:58.301 | INFO     | tools.swe_tools.file_operator:__init__:80 - FileOperatorTool initialized with workspace_root: D:\deep_learning\codes\umlagent\app\workspace\tmp_codes
+2025-06-09 14:37:48.818 | INFO     | main:websocket_endpoint:65 - WebSocket connection disconnected from 127.0.0.1:50409
+2025-06-09 14:37:48.818 | INFO     | main:websocket_endpoint:72 - Cleaned up resources for 127.0.0.1:50409

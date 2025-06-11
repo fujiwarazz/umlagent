@@ -1,0 +1,4 @@
+2025-06-11 15:39:57.265 | INFO     | retriver:_create_vector_store:134 - 开始创建向量数据库,条数：150
+2025-06-11 15:39:57.270 | INFO     | retriver:_create_vector_store:136 - 处理后的文档数量：2067
+2025-06-11 15:44:30.799 | INFO     | retriver:_create_vector_store:143 - 向量数据库创建成功，已保存
+2025-06-11 15:44:30.799 | ERROR    | retriver:get_async_retriever:108 - 创建或加载向量存储失败:descriptor '__init__' of 'super' object needs an argument

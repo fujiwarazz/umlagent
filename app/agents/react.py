@@ -21,7 +21,7 @@ class ReActAgent(BaseAgent, ABC):
     max_steps: int = 10
     current_step: int = 0
     
-    hand_off_agents: Optional[List[BaseAgent]] = None
+    hands_offs:Optional[List[BaseAgent]] = None
 
     @abstractmethod
     async def think(self) -> bool:
