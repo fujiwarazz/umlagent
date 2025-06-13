@@ -86,19 +86,6 @@ class PlanningTool(BaseTool):
         step_notes: Optional[str] = None,
         **kwargs,
     ):
-        """
-        Execute the planning tool with the given command and parameters.
-
-        Parameters:
-        - command: The operation to perform
-        - plan_id: Unique identifier for the plan
-        - title: Title for the plan (used with create command)
-        - steps: List of steps for the plan (used with create command)
-        - step_index: Index of the step to update (used with mark_step command)
-        - step_status: Status to set for a step (used with mark_step command)
-        - step_notes: Additional notes for a step (used with mark_step command)
-        """
-
         if command == "create":
             return self._create_plan(plan_id, title, steps)
         elif command == "update":
@@ -117,6 +104,8 @@ class PlanningTool(BaseTool):
             raise ToolError(
                 f"Unrecognized command: {command}. Allowed commands are: create, update, list, get, set_active, mark_step, delete"
             )
+    
+            
 
     def _create_plan(
         self, plan_id: Optional[str], title: Optional[str], steps: Optional[List[str]]
@@ -142,7 +131,6 @@ class PlanningTool(BaseTool):
                 "Parameter `steps` must be a non-empty list of strings for command: create"
             )
 
-        # Create a new plan with initialized step statuses
         plan = {
             "plan_id": plan_id,
             "title": title,
@@ -180,7 +168,6 @@ class PlanningTool(BaseTool):
                     "Parameter `steps` must be a list of strings for command: update"
                 )
 
-            # Preserve existing step statuses for unchanged steps
             old_steps = plan["steps"]
             old_statuses = plan["step_statuses"]
             old_notes = plan["step_notes"]
@@ -190,7 +177,6 @@ class PlanningTool(BaseTool):
             new_notes = []
 
             for i, step in enumerate(steps):
-                # If the step exists at the same position in old steps, preserve status and notes
                 if i < len(old_steps) and step == old_steps[i]:
                     new_statuses.append(old_statuses[i])
                     new_notes.append(old_notes[i])
@@ -261,7 +247,6 @@ class PlanningTool(BaseTool):
         step_status: Optional[str],
         step_notes: Optional[str],
     ) -> ToolResult:
-        """Mark a step with a specific status and optional notes."""
         if not plan_id:
             # If no plan_id is provided, use the current active plan
             if not self._current_plan_id:
@@ -320,7 +305,6 @@ class PlanningTool(BaseTool):
         return ToolResult(output=f"Plan '{plan_id}' has been deleted.")
 
     def _format_plan(self, plan: Dict) -> str:
-        """Format a plan for display."""
         output = f"Plan: {plan['title']} (ID: {plan['plan_id']})\n"
         output += "=" * len(output) + "\n\n"
 
@@ -351,13 +335,11 @@ class PlanningTool(BaseTool):
         ):
             status_symbol = {
                 "not_started": "[ ]",
-                "in_progress": "[→]",
-                "completed": "[✓]",
-                "blocked": "[!]",
+                "in_progress": "[⭕]",
+                "completed": "[✔]",
+                "blocked": "[❌]",
             }.get(status, "[ ]")
 
             output += f"{i}. {status_symbol} {step}\n"
-            # if notes:
-            #     output += f"   Notes: {notes}\n"
-
+           
         return output

@@ -42,12 +42,14 @@ async def weather(location: Annotated[str,IsRequired]) -> str:
     return ToolResult(
         output=f"The current weather in {location} is sunny with a temperature of 25°C."
     )
+    
+    
 @mtool(
     name = 'python_execute',
     description = "A tool to execute Python code.",
     strict = True,
 )
-async def python_execute(code: Annotated[str, IsRequired]) -> str:
+async def python_execute(code: Annotated[str, IsRequired],path:Annotated[str, None],websocket:WebSocket) -> str:
     """
     Args:
         code (Annotated[str, IsRequired]): The Python code to execute.
@@ -80,21 +82,20 @@ async def python_execute(code: Annotated[str, IsRequired]) -> str:
     
     
 async def main():
+    # aagent = ToolCallAgent(available_tools=ToolCollection(Terminate(),CreateChatCompletion(),FinalResponse(),python_execute,weather),
+    #                        description="A agent that can execute Python code and get weather information.")
     
-    aagent = ToolCallAgent(available_tools=ToolCollection(Terminate(),CreateChatCompletion(),FinalResponse(),python_execute,weather),
-                           description="A agent that can execute Python code and get weather information.")
+    # bagent = ToolCallAgent(available_tools=ToolCollection(Terminate(),BaiduSearch(),CreateChatCompletion(),FinalResponse()),
+    #                        description="A helpful agent",
+    #                        hands_offs=[aagent])
     
-    bagent = ToolCallAgent(available_tools=ToolCollection(Terminate(),BaiduSearch(),CreateChatCompletion(),FinalResponse()),
-                           description="A helpful agent",
-                           hands_offs=[aagent])
+    # sweagent = SWEAgent(available_tools=ToolCollection(
+    #                             RAG(),
+    #                             CodeAnalyzer(),FileOperatorTool(workspace_root=str(CODE_PATH)),BlueprintTool(),PythonExecute(),Terminate(),BaiduSearch(),CreateChatCompletion(),FinalResponse()
+    #                             ))
     
-    sweagent = SWEAgent(available_tools=ToolCollection(
-                                RAG(),
-                                CodeAnalyzer(),FileOperatorTool(workspace_root=str(CODE_PATH)),BlueprintTool(),PythonExecute(),Terminate(),BaiduSearch(),CreateChatCompletion(),FinalResponse()
-                                ))
-    
-    res = await sweagent.run("帮我分析路径：D:\\deep_learning\\codes\\umlagent\\app\\workspace\\tmp_codes\\LLaVA-NeXT,这个项目")
-    print(res)
+    # res = await sweagent.run("帮我分析路径：D:\\deep_learning\\codes\\umlagent\\app\\workspace\\tmp_codes\\LLaVA-NeXT,这个项目")
+    # print(res)
 
 if __name__ == "__main__":
     asyncio.run(main())
@@ -108,10 +109,10 @@ if __name__ == "__main__":
 #         from tools import RAG,CodeAnalyzer,FileOperatorTool,BlueprintTool
         
         
-        # sweagent = SWEAgent(available_tools=ToolCollection(
-        #                         RAG(),
-        #                         CodeAnalyzer(),FileOperatorTool(workspace_root=str(CODE_PATH)),BlueprintTool(),PythonExecute()
-        #                         ),
+#         sweagent = SWEAgent(available_tools=ToolCollection(
+#                                 RAG(),
+#                                 CodeAnalyzer(),FileOperatorTool(workspace_root=str(CODE_PATH)),BlueprintTool(),PythonExecute()
+#                                 ),
 #                             websocket=websocket,) #  用于分析代码的专用agent
 
 #         agent = UMLAgent(

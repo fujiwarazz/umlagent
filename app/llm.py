@@ -30,6 +30,7 @@ class LLM:
             cls._instances[config_name] = instance
         return cls._instances[config_name]
     
+    # 根据config.yml初始化LLM客户端
     def __init__(
         self, config_name: str = "default", llm_config: Optional[LLMSettings] = None
     ):
@@ -42,8 +43,8 @@ class LLM:
             self.api_version = llm_config.api_version
             self.base_url = llm_config.base_url
             self.client = AsyncOpenAI(api_key=self.api_key, base_url=self.base_url)
-                
 
+    # 格式化消息列表为OpenAI客户端所需的格式
     @staticmethod
     def format_messages(messages: List[Union[dict, Message]]) -> List[dict]:
         """
@@ -91,6 +92,7 @@ class LLM:
 
         return formatted_messages
     
+    # 总结记忆中的对话，减少消息数量
     async def summerize_memories(self,messages: List[Message]):
         SUMMARIZE_PROMPT = """
         You are an expert at summarizing conversations.
@@ -103,7 +105,8 @@ class LLM:
             stream=False
         )
         return summary
-        
+    
+    # 异步请求LLM，获取回答
     @retry(
         wait=wait_random_exponential(min=1, max=60),
         stop=stop_after_attempt(6),
@@ -168,7 +171,8 @@ class LLM:
         except Exception as e:
             logger.error(f"Unexpected error in ask_tool: {e}")
             raise 
-        
+    
+    # 异步请求LLM，使用handoff工具将对话交给其他agent处理
     @retry(
         wait=wait_random_exponential(min=1, max=60),
         stop=stop_after_attempt(6),
@@ -256,7 +260,8 @@ class LLM:
         except Exception as e:
             logger.error(f"Error in ask_handoff: {e}")
             raise
-        
+    
+    # 异步请求LLM，使用函数/工具进行对话，并返回响应
     @retry(
         wait=wait_random_exponential(min=1, max=60),
         stop=stop_after_attempt(6),

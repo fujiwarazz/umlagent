@@ -1,32 +1,24 @@
 import os
 import subprocess
-# 假设 tools.base 存在并包含 BaseTool 类
-# from tools.base import BaseTool
 
-# 如果您的项目结构中 'tools' 是一个包，并且 'base.py' 在其中，
-# 或者 'tools' 本身在 PYTHONPATH 下且 base.py 在其中。
-# 根据您之前的讨论，您可能需要调整此导入以适应您的项目结构，例如：
-# from .base import BaseTool # 如果 base.py 在同一目录
-from tools.base import BaseTool # 沿用您示例中的导入方式，假设它能正确工作
-import asyncio # 导入 asyncio 以使用 asyncio.to_thread
+from tools.base import BaseTool 
+import asyncio 
 
 class GitHubRepoCloner(BaseTool):
-    """
-    一个用于使用 git clone 命令（通过SSH）克隆 GitHub 仓库到本地指定目录并返回本地路径的工具。
-    确保您的机器已配置好 SSH 密钥并已添加到 GitHub 账户，以便通过 SSH 进行克隆。
-    """
+    
     name: str = "github_repo_cloner_ssh" # 可以稍微修改名称以区分，或保持原样
-    description: str = """通过 SSH 克隆 GitHub 仓库到本地文件系统上的指定目录，并返回克隆后仓库的本地完整路径。
-                        该工具接受 GitHub 仓库的名称（格式为 '所有者/仓库名'，例如 'shareAI-lab/open-Manus'）。
-                        它将使用 'git clone' 命令（SSH方式）将仓库克隆到工具初始化时配置的本地基础目录的子目录中。
-                        成功时，返回仓库在本地的完整文件路径；失败时，返回包含错误详情的字符串。如果出现了失败，可以重复使用这个工具来尝试克隆同一个仓库。
+    description: str = """
+                        Clone a GitHub repository to a specified directory on the local file system via SSH, and return the full local path of the cloned     repository.
+                        This tool accepts the name of a GitHub repository (in the format 'owner/repo', e.g., 'shareAI-lab/open-Manus').
+                        It uses the 'git clone' command (via SSH) to clone the repository into a subdirectory of the base local directory configured during tool initialization.
+                        On success, it returns the full local file path of the repository; on failure, it returns a string containing error details. If a failure occurs, you can use this tool again to retry cloning the same repository.
                         """
     parameters: dict = {
         "type": "object",
         "properties": {
             "repo_name": {
                 "type": "string",
-                "description": "(必填) GitHub 仓库的名称，格式为 '所有者/仓库名' (例如，'shareAI-lab/open-Manus')。",
+                "description": "GitHub 仓库的名称，格式为 '所有者/仓库名' (例如，'shareAI-lab/open-Manus')。",
             },
         },
         "required": ["repo_name"],
@@ -34,14 +26,6 @@ class GitHubRepoCloner(BaseTool):
     local_clone_base_dir: str
 
     def __init__(self, local_clone_base_dir: str, **kwargs):
-        """
-        初始化 GitHubRepoCloner 工具。
-
-        Args:
-            local_clone_base_dir (str): 所有仓库将被克隆到此目录下的基础路径。
-            **kwargs: 传递给 BaseTool 基类的额外参数。
-        """
-        # 在 super().__init__ 之前设置实例属性，以便基类如果需要也可以访问
         super().__init__(local_clone_base_dir=local_clone_base_dir, **kwargs)
         
         
@@ -53,16 +37,7 @@ class GitHubRepoCloner(BaseTool):
 
 
     async def execute(self, repo_name: str) -> str:
-        """
-        执行 git clone 命令（通过SSH）克隆指定的 GitHub 仓库。
-
-        Args:
-            repo_name (str): GitHub 仓库的名称，格式为 '所有者/仓库名'。
-
-        Returns:
-            str: 成功时返回仓库在本地的完整文件路径字符串；
-                 失败时返回包含错误详情的字符串（通常以“错误：”开头）。
-        """
+        
         try:
             os.makedirs(self.local_clone_base_dir, exist_ok=True)
         except OSError as e:
@@ -80,18 +55,12 @@ class GitHubRepoCloner(BaseTool):
         target_dir = os.path.join(self.local_clone_base_dir, repo_short_name)
 
         if os.path.exists(target_dir) and os.path.isdir(target_dir) and os.listdir(target_dir):
-            # 修改返回信息，提示可以使用已存在的目录路径
             abs_target_dir = os.path.abspath(target_dir)
             print(f"信息：目标目录 '{abs_target_dir}' 已存在且非空。将直接使用此路径。")
             return abs_target_dir
-            # 或者，如果您坚持要求目录必须是新克隆的，则返回错误：
-            # return f"错误：目标目录 '{target_dir}' 已存在且非空，可能仓库已被克隆。请先手动处理该目录。"
+          
 
-
-        # 构建 SSH Git 克隆 URL
-        # HTTPS 格式: https://github.com/所有者/仓库名.git
-        # SSH 格式:   git@github.com:所有者/仓库名.git
-        repo_url_name = f"git@github.com:{repo_name}.git" # <--- 主要修改点在这里
+        repo_url_name = f"git@github.com:{repo_name}.git" 
         repo_url_name_https = f"https://github.com/{repo_name}.git"
         command = ["git", "clone", "--depth", "1", repo_url_name_https, target_dir]
 

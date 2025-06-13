@@ -19,26 +19,23 @@ class BaseAgent(ABC,BaseModel):
         None, description="Optional agent description"
     )
     
+    
+    websocket:Optional[WebSocket] = Field(default=None)
+    
     system_prompt: Optional[str] = Field(
         None, description="系统prompt"
     )
-    websocket:Optional[WebSocket] = Field(default=None)
-    
     next_step_prompt: Optional[str] = Field(
         None, description="让llm进行下一步骤的prompt,用于让agent自己进行下一步操作"
     )
-    
-
     llm: LLM = Field(default_factory=LLM, description="选择的llm模型,")
     memory: Memory = Field(default_factory=Memory, description="用于保存LLM记忆")
-    
     state: AgentState = Field(
         default=AgentState.IDLE, description="用于表示LLM的状态,作用为判断是否可以进行下一步骤"
     )
-    
     max_steps: int = Field(default=10, description="执行任务最大步骤数")
     current_step: int = Field(default=0, description="当前步骤数")
-    
+
     @model_validator(mode="after")
     def initialize_agent(self) -> "BaseAgent":
         if self.llm is None or not isinstance(self.llm, LLM):

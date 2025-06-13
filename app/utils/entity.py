@@ -41,6 +41,7 @@ class Message(BaseModel):
     
     role: Literal["system", "user", "assistant", "tool"] = Field(...)
     content: Optional[str] = Field(default=None)
+    ### function calls
     tool_calls: Optional[List[ToolCall]] = Field(default=None)
     name: Optional[str] = Field(default=None)
     tool_call_id: Optional[str] = Field(default=None)
@@ -100,10 +101,10 @@ class Message(BaseModel):
         )
     
 class Memory(BaseModel):
-    
     """ agent记忆moddule  """
     messages: List[Message] = Field(default_factory=list)
-    max_messages: int = Field(default=100)
+    max_messages: int = Field(default=200)
+    
     
     def add_message(self, message: Message) -> None:
         """Add a message to memory"""

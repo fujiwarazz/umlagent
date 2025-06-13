@@ -13,13 +13,15 @@ from openai import (
 )
 
 from config.llm_config import llm_settings
+
+
 class CodeAnalyzer(BaseTool):
     name: str = "code_analyzer"
-    description: str = """使用LLM分析一个或多个代码文件。
-此工具会读取每个指定文件的内容，将其发送给LLM进行分析，
-然后将所有分析结果汇总成一份报告。
-适用于理解代码库、生成文档摘要等场景。
-"""
+    description: str = """Analyze one or more code files using an LLM.
+            This tool reads the content of each specified file, sends it to the LLM for analysis,
+            and then aggregates all analysis results into a single report.
+            Suitable for understanding codebases, generating documentation summaries, and similar scenarios.
+            """
     parameters: dict = {
         "type": "object",
         "properties": {

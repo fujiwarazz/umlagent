@@ -31,12 +31,9 @@ class UMLAgent(ToolCallAgent):
     tool_calls: List[ToolCall] = Field(default_factory=list)
     active_plan_id: Optional[str] = Field(default=None)
     last_activate_plan_id: Optional[str] = Field(default=None)
-    # Add a dictionary to track the step status for each tool call
     step_execution_tracker: Dict[str, Dict] = Field(default_factory=dict)
     current_step_index: Optional[int] = None
     max_steps: int = 20
-    
-   # sweagent:ToolCallAgent  = Field(default_factory=lambda: ToolCallAgent())
 
     @model_validator(mode="after")
     def initialize_plan_and_verify_tools(self) -> "UMLAgent":
@@ -209,10 +206,11 @@ class UMLAgent(ToolCallAgent):
 
         messages = [
             Message.user_message(
-                f"Analyze the request and create a plan, you must create a plan ,plan ID is:{self.active_plan_id},user's quert is: {request}"
+                f"Analyze this query of user and create a plan, you must create a plan ,plan ID is:{self.active_plan_id},user's query is: {request}"
             )
         ]
         self.memory.add_messages(messages)
+        
         response = await self.llm.ask_tools(
             messages=messages,
             system_msgs=[Message.system_message(self.system_prompt)],

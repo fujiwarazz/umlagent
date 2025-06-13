@@ -21,7 +21,7 @@ class ReActAgent(BaseAgent, ABC):
     max_steps: int = 10
     current_step: int = 0
     
-    hands_offs:Optional[List[BaseAgent]] = None
+    hands_offs:Optional[List[BaseAgent]] = Field(default_factory=list,description="能够接手当前任务的代理列表")
 
     @abstractmethod
     async def think(self) -> bool:

@@ -25,12 +25,8 @@ class ToolCallAgent(ReActAgent):
     next_step_prompt: str = NEXT_STEP_PROMPT
 
     available_tools: ToolCollection = ToolCollection(Terminate())
-    
     tool_choice:Literal['none','auto','required'] =  "required"
-    
     special_tool_names: List[str] = Field(default_factory=lambda: [Terminate().name])
-
-   # tool_calls: List[ToolCall] = Field(default_factory=list)
     tool_calls: Optional[List[ToolCall]] = None
 
     max_steps: int = 30
