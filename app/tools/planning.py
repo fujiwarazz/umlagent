@@ -335,11 +335,14 @@ class PlanningTool(BaseTool):
         ):
             status_symbol = {
                 "not_started": "[ ]",
-                "in_progress": "[⭕]",
-                "completed": "[✔]",
-                "blocked": "[❌]",
+                "in_progress": "[→]",
+                "completed": "[✓]",
+                "blocked": "[!]",
             }.get(status, "[ ]")
+
 
             output += f"{i}. {status_symbol} {step}\n"
            
         return output
+
+
