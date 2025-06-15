@@ -195,7 +195,7 @@ class LLM:
                             },
                             "input": {
                                 "type": "string", 
-                                "description": "The input/query to pass to the agent, the input should be sufficiently detailed, such as the local file path etc, in order to allow the agent to understand the context and respond appropriately."
+                                "description": "The input/query to pass to the agent, the input should be sufficiently detailed, in order to allow the agent to understand the context and respond appropriately, such as the local cloned code path like `D:\\deep_learning\\codes\\umlagent\\app\\workspace\\tmp_codes\\{code path from using tool github_repo_cloner_ssh}`,or the specific file path to search in, or the specific content to search for.remenber, the agent you hand off to should be able to handle the input you provide, such pay attention to the available tools of the agent you hand off to."
                             }
                         },
                         "required": ["name", "input"]

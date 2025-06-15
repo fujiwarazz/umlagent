@@ -137,7 +137,7 @@ async def websocket_endpoint(websocket: WebSocket):
         while True:
             data = await websocket.receive_text()
             logger.info(f"Received message from {client_id}: {data}")
-            await agent.run(query=data)
+            await sweagent.run(query=data)
 
     except WebSocketDisconnect:
         logger.info(f"WebSocket connection disconnected from {client_id}")

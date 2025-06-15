@@ -154,6 +154,7 @@ class ToolCallAgent(ReActAgent):
             if self.tool_calls[0].function.name == 'final_response':
                 if self.websocket:
                     await self.websocket.send_text(f"✨最终回复:{result}")
+                    
             # Add tool response to memory
             tool_msg = Message.tool_message(
                 content=result, tool_call_id=tool_call.id, name=tool_call.function.name
@@ -183,6 +184,10 @@ class ToolCallAgent(ReActAgent):
         try:
             
             args = command.function.arguments
+            args = args.replace('\n', '\\n').replace('\r', '\\r').replace('\t', '\\t')
+            
+            logger.info(f"🛠️ 执行工具: {name} with args: {args}")
+            
             args = json.loads(args) if args else {}
             
             if name == "handoff_to_agent":
@@ -199,12 +204,34 @@ class ToolCallAgent(ReActAgent):
             else:
                 result = await self.available_tools.execute(name=name, tool_input=args)
                 
-            # Format result for display
             observation = (
                 f" `工具:{name}`的观测结果输出为 :\n{str(result)}"
                 if result
                 else f"`{name}` 执行结束，但没有输出结果"
             )
+            function_name_map = {
+                "code_to_uml_generator_multilang" : "UML绘图工具",
+                "github_repo_cloner_ssh" : "GITHUB克隆工具",
+                "create_chat_completion" : "回答格式化工具",
+                "planning" : "任务规划工具",
+                "python_execute" : "python执行工具",
+                "re_ask" : "重问工具",
+                "final_response" : "总结工具",
+                "terminate" : "结束回答",
+                "baidu_search" : "百度搜索",
+                "ensure_init_py":"结构修补工具",
+                "handoff_to_agent": "代理交接",
+                "project_blueprint" : "项目蓝图生成工具",
+                "code_analyzer" : "代码分析工具",
+                "file_operator" : "文件操作工具",
+                "rag": "RAG工具",
+                "get_weather_tool":"天气工具",
+                "file_seeker": "文件查找工具",
+                "file_saver": "文件保存工具",
+            }
+            if name in ["project_blueprint", "terminate"]:
+                await self.websocket.send_text(f"✨ 执行结果：{observation}")
+                
             await self._handle_special_tool(name=name, result=result)
             
             return observation

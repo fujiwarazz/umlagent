@@ -28,7 +28,7 @@ class ToolCollection:
                 }    
         """
         return [tool.to_param() for tool in self.tools]
-
+    
     async def execute(
         self, *, name: str, tool_input: Dict[str, Any] = None
     ) -> ToolResult:
@@ -39,6 +39,7 @@ class ToolCollection:
             result = await tool(**tool_input)
             return result
         except ToolError as e:
+            print(f"Error executing tool {name}: {e.message}")
             return ToolFailure(error=e.message)
 
     async def execute_all(self) -> List[ToolResult]:

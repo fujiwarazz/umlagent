@@ -41,7 +41,7 @@ class CodeAnalyzer(BaseTool):
         if self.client is None:
             self.client = AsyncOpenAI(api_key=llm_settings.api_key,base_url=llm_settings.base_url)
             
-        prompt = f"帮我分析以下代码：{content}"
+        prompt = f"帮我十分简要、清晰的分析以下代码：{content}"
         self.history.append({"role":"user","content":prompt})
         
         response = await self.client.chat.completions.create(
