@@ -37,7 +37,6 @@ class UMLAgent(ToolCallAgent):
 
     @model_validator(mode="after")
     def initialize_plan_and_verify_tools(self) -> "UMLAgent":
-        """Initialize the agent with a default plan ID and validate required tools."""
        # self.active_plan_id = f"plan_{int(time.time())}"
         self.last_activate_plan_id = None
         if "planning" not in self.available_tools.tool_map:
@@ -45,7 +44,6 @@ class UMLAgent(ToolCallAgent):
 
         return self
 
-    # from base class
     async def think(self) -> bool:
         """Decide the next action based on plan status."""
         prompt = (
@@ -55,11 +53,9 @@ class UMLAgent(ToolCallAgent):
         )
         self.messages.append(Message.user_message(prompt))
 
-        # Get the current step index before thinking
         self.current_step_index = await self._get_current_step_index()
 
         result = await super().think()
-        
         
         if result and self.tool_calls:
             latest_tool_call = self.tool_calls[0]  # Get the most recent tool call
@@ -76,15 +72,12 @@ class UMLAgent(ToolCallAgent):
                 }
         return result
 
-    # from base class
     async def act(self) -> str:
         result = await super().act()
 
-        # After executing the tool, update the plan status
         if self.tool_calls:
             latest_tool_call = self.tool_calls[0]
 
-            # Update the execution status to completed
             if latest_tool_call.id in self.step_execution_tracker:
                 self.step_execution_tracker[latest_tool_call.id]["status"] = "completed"
                 self.step_execution_tracker[latest_tool_call.id]["result"] = result
@@ -112,7 +105,13 @@ class UMLAgent(ToolCallAgent):
     async def run(self, query: Optional[str] = None) -> str:
         """Run the agent with an optional initial request."""
         if query:
-            await self.create_initial_plan(query)
+            # self.messages.append(Message.user_message(f"for this query: {query}, if this query is following the existing plan, please answer 'yes' or 'no' only!"))
+            # res = await self.llm.ask(
+            #    history=self.messages,
+            #    system_msgs=[Message.system_message(self.system_prompt)]
+            # )
+            # if "no" in res.strip().lower():
+                await self.create_initial_plan(query)
 
         return await super().run()
 
@@ -153,10 +152,7 @@ class UMLAgent(ToolCallAgent):
             logger.warning(f"Failed to update plan status: {e}")
 
     async def _get_current_step_index(self) -> Optional[int]:
-        """
-        Parse the current plan to identify the first non-completed step's index.
-        Returns None if no active step is found.
-        """
+      
         if not self.active_plan_id:
             return None
 
@@ -175,7 +171,6 @@ class UMLAgent(ToolCallAgent):
             if steps_index == -1:
                 return None
 
-            # Find the first non-completed step
             for i, line in enumerate(plan_lines[steps_index + 1 :], start=0):
                 if "[ ]" in line or "[→]" in line:  # not_started or in_progress
                     # Mark current step as in_progress

@@ -17,6 +17,7 @@ Available tools will vary by task but may include:
 Break tasks into logically clear steps with defined outcomes. Avoid excessive detail or too many sub-steps.
 When planning, consider dependencies between tasks and methods for verification.
 Know when to conclude – do not continue thinking once objectives are met.
+When you chose to use a tool, you must provide a clear and concise reason for your choice.
 """
 
 NEXT_STEP_PROMPT = """

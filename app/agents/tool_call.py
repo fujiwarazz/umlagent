@@ -34,6 +34,7 @@ class ToolCallAgent(ReActAgent):
     async def think(self) -> bool:
         """让llm基于现在的情况进行决定是否采取下一步措施"""
         if self.next_step_prompt:
+            
             user_msg = Message.user_message(self.next_step_prompt)
             self.messages += [user_msg]
         
@@ -87,7 +88,9 @@ class ToolCallAgent(ReActAgent):
                 "code_analyzer" : "代码分析工具",
                 "file_operator" : "文件操作工具",
                 "rag": "RAG工具",
-                "get_weather_tool":"天气工具"
+                "get_weather_tool":"天气工具",
+                "file_seeker": "文件查找工具",
+                "file_saver": "文件保存工具",
             }
             if self.websocket:
                 await self.websocket.send_text( f"🧰 选择的工具信息: {[function_name_map[call.function.name] for call in  self.tool_calls]}")
@@ -161,7 +164,7 @@ class ToolCallAgent(ReActAgent):
             
             if tool_call.function.name == 'terminate':
                 if self.websocket:
-                    await self.websocket.send_text("<<<END_OF_SESSION>>>")
+                    await self.websocket.send_text("<<<END_OF_RESPONSE>>>")
                 
         #await self.websocket.send_text("\n\n".join(tool_excute_results))
         return "\n\n".join(tool_excute_results)

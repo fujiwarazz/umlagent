@@ -54,7 +54,7 @@ class PlanningTool(BaseTool):
                 "type": "integer",
             },
             "step_status": {
-                "description": "Status to set for a step. Used with mark_step command.",
+                "description": "Status to set for a step. Used with mark_step command.If step result is failed, you can set the status to 'blocked'.",
                 "enum": ["not_started", "in_progress", "completed", "blocked"],
                 "type": "string",
             },

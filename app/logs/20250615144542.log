@@ -1,0 +1,867 @@
+2025-06-15 14:45:48.093 | INFO     | main:websocket_endpoint:107 - WebSocket connection accepted from 127.0.0.1:58434
+2025-06-15 14:45:48.094 | INFO     | tools.swe_tools.file_operator:__init__:80 - FileOperatorTool initialized with workspace_root: D:\deep_learning\codes\umlagent\app\workspace\tmp_codes
+2025-06-15 14:45:50.722 | INFO     | main:websocket_endpoint:139 - Received message from 127.0.0.1:58434: 帮我找个LLAVA项目，分析代码以及UML
+2025-06-15 14:45:52.352 | INFO     | agents.umlagent:create_initial_plan:200 - Creating initial plan with ID: plan_1749969952
+2025-06-15 14:46:01.511 | INFO     | agents.umlagent:create_initial_plan:232 -  结果为:  `工具:planning`的观测结果输出为 :
+Plan created successfully with ID: plan_1749969952
+
+Plan: Find LLAVA Project, Analyze Code, and Generate UML (ID: plan_1749969952)
+===============================================================================
+
+Progress: 0/4 steps completed (0.0%)
+Status: 0 completed, 0 in progress, 0 blocked, 4 not started
+
+Steps:
+0. [ ] 使用百度搜索找到LLAVA项目。
+1. [ ] 克隆找到的LLAVA项目的GitHub仓库。
+2. [ ] 确保项目中的Python包有__init__.py文件。
+3. [ ] 生成LLAVA项目的UML类图。
+
+2025-06-15 14:46:01.511 | INFO     | agents.base:run:120 - websocket initialized finish, state:<starlette.datastructures.State object at 0x000001897F883B60>
+2025-06-15 14:46:01.512 | INFO     | agents.base:run:130 - Executing step 1/20
+2025-06-15 14:46:06.115 | INFO     | agents.tool_call:think:61 - ✨ uml agnet 的想法为: 当前计划是充分的，不需要进一步优化和改进。接下来可以立即执行下一步骤，即使用百度搜索找到LLAVA项目。 , [ChatCompletionMessageToolCall(id='call_2ec63e468a98446a9a7813', function=Function(arguments='{"command":"mark_step","step_index":0,"step_status":"in_progress","plan_id":"plan_1749969952"}', name='planning'), type='function', index=0)]
+2025-06-15 14:46:06.116 | INFO     | agents.tool_call:think:65 - 🛠️ uml agnet 选择了 1 个工具
+2025-06-15 14:46:06.116 | INFO     | agents.tool_call:think:71 - 🧰 选择的工具信息: ['planning']
+2025-06-15 14:46:06.116 | INFO     | agents.tool_call:think:96 - 🧰 工具的参数是: ['{"command":"mark_step","step_index":0,"step_status":"in_progress","plan_id":"plan_1749969952"}']
+2025-06-15 14:46:06.116 | INFO     | agents.tool_call:act:149 - 🎯 工具 'planning' 完成了它的任务! 其执行结果为:  `工具:planning`的观测结果输出为 :
+Step 0 updated in plan 'plan_1749969952'.
+
+Plan: Find LLAVA Project, Analyze Code, and Generate UML (ID: plan_1749969952)
+===============================================================================
+
+Progress: 0/4 steps completed (0.0%)
+Status: 0 completed, 1 in progress, 0 blocked, 3 not started
+
+Steps:
+0. [→] 使用百度搜索找到LLAVA项目。
+1. [ ] 克隆找到的LLAVA项目的GitHub仓库。
+2. [ ] 确保项目中的Python包有__init__.py文件。
+3. [ ] 生成LLAVA项目的UML类图。
+
+2025-06-15 14:46:06.117 | INFO     | agents.base:run:130 - Executing step 2/20
+2025-06-15 14:46:09.479 | INFO     | agents.tool_call:think:65 - 🛠️ uml agnet 选择了 1 个工具
+2025-06-15 14:46:09.480 | INFO     | agents.tool_call:think:71 - 🧰 选择的工具信息: ['baidu_search']
+2025-06-15 14:46:09.480 | INFO     | agents.tool_call:think:96 - 🧰 工具的参数是: ['{"query":"LLAVA项目 github"}']
+2025-06-15 14:46:10.510 | INFO     | agents.tool_call:act:149 - 🎯 工具 'baidu_search' 完成了它的任务! 其执行结果为:  `工具:baidu_search`的观测结果输出为 :
+[{'title': 'java · GitHub Topics · GitHub', 'abstract': 'java · GitHub Topics · GitHub\n\n\n\n\n\n\n\n\n\n5天前java snippets design-patterns principles awesome-list hacktoberfest snippets-library snippets-collection  Updated Jun 9, 2025 Java  macrozheng / mall Star 80.6k  Code Issues Pull requests  mall项目是一套电商系统,包括前台商城\n\n\nGitHub', 'url': 'http://www.baidu.com/link?url=fbvNI1NL1G2p9DQ2Rba3mVgyHDSKJStdCu5cvoFj3OfsCkjU8-IQKMO7imw7Lr9w', 'rank': 1}, {'title': 'GitHub · Where software is built', 'abstract': 'GitHub · Where software is built\n\n\n查看此网页的中文翻译，请点击\n\n\n翻译此页\n\n\n\n2025年4月15日[Question] Is the LLaVA-1.5-HD model not open source? Status: Open. #1865In haotian-liu/LLaVA; ·Twi-etnopenedonApr 9, 2025 [Usage] llava-1.6-34在推理图像上输出不符合要求 Status: Open. #1862In haotian-liu/LLaVA; ·july-loveopenedonApr 1, 2025 ..', 'url': 'http://www.baidu.com/link?url=kCZok-n9cDFQXxE_cclo_9ImdUybdqx2jqC9BiuK-SRxK5yjBQZS0lg6ERieq_sKeDWUpmVzbxlD9gDZb5RXTa', 'rank': 2}, {'title': 'Java开发者必看:Github上的精选Java开源项目集合-CSDN博客', 'abstract': 'Java开发者必看:Github上的精选Java开源项目集合-CSDN博客\n\n\n\n\n\n\n\n\n\n2025年5月3日Github作为最大的代码托管和版本控制平台,是寻找Java开源项目的主要场所。 发现项目的方法: 搜索关键词:在Github的搜索栏中输入感兴趣的关键词,如“Java”、“Web Framework”等,可以找到与关键词相关的项目。 浏览排行榜:Github的Trending页面会展示当日最热门的开源项目,这些项目通常有着较高的关注者和贡献者。 社区...\n\n\nCSDN博客\n\n\n\n\n\n\n\n\n\ue680\n播报\n\n\n\ue67d\n暂停', 'url': 'http://www.baidu.com/link?url=Fpvv7AOplc01L13tiQ097MwgvQ6pL5zTsJZriIO9o9119RSvGYC4mj2TR6sDN2UrfDCcBSyd7FqHzaQW-fvjnq3-U_Expp9kvUapnlKeZ6O', 'rank': 3}, {'title': 'GitHub 上最火的开源项目 —— Java 篇-CSDN博客', 'abstract': 'GitHub 上最火的开源项目 —— Java 篇-CSDN博客\n\n\n\n\n\n\n\n\n\n2017年9月3日star:15850; fork:11326 Spring Framework是一个开源的Java/Java EE全功能栈(full-stack)的应用程序框架,以Apache许可证形式发布,也有.NET平台上的移植版本。该框架基于 Expert One-on-One Java EE Design and Development(ISBN 0-7645-4385-7)一书中的代码,最初由 Rod Johnson 和 Juergen Hoeller等开发。Spring...\n\n\nCSDN博客\n\n', 'url': 'http://www.baidu.com/link?url=cNuJS5R_bMA_iL3Au2caR8fdITUEhTZbqsM6YX-Go1CHiHd3Qkp0DDFrjayRjQlZCbh9klJUESDZX2CgQQvVIhJUKbmkKOAuR5yY6BvvsXO', 'rank': 4}, {'title': '大家还在搜github优秀java开源项目github优秀开源项目git上传项目到githubgithub 项目github热门开源项目github项目地址github项目推荐github开源论坛项目', 'abstract': '大家还在搜github优秀java开源项目github优秀开源项目git上传项目到githubgithub 项目github热门开源项目github项目地址github项目推荐github开源论坛项目', 'url': '/s?wd=github%E4%BC%98%E7%A7%80java%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE&usm=2&ie=utf-8&rsv_pq=faf2f52c02d9cee0&oq=LLAVA%E9%A1%B9%E7%9B%AE%20github&rsv_t=3b1aPToejrB7u5WVXuEH%2Bd6tLih7JyXm3EsnZ6ersCGiLCwVJ9UcjlVyW4g&rsf=101633403&rsv_dl=0_prs_28608_1', 'rank': 5}, {'title': 'LLAVA项目 github - 聊一下更多精彩', 'abstract': 'LLAVA项目 github - 聊一下更多精彩github助手1.4万人聊过github专家Agent，提供全面详细的专业知识和经验分享，帮助用户解决困惑并得到提升。\n你好，我是GitHub专家助手，拥有丰富的GitHub使用经验和专业技能。很高兴与你交流，请问有什么关于GitHub的问题或需求，我可以帮你解答或协助解决吗？\n如何使用GitHub进行版本控制？GitHub上有哪些常用的协作工具？如何在GitHub上创建一个自己的项目仓库？继续问', 'url': 'http://www.baidu.com/link?url=Fpvv7AOplc01L13tiQ097T9sxGQiLbY1IKwC_VgcqBymnItaBQaXj_ff8vVWLoCY118gJKSlXdKfKcGBVRWaXd8ZarQrxzuhT_h6E7as65wYYU4XD15ybITumMxMIObuD9kl0gI4V5LGtGt4ZlPrCUZT_fWgIcnT3UsESYPgaLYqSDN_A-iQK5QtN-BHFRaMBGG61eihDE6Cig9x-eiN6f7jhrXUFWeoAqTfLglGDtQ7YNiL61mUHNLbTaXdBP8iXF875xVf2xG-0S7LEM_YAA0Ce-5Ra7mMEMvXXazKliDZ8k81BeTOedHbpIKJNhC98IeinosY1JnqNX_7jn_rdAIrc7P1AIKYTC7oPL6J9soqG1ntiL04aqhXQBsvxdQa_rzVkKoHu6zS1Q9RmAiHuTjvNpG5Fb5Ij0KiKWa7Tu07UsDMK1UfRhAm-xDS97W4lS-FyI55Kwaxgr1L8rCsDTLL3C8d0SAwlYdjBj3nfM0SSZApQ6MRyNBOOTmHGbYQ7PbyxErnL3jef-Z_XH2qlaBHAJdmMjgwJuHaqvtLZjzdoTzmtvU9Wjm0DvtSDjCf', 'rank': 6}, {'title': '使用Gradle 发布 Java 包 - GitHub Enterprise Server 3.11 Docs', 'abstract': '使用Gradle 发布 Java 包 - GitHub Enterprise Server 3.11 Docs\n\n2024年12月19日有关使用 Gradle 为 Java 项目创建 CI 工作流的详细信息,请参阅“使用 Gradle 构建和测试 Java”。 你可能还发现基本了解以下内容是有帮助的: 使用Apache Maven 注册表 在变量中存储信息 在GitHub Actions 中使用机密 自动令牌身份验证 关于包配置 build.gradle 文件MavenPublication部分...\n\n\ndocs.github.com/zh/enterprise-se...', 'url': 'http://www.baidu.com/link?url=cNuJS5R_bMA_iL3Au2caR5yHQfuSIlr92Lqb_U7QFYTWzINfuICxXd8Z8Mx8tJZ2ZgbQRpm-FZyFhq8fRYn3JiumInhRMH5K9SSOqyeErLWQAHT1yq4_9giXp8zb2ppz2Ioc5XJmVQ9jphpEkUjcyUF8elbjb72yweNeXIRjiDqssBYpCTLgxuaHrvTHjRC197Ca61zxMKHHL4UpKaaj0q', 'rank': 7}, {'title': 'Java自学热门项目:Github第一,吸引14万粉丝! - 哔哩哔哩', 'abstract': 'Java自学热门项目:Github第一,吸引14万粉丝! - 哔哩哔哩\n\n\n\n\n\n\n\n\n\n2024年1月9日「Java学习+面试指南」一份涵盖大部分 Java 程序员所需要掌握的核心知识。准备 Java 面试,首选 JavaGuide!除此之外”CC“还无偿分...\n\n\n哔哩哔哩\n\n\n\n\n\n\n\n\n\ue680\n播报\n\n\n\ue67d\n暂停', 'url': 'http://www.baidu.com/link?url=cNuJS5R_bMA_iL3Au2caR8fdITUEhTZbqsM6YX-Go1EvRGCo3XeEo5g3NBtYBwboNZ0q8SP3fX88RjW0rdF3a_', 'rank': 8}, {'title': '推荐9 个 GitHub 上练手项目(在线考试、仿美团、仿抖音、仿B站、仿头...', 'abstract': '推荐9 个 GitHub 上练手项目(在线考试、仿美团、仿抖音、仿B站、仿头...\n\n\n\n\n\n\n\n\n\n2025年5月15日推荐的这几个 GitHub 项目并不是简单的 XX 管理系统,我会从下面这些方向推荐几个入门级别但是不那么 Low 的项目。 01 JavaWeb项目 学之思在线考试系统 这个项目是是一款 Spring 技术栈 +Vue.js的前后端分离的考试系统,分为学生端、用户端、小程序端,能覆盖到 PC 和移动端。。界面美观、设计友好、代码结构清晰...\n\n\n知乎', 'url': 'http://www.baidu.com/link?url=FXjrSwrJHZyc-vjY4-4oqxSM5t62eZHmBh0FYoz4ZDpyx2org8dX3jWgbC9R5Jvf', 'rank': 9}, {'title': 'Github 上有没有优秀的Java 项目推荐? - 知乎', 'abstract': 'Github 上有没有优秀的Java 项目推荐? - 知乎\n\n\n\n\n\n\n\n\n\n2021年11月10日项目地址：https://gitee.com/SnailClimb/awesome-java 教程 Java JavaGuide:【Java 学习+面试指南】 一...\n\n\n知乎', 'url': 'http://www.baidu.com/link?url=cNuJS5R_bMA_iL3Au2caR8fdITUEhTZbqsM6YX-Go1C3R4Vj0Y3qbsOVclo0WQ-M9YwcYqLLJsBDA8CK5qJpZDQlhWka2OXXi8wj0TL9JSK', 'rank': 10}]
+2025-06-15 14:46:10.512 | INFO     | agents.umlagent:update_plan_status:148 - Marked step 0 as completed in plan plan_1749969952
+2025-06-15 14:46:10.512 | INFO     | agents.base:run:130 - Executing step 3/20
+2025-06-15 14:46:14.679 | INFO     | agents.tool_call:think:65 - 🛠️ uml agnet 选择了 1 个工具
+2025-06-15 14:46:14.679 | INFO     | agents.tool_call:think:71 - 🧰 选择的工具信息: ['planning']
+2025-06-15 14:46:14.679 | INFO     | agents.tool_call:think:96 - 🧰 工具的参数是: ['{"command":"mark_step","step_index":0,"step_status":"completed","plan_id":"plan_1749969952"}']
+2025-06-15 14:46:14.680 | INFO     | agents.tool_call:act:149 - 🎯 工具 'planning' 完成了它的任务! 其执行结果为:  `工具:planning`的观测结果输出为 :
+Step 0 updated in plan 'plan_1749969952'.
+
+Plan: Find LLAVA Project, Analyze Code, and Generate UML (ID: plan_1749969952)
+===============================================================================
+
+Progress: 1/4 steps completed (25.0%)
+Status: 1 completed, 1 in progress, 0 blocked, 2 not started
+
+Steps:
+0. [✓] 使用百度搜索找到LLAVA项目。
+1. [→] 克隆找到的LLAVA项目的GitHub仓库。
+2. [ ] 确保项目中的Python包有__init__.py文件。
+3. [ ] 生成LLAVA项目的UML类图。
+
+2025-06-15 14:46:14.680 | INFO     | agents.base:run:130 - Executing step 4/20
+2025-06-15 14:46:20.075 | INFO     | agents.tool_call:think:65 - 🛠️ uml agnet 选择了 1 个工具
+2025-06-15 14:46:20.075 | INFO     | agents.tool_call:think:71 - 🧰 选择的工具信息: ['github_repo_cloner_ssh']
+2025-06-15 14:46:20.075 | INFO     | agents.tool_call:think:96 - 🧰 工具的参数是: ['{"repo_name":"haotian-liu/LLaVA"}']
+2025-06-15 14:46:26.134 | INFO     | agents.tool_call:act:149 - 🎯 工具 'github_repo_cloner_ssh' 完成了它的任务! 其执行结果为:  `工具:github_repo_cloner_ssh`的观测结果输出为 :
+D:\deep_learning\codes\umlagent\app\workspace\tmp_codes\LLaVA
+2025-06-15 14:46:26.134 | INFO     | agents.umlagent:update_plan_status:148 - Marked step 1 as completed in plan plan_1749969952
+2025-06-15 14:46:26.134 | INFO     | agents.base:run:130 - Executing step 5/20
+2025-06-15 14:46:31.767 | INFO     | agents.tool_call:think:65 - 🛠️ uml agnet 选择了 1 个工具
+2025-06-15 14:46:31.768 | INFO     | agents.tool_call:think:71 - 🧰 选择的工具信息: ['planning']
+2025-06-15 14:46:31.768 | INFO     | agents.tool_call:think:96 - 🧰 工具的参数是: ['{"command":"mark_step","step_index":1,"step_status":"completed","plan_id":"plan_1749969952"}']
+2025-06-15 14:46:31.768 | INFO     | agents.tool_call:act:149 - 🎯 工具 'planning' 完成了它的任务! 其执行结果为:  `工具:planning`的观测结果输出为 :
+Step 1 updated in plan 'plan_1749969952'.
+
+Plan: Find LLAVA Project, Analyze Code, and Generate UML (ID: plan_1749969952)
+===============================================================================
+
+Progress: 2/4 steps completed (50.0%)
+Status: 2 completed, 1 in progress, 0 blocked, 1 not started
+
+Steps:
+0. [✓] 使用百度搜索找到LLAVA项目。
+1. [✓] 克隆找到的LLAVA项目的GitHub仓库。
+2. [→] 确保项目中的Python包有__init__.py文件。
+3. [ ] 生成LLAVA项目的UML类图。
+
+2025-06-15 14:46:31.769 | INFO     | agents.base:run:130 - Executing step 6/20
+2025-06-15 14:46:37.314 | INFO     | agents.tool_call:think:65 - 🛠️ uml agnet 选择了 1 个工具
+2025-06-15 14:46:37.315 | INFO     | agents.tool_call:think:71 - 🧰 选择的工具信息: ['ensure_init_py']
+2025-06-15 14:46:37.315 | INFO     | agents.tool_call:think:96 - 🧰 工具的参数是: ['{"root_dir_path":"D:\\\\deep_learning\\\\codes\\\\umlagent\\\\app\\\\workspace\\\\tmp_codes\\\\LLaVA"}']
+2025-06-15 14:46:37.324 | INFO     | agents.tool_call:act:149 - 🎯 工具 'ensure_init_py' 完成了它的任务! 其执行结果为:  `工具:ensure_init_py`的观测结果输出为 :
+成功在以下 7 个目录中创建了 __init__.py 文件:
+- D:\deep_learning\codes\umlagent\app\workspace\tmp_codes\LLaVA\__init__.py
+- D:\deep_learning\codes\umlagent\app\workspace\tmp_codes\LLaVA\llava\eval\__init__.py
+- D:\deep_learning\codes\umlagent\app\workspace\tmp_codes\LLaVA\llava\model\language_model\__init__.py
+- D:\deep_learning\codes\umlagent\app\workspace\tmp_codes\LLaVA\llava\model\multimodal_encoder\__init__.py
+- D:\deep_learning\codes\umlagent\app\workspace\tmp_codes\LLaVA\llava\model\multimodal_projector\__init__.py
+- D:\deep_learning\codes\umlagent\app\workspace\tmp_codes\LLaVA\llava\train\__init__.py
+- D:\deep_learning\codes\umlagent\app\workspace\tmp_codes\LLaVA\scripts\__init__.py
+2025-06-15 14:46:37.324 | INFO     | agents.umlagent:update_plan_status:148 - Marked step 2 as completed in plan plan_1749969952
+2025-06-15 14:46:37.324 | INFO     | agents.base:run:130 - Executing step 7/20
+2025-06-15 14:46:42.237 | INFO     | agents.tool_call:think:65 - 🛠️ uml agnet 选择了 1 个工具
+2025-06-15 14:46:42.238 | INFO     | agents.tool_call:think:71 - 🧰 选择的工具信息: ['planning']
+2025-06-15 14:46:42.238 | INFO     | agents.tool_call:think:96 - 🧰 工具的参数是: ['{"command":"mark_step","step_index":2,"step_status":"completed","plan_id":"plan_1749969952"}']
+2025-06-15 14:46:42.238 | INFO     | agents.tool_call:act:149 - 🎯 工具 'planning' 完成了它的任务! 其执行结果为:  `工具:planning`的观测结果输出为 :
+Step 2 updated in plan 'plan_1749969952'.
+
+Plan: Find LLAVA Project, Analyze Code, and Generate UML (ID: plan_1749969952)
+===============================================================================
+
+Progress: 3/4 steps completed (75.0%)
+Status: 3 completed, 1 in progress, 0 blocked, 0 not started
+
+Steps:
+0. [✓] 使用百度搜索找到LLAVA项目。
+1. [✓] 克隆找到的LLAVA项目的GitHub仓库。
+2. [✓] 确保项目中的Python包有__init__.py文件。
+3. [→] 生成LLAVA项目的UML类图。
+
+2025-06-15 14:46:42.238 | INFO     | agents.base:run:130 - Executing step 8/20
+2025-06-15 14:46:51.203 | INFO     | agents.tool_call:think:65 - 🛠️ uml agnet 选择了 1 个工具
+2025-06-15 14:46:51.203 | INFO     | agents.tool_call:think:71 - 🧰 选择的工具信息: ['code_to_uml_generator_multilang']
+2025-06-15 14:46:51.203 | INFO     | agents.tool_call:think:96 - 🧰 工具的参数是: ['{"repo_path":"D:\\\\deep_learning\\\\codes\\\\umlagent\\\\app\\\\workspace\\\\tmp_codes\\\\LLaVA","output_png_path":"D:\\\\deep_learning\\\\codes\\\\umlagent\\\\app\\\\workspace\\\\tmp_codes\\\\LLaVA_UML.png","target_languages":["python"]}']
+2025-06-15 14:46:52.779 | INFO     | tools.uml:execute:658 - 准备通过 WebSocket 发送 UML 图片 'LLaVA_UML.png'。
+2025-06-15 14:46:52.783 | INFO     | tools.uml:execute:671 - UML 图片 'LLaVA_UML.png' 已通过 WebSocket 发送 (184657 字节)。
+2025-06-15 14:46:52.784 | INFO     | agents.tool_call:act:149 - 🎯 工具 'code_to_uml_generator_multilang' 完成了它的任务! 其执行结果为:  `工具:code_to_uml_generator_multilang`的观测结果输出为 :
+UML 图表和文本描述已成功生成。
+PNG 图像保存路径: 'D:\deep_learning\codes\umlagent\app\workspace\tmp_codes\LLaVA_UML.png'
+
+---
+UML 图表文本描述内容:
+---
+# UML 图表文本描述
+
+## Class: `CLIPVisionTower`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `clip_encoder`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `nn.Module`
+
+### 属性 (Attributes)
+- `is_loaded`
+- `select_feature`
+- `select_layer`
+- `vision_tower_name`
+
+### 方法 (Methods)
+- `__init__(self, vision_tower, args, delay_load)`
+- `config(self)`
+- `device(self)`
+- `dtype(self)`
+- `dummy_feature(self)`
+- `feature_select(self, image_forward_outs)`
+- `forward(self, images)`
+- `hidden_size(self)`
+- `load_model(self, device_map)`
+- `num_patches(self)`
+- `num_patches_per_side(self)`
+
+---
+
+## Class: `CLIPVisionTowerS2`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `clip_encoder`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `CLIPVisionTower`
+
+### 属性 (Attributes)
+- `multiscale_forward`
+- `s2_image_size`
+- `s2_scales`
+- `s2_split_size`
+
+### 方法 (Methods)
+- `__init__(self, vision_tower, args, delay_load)`
+- `forward(self, images)`
+- `forward_feature(self, images)`
+- `hidden_size(self)`
+- `load_model(self, device_map)`
+
+---
+
+## Class: `Controller`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `controller`
+
+### 属性 (Attributes)
+- `dispatch_method`
+- `heart_beat_thread`
+- `worker_info`
+
+### 方法 (Methods)
+- `__init__(self, dispatch_method: str)`
+- `get_worker_address(self, model_name: str)`
+- `get_worker_status(self, worker_name: str)`
+- `list_models(self)`
+- `receive_heart_beat(self, worker_name: str, queue_length: int)`
+- `refresh_all_workers(self)`
+- `register_worker(self, worker_name: str, check_heart_beat: bool, worker_status: dict)`
+- `remove_stable_workers_by_expiration(self)`
+- `remove_worker(self, worker_name: str)`
+- `worker_api_generate_stream(self, params)`
+- `worker_api_get_status(self)`
+
+---
+
+## Class: `Conversation`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `conversation`
+
+### 属性 (Attributes)
+- `messages: List[List[str]]`
+- `offset: int`
+- `roles: List[str]`
+- `sep2: str`
+- `sep: str`
+- `sep_style: SeparatorStyle`
+- `skip_next: bool`
+- `system: str`
+- `version: str`
+
+### 方法 (Methods)
+- `append_message(self, role, message)`
+- `copy(self)`
+- `dict(self)`
+- `get_images(self, return_pil)`
+- `get_prompt(self)`
+- `process_image(self, image, image_process_mode, return_pil, image_format, max_len, min_len)`
+- `to_gradio_chatbot(self)`
+
+---
+
+## Class: `CustomDataset`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `model_vqa_loader`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `Dataset`
+
+### 属性 (Attributes)
+- `image_folder`
+- `image_processor`
+- `model_config`
+- `questions`
+- `tokenizer`
+
+### 方法 (Methods)
+- `__getitem__(self, index)`
+- `__init__(self, questions, image_folder, tokenizer, image_processor, model_config)`
+- `__len__(self)`
+
+---
+
+## Class: `DataArguments`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `train`
+
+### 属性 (Attributes)
+- `data_path: str`
+- `image_aspect_ratio: str`
+- `image_folder: Optional[str]`
+- `is_multimodal: bool`
+- `lazy_preprocess: bool`
+
+---
+
+## Class: `DataCollatorForSupervisedDataset`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `train`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `object`
+
+### 属性 (Attributes)
+- `tokenizer: transformers.PreTrainedTokenizer`
+
+### 方法 (Methods)
+- `__call__(self, instances: Sequence[Dict]) -> Dict[str, torch.Tensor]`
+
+---
+
+## Class: `DispatchMethod`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `controller`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `Enum`
+
+### 属性 (Attributes)
+- `LOTTERY`
+- `SHORTEST_QUEUE`
+
+### 方法 (Methods)
+- `from_str(cls, name)`
+
+---
+
+## Class: `EvalAIAnswerProcessor`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `m4c_evaluator`
+
+### 属性 (Attributes)
+- `ARTICLES`
+- `COMMA_STRIP`
+- `CONTRACTIONS`
+- `NUMBER_MAP`
+- `PERIOD_STRIP`
+- `PUNCTUATIONS`
+
+### 方法 (Methods)
+- `__call__(self, item)`
+- `__init__(self, *args, **kwargs)`
+- `process_digit_article(self, in_text)`
+- `process_punctuation(self, in_text)`
+- `word_tokenize(self, word)`
+
+---
+
+## Class: `IdentityMap`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `builder`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `nn.Module`
+
+### 方法 (Methods)
+- `__init__(self)`
+- `config(self)`
+- `forward(self, x, *args, **kwargs)`
+
+---
+
+## Class: `KeywordsStoppingCriteria`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `mm_utils`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `StoppingCriteria`
+
+### 属性 (Attributes)
+- `keyword_ids`
+- `keywords`
+- `max_keyword_len`
+- `start_len`
+- `tokenizer`
+
+### 方法 (Methods)
+- `__call__(self, output_ids: torch.LongTensor, scores: torch.FloatTensor, **kwargs) -> bool`
+- `__init__(self, keywords, tokenizer, input_ids)`
+- `call_for_batch(self, output_ids: torch.LongTensor, scores: torch.FloatTensor, **kwargs) -> bool`
+
+---
+
+## Class: `LLaVATrainer`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `llava_trainer`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `Trainer`
+
+### 方法 (Methods)
+- `_get_train_sampler(self) -> Optional[torch.utils.data.Sampler]`
+- `_save(self, output_dir: Optional[str], state_dict)`
+- `_save_checkpoint(self, model, trial, metrics)`
+- `create_optimizer(self)`
+
+---
+
+## Class: `LazySupervisedDataset`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `train`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `Dataset`
+
+### 属性 (Attributes)
+- `data_args`
+- `list_data_dict`
+- `tokenizer`
+
+### 方法 (Methods)
+- `__getitem__(self, i) -> Dict[str, torch.Tensor]`
+- `__init__(self, data_path: str, tokenizer: transformers.PreTrainedTokenizer, data_args: DataArguments)`
+- `__len__(self)`
+- `lengths(self)`
+- `modality_lengths(self)`
+
+---
+
+## Class: `LengthGroupedSampler`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `llava_trainer`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `Sampler`
+
+### 属性 (Attributes)
+- `batch_size`
+- `generator`
+- `group_by_modality`
+- `lengths`
+- `world_size`
+
+### 方法 (Methods)
+- `__init__(self, batch_size: int, world_size: int, lengths: Optional[List[int]], generator, group_by_modality: bool)`
+- `__iter__(self)`
+- `__len__(self)`
+
+---
+
+## Class: `LlavaConfig`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `llava_llama`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `LlamaConfig`
+
+### 属性 (Attributes)
+- `model_type`
+
+---
+
+## Class: `LlavaLlamaForCausalLM`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `llava_llama`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `LlamaForCausalLM`, `LlavaMetaForCausalLM`
+
+### 属性 (Attributes)
+- `config_class`
+- `lm_head`
+- `model`
+- `pretraining_tp`
+- `vocab_size`
+
+### 方法 (Methods)
+- `__init__(self, config)`
+- `forward(self, input_ids: torch.LongTensor, attention_mask: Optional[torch.Tensor], position_ids: Optional[torch.LongTensor], past_key_values: Optional[List[torch.FloatTensor]], inputs_embeds: Optional[torch.FloatTensor], labels: Optional[torch.LongTensor], use_cache: Optional[bool], output_attentions: Optional[bool], output_hidden_states: Optional[bool], images: Optional[torch.FloatTensor], image_sizes: Optional[List[List[int]]], return_dict: Optional[bool]) -> Union[Tuple, CausalLMOutputWithPast]`
+- `generate(self, inputs: Optional[torch.Tensor], images: Optional[torch.Tensor], image_sizes: Optional[torch.Tensor], **kwargs) -> Union[GenerateOutput, torch.LongTensor]`
+- `get_model(self)`
+- `prepare_inputs_for_generation(self, input_ids, past_key_values, inputs_embeds, **kwargs)`
+
+---
+
+## Class: `LlavaLlamaModel`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `llava_llama`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `LlavaMetaModel`, `LlamaModel`
+
+### 属性 (Attributes)
+- `config_class`
+
+### 方法 (Methods)
+- `__init__(self, config: LlamaConfig)`
+
+---
+
+## Class: `LlavaMetaForCausalLM`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `llava_arch`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `ABC`
+
+### 方法 (Methods)
+- `encode_images(self, images)`
+- `get_model(self)`
+- `get_vision_tower(self)`
+- `initialize_vision_tokenizer(self, model_args, tokenizer)`
+- `prepare_inputs_labels_for_multimodal(self, input_ids, position_ids, attention_mask, past_key_values, labels, images, image_sizes)`
+
+---
+
+## Class: `LlavaMetaModel`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `llava_arch`
+
+### 方法 (Methods)
+- `__init__(self, config)`
+- `get_vision_tower(self)`
+- `initialize_vision_modules(self, model_args, fsdp)`
+
+---
+
+## Class: `LlavaMistralConfig`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `llava_mistral`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `MistralConfig`
+
+### 属性 (Attributes)
+- `model_type`
+
+---
+
+## Class: `LlavaMistralForCausalLM`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `llava_mistral`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `MistralForCausalLM`, `LlavaMetaForCausalLM`
+
+### 属性 (Attributes)
+- `config_class`
+- `lm_head`
+- `model`
+
+### 方法 (Methods)
+- `__init__(self, config)`
+- `forward(self, input_ids: torch.LongTensor, attention_mask: Optional[torch.Tensor], position_ids: Optional[torch.LongTensor], past_key_values: Optional[List[torch.FloatTensor]], inputs_embeds: Optional[torch.FloatTensor], labels: Optional[torch.LongTensor], use_cache: Optional[bool], output_attentions: Optional[bool], output_hidden_states: Optional[bool], images: Optional[torch.FloatTensor], image_sizes: Optional[List[List[int]]], return_dict: Optional[bool]) -> Union[Tuple, CausalLMOutputWithPast]`
+- `generate(self, inputs: Optional[torch.Tensor], images: Optional[torch.Tensor], image_sizes: Optional[torch.Tensor], **kwargs) -> Union[GenerateOutput, torch.LongTensor]`
+- `get_model(self)`
+- `prepare_inputs_for_generation(self, input_ids, past_key_values, inputs_embeds, **kwargs)`
+
+---
+
+## Class: `LlavaMistralModel`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `llava_mistral`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `LlavaMetaModel`, `MistralModel`
+
+### 属性 (Attributes)
+- `config_class`
+
+### 方法 (Methods)
+- `__init__(self, config: MistralConfig)`
+
+---
+
+## Class: `LlavaMptConfig`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `llava_mpt`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `MptConfig`
+
+### 属性 (Attributes)
+- `model_type`
+
+---
+
+## Class: `LlavaMptForCausalLM`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `llava_mpt`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `MptForCausalLM`, `LlavaMetaForCausalLM`
+
+### 属性 (Attributes)
+- `config_class`
+- `lm_head`
+- `supports_gradient_checkpointing`
+- `transformer`
+
+### 方法 (Methods)
+- `__init__(self, config)`
+- `_set_gradient_checkpointing(self, module, value)`
+- `forward(self, input_ids: Optional[torch.LongTensor], past_key_values: Optional[Tuple[Tuple[torch.Tensor, torch.Tensor], ...]], attention_mask: Optional[torch.Tensor], inputs_embeds: Optional[torch.Tensor], labels: Optional[torch.Tensor], use_cache: Optional[bool], output_attentions: Optional[bool], output_hidden_states: Optional[bool], return_dict: Optional[bool], images)`
+- `get_model(self)`
+- `prepare_inputs_for_generation(self, input_ids, past_key_values, inputs_embeds, **kwargs)`
+
+---
+
+## Class: `LlavaMptModel`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `llava_mpt`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `LlavaMetaModel`, `MptModel`
+
+### 属性 (Attributes)
+- `config_class`
+
+### 方法 (Methods)
+- `__init__(self, config: MptConfig)`
+- `embed_tokens(self, x)`
+
+---
+
+## Class: `ModelArguments`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `train`
+
+### 属性 (Attributes)
+- `freeze_backbone: bool`
+- `mm_patch_merge_type: Optional[str]`
+- `mm_projector_type: Optional[str]`
+- `mm_use_im_patch_token: bool`
+- `mm_use_im_start_end: bool`
+- `mm_vision_select_feature: Optional[str]`
+- `mm_vision_select_layer: Optional[int]`
+- `model_name_or_path: Optional[str]`
+- `pretrain_mm_mlp_adapter: Optional[str]`
+- `tune_mm_mlp_adapter: bool`
+- `version: Optional[str]`
+- `vision_tower: Optional[str]`
+
+---
+
+## Class: `ModelWorker`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `model_worker`
+
+### 属性 (Attributes)
+- `controller_addr`
+- `device`
+- `is_multimodal`
+- `worker_addr`
+- `worker_id`
+
+### 方法 (Methods)
+- `__init__(self, controller_addr, worker_addr, sgl_endpoint, worker_id, no_register, model_name)`
+- `__init__(self, controller_addr, worker_addr, worker_id, no_register, model_path, model_base, model_name, load_8bit, load_4bit, device, use_flash_attn)`
+- `generate_stream(self, params)`
+- `generate_stream_gate(self, params)`
+- `get_queue_length(self)`
+- `get_status(self)`
+- `register_to_controller(self)`
+- `send_heart_beat(self)`
+
+---
+
+## Class: `Predictor`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `predict`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `BasePredictor`
+
+### 方法 (Methods)
+- `predict(self, image: Path, prompt: str, top_p: float, temperature: float, max_tokens: int) -> ConcatenateIterator[str]`
+- `setup(self) -> None`
+
+---
+
+## Class: `STVQAANLSEvaluator`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `m4c_evaluator`
+
+### 属性 (Attributes)
+- `get_edit_distance`
+
+### 方法 (Methods)
+- `__init__(self)`
+- `eval_pred_list(self, pred_list)`
+- `get_anls(self, s1, s2)`
+
+---
+
+## Class: `STVQAAccuracyEvaluator`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `m4c_evaluator`
+
+### 属性 (Attributes)
+- `answer_processor`
+
+### 方法 (Methods)
+- `__init__(self)`
+- `eval_pred_list(self, pred_list)`
+
+---
+
+## Class: `SeparatorStyle`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `conversation`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `Enum`
+
+### 属性 (Attributes)
+- `LLAMA_2`
+- `MPT`
+- `PLAIN`
+- `SINGLE`
+- `TWO`
+
+---
+
+## Class: `SimpleResBlock`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `builder`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `nn.Module`
+
+### 属性 (Attributes)
+- `pre_norm`
+- `proj`
+
+### 方法 (Methods)
+- `__init__(self, channels)`
+- `forward(self, x)`
+
+---
+
+## Class: `StreamToLogger`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `utils`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `object`
+
+### 属性 (Attributes)
+- `linebuf`
+- `log_level`
+- `logger`
+- `terminal`
+
+### 方法 (Methods)
+- `__getattr__(self, attr)`
+- `__init__(self, logger, log_level)`
+- `flush(self)`
+- `write(self, buf)`
+
+---
+
+## Class: `TextCapsBleu4Evaluator`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `m4c_evaluator`
+
+### 属性 (Attributes)
+- `scorer`
+- `tokenizer`
+
+### 方法 (Methods)
+- `__init__(self)`
+- `eval_pred_list(self, pred_list)`
+
+---
+
+## Class: `TextVQAAccuracyEvaluator`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `m4c_evaluator`
+
+### 属性 (Attributes)
+- `answer_processor`
+
+### 方法 (Methods)
+- `__init__(self)`
+- `_compute_answer_scores(self, raw_answers)`
+- `eval_pred_list(self, pred_list)`
+
+---
+
+## Class: `TrainingArguments`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `train`
+
+### 继承关系 (Inheritance)
+- 继承自 (Inherits from): `transformers.TrainingArguments`
+
+### 属性 (Attributes)
+- `bits: int`
+- `cache_dir: Optional[str]`
+- `double_quant: bool`
+- `freeze_mm_mlp_adapter: bool`
+- `group_by_modality_length: bool`
+- `lora_alpha: int`
+- `lora_bias: str`
+- `lora_dropout: float`
+- `lora_enable: bool`
+- `lora_r: int`
+- `lora_weight_path: str`
+- `mm_projector_lr: Optional[float]`
+- `model_max_length: int`
+- `mpt_attn_impl: Optional[str]`
+- `optim: str`
+- `quant_type: str`
+- `remove_unused_columns: bool`
+
+---
+
+## Class: `WorkerInfo`
+
+- **语言 (Language):** python
+- **模块/文件 (Module/File):** `controller`
+
+### 属性 (Attributes)
+- `check_heart_beat: bool`
+- `last_heart_beat: str`
+- `model_names: List[str]`
+- `queue_length: int`
+- `speed: int`
+
+---
+
+
+[信息] UML 图表 'LLaVA_UML.png' 也已通过 WebSocket 直接发送。
+2025-06-15 14:46:52.792 | INFO     | agents.umlagent:update_plan_status:148 - Marked step 3 as completed in plan plan_1749969952
+2025-06-15 14:46:52.792 | INFO     | agents.base:run:130 - Executing step 9/20
+2025-06-15 14:47:00.349 | INFO     | agents.tool_call:think:65 - 🛠️ uml agnet 选择了 1 个工具
+2025-06-15 14:47:00.349 | INFO     | agents.tool_call:think:71 - 🧰 选择的工具信息: ['planning']
+2025-06-15 14:47:00.350 | INFO     | agents.tool_call:think:96 - 🧰 工具的参数是: ['{"command":"mark_step","step_index":3,"step_status":"completed","plan_id":"plan_1749969952"}']
+2025-06-15 14:47:00.350 | INFO     | agents.tool_call:act:149 - 🎯 工具 'planning' 完成了它的任务! 其执行结果为:  `工具:planning`的观测结果输出为 :
+Step 3 updated in plan 'plan_1749969952'.
+
+Plan: Find LLAVA Project, Analyze Code, and Generate UML (ID: plan_1749969952)
+===============================================================================
+
+Progress: 4/4 steps completed (100.0%)
+Status: 4 completed, 0 in progress, 0 blocked, 0 not started
+
+Steps:
+0. [✓] 使用百度搜索找到LLAVA项目。
+1. [✓] 克隆找到的LLAVA项目的GitHub仓库。
+2. [✓] 确保项目中的Python包有__init__.py文件。
+3. [✓] 生成LLAVA项目的UML类图。
+
+2025-06-15 14:47:00.351 | INFO     | agents.base:run:130 - Executing step 10/20
+2025-06-15 14:47:06.931 | INFO     | agents.tool_call:think:65 - 🛠️ uml agnet 选择了 1 个工具
+2025-06-15 14:47:06.931 | INFO     | agents.tool_call:think:71 - 🧰 选择的工具信息: ['terminate']
+2025-06-15 14:47:06.931 | INFO     | agents.tool_call:think:96 - 🧰 工具的参数是: ['{"status":"success"}']
+2025-06-15 14:47:06.932 | INFO     | agents.tool_call:_handle_special_tool:221 - 🏁 Special tool 'terminate' has completed the task!
+2025-06-15 14:47:06.932 | INFO     | agents.tool_call:act:149 - 🎯 工具 'terminate' 完成了它的任务! 其执行结果为:  `工具:terminate`的观测结果输出为 :
+本次agent执行任务的结果状态: 成功 😆
+2025-06-15 14:49:28.307 | INFO     | main:websocket_endpoint:143 - WebSocket connection disconnected from 127.0.0.1:58434
+2025-06-15 14:49:28.307 | INFO     | main:websocket_endpoint:150 - Cleaned up resources for 127.0.0.1:58434

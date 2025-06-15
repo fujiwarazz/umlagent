@@ -1,0 +1,62 @@
+2025-06-15 14:42:18.585 | INFO     | main:websocket_endpoint:107 - WebSocket connection accepted from 127.0.0.1:58252
+2025-06-15 14:42:18.585 | INFO     | tools.swe_tools.file_operator:__init__:80 - FileOperatorTool initialized with workspace_root: D:\deep_learning\codes\umlagent\app\workspace\tmp_codes
+2025-06-15 14:43:11.971 | INFO     | main:websocket_endpoint:139 - Received message from 127.0.0.1:58252: 帮我找个LLAVA项目，分析代码以及UML
+2025-06-15 14:43:14.890 | INFO     | agents.base:run:120 - websocket initialized finish, state:<starlette.datastructures.State object at 0x000001BC7FB52AE0>
+2025-06-15 14:43:14.890 | INFO     | agents.base:run:130 - Executing step 1/20
+2025-06-15 14:43:20.116 | INFO     | agents.tool_call:think:61 - ✨ uml agnet 的想法为: no , [ChatCompletionMessageToolCall(id='call_221d79f602714d99a7969c', function=Function(arguments='{"command":"create","title":"查找LLAVA项目并分析代码及UML","steps":["使用baidu_search工具搜索LLAVA项目","选择一个合适的LLAVA项目","克隆选中的LLAVA项目到本地","确保项目中存在__init__.py文件","生成项目的UML类图"]}', name='planning'), type='function', index=0)]
+2025-06-15 14:43:20.117 | INFO     | agents.tool_call:think:65 - 🛠️ uml agnet 选择了 1 个工具
+2025-06-15 14:43:20.118 | INFO     | agents.tool_call:think:71 - 🧰 选择的工具信息: ['planning']
+2025-06-15 14:43:20.118 | INFO     | agents.tool_call:think:96 - 🧰 工具的参数是: ['{"command":"create","title":"查找LLAVA项目并分析代码及UML","steps":["使用baidu_search工具搜索LLAVA项目","选择一个合适的LLAVA项目","克隆选中的LLAVA项目到本地","确保项目中存在__init__.py文件","生成项目的UML类图"]}']
+2025-06-15 14:43:20.119 | ERROR    | utils.exceptions:__init__:7 - Tool Error message
+2025-06-15 14:43:20.119 | INFO     | agents.tool_call:act:149 - 🎯 工具 'planning' 完成了它的任务! 其执行结果为:  `工具:planning`的观测结果输出为 :
+Error: Parameter `plan_id` is required for command: create
+2025-06-15 14:43:20.120 | INFO     | agents.base:run:130 - Executing step 2/20
+2025-06-15 14:43:28.545 | INFO     | agents.tool_call:think:65 - 🛠️ uml agnet 选择了 1 个工具
+2025-06-15 14:43:28.546 | INFO     | agents.tool_call:think:71 - 🧰 选择的工具信息: ['planning']
+2025-06-15 14:43:28.547 | INFO     | agents.tool_call:think:96 - 🧰 工具的参数是: ['{"command":"create","plan_id":"plan1","title":"查找LLAVA项目并分析代码及UML","steps":["使用baidu_search工具搜索LLAVA项目","选择一个合适的LLAVA项目","克隆选中的LLAVA项目到本地","确保项目中存在__init__.py文件","生成项目的UML类图"]}']
+2025-06-15 14:43:28.547 | INFO     | agents.tool_call:act:149 - 🎯 工具 'planning' 完成了它的任务! 其执行结果为:  `工具:planning`的观测结果输出为 :
+Plan created successfully with ID: plan1
+
+Plan: 查找LLAVA项目并分析代码及UML (ID: plan1)
+=====================================
+
+Progress: 0/5 steps completed (0.0%)
+Status: 0 completed, 0 in progress, 0 blocked, 5 not started
+
+Steps:
+0. [ ] 使用baidu_search工具搜索LLAVA项目
+1. [ ] 选择一个合适的LLAVA项目
+2. [ ] 克隆选中的LLAVA项目到本地
+3. [ ] 确保项目中存在__init__.py文件
+4. [ ] 生成项目的UML类图
+
+2025-06-15 14:43:28.548 | INFO     | agents.base:run:130 - Executing step 3/20
+2025-06-15 14:43:31.201 | INFO     | agents.tool_call:think:65 - 🛠️ uml agnet 选择了 1 个工具
+2025-06-15 14:43:31.202 | INFO     | agents.tool_call:think:71 - 🧰 选择的工具信息: ['baidu_search']
+2025-06-15 14:43:31.202 | INFO     | agents.tool_call:think:96 - 🧰 工具的参数是: ['{"query":"LLAVA项目 github"}']
+2025-06-15 14:43:32.678 | INFO     | agents.tool_call:act:149 - 🎯 工具 'baidu_search' 完成了它的任务! 其执行结果为:  `工具:baidu_search`的观测结果输出为 :
+[{'title': 'java · GitHub Topics · GitHub', 'abstract': 'java · GitHub Topics · GitHub\n\n\n\n\n\n\n\n\n\n5天前java snippets design-patterns principles awesome-list hacktoberfest snippets-library snippets-collection  Updated Jun 9, 2025 Java  macrozheng / mall Star 80.6k  Code Issues Pull requests  mall项目是一套电商系统,包括前台商城\n\n\nGitHub', 'url': 'http://www.baidu.com/link?url=sConenIntSzV9hMq_Q6tm2yculNsBODn2Xp8qtfn_5dkSPAws3bPoXxifTOevNoH', 'rank': 1}, {'title': 'GitHub · Where software is built', 'abstract': 'GitHub · Where software is built\n\n\n查看此网页的中文翻译，请点击\n\n\n翻译此页\n\n\n\n2025年4月15日[Question] Is the LLaVA-1.5-HD model not open source? Status: Open. #1865In haotian-liu/LLaVA; ·Twi-etnopenedonApr 9, 2025 [Usage] llava-1.6-34在推理图像上输出不符合要求 Status: Open. #1862In haotian-liu/LLaVA; ·july-loveopenedonApr 1, 2025 ..', 'url': 'http://www.baidu.com/link?url=Ynnp-amxJfUSXDsJw2_Z-GmkU1wXrn1kgDHN1n7schlDp0IxcEjTxkeyN5ahjLwP3I9DyKQSdkTnfrEePJJZpK', 'rank': 2}, {'title': 'Java开发者必看:Github上的精选Java开源项目集合-CSDN博客', 'abstract': 'Java开发者必看:Github上的精选Java开源项目集合-CSDN博客\n\n\n\n\n\n\n\n\n\n2025年5月3日Github作为最大的代码托管和版本控制平台,是寻找Java开源项目的主要场所。 发现项目的方法: 搜索关键词:在Github的搜索栏中输入感兴趣的关键词,如“Java”、“Web Framework”等,可以找到与关键词相关的项目。 浏览排行榜:Github的Trending页面会展示当日最热门的开源项目,这些项目通常有着较高的关注者和贡献者。 社区...\n\n\nCSDN博客\n\n\n\n\n\n\n\n\n\ue680\n播报\n\n\n\ue67d\n暂停', 'url': 'http://www.baidu.com/link?url=3sOn7UOZG1y8e6m-41s-Hzt9XgBa-z5lwgygoArcfAMzyGhDlZS_hK4kfPD-Fie_TEN14y4ZEw3WP1VympzamAvyO3PHjyKbbm83vka1CGa', 'rank': 3}, {'title': 'GitHub 上最火的开源项目 —— Java 篇-CSDN博客', 'abstract': 'GitHub 上最火的开源项目 —— Java 篇-CSDN博客\n\n\n\n\n\n\n\n\n\n2017年9月3日star:15850; fork:11326 Spring Framework是一个开源的Java/Java EE全功能栈(full-stack)的应用程序框架,以Apache许可证形式发布,也有.NET平台上的移植版本。该框架基于 Expert One-on-One Java EE Design and Development(ISBN 0-7645-4385-7)一书中的代码,最初由 Rod Johnson 和 Juergen Hoeller等开发。Spring...\n\n\nCSDN博客\n\n', 'url': 'http://www.baidu.com/link?url=JMstTM4tWdjk3-p5k3eJRsIdyN5XVfobIHQcy0ypFqpINsYiIVOoW7mpTRW-B4VtpuHzJpA29OoNk8O7hKqIB0oIRcqUCP7Zx-nRJRX2vcK', 'rank': 4}, {'title': '大家还在搜github优秀java开源项目github优秀开源项目git上传项目到githubgithub 项目github热门开源项目github项目地址github项目推荐github开源论坛项目', 'abstract': '大家还在搜github优秀java开源项目github优秀开源项目git上传项目到githubgithub 项目github热门开源项目github项目地址github项目推荐github开源论坛项目', 'url': '/s?wd=github%E4%BC%98%E7%A7%80java%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE&usm=2&ie=utf-8&rsv_pq=c0a15206029b2ebb&oq=LLAVA%E9%A1%B9%E7%9B%AE%20github&rsv_t=8ffcqkVbJU0FK4h2x7zyESA3GtCZXhkygyS5x0dmi4yeqBqWLhvlOPeopDw&rsf=101633403&rsv_dl=0_prs_28608_1', 'rank': 5}, {'title': 'LLAVA项目 github - 聊一下更多精彩', 'abstract': 'LLAVA项目 github - 聊一下更多精彩github助手1.4万人聊过github专家Agent，提供全面详细的专业知识和经验分享，帮助用户解决困惑并得到提升。\n你好，我是GitHub专家助手，拥有丰富的GitHub使用经验和专业技能。很高兴与你交流，请问有什么关于GitHub的问题或需求，我可以帮你解答或协助解决吗？\n如何使用GitHub进行版本控制？GitHub上有哪些常用的协作工具？如何在GitHub上创建一个自己的项目仓库？继续问', 'url': 'http://www.baidu.com/link?url=BLkaUkbWnhTlDImHmf1ILYriBGwxFalnp2rmk2mjFUV4GpXBhwOHf4L_dAVfMYePmdx46WZAPAmNrhN8BVD0S6eq4dPHU0hjLCi7cKri4iox6y6HnlMGVFtFRKuuPhc7myRKyx0zfkQmHg3EPtAK1nJL7V8MxcFhAEg4xlE1Sz2b_zrEK4S3CvfxqTlp6-_iuAKsRzkVuC59XTNyh7ZUSIdw_Nyv3glryvk8yrun5wNrkYdhg2vU9GcKBjtS6fVl0n0U_3ATQeX7-xBBOkm-ASM3pvHGgt5vaXyJrOHkiiOV1dDrJVgU7YKbN92wgMX0PXTgv6D5Q9J0U8kPAwHIm8xTucBhprKWGR8AoWC_toU54afJccDy5t7wD4cU9CuB8pkvc62y8n4Q9kiOrKdu8LaaZID_5CZrerQ9C8B4dV3rWlsaSeX9IWD9UJGBHdCydftfiuHInxhHxJlyduxufrYvNH_OA7VESV7yrQ1fn1VSDUhOcWRrMYqbGetSQJa-XQw6yCWEcCRCTz-g1G-YNS-MdqH2fTZQl_ezS67pBbzVImRrKv9yQMsic5WWFcFg', 'rank': 6}, {'title': '使用Gradle 发布 Java 包 - GitHub Enterprise Server 3.11 Docs', 'abstract': '使用Gradle 发布 Java 包 - GitHub Enterprise Server 3.11 Docs\n\n2024年12月19日有关使用 Gradle 为 Java 项目创建 CI 工作流的详细信息,请参阅“使用 Gradle 构建和测试 Java”。 你可能还发现基本了解以下内容是有帮助的: 使用Apache Maven 注册表 在变量中存储信息 在GitHub Actions 中使用机密 自动令牌身份验证 关于包配置 build.gradle 文件MavenPublication部分...\n\n\ndocs.github.com/zh/enterprise-se...', 'url': 'http://www.baidu.com/link?url=JMstTM4tWdjk3-p5k3eJR6WXr47cKJiOv_0FpOYS42jL0unUGcoGbgtcsu4JlkaKUZ3rmBbKig_oDHT6TXvSPDdzG77mzEo-U9KdMu8ph9PbNeZwO3SZAdgBLdHjDlR9UyO9O-AeNryofV9nemIiqb3LKkTXbkBREPck0m8xllJd7aV7nZwMKlAAl9AgVXnWC-ji7rIn4ocLjf6RFQQlDK', 'rank': 7}, {'title': 'Java自学热门项目:Github第一,吸引14万粉丝! - 哔哩哔哩', 'abstract': 'Java自学热门项目:Github第一,吸引14万粉丝! - 哔哩哔哩\n\n\n\n\n\n\n\n\n\n2024年1月9日「Java学习+面试指南」一份涵盖大部分 Java 程序员所需要掌握的核心知识。准备 Java 面试,首选 JavaGuide!除此之外”CC“还无偿分...\n\n\n哔哩哔哩\n\n\n\n\n\n\n\n\n\ue680\n播报\n\n\n\ue67d\n暂停', 'url': 'http://www.baidu.com/link?url=JMstTM4tWdjk3-p5k3eJRsIdyN5XVfobIHQcy0ypFqn7E8FvMrmps9qm9yVfUvLQucXrJ--Lu_CnnaZSR4DHnq', 'rank': 8}, {'title': '推荐9 个 GitHub 上练手项目(在线考试、仿美团、仿抖音、仿B站、仿头...', 'abstract': '推荐9 个 GitHub 上练手项目(在线考试、仿美团、仿抖音、仿B站、仿头...\n\n\n\n\n\n\n\n\n\n2025年5月15日推荐的这几个 GitHub 项目并不是简单的 XX 管理系统,我会从下面这些方向推荐几个入门级别但是不那么 Low 的项目。 01 JavaWeb项目 学之思在线考试系统 这个项目是是一款 Spring 技术栈 +Vue.js的前后端分离的考试系统,分为学生端、用户端、小程序端,能覆盖到 PC 和移动端。。界面美观、设计友好、代码结构清晰...\n\n\n知乎', 'url': 'http://www.baidu.com/link?url=MQIGOiPWI6JDKAZrElMr3rzpUz35G6Jn2v050eDbSDjjwKxXlCBUp25CtJWL3msL', 'rank': 9}, {'title': 'Github 上有没有优秀的Java 项目推荐? - 知乎', 'abstract': 'Github 上有没有优秀的Java 项目推荐? - 知乎\n\n\n\n\n\n\n\n\n\n2021年11月10日项目地址：https://gitee.com/SnailClimb/awesome-java 教程 Java JavaGuide:【Java 学习+面试指南】 一...\n\n\n知乎', 'url': 'http://www.baidu.com/link?url=JMstTM4tWdjk3-p5k3eJRsIdyN5XVfobIHQcy0ypFqmzhARC99wnq6J8OhAHD5jff_vCu2tqlx9NWtKgHVpZt2xcTQS03ISSKoTEanrV6za', 'rank': 10}]
+2025-06-15 14:43:32.679 | INFO     | agents.base:run:130 - Executing step 4/20
+2025-06-15 14:43:36.132 | INFO     | agents.tool_call:think:65 - 🛠️ uml agnet 选择了 1 个工具
+2025-06-15 14:43:36.133 | INFO     | agents.tool_call:think:71 - 🧰 选择的工具信息: ['planning']
+2025-06-15 14:43:36.133 | INFO     | agents.tool_call:think:96 - 🧰 工具的参数是: ['{"command":"mark_step","step_index":0,"step_status":"completed","plan_id":"plan1"}']
+2025-06-15 14:43:36.134 | INFO     | agents.tool_call:act:149 - 🎯 工具 'planning' 完成了它的任务! 其执行结果为:  `工具:planning`的观测结果输出为 :
+Step 0 updated in plan 'plan1'.
+
+Plan: 查找LLAVA项目并分析代码及UML (ID: plan1)
+=====================================
+
+Progress: 1/5 steps completed (20.0%)
+Status: 1 completed, 0 in progress, 0 blocked, 4 not started
+
+Steps:
+0. [✓] 使用baidu_search工具搜索LLAVA项目
+1. [ ] 选择一个合适的LLAVA项目
+2. [ ] 克隆选中的LLAVA项目到本地
+3. [ ] 确保项目中存在__init__.py文件
+4. [ ] 生成项目的UML类图
+
+2025-06-15 14:43:36.134 | INFO     | agents.base:run:130 - Executing step 5/20
+2025-06-15 14:43:40.354 | INFO     | agents.tool_call:think:65 - 🛠️ uml agnet 选择了 1 个工具
+2025-06-15 14:43:40.355 | INFO     | main:websocket_endpoint:143 - WebSocket connection disconnected from 127.0.0.1:58252
+2025-06-15 14:43:40.355 | INFO     | main:websocket_endpoint:150 - Cleaned up resources for 127.0.0.1:58252

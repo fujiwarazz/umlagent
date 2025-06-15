@@ -81,7 +81,7 @@ async def python_execute(code: Annotated[str, IsRequired],path:Annotated[str, No
     return ToolResult(output=result)
     
     
-async def main():
+# async def main():
     # aagent = ToolCallAgent(available_tools=ToolCollection(Terminate(),CreateChatCompletion(),FinalResponse(),python_execute,weather),
     #                        description="A agent that can execute Python code and get weather information.")
     
@@ -97,57 +97,57 @@ async def main():
     # res = await sweagent.run("帮我分析路径：D:\\deep_learning\\codes\\umlagent\\app\\workspace\\tmp_codes\\LLaVA-NeXT,这个项目")
     # print(res)
 
-if __name__ == "__main__":
-    asyncio.run(main())
+# if __name__ == "__main__":
+    # asyncio.run(main())
     
-# @app.websocket("/ws")
-# async def websocket_endpoint(websocket: WebSocket):
-#     await websocket.accept()
-#     client_id = str(websocket.client.host) + ":" + str(websocket.client.port)
-#     logger.info(f"WebSocket connection accepted from {client_id}")
-#     try:
-#         from tools import RAG,CodeAnalyzer,FileOperatorTool,BlueprintTool
+@app.websocket("/ws")
+async def websocket_endpoint(websocket: WebSocket):
+    await websocket.accept()
+    client_id = str(websocket.client.host) + ":" + str(websocket.client.port)
+    logger.info(f"WebSocket connection accepted from {client_id}")
+    try:
+        from tools import RAG,CodeAnalyzer,FileOperatorTool,BlueprintTool
         
         
-#         sweagent = SWEAgent(available_tools=ToolCollection(
-#                                 RAG(),
-#                                 CodeAnalyzer(),FileOperatorTool(workspace_root=str(CODE_PATH)),BlueprintTool(),PythonExecute()
-#                                 ),
-#                             websocket=websocket,) #  用于分析代码的专用agent
+        sweagent = SWEAgent(available_tools=ToolCollection(
+                                RAG(),
+                                CodeAnalyzer(),FileOperatorTool(workspace_root=str(CODE_PATH)),BlueprintTool(),PythonExecute(),FinalResponse(),CreateChatCompletion(),Terminate(),BaiduSearch()
+                                ),
+                            websocket=websocket,) #  用于分析代码的专用agent
 
-#         agent = UMLAgent(
-#             available_tools=ToolCollection(
-#                                 PlanningTool(),
-#                                 FinalResponse(),
-#                                 BaiduSearch(),
-#                                 #ReAsk(websocket), deadlock bug 
-#                                 CodeToUMLTool(websocket=websocket),
-#                                 Terminate(),
-#                                 CreateChatCompletion(),
-#                                 GitHubRepoCloner(local_clone_base_dir=str(CODE_PATH)),
-#                                 FileSeeker(),
-#                                 FileSaver(),
-#                                 EnsureInitPyTool()
-#                                 ),
-#             websocket=websocket,
-#             hands_offs=[sweagent]
-#             )
+        agent = UMLAgent(
+            available_tools=ToolCollection(
+                                PlanningTool(),
+                                FinalResponse(),
+                                BaiduSearch(),
+                                #ReAsk(websocket), deadlock bug 
+                                CodeToUMLTool(websocket=websocket),
+                                Terminate(),
+                                CreateChatCompletion(),
+                                GitHubRepoCloner(local_clone_base_dir=str(CODE_PATH)),
+                                FileSeeker(),
+                                FileSaver(),
+                                EnsureInitPyTool()
+                                ),
+            websocket=websocket,
+            hands_offs=[sweagent]
+            )
         
-#         active_agents[client_id] = agent        
-#         while True:
-#             data = await websocket.receive_text()
-#             logger.info(f"Received message from {client_id}: {data}")
-#             await agent.run(query=data)
+        active_agents[client_id] = agent        
+        while True:
+            data = await websocket.receive_text()
+            logger.info(f"Received message from {client_id}: {data}")
+            await agent.run(query=data)
 
-#     except WebSocketDisconnect:
-#         logger.info(f"WebSocket connection disconnected from {client_id}")
-#         #await websocket.send_text("<<<END_OF_RESPONSE>>>")
-#         if client_id in active_agents:
-#             del active_agents[client_id]
-#     finally:
-#         if client_id in active_agents:
-#             del active_agents[client_id]
-#         logger.info(f"Cleaned up resources for {client_id}")
+    except WebSocketDisconnect:
+        logger.info(f"WebSocket connection disconnected from {client_id}")
+        #await websocket.send_text("<<<END_OF_RESPONSE>>>")
+        if client_id in active_agents:
+            del active_agents[client_id]
+    finally:
+        if client_id in active_agents:
+            del active_agents[client_id]
+        logger.info(f"Cleaned up resources for {client_id}")
 
 
 
