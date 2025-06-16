@@ -16,10 +16,11 @@ class GitHubRepoCloner(BaseTool):
     确保您的机器已配置好 SSH 密钥并已添加到 GitHub 账户，以便通过 SSH 进行克隆。
     """
     name: str = "github_repo_cloner_ssh" # 可以稍微修改名称以区分，或保持原样
-    description: str = """通过 SSH 克隆 GitHub 仓库到本地文件系统上的指定目录，并返回克隆后仓库的本地完整路径。
-                        该工具接受 GitHub 仓库的名称（格式为 '所有者/仓库名'，例如 'shareAI-lab/open-Manus'）。
-                        它将使用 'git clone' 命令（SSH方式）将仓库克隆到工具初始化时配置的本地基础目录的子目录中。
-                        成功时，返回仓库在本地的完整文件路径；失败时，返回包含错误详情的字符串。如果出现了失败，可以重复使用这个工具来尝试克隆同一个仓库。
+    description: str = """Clone GitHub repositories to a local filesystem directory via SSH and return the full local path of the cloned repository.
+                        This tool accepts a GitHub repository name (in the format 'owner/repo', e.g., 'shareAI-lab/open-Manus').
+                        warning： this tool may not work if the repository is private or does not exist.so this tool may be use for many times.
+                        It uses the 'git clone' command (SSH method) to clone the repository into a subdirectory of the local base directory configured during tool initialization.
+                        On success, returns the complete file path of the repository locally; on failure, returns a string containing error details. If a failure occurs, you can reuse this tool to attempt cloning the same repository.
                         """
     parameters: dict = {
         "type": "object",

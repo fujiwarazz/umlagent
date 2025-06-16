@@ -25,6 +25,7 @@ class UMLAgent(ToolCallAgent):
         default_factory=lambda: ToolCollection(PlanningTool(), Terminate())
     )
     
+    
     tool_choices: Literal["none", "auto", "required"] = "auto"
     special_tool_names: List[str] = Field(default_factory=lambda: [Terminate().name])
 

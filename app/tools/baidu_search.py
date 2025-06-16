@@ -9,10 +9,12 @@ import os
 
 class BaiduSearch(BaseTool):
     name: str = "baidu_search"
-    description: str = """Perform a Google search and return a list of relevant links.
-Use this tool when you need to find information on the web, get up-to-date data, or research specific topics.
-The tool returns a list of URLs that match the search query.
-"""
+    description: str = """Perform a baidu search and return a list of relevant links.
+        Use this tool when you need to find information on the web, get up-to-date data, or research specific topics.
+        The tool returns a list of URLs that match the search query.
+        The results of this tool always used for comming tools, so when the other tools executed fail, you may use this tool to search again.
+    """
+    
     parameters: dict = {
         "type": "object",
         "properties": {

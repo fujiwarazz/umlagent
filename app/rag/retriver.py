@@ -16,6 +16,7 @@ from typing import Any
 from config.app_config import VECTORDB_PATH
 from langchain.schema.document import Document
 from typing import List
+
 class AsyncVectorStoreRetriever(BaseRetriever):
     retriever:Any = Field(description= "原始向量存储检索器")
     

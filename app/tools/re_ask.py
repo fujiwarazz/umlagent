@@ -13,7 +13,7 @@ class ReAsk(BaseTool):
     strict:bool = True
     parameters:dict = {
         # ... parameters definition ...
-         "type": "object",
+        "type": "object",
         "properties": {
             "question": {
                 "description": "The question to ask the user.",
@@ -68,3 +68,8 @@ class ReAsk(BaseTool):
                      pass
 
             raise ToolFailure(f"⚠️ Error during re-ask execution: {e}")
+        
+        
+
+
+# tools = [re_ask_tool(websocket=webSocket)]

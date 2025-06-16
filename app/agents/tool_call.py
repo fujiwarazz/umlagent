@@ -91,7 +91,6 @@ class ToolCallAgent(ReActAgent):
                 "code_analyzer" : "代码分析工具",
                 "file_operator" : "文件操作工具",
                 "rag": "RAG工具",
-                "get_weather_tool":"天气工具"
             }
             if self.websocket:
                 await self.websocket.send_text( f"🧰 选择的工具信息: {[function_name_map[call.function.name] for call in  self.tool_calls]}")

@@ -37,15 +37,34 @@ class CodeProjectIndexer:
         return (file_path.suffix in self.target_extensions or
                 file_path.name in self.target_extensions)
 
+    # async def _get_all_files(self) -> List[Path]:
+    #     """Get all relevant files in the project directory."""
+    #     files = []
+    #     for root, _, filenames in os.walk(self.project_path):
+    #         for filename in filenames:
+    #             file_path = Path(root) / filename
+    #             if self._should_process_file(file_path):
+    #                 files.append(file_path)
+    #     return files
+    
     async def _get_all_files(self) -> List[Path]:
-        """Get all relevant files in the project directory."""
-        files = []
-        for root, _, filenames in os.walk(self.project_path):
-            for filename in filenames:
-                file_path = Path(root) / filename
-                if self._should_process_file(file_path):
-                    files.append(file_path)
-        return files
+        """Get all relevant files in the project directory recursively."""
+        async def _recursive_get_files(directory: Path) -> List[Path]:
+            files = []
+            try:
+                for item in directory.iterdir():
+                    if item.is_file() and self._should_process_file(item):
+                        files.append(item)
+                    elif item.is_dir():
+                        # Skip hidden directories and common excludes
+                        if not item.name.startswith('.') and item.name not in {'__pycache__', 'log', 'temp', 'node_modules', 'venv', 'env'}:
+                            files.extend(await _recursive_get_files(item))
+            except PermissionError:
+                print(f"Permission denied accessing {directory}")
+            return files
+
+        return await _recursive_get_files(self.project_path)
+
 
     async def _process_file(self, file_path: Path) -> Dict[str, List[str]]:
         content = await self._read_file_async(file_path)
