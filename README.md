@@ -18,6 +18,8 @@ pip install -r requirements.txt
 然后打开cmd，运行 dot --version 查看是否下载成功
 ### 4、修改config.yml,改成自己的dashscope的api key
 
+### 5、（optional）运行 /app/examples下的例子
+
 ### 5、运行后端
 ```
 uvicorn main:app
