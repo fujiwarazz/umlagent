@@ -3,7 +3,11 @@
 conda create --name umlagent python=3.11
 conda activate umlagent
 ```
-### 2、cd app
+### 2、clone 项目, 切换到分支 magent
+```
+git clone fujiwarazz/umlagent
+git checkout magent
+```
 
 ### 3、下载依赖以及graphviz
 ```
