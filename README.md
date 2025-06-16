@@ -5,7 +5,8 @@ conda activate umlagent
 ```
 ### 2、clone 项目, 切换到分支 magent
 ```
-git clone fujiwarazz/umlagent
+git clone git@github.com:fujiwarazz/umlagent.git
+
 git checkout magent
 ```
 
