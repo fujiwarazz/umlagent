@@ -181,7 +181,14 @@ class LLM:
                 "type": "function",
                 "function": {
                     "name": "handoff_to_agent",
-                    "description": "Hand off the conversation to another specialized agent",
+                    "description": """
+                        Hand off the conversation to another specialized agent,use this tool when you are unable to answer the question in your available tools and you are indeed sure that another agent can answer it,
+                        which mean the agent you hand off to should have enough tools and knowledge to handle the input you provide.
+                        Another very important thing is that when you give enough information to the agent you hand off to,
+                        for example: you should not git the input:"请分析LLaVA项目代码中的关键内容，包括主要功能和实现细节。" you should give 
+                        another input like "请分析LLaVA项目代码中的关键内容，包括主要功能和实现细节，代码路径是：/Users/peelsannaw/Desktop/codes/projects/umlagent/umlagent/app/workspace/tmp_codes/LLaVA"
+                    
+                    """,
                     "parameters": {
                         "type": "object",
                         "properties": {
@@ -191,7 +198,12 @@ class LLM:
                             },
                             "input": {
                                 "type": "string", 
-                                "description": "The input/query to pass to the agent, the input should be sufficiently detailed, such as the local file path etc, in order to allow the agent to understand the context and respond appropriately."
+                                "description": """
+                                The input/query to pass to the agent, the input should be sufficiently detailed, such as the local file path etc, in order to allow the agent to understand the context and respond appropriately.
+                               *** for example: you should not git the input:"请分析LLaVA项目代码中的关键内容，包括主要功能和实现细节。" 
+                                you should give another input like "请分析LLaVA项目代码中的关键内容，包括主要功能和实现细节，代码路径是：/Users/peelsannaw/Desktop/codes/projects/umlagent/umlagent/app/workspace/tmp_codes/LLaVA" ***
+                                And you should make the agent know it's work, such as: when you ask for a translator agent, the query should be like:" 帮我把 xxx 翻译为 xxx语言"
+                                """
                             }
                         },
                         "required": ["name", "input"]
@@ -213,7 +225,7 @@ class LLM:
                         "agent_tools":agent.available_tools.to_params() if hasattr(agent, 'available_tools') else []
                     } 
                     for agent in handoffs_agents] if handoffs_agents else []
-                
+                logger.info(f"Available agents info for handoff: {agent_infos}")
                 system_msgs = {
                     "role": "system",
                     "content": f"""You are a helpful assistant. Available agents: {agent_infos},
@@ -297,7 +309,14 @@ class LLM:
                 "type": "function",
                 "function": {
                     "name": "handoff_to_agent",
-                    "description": "Hand off the conversation to another specialized agent, use this tool when you are unable to answer the question in your  another available tools and you are indeed sure that another agent can answer it.",
+                    "description": """
+                        Hand off the conversation to another specialized agent,use this tool when you are unable to answer the question in your available tools and you are indeed sure that another agent can answer it,
+                        which mean the agent you hand off to should have enough tools and knowledge to handle the input you provide.
+                        Another very important thing is that when you give enough information to the agent you hand off to,
+                        for example: you should not git the input:"请分析LLaVA项目代码中的关键内容，包括主要功能和实现细节。" you should give 
+                        another input like "请分析LLaVA项目代码中的关键内容，包括主要功能和实现细节，代码路径是：/Users/peelsannaw/Desktop/codes/projects/umlagent/umlagent/app/workspace/tmp_codes/LLaVA"
+                    
+                    """,
                     "parameters": {
                         "type": "object",
                         "properties": {
@@ -307,7 +326,12 @@ class LLM:
                             },
                             "input": {
                                 "type": "string", 
-                                "description": "The input/query to pass to the agent"
+                                "description": """
+                                The input/query to pass to the agent, the input should be sufficiently detailed, such as the local file path etc, in order to allow the agent to understand the context and respond appropriately.
+                               *** for example: you should not git the input:"请分析LLaVA项目代码中的关键内容，包括主要功能和实现细节。" 
+                                you should give another input like "请分析LLaVA项目代码中的关键内容，包括主要功能和实现细节，代码路径是：/Users/peelsannaw/Desktop/codes/projects/umlagent/umlagent/app/workspace/tmp_codes/LLaVA" ***
+                                And you should make the agent know it's work, such as: when you ask for a translator agent, the query should be like:" 帮我把 xxx 翻译为 xxx语言"
+                                """
                             }
                         },
                         "required": ["name", "input"]

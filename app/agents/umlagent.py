@@ -15,7 +15,7 @@ class UMLAgent(ToolCallAgent):
     UML agent是一个Plan-and-Execute模型,能够通过planning tool创建任务列表并且按照这个列表执行任务,同时还会最终任务的状态知道完成
     """
 
-    name: str = "uml agnet"
+    name: str = "UMLAgent"
     description: str = "An agent that creates and manages plans to solve tasks"
 
     system_prompt: str = PLANNING_SYSTEM_PROMPT
@@ -207,7 +207,7 @@ class UMLAgent(ToolCallAgent):
         self.active_plan_id = f"plan_{int(time.time())}"
 
         logger.info(f"Creating initial plan with ID: {self.active_plan_id}")
-
+        
         messages = [
             Message.user_message(
                 f"Analyze the request and create a plan, you must create a plan ,plan ID is:{self.active_plan_id},user's quert is: {request}"

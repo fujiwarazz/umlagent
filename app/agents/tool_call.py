@@ -26,7 +26,7 @@ class ToolCallAgent(ReActAgent):
 
     available_tools: ToolCollection = ToolCollection(Terminate())
     
-    tool_choice:Literal['none','auto','required'] =  "required"
+    tool_choice:Literal['none','auto','required'] =  "auto"
     
     special_tool_names: List[str] = Field(default_factory=lambda: [Terminate().name])
 
@@ -34,16 +34,18 @@ class ToolCallAgent(ReActAgent):
     tool_calls: Optional[List[ToolCall]] = None
 
     max_steps: int = 30
+    
+    code_base:str = None
 
     async def think(self) -> bool:
         """让llm基于现在的情况进行决定是否采取下一步措施"""
         if self.next_step_prompt:
             user_msg = Message.user_message(self.next_step_prompt)
             self.messages += [user_msg]
-        
+        print("system prompt:",self.system_prompt)
         response = await self.llm.ask_tools(
             messages=self.messages, # history
-            system_msgs=[Message.system_message(self.system_prompt)] # system msg
+            system_msgs=[Message.system_message(self.system_prompt)] 
             if self.system_prompt
             else None,
             handoffs_agents=self.hands_offs,
@@ -91,10 +93,15 @@ class ToolCallAgent(ReActAgent):
                 "code_analyzer" : "代码分析工具",
                 "file_operator" : "文件操作工具",
                 "rag": "RAG工具",
+                "file_seeker": "文件查找工具",
+                "file_saver": "文件保存工具",
             }
             if self.websocket:
                 await self.websocket.send_text( f"🧰 选择的工具信息: {[function_name_map[call.function.name] for call in  self.tool_calls]}")
-            
+            if self.websocket:
+                if self.tool_calls[0].function.name == "github_repo_cloner_ssh":
+                    
+                    await self.websocket.send_text(f"✨ {self.name} 的选择的项目是为: {json.loads(self.tool_calls[0].function.arguments)["repo_name"]}")
             logger.info(
                 f"🧰 工具的参数是: {[call.function.arguments for call in  self.tool_calls]}"
             )
@@ -151,6 +158,8 @@ class ToolCallAgent(ReActAgent):
             logger.info(
                 f"🎯 工具 '{tool_call.function.name}' 完成了它的任务! 其执行结果为: {result}"   
             )
+            if self.tool_calls[0].function.name == 'code_analyzer':
+                await self.websocket.send_text(f"代码分析结果：{result}")
             if self.tool_calls[0].function.name == 'final_response':
                 if self.websocket:
                     await self.websocket.send_text(f"✨最终回复:{result}")
@@ -162,9 +171,10 @@ class ToolCallAgent(ReActAgent):
             self.memory.add_message(tool_msg)
             tool_excute_results.append(result)
             
-            if tool_call.function.name == 'terminate':
+            if tool_call.function.name == 'terminate' and self.name == 'UMLAgent':
                 if self.websocket:
-                    await self.websocket.send_text("<<<END_OF_SESSION>>>")
+                    await self.websocket.send_text(f"{self.name} 结束了会话")
+                    await self.websocket.send_text("<<<END_OF_RESPONSE>>>")
                 
         #await self.websocket.send_text("\n\n".join(tool_excute_results))
         return "\n\n".join(tool_excute_results)
@@ -183,6 +193,7 @@ class ToolCallAgent(ReActAgent):
         try:
             
             args = command.function.arguments
+            args = args.replace("\n","\\n").replace("\r","\\r").replace("\t","\\t").replace("\b","\\b").replace("\f","\\f")
             args = json.loads(args) if args else {}
             
             if name == "handoff_to_agent":
@@ -198,13 +209,16 @@ class ToolCallAgent(ReActAgent):
                         
             else:
                 result = await self.available_tools.execute(name=name, tool_input=args)
-                
+            
+            
             # Format result for display
             observation = (
                 f" `工具:{name}`的观测结果输出为 :\n{str(result)}"
                 if result
                 else f"`{name}` 执行结束，但没有输出结果"
             )
+            if name == 'github_repo_cloner_ssh':
+                observation += "请着重注意：项目的本地地址是:{result},后续在调用其他工具时请将这个路径传递给工具调用！！！"
             await self._handle_special_tool(name=name, result=result)
             
             return observation

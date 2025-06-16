@@ -1,12 +1,13 @@
 import os
 from typing import Optional, List, Dict, Any
-from tools.base import BaseTool, ToolResult, ToolFailure # 假设的导入路径
-from utils.logger import logger # 假设的导入路径
+from tools.base import BaseTool, ToolResult, ToolFailure 
+from utils.logger import logger
 
 class BlueprintTool(BaseTool):
     name: str = "project_blueprint"
     description: str = """获取项目代码的结构和概览信息。
     用于快速了解项目的组织方式和主要入口点。
+    当你要了解一个项目的时候，就先使用这个工具！
     命令 'get_project_structure'：需要 'project_path' 参数，可选 'max_depth' 参数，用于获取项目的文件和目录结构树。
     命令 'get_readme_content'：需要 'project_path' 参数，可选 'readme_filename' 参数，用于获取项目 README 文件的内容。"""
     strict: bool = True

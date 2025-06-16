@@ -1,13 +1,12 @@
-import asyncio # 在这个工具中可能不需要，因为没有阻塞的I/O操作
-from tools.base import BaseTool, ToolResult, ToolFailure # 假设这些基类已定义
-from utils.logger import logger # 假设您有一个名为 logger 的日志记录器
+from tools.base import BaseTool, ToolResult, ToolFailure 
+from utils.logger import logger 
 
 class FinalResponse(BaseTool):
     name: str = "final_response" 
     description: str = """
         A special tool for delivering the final summary of actions, results, or a conclusive response to the user.
         You should only use this tool when you have completed all necessary steps to address the user's query and are ready to end the interaction.
-        Typically, this is the last tool to call before invoking the 'terminate' tool.
+        Typically, this is the last tool to call before using the 'terminate' tool.
         The content provided here will be treated as the agent's final output to the user.
     """
     strict: bool = True # 因为有必需的参数

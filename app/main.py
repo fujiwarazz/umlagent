@@ -32,31 +32,37 @@ async def websocket_endpoint(websocket: WebSocket):
                                 RAG(),
                                 CodeAnalyzer(),FileOperatorTool(workspace_root=str(CODE_PATH)),BlueprintTool(),PythonExecute(),Terminate(),BaiduSearch(),CreateChatCompletion(),FinalResponse()
                                 ),
-                            websocket=websocket,) #  用于分析代码的专用agent
+                            websocket=websocket,)
+        
 
         agent = UMLAgent(
             available_tools=ToolCollection(
                                 PlanningTool(),
                                 FinalResponse(),
                                 BaiduSearch(),
-                                #ReAsk(websocket), deadlock bug 
                                 CodeToUMLTool(websocket=websocket),
                                 Terminate(),
                                 CreateChatCompletion(),
                                 GitHubRepoCloner(local_clone_base_dir=str(CODE_PATH)),
-                                FileSeeker(),
-                                FileSaver(),
-                                EnsureInitPyTool()
+                            #    FileSeeker(),
+                            #    FileSaver(),
+                                EnsureInitPyTool(),
+                                RAG(),
+                                CodeAnalyzer(),
+                                FileOperatorTool(workspace_root=str(CODE_PATH)),
+                                BlueprintTool(),
+                                PythonExecute(),
                                 ),
             websocket=websocket,
-            hands_offs=[sweagent]
+      #      hands_offs=[sweagent]
             )
         
         active_agents[client_id] = agent        
         while True:
             data = await websocket.receive_text()
             logger.info(f"Received message from {client_id}: {data}")
-            await agent.run(query=data)
+            res = await agent.run(query=data)
+         #   await websocket.send_text(res)
 
     except WebSocketDisconnect:
         logger.info(f"WebSocket connection disconnected from {client_id}")
